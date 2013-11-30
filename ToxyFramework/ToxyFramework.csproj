@@ -11,6 +11,7 @@
     <AssemblyName>Toxy</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,14 +31,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LumenWorks.Framework.IO">
+      <HintPath>..\Lib\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="3rdParty\EMLReader.cs" />
+    <Compile Include="3rdParty\OutlookStorage.cs" />
+    <Compile Include="IParagraph.cs" />
+    <Compile Include="IParser.cs" />
+    <Compile Include="IParserContext.cs" />
+    <Compile Include="IProperty.cs" />
+    <Compile Include="ISpreadsheetParser.cs" />
+    <Compile Include="IToxyDocument.cs" />
+    <Compile Include="ToxySpreadsheet.cs" />
+    <Compile Include="ParserFactory.cs" />
+    <Compile Include="Parsers\PlainTextParser.cs" />
+    <Compile Include="Parsers\CSVParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

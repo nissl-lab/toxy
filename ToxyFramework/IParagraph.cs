@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Toxy
 {
-    interface IParagraph
+    public interface IParagraph
     {
     }
 }

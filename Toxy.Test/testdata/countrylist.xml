@@ -1,0 +1,4370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <row>
+  <Col0>Sort Order</Col0>
+  <Col1>Common Name</Col1>
+  <Col2>Formal Name</Col2>
+  <Col3>Type</Col3>
+  <Col4>Sub Type</Col4>
+  <Col5>Sovereignty</Col5>
+  <Col6>Capital</Col6>
+  <Col7>ISO 4217 Currency Code</Col7>
+  <Col8>ISO 4217 Currency Name</Col8>
+  <Col9>ITU-T Telephone Code</Col9>
+  <Col10>ISO 3166-1 2 Letter Code</Col10>
+  <Col11>ISO 3166-1 3 Letter Code</Col11>
+  <Col12>ISO 3166-1 Number</Col12>
+  <Col13>IANA Country Code TLD</Col13>
+ </row>
+ <row>
+  <Col0>1</Col0>
+  <Col1>Afghanistan</Col1>
+  <Col2>Islamic State of Afghanistan</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kabul</Col6>
+  <Col7>AFN</Col7>
+  <Col8>Afghani</Col8>
+  <Col9>+93</Col9>
+  <Col10>AF</Col10>
+  <Col11>AFG</Col11>
+  <Col12>004</Col12>
+  <Col13>.af</Col13>
+ </row>
+ <row>
+  <Col0>2</Col0>
+  <Col1>Albania</Col1>
+  <Col2>Republic of Albania</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tirana</Col6>
+  <Col7>ALL</Col7>
+  <Col8>Lek</Col8>
+  <Col9>+355</Col9>
+  <Col10>AL</Col10>
+  <Col11>ALB</Col11>
+  <Col12>008</Col12>
+  <Col13>.al</Col13>
+ </row>
+ <row>
+  <Col0>3</Col0>
+  <Col1>Algeria</Col1>
+  <Col2>People&apos;s Democratic Republic of Algeria</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Algiers</Col6>
+  <Col7>DZD</Col7>
+  <Col8>Dinar</Col8>
+  <Col9>+213</Col9>
+  <Col10>DZ</Col10>
+  <Col11>DZA</Col11>
+  <Col12>012</Col12>
+  <Col13>.dz</Col13>
+ </row>
+ <row>
+  <Col0>4</Col0>
+  <Col1>Andorra</Col1>
+  <Col2>Principality of Andorra</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Andorra la Vella</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+376</Col9>
+  <Col10>AD</Col10>
+  <Col11>AND</Col11>
+  <Col12>020</Col12>
+  <Col13>.ad</Col13>
+ </row>
+ <row>
+  <Col0>5</Col0>
+  <Col1>Angola</Col1>
+  <Col2>Republic of Angola</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Luanda</Col6>
+  <Col7>AOA</Col7>
+  <Col8>Kwanza</Col8>
+  <Col9>+244</Col9>
+  <Col10>AO</Col10>
+  <Col11>AGO</Col11>
+  <Col12>024</Col12>
+  <Col13>.ao</Col13>
+ </row>
+ <row>
+  <Col0>6</Col0>
+  <Col1>Antigua and Barbuda</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Saint John&apos;s</Col6>
+  <Col7>XCD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-268</Col9>
+  <Col10>AG</Col10>
+  <Col11>ATG</Col11>
+  <Col12>028</Col12>
+  <Col13>.ag</Col13>
+ </row>
+ <row>
+  <Col0>7</Col0>
+  <Col1>Argentina</Col1>
+  <Col2>Argentine Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Buenos Aires</Col6>
+  <Col7>ARS</Col7>
+  <Col8>Peso</Col8>
+  <Col9>+54</Col9>
+  <Col10>AR</Col10>
+  <Col11>ARG</Col11>
+  <Col12>032</Col12>
+  <Col13>.ar</Col13>
+ </row>
+ <row>
+  <Col0>8</Col0>
+  <Col1>Armenia</Col1>
+  <Col2>Republic of Armenia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Yerevan</Col6>
+  <Col7>AMD</Col7>
+  <Col8>Dram</Col8>
+  <Col9>+374</Col9>
+  <Col10>AM</Col10>
+  <Col11>ARM</Col11>
+  <Col12>051</Col12>
+  <Col13>.am</Col13>
+ </row>
+ <row>
+  <Col0>9</Col0>
+  <Col1>Australia</Col1>
+  <Col2>Commonwealth of Australia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Canberra</Col6>
+  <Col7>AUD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+61</Col9>
+  <Col10>AU</Col10>
+  <Col11>AUS</Col11>
+  <Col12>036</Col12>
+  <Col13>.au</Col13>
+ </row>
+ <row>
+  <Col0>10</Col0>
+  <Col1>Austria</Col1>
+  <Col2>Republic of Austria</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Vienna</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+43</Col9>
+  <Col10>AT</Col10>
+  <Col11>AUT</Col11>
+  <Col12>040</Col12>
+  <Col13>.at</Col13>
+ </row>
+ <row>
+  <Col0>11</Col0>
+  <Col1>Azerbaijan</Col1>
+  <Col2>Republic of Azerbaijan</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Baku</Col6>
+  <Col7>AZN</Col7>
+  <Col8>Manat</Col8>
+  <Col9>+994</Col9>
+  <Col10>AZ</Col10>
+  <Col11>AZE</Col11>
+  <Col12>031</Col12>
+  <Col13>.az</Col13>
+ </row>
+ <row>
+  <Col0>12</Col0>
+  <Col1>Bahamas, The</Col1>
+  <Col2>Commonwealth of The Bahamas</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Nassau</Col6>
+  <Col7>BSD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-242</Col9>
+  <Col10>BS</Col10>
+  <Col11>BHS</Col11>
+  <Col12>044</Col12>
+  <Col13>.bs</Col13>
+ </row>
+ <row>
+  <Col0>13</Col0>
+  <Col1>Bahrain</Col1>
+  <Col2>Kingdom of Bahrain</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Manama</Col6>
+  <Col7>BHD</Col7>
+  <Col8>Dinar</Col8>
+  <Col9>+973</Col9>
+  <Col10>BH</Col10>
+  <Col11>BHR</Col11>
+  <Col12>048</Col12>
+  <Col13>.bh</Col13>
+ </row>
+ <row>
+  <Col0>14</Col0>
+  <Col1>Bangladesh</Col1>
+  <Col2>People&apos;s Republic of Bangladesh</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Dhaka</Col6>
+  <Col7>BDT</Col7>
+  <Col8>Taka</Col8>
+  <Col9>+880</Col9>
+  <Col10>BD</Col10>
+  <Col11>BGD</Col11>
+  <Col12>050</Col12>
+  <Col13>.bd</Col13>
+ </row>
+ <row>
+  <Col0>15</Col0>
+  <Col1>Barbados</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bridgetown</Col6>
+  <Col7>BBD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-246</Col9>
+  <Col10>BB</Col10>
+  <Col11>BRB</Col11>
+  <Col12>052</Col12>
+  <Col13>.bb</Col13>
+ </row>
+ <row>
+  <Col0>16</Col0>
+  <Col1>Belarus</Col1>
+  <Col2>Republic of Belarus</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Minsk</Col6>
+  <Col7>BYR</Col7>
+  <Col8>Ruble</Col8>
+  <Col9>+375</Col9>
+  <Col10>BY</Col10>
+  <Col11>BLR</Col11>
+  <Col12>112</Col12>
+  <Col13>.by</Col13>
+ </row>
+ <row>
+  <Col0>17</Col0>
+  <Col1>Belgium</Col1>
+  <Col2>Kingdom of Belgium</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Brussels</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+32</Col9>
+  <Col10>BE</Col10>
+  <Col11>BEL</Col11>
+  <Col12>056</Col12>
+  <Col13>.be</Col13>
+ </row>
+ <row>
+  <Col0>18</Col0>
+  <Col1>Belize</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Belmopan</Col6>
+  <Col7>BZD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+501</Col9>
+  <Col10>BZ</Col10>
+  <Col11>BLZ</Col11>
+  <Col12>084</Col12>
+  <Col13>.bz</Col13>
+ </row>
+ <row>
+  <Col0>19</Col0>
+  <Col1>Benin</Col1>
+  <Col2>Republic of Benin</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Porto-Novo</Col6>
+  <Col7>XOF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+229</Col9>
+  <Col10>BJ</Col10>
+  <Col11>BEN</Col11>
+  <Col12>204</Col12>
+  <Col13>.bj</Col13>
+ </row>
+ <row>
+  <Col0>20</Col0>
+  <Col1>Bhutan</Col1>
+  <Col2>Kingdom of Bhutan</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Thimphu</Col6>
+  <Col7>BTN</Col7>
+  <Col8>Ngultrum</Col8>
+  <Col9>+975</Col9>
+  <Col10>BT</Col10>
+  <Col11>BTN</Col11>
+  <Col12>064</Col12>
+  <Col13>.bt</Col13>
+ </row>
+ <row>
+  <Col0>21</Col0>
+  <Col1>Bolivia</Col1>
+  <Col2>Republic of Bolivia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>La Paz (administrative/legislative) and Sucre (judical)</Col6>
+  <Col7>BOB</Col7>
+  <Col8>Boliviano</Col8>
+  <Col9>+591</Col9>
+  <Col10>BO</Col10>
+  <Col11>BOL</Col11>
+  <Col12>068</Col12>
+  <Col13>.bo</Col13>
+ </row>
+ <row>
+  <Col0>22</Col0>
+  <Col1>Bosnia and Herzegovina</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Sarajevo</Col6>
+  <Col7>BAM</Col7>
+  <Col8>Marka</Col8>
+  <Col9>+387</Col9>
+  <Col10>BA</Col10>
+  <Col11>BIH</Col11>
+  <Col12>070</Col12>
+  <Col13>.ba</Col13>
+ </row>
+ <row>
+  <Col0>23</Col0>
+  <Col1>Botswana</Col1>
+  <Col2>Republic of Botswana</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Gaborone</Col6>
+  <Col7>BWP</Col7>
+  <Col8>Pula</Col8>
+  <Col9>+267</Col9>
+  <Col10>BW</Col10>
+  <Col11>BWA</Col11>
+  <Col12>072</Col12>
+  <Col13>.bw</Col13>
+ </row>
+ <row>
+  <Col0>24</Col0>
+  <Col1>Brazil</Col1>
+  <Col2>Federative Republic of Brazil</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Brasilia</Col6>
+  <Col7>BRL</Col7>
+  <Col8>Real</Col8>
+  <Col9>+55</Col9>
+  <Col10>BR</Col10>
+  <Col11>BRA</Col11>
+  <Col12>076</Col12>
+  <Col13>.br</Col13>
+ </row>
+ <row>
+  <Col0>25</Col0>
+  <Col1>Brunei</Col1>
+  <Col2>Negara Brunei Darussalam</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bandar Seri Begawan</Col6>
+  <Col7>BND</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+673</Col9>
+  <Col10>BN</Col10>
+  <Col11>BRN</Col11>
+  <Col12>096</Col12>
+  <Col13>.bn</Col13>
+ </row>
+ <row>
+  <Col0>26</Col0>
+  <Col1>Bulgaria</Col1>
+  <Col2>Republic of Bulgaria</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Sofia</Col6>
+  <Col7>BGN</Col7>
+  <Col8>Lev</Col8>
+  <Col9>+359</Col9>
+  <Col10>BG</Col10>
+  <Col11>BGR</Col11>
+  <Col12>100</Col12>
+  <Col13>.bg</Col13>
+ </row>
+ <row>
+  <Col0>27</Col0>
+  <Col1>Burkina Faso</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Ouagadougou</Col6>
+  <Col7>XOF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+226</Col9>
+  <Col10>BF</Col10>
+  <Col11>BFA</Col11>
+  <Col12>854</Col12>
+  <Col13>.bf</Col13>
+ </row>
+ <row>
+  <Col0>28</Col0>
+  <Col1>Burundi</Col1>
+  <Col2>Republic of Burundi</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bujumbura</Col6>
+  <Col7>BIF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+257</Col9>
+  <Col10>BI</Col10>
+  <Col11>BDI</Col11>
+  <Col12>108</Col12>
+  <Col13>.bi</Col13>
+ </row>
+ <row>
+  <Col0>29</Col0>
+  <Col1>Cambodia</Col1>
+  <Col2>Kingdom of Cambodia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Phnom Penh</Col6>
+  <Col7>KHR</Col7>
+  <Col8>Riels</Col8>
+  <Col9>+855</Col9>
+  <Col10>KH</Col10>
+  <Col11>KHM</Col11>
+  <Col12>116</Col12>
+  <Col13>.kh</Col13>
+ </row>
+ <row>
+  <Col0>30</Col0>
+  <Col1>Cameroon</Col1>
+  <Col2>Republic of Cameroon</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Yaounde</Col6>
+  <Col7>XAF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+237</Col9>
+  <Col10>CM</Col10>
+  <Col11>CMR</Col11>
+  <Col12>120</Col12>
+  <Col13>.cm</Col13>
+ </row>
+ <row>
+  <Col0>31</Col0>
+  <Col1>Canada</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Ottawa</Col6>
+  <Col7>CAD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1</Col9>
+  <Col10>CA</Col10>
+  <Col11>CAN</Col11>
+  <Col12>124</Col12>
+  <Col13>.ca</Col13>
+ </row>
+ <row>
+  <Col0>32</Col0>
+  <Col1>Cape Verde</Col1>
+  <Col2>Republic of Cape Verde</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Praia</Col6>
+  <Col7>CVE</Col7>
+  <Col8>Escudo</Col8>
+  <Col9>+238</Col9>
+  <Col10>CV</Col10>
+  <Col11>CPV</Col11>
+  <Col12>132</Col12>
+  <Col13>.cv</Col13>
+ </row>
+ <row>
+  <Col0>33</Col0>
+  <Col1>Central African Republic</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bangui</Col6>
+  <Col7>XAF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+236</Col9>
+  <Col10>CF</Col10>
+  <Col11>CAF</Col11>
+  <Col12>140</Col12>
+  <Col13>.cf</Col13>
+ </row>
+ <row>
+  <Col0>34</Col0>
+  <Col1>Chad</Col1>
+  <Col2>Republic of Chad</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>N&apos;Djamena</Col6>
+  <Col7>XAF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+235</Col9>
+  <Col10>TD</Col10>
+  <Col11>TCD</Col11>
+  <Col12>148</Col12>
+  <Col13>.td</Col13>
+ </row>
+ <row>
+  <Col0>35</Col0>
+  <Col1>Chile</Col1>
+  <Col2>Republic of Chile</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Santiago (administrative/judical) and Valparaiso (legislative)</Col6>
+  <Col7>CLP</Col7>
+  <Col8>Peso</Col8>
+  <Col9>+56</Col9>
+  <Col10>CL</Col10>
+  <Col11>CHL</Col11>
+  <Col12>152</Col12>
+  <Col13>.cl</Col13>
+ </row>
+ <row>
+  <Col0>36</Col0>
+  <Col1>China, People&apos;s Republic of</Col1>
+  <Col2>People&apos;s Republic of China</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Beijing</Col6>
+  <Col7>CNY</Col7>
+  <Col8>Yuan Renminbi</Col8>
+  <Col9>+86</Col9>
+  <Col10>CN</Col10>
+  <Col11>CHN</Col11>
+  <Col12>156</Col12>
+  <Col13>.cn</Col13>
+ </row>
+ <row>
+  <Col0>37</Col0>
+  <Col1>Colombia</Col1>
+  <Col2>Republic of Colombia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bogota</Col6>
+  <Col7>COP</Col7>
+  <Col8>Peso</Col8>
+  <Col9>+57</Col9>
+  <Col10>CO</Col10>
+  <Col11>COL</Col11>
+  <Col12>170</Col12>
+  <Col13>.co</Col13>
+ </row>
+ <row>
+  <Col0>38</Col0>
+  <Col1>Comoros</Col1>
+  <Col2>Union of Comoros</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Moroni</Col6>
+  <Col7>KMF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+269</Col9>
+  <Col10>KM</Col10>
+  <Col11>COM</Col11>
+  <Col12>174</Col12>
+  <Col13>.km</Col13>
+ </row>
+ <row>
+  <Col0>39</Col0>
+  <Col1>Congo, Democratic Republic of the (Congo &#150; Kinshasa)</Col1>
+  <Col2>Democratic Republic of the Congo</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kinshasa</Col6>
+  <Col7>CDF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+243</Col9>
+  <Col10>CD</Col10>
+  <Col11>COD</Col11>
+  <Col12>180</Col12>
+  <Col13>.cd</Col13>
+ </row>
+ <row>
+  <Col0>40</Col0>
+  <Col1>Congo, Republic of the (Congo &#150; Brazzaville)</Col1>
+  <Col2>Republic of the Congo</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Brazzaville</Col6>
+  <Col7>XAF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+242</Col9>
+  <Col10>CG</Col10>
+  <Col11>COG</Col11>
+  <Col12>178</Col12>
+  <Col13>.cg</Col13>
+ </row>
+ <row>
+  <Col0>41</Col0>
+  <Col1>Costa Rica</Col1>
+  <Col2>Republic of Costa Rica</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>San Jose</Col6>
+  <Col7>CRC</Col7>
+  <Col8>Colon</Col8>
+  <Col9>+506</Col9>
+  <Col10>CR</Col10>
+  <Col11>CRI</Col11>
+  <Col12>188</Col12>
+  <Col13>.cr</Col13>
+ </row>
+ <row>
+  <Col0>42</Col0>
+  <Col1>Cote d&apos;Ivoire (Ivory Coast)</Col1>
+  <Col2>Republic of Cote d&apos;Ivoire</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Yamoussoukro</Col6>
+  <Col7>XOF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+225</Col9>
+  <Col10>CI</Col10>
+  <Col11>CIV</Col11>
+  <Col12>384</Col12>
+  <Col13>.ci</Col13>
+ </row>
+ <row>
+  <Col0>43</Col0>
+  <Col1>Croatia</Col1>
+  <Col2>Republic of Croatia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Zagreb</Col6>
+  <Col7>HRK</Col7>
+  <Col8>Kuna</Col8>
+  <Col9>+385</Col9>
+  <Col10>HR</Col10>
+  <Col11>HRV</Col11>
+  <Col12>191</Col12>
+  <Col13>.hr</Col13>
+ </row>
+ <row>
+  <Col0>44</Col0>
+  <Col1>Cuba</Col1>
+  <Col2>Republic of Cuba</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Havana</Col6>
+  <Col7>CUP</Col7>
+  <Col8>Peso</Col8>
+  <Col9>+53</Col9>
+  <Col10>CU</Col10>
+  <Col11>CUB</Col11>
+  <Col12>192</Col12>
+  <Col13>.cu</Col13>
+ </row>
+ <row>
+  <Col0>45</Col0>
+  <Col1>Cyprus</Col1>
+  <Col2>Republic of Cyprus</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Nicosia</Col6>
+  <Col7>CYP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+357</Col9>
+  <Col10>CY</Col10>
+  <Col11>CYP</Col11>
+  <Col12>196</Col12>
+  <Col13>.cy</Col13>
+ </row>
+ <row>
+  <Col0>46</Col0>
+  <Col1>Czech Republic</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Prague</Col6>
+  <Col7>CZK</Col7>
+  <Col8>Koruna</Col8>
+  <Col9>+420</Col9>
+  <Col10>CZ</Col10>
+  <Col11>CZE</Col11>
+  <Col12>203</Col12>
+  <Col13>.cz</Col13>
+ </row>
+ <row>
+  <Col0>47</Col0>
+  <Col1>Denmark</Col1>
+  <Col2>Kingdom of Denmark</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Copenhagen</Col6>
+  <Col7>DKK</Col7>
+  <Col8>Krone</Col8>
+  <Col9>+45</Col9>
+  <Col10>DK</Col10>
+  <Col11>DNK</Col11>
+  <Col12>208</Col12>
+  <Col13>.dk</Col13>
+ </row>
+ <row>
+  <Col0>48</Col0>
+  <Col1>Djibouti</Col1>
+  <Col2>Republic of Djibouti</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Djibouti</Col6>
+  <Col7>DJF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+253</Col9>
+  <Col10>DJ</Col10>
+  <Col11>DJI</Col11>
+  <Col12>262</Col12>
+  <Col13>.dj</Col13>
+ </row>
+ <row>
+  <Col0>49</Col0>
+  <Col1>Dominica</Col1>
+  <Col2>Commonwealth of Dominica</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Roseau</Col6>
+  <Col7>XCD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-767</Col9>
+  <Col10>DM</Col10>
+  <Col11>DMA</Col11>
+  <Col12>212</Col12>
+  <Col13>.dm</Col13>
+ </row>
+ <row>
+  <Col0>50</Col0>
+  <Col1>Dominican Republic</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Santo Domingo</Col6>
+  <Col7>DOP</Col7>
+  <Col8>Peso</Col8>
+  <Col9>+1-809 and 1-829</Col9>
+  <Col10>DO</Col10>
+  <Col11>DOM</Col11>
+  <Col12>214</Col12>
+  <Col13>.do</Col13>
+ </row>
+ <row>
+  <Col0>51</Col0>
+  <Col1>Ecuador</Col1>
+  <Col2>Republic of Ecuador</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Quito</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+593</Col9>
+  <Col10>EC</Col10>
+  <Col11>ECU</Col11>
+  <Col12>218</Col12>
+  <Col13>.ec</Col13>
+ </row>
+ <row>
+  <Col0>52</Col0>
+  <Col1>Egypt</Col1>
+  <Col2>Arab Republic of Egypt</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Cairo</Col6>
+  <Col7>EGP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+20</Col9>
+  <Col10>EG</Col10>
+  <Col11>EGY</Col11>
+  <Col12>818</Col12>
+  <Col13>.eg</Col13>
+ </row>
+ <row>
+  <Col0>53</Col0>
+  <Col1>El Salvador</Col1>
+  <Col2>Republic of El Salvador</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>San Salvador</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+503</Col9>
+  <Col10>SV</Col10>
+  <Col11>SLV</Col11>
+  <Col12>222</Col12>
+  <Col13>.sv</Col13>
+ </row>
+ <row>
+  <Col0>54</Col0>
+  <Col1>Equatorial Guinea</Col1>
+  <Col2>Republic of Equatorial Guinea</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Malabo</Col6>
+  <Col7>XAF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+240</Col9>
+  <Col10>GQ</Col10>
+  <Col11>GNQ</Col11>
+  <Col12>226</Col12>
+  <Col13>.gq</Col13>
+ </row>
+ <row>
+  <Col0>55</Col0>
+  <Col1>Eritrea</Col1>
+  <Col2>State of Eritrea</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Asmara</Col6>
+  <Col7>ERN</Col7>
+  <Col8>Nakfa</Col8>
+  <Col9>+291</Col9>
+  <Col10>ER</Col10>
+  <Col11>ERI</Col11>
+  <Col12>232</Col12>
+  <Col13>.er</Col13>
+ </row>
+ <row>
+  <Col0>56</Col0>
+  <Col1>Estonia</Col1>
+  <Col2>Republic of Estonia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tallinn</Col6>
+  <Col7>EEK</Col7>
+  <Col8>Kroon</Col8>
+  <Col9>+372</Col9>
+  <Col10>EE</Col10>
+  <Col11>EST</Col11>
+  <Col12>233</Col12>
+  <Col13>.ee</Col13>
+ </row>
+ <row>
+  <Col0>57</Col0>
+  <Col1>Ethiopia</Col1>
+  <Col2>Federal Democratic Republic of Ethiopia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Addis Ababa</Col6>
+  <Col7>ETB</Col7>
+  <Col8>Birr</Col8>
+  <Col9>+251</Col9>
+  <Col10>ET</Col10>
+  <Col11>ETH</Col11>
+  <Col12>231</Col12>
+  <Col13>.et</Col13>
+ </row>
+ <row>
+  <Col0>58</Col0>
+  <Col1>Fiji</Col1>
+  <Col2>Republic of the Fiji Islands</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Suva</Col6>
+  <Col7>FJD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+679</Col9>
+  <Col10>FJ</Col10>
+  <Col11>FJI</Col11>
+  <Col12>242</Col12>
+  <Col13>.fj</Col13>
+ </row>
+ <row>
+  <Col0>59</Col0>
+  <Col1>Finland</Col1>
+  <Col2>Republic of Finland</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Helsinki</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+358</Col9>
+  <Col10>FI</Col10>
+  <Col11>FIN</Col11>
+  <Col12>246</Col12>
+  <Col13>.fi</Col13>
+ </row>
+ <row>
+  <Col0>60</Col0>
+  <Col1>France</Col1>
+  <Col2>French Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Paris</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+33</Col9>
+  <Col10>FR</Col10>
+  <Col11>FRA</Col11>
+  <Col12>250</Col12>
+  <Col13>.fr</Col13>
+ </row>
+ <row>
+  <Col0>61</Col0>
+  <Col1>Gabon</Col1>
+  <Col2>Gabonese Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Libreville</Col6>
+  <Col7>XAF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+241</Col9>
+  <Col10>GA</Col10>
+  <Col11>GAB</Col11>
+  <Col12>266</Col12>
+  <Col13>.ga</Col13>
+ </row>
+ <row>
+  <Col0>62</Col0>
+  <Col1>Gambia, The</Col1>
+  <Col2>Republic of The Gambia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Banjul</Col6>
+  <Col7>GMD</Col7>
+  <Col8>Dalasi</Col8>
+  <Col9>+220</Col9>
+  <Col10>GM</Col10>
+  <Col11>GMB</Col11>
+  <Col12>270</Col12>
+  <Col13>.gm</Col13>
+ </row>
+ <row>
+  <Col0>63</Col0>
+  <Col1>Georgia</Col1>
+  <Col2>Republic of Georgia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tbilisi</Col6>
+  <Col7>GEL</Col7>
+  <Col8>Lari</Col8>
+  <Col9>+995</Col9>
+  <Col10>GE</Col10>
+  <Col11>GEO</Col11>
+  <Col12>268</Col12>
+  <Col13>.ge</Col13>
+ </row>
+ <row>
+  <Col0>64</Col0>
+  <Col1>Germany</Col1>
+  <Col2>Federal Republic of Germany</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Berlin</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+49</Col9>
+  <Col10>DE</Col10>
+  <Col11>DEU</Col11>
+  <Col12>276</Col12>
+  <Col13>.de</Col13>
+ </row>
+ <row>
+  <Col0>65</Col0>
+  <Col1>Ghana</Col1>
+  <Col2>Republic of Ghana</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Accra</Col6>
+  <Col7>GHS</Col7>
+  <Col8>Cedi</Col8>
+  <Col9>+233</Col9>
+  <Col10>GH</Col10>
+  <Col11>GHA</Col11>
+  <Col12>288</Col12>
+  <Col13>.gh</Col13>
+ </row>
+ <row>
+  <Col0>66</Col0>
+  <Col1>Greece</Col1>
+  <Col2>Hellenic Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Athens</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+30</Col9>
+  <Col10>GR</Col10>
+  <Col11>GRC</Col11>
+  <Col12>300</Col12>
+  <Col13>.gr</Col13>
+ </row>
+ <row>
+  <Col0>67</Col0>
+  <Col1>Grenada</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Saint George&apos;s</Col6>
+  <Col7>XCD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-473</Col9>
+  <Col10>GD</Col10>
+  <Col11>GRD</Col11>
+  <Col12>308</Col12>
+  <Col13>.gd</Col13>
+ </row>
+ <row>
+  <Col0>68</Col0>
+  <Col1>Guatemala</Col1>
+  <Col2>Republic of Guatemala</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Guatemala</Col6>
+  <Col7>GTQ</Col7>
+  <Col8>Quetzal</Col8>
+  <Col9>+502</Col9>
+  <Col10>GT</Col10>
+  <Col11>GTM</Col11>
+  <Col12>320</Col12>
+  <Col13>.gt</Col13>
+ </row>
+ <row>
+  <Col0>69</Col0>
+  <Col1>Guinea</Col1>
+  <Col2>Republic of Guinea</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Conakry</Col6>
+  <Col7>GNF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+224</Col9>
+  <Col10>GN</Col10>
+  <Col11>GIN</Col11>
+  <Col12>324</Col12>
+  <Col13>.gn</Col13>
+ </row>
+ <row>
+  <Col0>70</Col0>
+  <Col1>Guinea-Bissau</Col1>
+  <Col2>Republic of Guinea-Bissau</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bissau</Col6>
+  <Col7>XOF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+245</Col9>
+  <Col10>GW</Col10>
+  <Col11>GNB</Col11>
+  <Col12>624</Col12>
+  <Col13>.gw</Col13>
+ </row>
+ <row>
+  <Col0>71</Col0>
+  <Col1>Guyana</Col1>
+  <Col2>Co-operative Republic of Guyana</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Georgetown</Col6>
+  <Col7>GYD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+592</Col9>
+  <Col10>GY</Col10>
+  <Col11>GUY</Col11>
+  <Col12>328</Col12>
+  <Col13>.gy</Col13>
+ </row>
+ <row>
+  <Col0>72</Col0>
+  <Col1>Haiti</Col1>
+  <Col2>Republic of Haiti</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Port-au-Prince</Col6>
+  <Col7>HTG</Col7>
+  <Col8>Gourde</Col8>
+  <Col9>+509</Col9>
+  <Col10>HT</Col10>
+  <Col11>HTI</Col11>
+  <Col12>332</Col12>
+  <Col13>.ht</Col13>
+ </row>
+ <row>
+  <Col0>73</Col0>
+  <Col1>Honduras</Col1>
+  <Col2>Republic of Honduras</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tegucigalpa</Col6>
+  <Col7>HNL</Col7>
+  <Col8>Lempira</Col8>
+  <Col9>+504</Col9>
+  <Col10>HN</Col10>
+  <Col11>HND</Col11>
+  <Col12>340</Col12>
+  <Col13>.hn</Col13>
+ </row>
+ <row>
+  <Col0>74</Col0>
+  <Col1>Hungary</Col1>
+  <Col2>Republic of Hungary</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Budapest</Col6>
+  <Col7>HUF</Col7>
+  <Col8>Forint</Col8>
+  <Col9>+36</Col9>
+  <Col10>HU</Col10>
+  <Col11>HUN</Col11>
+  <Col12>348</Col12>
+  <Col13>.hu</Col13>
+ </row>
+ <row>
+  <Col0>75</Col0>
+  <Col1>Iceland</Col1>
+  <Col2>Republic of Iceland</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Reykjavik</Col6>
+  <Col7>ISK</Col7>
+  <Col8>Krona</Col8>
+  <Col9>+354</Col9>
+  <Col10>IS</Col10>
+  <Col11>ISL</Col11>
+  <Col12>352</Col12>
+  <Col13>.is</Col13>
+ </row>
+ <row>
+  <Col0>76</Col0>
+  <Col1>India</Col1>
+  <Col2>Republic of India</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>New Delhi</Col6>
+  <Col7>INR</Col7>
+  <Col8>Rupee</Col8>
+  <Col9>+91</Col9>
+  <Col10>IN</Col10>
+  <Col11>IND</Col11>
+  <Col12>356</Col12>
+  <Col13>.in</Col13>
+ </row>
+ <row>
+  <Col0>77</Col0>
+  <Col1>Indonesia</Col1>
+  <Col2>Republic of Indonesia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Jakarta</Col6>
+  <Col7>IDR</Col7>
+  <Col8>Rupiah</Col8>
+  <Col9>+62</Col9>
+  <Col10>ID</Col10>
+  <Col11>IDN</Col11>
+  <Col12>360</Col12>
+  <Col13>.id</Col13>
+ </row>
+ <row>
+  <Col0>78</Col0>
+  <Col1>Iran</Col1>
+  <Col2>Islamic Republic of Iran</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tehran</Col6>
+  <Col7>IRR</Col7>
+  <Col8>Rial</Col8>
+  <Col9>+98</Col9>
+  <Col10>IR</Col10>
+  <Col11>IRN</Col11>
+  <Col12>364</Col12>
+  <Col13>.ir</Col13>
+ </row>
+ <row>
+  <Col0>79</Col0>
+  <Col1>Iraq</Col1>
+  <Col2>Republic of Iraq</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Baghdad</Col6>
+  <Col7>IQD</Col7>
+  <Col8>Dinar</Col8>
+  <Col9>+964</Col9>
+  <Col10>IQ</Col10>
+  <Col11>IRQ</Col11>
+  <Col12>368</Col12>
+  <Col13>.iq</Col13>
+ </row>
+ <row>
+  <Col0>80</Col0>
+  <Col1>Ireland</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Dublin</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+353</Col9>
+  <Col10>IE</Col10>
+  <Col11>IRL</Col11>
+  <Col12>372</Col12>
+  <Col13>.ie</Col13>
+ </row>
+ <row>
+  <Col0>81</Col0>
+  <Col1>Israel</Col1>
+  <Col2>State of Israel</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Jerusalem</Col6>
+  <Col7>ILS</Col7>
+  <Col8>Shekel</Col8>
+  <Col9>+972</Col9>
+  <Col10>IL</Col10>
+  <Col11>ISR</Col11>
+  <Col12>376</Col12>
+  <Col13>.il</Col13>
+ </row>
+ <row>
+  <Col0>82</Col0>
+  <Col1>Italy</Col1>
+  <Col2>Italian Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Rome</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+39</Col9>
+  <Col10>IT</Col10>
+  <Col11>ITA</Col11>
+  <Col12>380</Col12>
+  <Col13>.it</Col13>
+ </row>
+ <row>
+  <Col0>83</Col0>
+  <Col1>Jamaica</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kingston</Col6>
+  <Col7>JMD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-876</Col9>
+  <Col10>JM</Col10>
+  <Col11>JAM</Col11>
+  <Col12>388</Col12>
+  <Col13>.jm</Col13>
+ </row>
+ <row>
+  <Col0>84</Col0>
+  <Col1>Japan</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tokyo</Col6>
+  <Col7>JPY</Col7>
+  <Col8>Yen</Col8>
+  <Col9>+81</Col9>
+  <Col10>JP</Col10>
+  <Col11>JPN</Col11>
+  <Col12>392</Col12>
+  <Col13>.jp</Col13>
+ </row>
+ <row>
+  <Col0>85</Col0>
+  <Col1>Jordan</Col1>
+  <Col2>Hashemite Kingdom of Jordan</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Amman</Col6>
+  <Col7>JOD</Col7>
+  <Col8>Dinar</Col8>
+  <Col9>+962</Col9>
+  <Col10>JO</Col10>
+  <Col11>JOR</Col11>
+  <Col12>400</Col12>
+  <Col13>.jo</Col13>
+ </row>
+ <row>
+  <Col0>86</Col0>
+  <Col1>Kazakhstan</Col1>
+  <Col2>Republic of Kazakhstan</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Astana</Col6>
+  <Col7>KZT</Col7>
+  <Col8>Tenge</Col8>
+  <Col9>+7</Col9>
+  <Col10>KZ</Col10>
+  <Col11>KAZ</Col11>
+  <Col12>398</Col12>
+  <Col13>.kz</Col13>
+ </row>
+ <row>
+  <Col0>87</Col0>
+  <Col1>Kenya</Col1>
+  <Col2>Republic of Kenya</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Nairobi</Col6>
+  <Col7>KES</Col7>
+  <Col8>Shilling</Col8>
+  <Col9>+254</Col9>
+  <Col10>KE</Col10>
+  <Col11>KEN</Col11>
+  <Col12>404</Col12>
+  <Col13>.ke</Col13>
+ </row>
+ <row>
+  <Col0>88</Col0>
+  <Col1>Kiribati</Col1>
+  <Col2>Republic of Kiribati</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tarawa</Col6>
+  <Col7>AUD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+686</Col9>
+  <Col10>KI</Col10>
+  <Col11>KIR</Col11>
+  <Col12>296</Col12>
+  <Col13>.ki</Col13>
+ </row>
+ <row>
+  <Col0>89</Col0>
+  <Col1>Korea, Democratic People&apos;s Republic of (North Korea)</Col1>
+  <Col2>Democratic People&apos;s Republic of Korea</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Pyongyang</Col6>
+  <Col7>KPW</Col7>
+  <Col8>Won</Col8>
+  <Col9>+850</Col9>
+  <Col10>KP</Col10>
+  <Col11>PRK</Col11>
+  <Col12>408</Col12>
+  <Col13>.kp</Col13>
+ </row>
+ <row>
+  <Col0>90</Col0>
+  <Col1>Korea, Republic of  (South Korea)</Col1>
+  <Col2>Republic of Korea</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Seoul</Col6>
+  <Col7>KRW</Col7>
+  <Col8>Won</Col8>
+  <Col9>+82</Col9>
+  <Col10>KR</Col10>
+  <Col11>KOR</Col11>
+  <Col12>410</Col12>
+  <Col13>.kr</Col13>
+ </row>
+ <row>
+  <Col0>91</Col0>
+  <Col1>Kuwait</Col1>
+  <Col2>State of Kuwait</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kuwait</Col6>
+  <Col7>KWD</Col7>
+  <Col8>Dinar</Col8>
+  <Col9>+965</Col9>
+  <Col10>KW</Col10>
+  <Col11>KWT</Col11>
+  <Col12>414</Col12>
+  <Col13>.kw</Col13>
+ </row>
+ <row>
+  <Col0>92</Col0>
+  <Col1>Kyrgyzstan</Col1>
+  <Col2>Kyrgyz Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bishkek</Col6>
+  <Col7>KGS</Col7>
+  <Col8>Som</Col8>
+  <Col9>+996</Col9>
+  <Col10>KG</Col10>
+  <Col11>KGZ</Col11>
+  <Col12>417</Col12>
+  <Col13>.kg</Col13>
+ </row>
+ <row>
+  <Col0>93</Col0>
+  <Col1>Laos</Col1>
+  <Col2>Lao People&apos;s Democratic Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Vientiane</Col6>
+  <Col7>LAK</Col7>
+  <Col8>Kip</Col8>
+  <Col9>+856</Col9>
+  <Col10>LA</Col10>
+  <Col11>LAO</Col11>
+  <Col12>418</Col12>
+  <Col13>.la</Col13>
+ </row>
+ <row>
+  <Col0>94</Col0>
+  <Col1>Latvia</Col1>
+  <Col2>Republic of Latvia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Riga</Col6>
+  <Col7>LVL</Col7>
+  <Col8>Lat</Col8>
+  <Col9>+371</Col9>
+  <Col10>LV</Col10>
+  <Col11>LVA</Col11>
+  <Col12>428</Col12>
+  <Col13>.lv</Col13>
+ </row>
+ <row>
+  <Col0>95</Col0>
+  <Col1>Lebanon</Col1>
+  <Col2>Lebanese Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Beirut</Col6>
+  <Col7>LBP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+961</Col9>
+  <Col10>LB</Col10>
+  <Col11>LBN</Col11>
+  <Col12>422</Col12>
+  <Col13>.lb</Col13>
+ </row>
+ <row>
+  <Col0>96</Col0>
+  <Col1>Lesotho</Col1>
+  <Col2>Kingdom of Lesotho</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Maseru</Col6>
+  <Col7>LSL</Col7>
+  <Col8>Loti</Col8>
+  <Col9>+266</Col9>
+  <Col10>LS</Col10>
+  <Col11>LSO</Col11>
+  <Col12>426</Col12>
+  <Col13>.ls</Col13>
+ </row>
+ <row>
+  <Col0>97</Col0>
+  <Col1>Liberia</Col1>
+  <Col2>Republic of Liberia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Monrovia</Col6>
+  <Col7>LRD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+231</Col9>
+  <Col10>LR</Col10>
+  <Col11>LBR</Col11>
+  <Col12>430</Col12>
+  <Col13>.lr</Col13>
+ </row>
+ <row>
+  <Col0>98</Col0>
+  <Col1>Libya</Col1>
+  <Col2>Great Socialist People&apos;s Libyan Arab Jamahiriya</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tripoli</Col6>
+  <Col7>LYD</Col7>
+  <Col8>Dinar</Col8>
+  <Col9>+218</Col9>
+  <Col10>LY</Col10>
+  <Col11>LBY</Col11>
+  <Col12>434</Col12>
+  <Col13>.ly</Col13>
+ </row>
+ <row>
+  <Col0>99</Col0>
+  <Col1>Liechtenstein</Col1>
+  <Col2>Principality of Liechtenstein</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Vaduz</Col6>
+  <Col7>CHF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+423</Col9>
+  <Col10>LI</Col10>
+  <Col11>LIE</Col11>
+  <Col12>438</Col12>
+  <Col13>.li</Col13>
+ </row>
+ <row>
+  <Col0>100</Col0>
+  <Col1>Lithuania</Col1>
+  <Col2>Republic of Lithuania</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Vilnius</Col6>
+  <Col7>LTL</Col7>
+  <Col8>Litas</Col8>
+  <Col9>+370</Col9>
+  <Col10>LT</Col10>
+  <Col11>LTU</Col11>
+  <Col12>440</Col12>
+  <Col13>.lt</Col13>
+ </row>
+ <row>
+  <Col0>101</Col0>
+  <Col1>Luxembourg</Col1>
+  <Col2>Grand Duchy of Luxembourg</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Luxembourg</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+352</Col9>
+  <Col10>LU</Col10>
+  <Col11>LUX</Col11>
+  <Col12>442</Col12>
+  <Col13>.lu</Col13>
+ </row>
+ <row>
+  <Col0>102</Col0>
+  <Col1>Macedonia</Col1>
+  <Col2>Republic of Macedonia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Skopje</Col6>
+  <Col7>MKD</Col7>
+  <Col8>Denar</Col8>
+  <Col9>+389</Col9>
+  <Col10>MK</Col10>
+  <Col11>MKD</Col11>
+  <Col12>807</Col12>
+  <Col13>.mk</Col13>
+ </row>
+ <row>
+  <Col0>103</Col0>
+  <Col1>Madagascar</Col1>
+  <Col2>Republic of Madagascar</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Antananarivo</Col6>
+  <Col7>MGA</Col7>
+  <Col8>Ariary</Col8>
+  <Col9>+261</Col9>
+  <Col10>MG</Col10>
+  <Col11>MDG</Col11>
+  <Col12>450</Col12>
+  <Col13>.mg</Col13>
+ </row>
+ <row>
+  <Col0>104</Col0>
+  <Col1>Malawi</Col1>
+  <Col2>Republic of Malawi</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Lilongwe</Col6>
+  <Col7>MWK</Col7>
+  <Col8>Kwacha</Col8>
+  <Col9>+265</Col9>
+  <Col10>MW</Col10>
+  <Col11>MWI</Col11>
+  <Col12>454</Col12>
+  <Col13>.mw</Col13>
+ </row>
+ <row>
+  <Col0>105</Col0>
+  <Col1>Malaysia</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kuala Lumpur (legislative/judical) and Putrajaya (administrative)</Col6>
+  <Col7>MYR</Col7>
+  <Col8>Ringgit</Col8>
+  <Col9>+60</Col9>
+  <Col10>MY</Col10>
+  <Col11>MYS</Col11>
+  <Col12>458</Col12>
+  <Col13>.my</Col13>
+ </row>
+ <row>
+  <Col0>106</Col0>
+  <Col1>Maldives</Col1>
+  <Col2>Republic of Maldives</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Male</Col6>
+  <Col7>MVR</Col7>
+  <Col8>Rufiyaa</Col8>
+  <Col9>+960</Col9>
+  <Col10>MV</Col10>
+  <Col11>MDV</Col11>
+  <Col12>462</Col12>
+  <Col13>.mv</Col13>
+ </row>
+ <row>
+  <Col0>107</Col0>
+  <Col1>Mali</Col1>
+  <Col2>Republic of Mali</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bamako</Col6>
+  <Col7>XOF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+223</Col9>
+  <Col10>ML</Col10>
+  <Col11>MLI</Col11>
+  <Col12>466</Col12>
+  <Col13>.ml</Col13>
+ </row>
+ <row>
+  <Col0>108</Col0>
+  <Col1>Malta</Col1>
+  <Col2>Republic of Malta</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Valletta</Col6>
+  <Col7>MTL</Col7>
+  <Col8>Lira</Col8>
+  <Col9>+356</Col9>
+  <Col10>MT</Col10>
+  <Col11>MLT</Col11>
+  <Col12>470</Col12>
+  <Col13>.mt</Col13>
+ </row>
+ <row>
+  <Col0>109</Col0>
+  <Col1>Marshall Islands</Col1>
+  <Col2>Republic of the Marshall Islands</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Majuro</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+692</Col9>
+  <Col10>MH</Col10>
+  <Col11>MHL</Col11>
+  <Col12>584</Col12>
+  <Col13>.mh</Col13>
+ </row>
+ <row>
+  <Col0>110</Col0>
+  <Col1>Mauritania</Col1>
+  <Col2>Islamic Republic of Mauritania</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Nouakchott</Col6>
+  <Col7>MRO</Col7>
+  <Col8>Ouguiya</Col8>
+  <Col9>+222</Col9>
+  <Col10>MR</Col10>
+  <Col11>MRT</Col11>
+  <Col12>478</Col12>
+  <Col13>.mr</Col13>
+ </row>
+ <row>
+  <Col0>111</Col0>
+  <Col1>Mauritius</Col1>
+  <Col2>Republic of Mauritius</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Port Louis</Col6>
+  <Col7>MUR</Col7>
+  <Col8>Rupee</Col8>
+  <Col9>+230</Col9>
+  <Col10>MU</Col10>
+  <Col11>MUS</Col11>
+  <Col12>480</Col12>
+  <Col13>.mu</Col13>
+ </row>
+ <row>
+  <Col0>112</Col0>
+  <Col1>Mexico</Col1>
+  <Col2>United Mexican States</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Mexico</Col6>
+  <Col7>MXN</Col7>
+  <Col8>Peso</Col8>
+  <Col9>+52</Col9>
+  <Col10>MX</Col10>
+  <Col11>MEX</Col11>
+  <Col12>484</Col12>
+  <Col13>.mx</Col13>
+ </row>
+ <row>
+  <Col0>113</Col0>
+  <Col1>Micronesia</Col1>
+  <Col2>Federated States of Micronesia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Palikir</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+691</Col9>
+  <Col10>FM</Col10>
+  <Col11>FSM</Col11>
+  <Col12>583</Col12>
+  <Col13>.fm</Col13>
+ </row>
+ <row>
+  <Col0>114</Col0>
+  <Col1>Moldova</Col1>
+  <Col2>Republic of Moldova</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Chisinau</Col6>
+  <Col7>MDL</Col7>
+  <Col8>Leu</Col8>
+  <Col9>+373</Col9>
+  <Col10>MD</Col10>
+  <Col11>MDA</Col11>
+  <Col12>498</Col12>
+  <Col13>.md</Col13>
+ </row>
+ <row>
+  <Col0>115</Col0>
+  <Col1>Monaco</Col1>
+  <Col2>Principality of Monaco</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Monaco</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+377</Col9>
+  <Col10>MC</Col10>
+  <Col11>MCO</Col11>
+  <Col12>492</Col12>
+  <Col13>.mc</Col13>
+ </row>
+ <row>
+  <Col0>116</Col0>
+  <Col1>Mongolia</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Ulaanbaatar</Col6>
+  <Col7>MNT</Col7>
+  <Col8>Tugrik</Col8>
+  <Col9>+976</Col9>
+  <Col10>MN</Col10>
+  <Col11>MNG</Col11>
+  <Col12>496</Col12>
+  <Col13>.mn</Col13>
+ </row>
+ <row>
+  <Col0>117</Col0>
+  <Col1>Montenegro</Col1>
+  <Col2>Republic of Montenegro</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Podgorica</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+382</Col9>
+  <Col10>ME</Col10>
+  <Col11>MNE</Col11>
+  <Col12>499</Col12>
+  <Col13>.me and .yu</Col13>
+ </row>
+ <row>
+  <Col0>118</Col0>
+  <Col1>Morocco</Col1>
+  <Col2>Kingdom of Morocco</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Rabat</Col6>
+  <Col7>MAD</Col7>
+  <Col8>Dirham</Col8>
+  <Col9>+212</Col9>
+  <Col10>MA</Col10>
+  <Col11>MAR</Col11>
+  <Col12>504</Col12>
+  <Col13>.ma</Col13>
+ </row>
+ <row>
+  <Col0>119</Col0>
+  <Col1>Mozambique</Col1>
+  <Col2>Republic of Mozambique</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Maputo</Col6>
+  <Col7>MZM</Col7>
+  <Col8>Meticail</Col8>
+  <Col9>+258</Col9>
+  <Col10>MZ</Col10>
+  <Col11>MOZ</Col11>
+  <Col12>508</Col12>
+  <Col13>.mz</Col13>
+ </row>
+ <row>
+  <Col0>120</Col0>
+  <Col1>Myanmar (Burma)</Col1>
+  <Col2>Union of Myanmar</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Naypyidaw</Col6>
+  <Col7>MMK</Col7>
+  <Col8>Kyat</Col8>
+  <Col9>+95</Col9>
+  <Col10>MM</Col10>
+  <Col11>MMR</Col11>
+  <Col12>104</Col12>
+  <Col13>.mm</Col13>
+ </row>
+ <row>
+  <Col0>121</Col0>
+  <Col1>Namibia</Col1>
+  <Col2>Republic of Namibia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Windhoek</Col6>
+  <Col7>NAD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+264</Col9>
+  <Col10>NA</Col10>
+  <Col11>NAM</Col11>
+  <Col12>516</Col12>
+  <Col13>.na</Col13>
+ </row>
+ <row>
+  <Col0>122</Col0>
+  <Col1>Nauru</Col1>
+  <Col2>Republic of Nauru</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Yaren</Col6>
+  <Col7>AUD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+674</Col9>
+  <Col10>NR</Col10>
+  <Col11>NRU</Col11>
+  <Col12>520</Col12>
+  <Col13>.nr</Col13>
+ </row>
+ <row>
+  <Col0>123</Col0>
+  <Col1>Nepal</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kathmandu</Col6>
+  <Col7>NPR</Col7>
+  <Col8>Rupee</Col8>
+  <Col9>+977</Col9>
+  <Col10>NP</Col10>
+  <Col11>NPL</Col11>
+  <Col12>524</Col12>
+  <Col13>.np</Col13>
+ </row>
+ <row>
+  <Col0>124</Col0>
+  <Col1>Netherlands</Col1>
+  <Col2>Kingdom of the Netherlands</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Amsterdam (administrative) and The Hague (legislative/judical)</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+31</Col9>
+  <Col10>NL</Col10>
+  <Col11>NLD</Col11>
+  <Col12>528</Col12>
+  <Col13>.nl</Col13>
+ </row>
+ <row>
+  <Col0>125</Col0>
+  <Col1>New Zealand</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Wellington</Col6>
+  <Col7>NZD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+64</Col9>
+  <Col10>NZ</Col10>
+  <Col11>NZL</Col11>
+  <Col12>554</Col12>
+  <Col13>.nz</Col13>
+ </row>
+ <row>
+  <Col0>126</Col0>
+  <Col1>Nicaragua</Col1>
+  <Col2>Republic of Nicaragua</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Managua</Col6>
+  <Col7>NIO</Col7>
+  <Col8>Cordoba</Col8>
+  <Col9>+505</Col9>
+  <Col10>NI</Col10>
+  <Col11>NIC</Col11>
+  <Col12>558</Col12>
+  <Col13>.ni</Col13>
+ </row>
+ <row>
+  <Col0>127</Col0>
+  <Col1>Niger</Col1>
+  <Col2>Republic of Niger</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Niamey</Col6>
+  <Col7>XOF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+227</Col9>
+  <Col10>NE</Col10>
+  <Col11>NER</Col11>
+  <Col12>562</Col12>
+  <Col13>.ne</Col13>
+ </row>
+ <row>
+  <Col0>128</Col0>
+  <Col1>Nigeria</Col1>
+  <Col2>Federal Republic of Nigeria</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Abuja</Col6>
+  <Col7>NGN</Col7>
+  <Col8>Naira</Col8>
+  <Col9>+234</Col9>
+  <Col10>NG</Col10>
+  <Col11>NGA</Col11>
+  <Col12>566</Col12>
+  <Col13>.ng</Col13>
+ </row>
+ <row>
+  <Col0>129</Col0>
+  <Col1>Norway</Col1>
+  <Col2>Kingdom of Norway</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Oslo</Col6>
+  <Col7>NOK</Col7>
+  <Col8>Krone</Col8>
+  <Col9>+47</Col9>
+  <Col10>NO</Col10>
+  <Col11>NOR</Col11>
+  <Col12>578</Col12>
+  <Col13>.no</Col13>
+ </row>
+ <row>
+  <Col0>130</Col0>
+  <Col1>Oman</Col1>
+  <Col2>Sultanate of Oman</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Muscat</Col6>
+  <Col7>OMR</Col7>
+  <Col8>Rial</Col8>
+  <Col9>+968</Col9>
+  <Col10>OM</Col10>
+  <Col11>OMN</Col11>
+  <Col12>512</Col12>
+  <Col13>.om</Col13>
+ </row>
+ <row>
+  <Col0>131</Col0>
+  <Col1>Pakistan</Col1>
+  <Col2>Islamic Republic of Pakistan</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Islamabad</Col6>
+  <Col7>PKR</Col7>
+  <Col8>Rupee</Col8>
+  <Col9>+92</Col9>
+  <Col10>PK</Col10>
+  <Col11>PAK</Col11>
+  <Col12>586</Col12>
+  <Col13>.pk</Col13>
+ </row>
+ <row>
+  <Col0>132</Col0>
+  <Col1>Palau</Col1>
+  <Col2>Republic of Palau</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Melekeok</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+680</Col9>
+  <Col10>PW</Col10>
+  <Col11>PLW</Col11>
+  <Col12>585</Col12>
+  <Col13>.pw</Col13>
+ </row>
+ <row>
+  <Col0>133</Col0>
+  <Col1>Panama</Col1>
+  <Col2>Republic of Panama</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Panama</Col6>
+  <Col7>PAB</Col7>
+  <Col8>Balboa</Col8>
+  <Col9>+507</Col9>
+  <Col10>PA</Col10>
+  <Col11>PAN</Col11>
+  <Col12>591</Col12>
+  <Col13>.pa</Col13>
+ </row>
+ <row>
+  <Col0>134</Col0>
+  <Col1>Papua New Guinea</Col1>
+  <Col2>Independent State of Papua New Guinea</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Port Moresby</Col6>
+  <Col7>PGK</Col7>
+  <Col8>Kina</Col8>
+  <Col9>+675</Col9>
+  <Col10>PG</Col10>
+  <Col11>PNG</Col11>
+  <Col12>598</Col12>
+  <Col13>.pg</Col13>
+ </row>
+ <row>
+  <Col0>135</Col0>
+  <Col1>Paraguay</Col1>
+  <Col2>Republic of Paraguay</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Asuncion</Col6>
+  <Col7>PYG</Col7>
+  <Col8>Guarani</Col8>
+  <Col9>+595</Col9>
+  <Col10>PY</Col10>
+  <Col11>PRY</Col11>
+  <Col12>600</Col12>
+  <Col13>.py</Col13>
+ </row>
+ <row>
+  <Col0>136</Col0>
+  <Col1>Peru</Col1>
+  <Col2>Republic of Peru</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Lima</Col6>
+  <Col7>PEN</Col7>
+  <Col8>Sol</Col8>
+  <Col9>+51</Col9>
+  <Col10>PE</Col10>
+  <Col11>PER</Col11>
+  <Col12>604</Col12>
+  <Col13>.pe</Col13>
+ </row>
+ <row>
+  <Col0>137</Col0>
+  <Col1>Philippines</Col1>
+  <Col2>Republic of the Philippines</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Manila</Col6>
+  <Col7>PHP</Col7>
+  <Col8>Peso</Col8>
+  <Col9>+63</Col9>
+  <Col10>PH</Col10>
+  <Col11>PHL</Col11>
+  <Col12>608</Col12>
+  <Col13>.ph</Col13>
+ </row>
+ <row>
+  <Col0>138</Col0>
+  <Col1>Poland</Col1>
+  <Col2>Republic of Poland</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Warsaw</Col6>
+  <Col7>PLN</Col7>
+  <Col8>Zloty</Col8>
+  <Col9>+48</Col9>
+  <Col10>PL</Col10>
+  <Col11>POL</Col11>
+  <Col12>616</Col12>
+  <Col13>.pl</Col13>
+ </row>
+ <row>
+  <Col0>139</Col0>
+  <Col1>Portugal</Col1>
+  <Col2>Portuguese Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Lisbon</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+351</Col9>
+  <Col10>PT</Col10>
+  <Col11>PRT</Col11>
+  <Col12>620</Col12>
+  <Col13>.pt</Col13>
+ </row>
+ <row>
+  <Col0>140</Col0>
+  <Col1>Qatar</Col1>
+  <Col2>State of Qatar</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Doha</Col6>
+  <Col7>QAR</Col7>
+  <Col8>Rial</Col8>
+  <Col9>+974</Col9>
+  <Col10>QA</Col10>
+  <Col11>QAT</Col11>
+  <Col12>634</Col12>
+  <Col13>.qa</Col13>
+ </row>
+ <row>
+  <Col0>141</Col0>
+  <Col1>Romania</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bucharest</Col6>
+  <Col7>RON</Col7>
+  <Col8>Leu</Col8>
+  <Col9>+40</Col9>
+  <Col10>RO</Col10>
+  <Col11>ROU</Col11>
+  <Col12>642</Col12>
+  <Col13>.ro</Col13>
+ </row>
+ <row>
+  <Col0>142</Col0>
+  <Col1>Russia</Col1>
+  <Col2>Russian Federation</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Moscow</Col6>
+  <Col7>RUB</Col7>
+  <Col8>Ruble</Col8>
+  <Col9>+7</Col9>
+  <Col10>RU</Col10>
+  <Col11>RUS</Col11>
+  <Col12>643</Col12>
+  <Col13>.ru and .su</Col13>
+ </row>
+ <row>
+  <Col0>143</Col0>
+  <Col1>Rwanda</Col1>
+  <Col2>Republic of Rwanda</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kigali</Col6>
+  <Col7>RWF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+250</Col9>
+  <Col10>RW</Col10>
+  <Col11>RWA</Col11>
+  <Col12>646</Col12>
+  <Col13>.rw</Col13>
+ </row>
+ <row>
+  <Col0>144</Col0>
+  <Col1>Saint Kitts and Nevis</Col1>
+  <Col2>Federation of Saint Kitts and Nevis</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Basseterre</Col6>
+  <Col7>XCD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-869</Col9>
+  <Col10>KN</Col10>
+  <Col11>KNA</Col11>
+  <Col12>659</Col12>
+  <Col13>.kn</Col13>
+ </row>
+ <row>
+  <Col0>145</Col0>
+  <Col1>Saint Lucia</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Castries</Col6>
+  <Col7>XCD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-758</Col9>
+  <Col10>LC</Col10>
+  <Col11>LCA</Col11>
+  <Col12>662</Col12>
+  <Col13>.lc</Col13>
+ </row>
+ <row>
+  <Col0>146</Col0>
+  <Col1>Saint Vincent and the Grenadines</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kingstown</Col6>
+  <Col7>XCD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-784</Col9>
+  <Col10>VC</Col10>
+  <Col11>VCT</Col11>
+  <Col12>670</Col12>
+  <Col13>.vc</Col13>
+ </row>
+ <row>
+  <Col0>147</Col0>
+  <Col1>Samoa</Col1>
+  <Col2>Independent State of Samoa</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Apia</Col6>
+  <Col7>WST</Col7>
+  <Col8>Tala</Col8>
+  <Col9>+685</Col9>
+  <Col10>WS</Col10>
+  <Col11>WSM</Col11>
+  <Col12>882</Col12>
+  <Col13>.ws</Col13>
+ </row>
+ <row>
+  <Col0>148</Col0>
+  <Col1>San Marino</Col1>
+  <Col2>Republic of San Marino</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>San Marino</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+378</Col9>
+  <Col10>SM</Col10>
+  <Col11>SMR</Col11>
+  <Col12>674</Col12>
+  <Col13>.sm</Col13>
+ </row>
+ <row>
+  <Col0>149</Col0>
+  <Col1>Sao Tome and Principe</Col1>
+  <Col2>Democratic Republic of Sao Tome and Principe</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Sao Tome</Col6>
+  <Col7>STD</Col7>
+  <Col8>Dobra</Col8>
+  <Col9>+239</Col9>
+  <Col10>ST</Col10>
+  <Col11>STP</Col11>
+  <Col12>678</Col12>
+  <Col13>.st</Col13>
+ </row>
+ <row>
+  <Col0>150</Col0>
+  <Col1>Saudi Arabia</Col1>
+  <Col2>Kingdom of Saudi Arabia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Riyadh</Col6>
+  <Col7>SAR</Col7>
+  <Col8>Rial</Col8>
+  <Col9>+966</Col9>
+  <Col10>SA</Col10>
+  <Col11>SAU</Col11>
+  <Col12>682</Col12>
+  <Col13>.sa</Col13>
+ </row>
+ <row>
+  <Col0>151</Col0>
+  <Col1>Senegal</Col1>
+  <Col2>Republic of Senegal</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Dakar</Col6>
+  <Col7>XOF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+221</Col9>
+  <Col10>SN</Col10>
+  <Col11>SEN</Col11>
+  <Col12>686</Col12>
+  <Col13>.sn</Col13>
+ </row>
+ <row>
+  <Col0>152</Col0>
+  <Col1>Serbia</Col1>
+  <Col2>Republic of Serbia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Belgrade</Col6>
+  <Col7>RSD</Col7>
+  <Col8>Dinar</Col8>
+  <Col9>+381</Col9>
+  <Col10>RS</Col10>
+  <Col11>SRB</Col11>
+  <Col12>688</Col12>
+  <Col13>.rs and .yu</Col13>
+ </row>
+ <row>
+  <Col0>153</Col0>
+  <Col1>Seychelles</Col1>
+  <Col2>Republic of Seychelles</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Victoria</Col6>
+  <Col7>SCR</Col7>
+  <Col8>Rupee</Col8>
+  <Col9>+248</Col9>
+  <Col10>SC</Col10>
+  <Col11>SYC</Col11>
+  <Col12>690</Col12>
+  <Col13>.sc</Col13>
+ </row>
+ <row>
+  <Col0>154</Col0>
+  <Col1>Sierra Leone</Col1>
+  <Col2>Republic of Sierra Leone</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Freetown</Col6>
+  <Col7>SLL</Col7>
+  <Col8>Leone</Col8>
+  <Col9>+232</Col9>
+  <Col10>SL</Col10>
+  <Col11>SLE</Col11>
+  <Col12>694</Col12>
+  <Col13>.sl</Col13>
+ </row>
+ <row>
+  <Col0>155</Col0>
+  <Col1>Singapore</Col1>
+  <Col2>Republic of Singapore</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Singapore</Col6>
+  <Col7>SGD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+65</Col9>
+  <Col10>SG</Col10>
+  <Col11>SGP</Col11>
+  <Col12>702</Col12>
+  <Col13>.sg</Col13>
+ </row>
+ <row>
+  <Col0>156</Col0>
+  <Col1>Slovakia</Col1>
+  <Col2>Slovak Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bratislava</Col6>
+  <Col7>SKK</Col7>
+  <Col8>Koruna</Col8>
+  <Col9>+421</Col9>
+  <Col10>SK</Col10>
+  <Col11>SVK</Col11>
+  <Col12>703</Col12>
+  <Col13>.sk</Col13>
+ </row>
+ <row>
+  <Col0>157</Col0>
+  <Col1>Slovenia</Col1>
+  <Col2>Republic of Slovenia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Ljubljana</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+386</Col9>
+  <Col10>SI</Col10>
+  <Col11>SVN</Col11>
+  <Col12>705</Col12>
+  <Col13>.si</Col13>
+ </row>
+ <row>
+  <Col0>158</Col0>
+  <Col1>Solomon Islands</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Honiara</Col6>
+  <Col7>SBD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+677</Col9>
+  <Col10>SB</Col10>
+  <Col11>SLB</Col11>
+  <Col12>090</Col12>
+  <Col13>.sb</Col13>
+ </row>
+ <row>
+  <Col0>159</Col0>
+  <Col1>Somalia</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Mogadishu</Col6>
+  <Col7>SOS</Col7>
+  <Col8>Shilling</Col8>
+  <Col9>+252</Col9>
+  <Col10>SO</Col10>
+  <Col11>SOM</Col11>
+  <Col12>706</Col12>
+  <Col13>.so</Col13>
+ </row>
+ <row>
+  <Col0>160</Col0>
+  <Col1>South Africa</Col1>
+  <Col2>Republic of South Africa</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Pretoria (administrative), Cape Town (legislative), and Bloemfontein (judical)</Col6>
+  <Col7>ZAR</Col7>
+  <Col8>Rand</Col8>
+  <Col9>+27</Col9>
+  <Col10>ZA</Col10>
+  <Col11>ZAF</Col11>
+  <Col12>710</Col12>
+  <Col13>.za</Col13>
+ </row>
+ <row>
+  <Col0>161</Col0>
+  <Col1>Spain</Col1>
+  <Col2>Kingdom of Spain</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Madrid</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+34</Col9>
+  <Col10>ES</Col10>
+  <Col11>ESP</Col11>
+  <Col12>724</Col12>
+  <Col13>.es</Col13>
+ </row>
+ <row>
+  <Col0>162</Col0>
+  <Col1>Sri Lanka</Col1>
+  <Col2>Democratic Socialist Republic of Sri Lanka</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Colombo (administrative/judical) and Sri Jayewardenepura Kotte (legislative)</Col6>
+  <Col7>LKR</Col7>
+  <Col8>Rupee</Col8>
+  <Col9>+94</Col9>
+  <Col10>LK</Col10>
+  <Col11>LKA</Col11>
+  <Col12>144</Col12>
+  <Col13>.lk</Col13>
+ </row>
+ <row>
+  <Col0>163</Col0>
+  <Col1>Sudan</Col1>
+  <Col2>Republic of the Sudan</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Khartoum</Col6>
+  <Col7>SDG</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+249</Col9>
+  <Col10>SD</Col10>
+  <Col11>SDN</Col11>
+  <Col12>736</Col12>
+  <Col13>.sd</Col13>
+ </row>
+ <row>
+  <Col0>164</Col0>
+  <Col1>Suriname</Col1>
+  <Col2>Republic of Suriname</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Paramaribo</Col6>
+  <Col7>SRD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+597</Col9>
+  <Col10>SR</Col10>
+  <Col11>SUR</Col11>
+  <Col12>740</Col12>
+  <Col13>.sr</Col13>
+ </row>
+ <row>
+  <Col0>165</Col0>
+  <Col1>Swaziland</Col1>
+  <Col2>Kingdom of Swaziland</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Mbabane (administrative) and Lobamba (legislative)</Col6>
+  <Col7>SZL</Col7>
+  <Col8>Lilangeni</Col8>
+  <Col9>+268</Col9>
+  <Col10>SZ</Col10>
+  <Col11>SWZ</Col11>
+  <Col12>748</Col12>
+  <Col13>.sz</Col13>
+ </row>
+ <row>
+  <Col0>166</Col0>
+  <Col1>Sweden</Col1>
+  <Col2>Kingdom of Sweden</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Stockholm</Col6>
+  <Col7>SEK</Col7>
+  <Col8>Kronoa</Col8>
+  <Col9>+46</Col9>
+  <Col10>SE</Col10>
+  <Col11>SWE</Col11>
+  <Col12>752</Col12>
+  <Col13>.se</Col13>
+ </row>
+ <row>
+  <Col0>167</Col0>
+  <Col1>Switzerland</Col1>
+  <Col2>Swiss Confederation</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bern</Col6>
+  <Col7>CHF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+41</Col9>
+  <Col10>CH</Col10>
+  <Col11>CHE</Col11>
+  <Col12>756</Col12>
+  <Col13>.ch</Col13>
+ </row>
+ <row>
+  <Col0>168</Col0>
+  <Col1>Syria</Col1>
+  <Col2>Syrian Arab Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Damascus</Col6>
+  <Col7>SYP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+963</Col9>
+  <Col10>SY</Col10>
+  <Col11>SYR</Col11>
+  <Col12>760</Col12>
+  <Col13>.sy</Col13>
+ </row>
+ <row>
+  <Col0>169</Col0>
+  <Col1>Tajikistan</Col1>
+  <Col2>Republic of Tajikistan</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Dushanbe</Col6>
+  <Col7>TJS</Col7>
+  <Col8>Somoni</Col8>
+  <Col9>+992</Col9>
+  <Col10>TJ</Col10>
+  <Col11>TJK</Col11>
+  <Col12>762</Col12>
+  <Col13>.tj</Col13>
+ </row>
+ <row>
+  <Col0>170</Col0>
+  <Col1>Tanzania</Col1>
+  <Col2>United Republic of Tanzania</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Dar es Salaam (administrative/judical) and Dodoma (legislative)</Col6>
+  <Col7>TZS</Col7>
+  <Col8>Shilling</Col8>
+  <Col9>+255</Col9>
+  <Col10>TZ</Col10>
+  <Col11>TZA</Col11>
+  <Col12>834</Col12>
+  <Col13>.tz</Col13>
+ </row>
+ <row>
+  <Col0>171</Col0>
+  <Col1>Thailand</Col1>
+  <Col2>Kingdom of Thailand</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Bangkok</Col6>
+  <Col7>THB</Col7>
+  <Col8>Baht</Col8>
+  <Col9>+66</Col9>
+  <Col10>TH</Col10>
+  <Col11>THA</Col11>
+  <Col12>764</Col12>
+  <Col13>.th</Col13>
+ </row>
+ <row>
+  <Col0>172</Col0>
+  <Col1>Timor-Leste (East Timor)</Col1>
+  <Col2>Democratic Republic of Timor-Leste</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Dili</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+670</Col9>
+  <Col10>TL</Col10>
+  <Col11>TLS</Col11>
+  <Col12>626</Col12>
+  <Col13>.tp and .tl</Col13>
+ </row>
+ <row>
+  <Col0>173</Col0>
+  <Col1>Togo</Col1>
+  <Col2>Togolese Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Lome</Col6>
+  <Col7>XOF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+228</Col9>
+  <Col10>TG</Col10>
+  <Col11>TGO</Col11>
+  <Col12>768</Col12>
+  <Col13>.tg</Col13>
+ </row>
+ <row>
+  <Col0>174</Col0>
+  <Col1>Tonga</Col1>
+  <Col2>Kingdom of Tonga</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Nuku&apos;alofa</Col6>
+  <Col7>TOP</Col7>
+  <Col8>Pa&apos;anga</Col8>
+  <Col9>+676</Col9>
+  <Col10>TO</Col10>
+  <Col11>TON</Col11>
+  <Col12>776</Col12>
+  <Col13>.to</Col13>
+ </row>
+ <row>
+  <Col0>175</Col0>
+  <Col1>Trinidad and Tobago</Col1>
+  <Col2>Republic of Trinidad and Tobago</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Port-of-Spain</Col6>
+  <Col7>TTD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-868</Col9>
+  <Col10>TT</Col10>
+  <Col11>TTO</Col11>
+  <Col12>780</Col12>
+  <Col13>.tt</Col13>
+ </row>
+ <row>
+  <Col0>176</Col0>
+  <Col1>Tunisia</Col1>
+  <Col2>Tunisian Republic</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tunis</Col6>
+  <Col7>TND</Col7>
+  <Col8>Dinar</Col8>
+  <Col9>+216</Col9>
+  <Col10>TN</Col10>
+  <Col11>TUN</Col11>
+  <Col12>788</Col12>
+  <Col13>.tn</Col13>
+ </row>
+ <row>
+  <Col0>177</Col0>
+  <Col1>Turkey</Col1>
+  <Col2>Republic of Turkey</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Ankara</Col6>
+  <Col7>TRY</Col7>
+  <Col8>Lira</Col8>
+  <Col9>+90</Col9>
+  <Col10>TR</Col10>
+  <Col11>TUR</Col11>
+  <Col12>792</Col12>
+  <Col13>.tr</Col13>
+ </row>
+ <row>
+  <Col0>178</Col0>
+  <Col1>Turkmenistan</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Ashgabat</Col6>
+  <Col7>TMM</Col7>
+  <Col8>Manat</Col8>
+  <Col9>+993</Col9>
+  <Col10>TM</Col10>
+  <Col11>TKM</Col11>
+  <Col12>795</Col12>
+  <Col13>.tm</Col13>
+ </row>
+ <row>
+  <Col0>179</Col0>
+  <Col1>Tuvalu</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Funafuti</Col6>
+  <Col7>AUD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+688</Col9>
+  <Col10>TV</Col10>
+  <Col11>TUV</Col11>
+  <Col12>798</Col12>
+  <Col13>.tv</Col13>
+ </row>
+ <row>
+  <Col0>180</Col0>
+  <Col1>Uganda</Col1>
+  <Col2>Republic of Uganda</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kampala</Col6>
+  <Col7>UGX</Col7>
+  <Col8>Shilling</Col8>
+  <Col9>+256</Col9>
+  <Col10>UG</Col10>
+  <Col11>UGA</Col11>
+  <Col12>800</Col12>
+  <Col13>.ug</Col13>
+ </row>
+ <row>
+  <Col0>181</Col0>
+  <Col1>Ukraine</Col1>
+  <Col2></Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Kiev</Col6>
+  <Col7>UAH</Col7>
+  <Col8>Hryvnia</Col8>
+  <Col9>+380</Col9>
+  <Col10>UA</Col10>
+  <Col11>UKR</Col11>
+  <Col12>804</Col12>
+  <Col13>.ua</Col13>
+ </row>
+ <row>
+  <Col0>182</Col0>
+  <Col1>United Arab Emirates</Col1>
+  <Col2>United Arab Emirates</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Abu Dhabi</Col6>
+  <Col7>AED</Col7>
+  <Col8>Dirham</Col8>
+  <Col9>+971</Col9>
+  <Col10>AE</Col10>
+  <Col11>ARE</Col11>
+  <Col12>784</Col12>
+  <Col13>.ae</Col13>
+ </row>
+ <row>
+  <Col0>183</Col0>
+  <Col1>United Kingdom</Col1>
+  <Col2>United Kingdom of Great Britain and Northern Ireland</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>London</Col6>
+  <Col7>GBP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+44</Col9>
+  <Col10>GB</Col10>
+  <Col11>GBR</Col11>
+  <Col12>826</Col12>
+  <Col13>.uk</Col13>
+ </row>
+ <row>
+  <Col0>184</Col0>
+  <Col1>United States</Col1>
+  <Col2>United States of America</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Washington</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1</Col9>
+  <Col10>US</Col10>
+  <Col11>USA</Col11>
+  <Col12>840</Col12>
+  <Col13>.us</Col13>
+ </row>
+ <row>
+  <Col0>185</Col0>
+  <Col1>Uruguay</Col1>
+  <Col2>Oriental Republic of Uruguay</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Montevideo</Col6>
+  <Col7>UYU</Col7>
+  <Col8>Peso</Col8>
+  <Col9>+598</Col9>
+  <Col10>UY</Col10>
+  <Col11>URY</Col11>
+  <Col12>858</Col12>
+  <Col13>.uy</Col13>
+ </row>
+ <row>
+  <Col0>186</Col0>
+  <Col1>Uzbekistan</Col1>
+  <Col2>Republic of Uzbekistan</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tashkent</Col6>
+  <Col7>UZS</Col7>
+  <Col8>Som</Col8>
+  <Col9>+998</Col9>
+  <Col10>UZ</Col10>
+  <Col11>UZB</Col11>
+  <Col12>860</Col12>
+  <Col13>.uz</Col13>
+ </row>
+ <row>
+  <Col0>187</Col0>
+  <Col1>Vanuatu</Col1>
+  <Col2>Republic of Vanuatu</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Port-Vila</Col6>
+  <Col7>VUV</Col7>
+  <Col8>Vatu</Col8>
+  <Col9>+678</Col9>
+  <Col10>VU</Col10>
+  <Col11>VUT</Col11>
+  <Col12>548</Col12>
+  <Col13>.vu</Col13>
+ </row>
+ <row>
+  <Col0>188</Col0>
+  <Col1>Vatican City</Col1>
+  <Col2>State of the Vatican City</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Vatican City</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+379</Col9>
+  <Col10>VA</Col10>
+  <Col11>VAT</Col11>
+  <Col12>336</Col12>
+  <Col13>.va</Col13>
+ </row>
+ <row>
+  <Col0>189</Col0>
+  <Col1>Venezuela</Col1>
+  <Col2>Bolivarian Republic of Venezuela</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Caracas</Col6>
+  <Col7>VEB</Col7>
+  <Col8>Bolivar</Col8>
+  <Col9>+58</Col9>
+  <Col10>VE</Col10>
+  <Col11>VEN</Col11>
+  <Col12>862</Col12>
+  <Col13>.ve</Col13>
+ </row>
+ <row>
+  <Col0>190</Col0>
+  <Col1>Vietnam</Col1>
+  <Col2>Socialist Republic of Vietnam</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Hanoi</Col6>
+  <Col7>VND</Col7>
+  <Col8>Dong</Col8>
+  <Col9>+84</Col9>
+  <Col10>VN</Col10>
+  <Col11>VNM</Col11>
+  <Col12>704</Col12>
+  <Col13>.vn</Col13>
+ </row>
+ <row>
+  <Col0>191</Col0>
+  <Col1>Yemen</Col1>
+  <Col2>Republic of Yemen</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Sanaa</Col6>
+  <Col7>YER</Col7>
+  <Col8>Rial</Col8>
+  <Col9>+967</Col9>
+  <Col10>YE</Col10>
+  <Col11>YEM</Col11>
+  <Col12>887</Col12>
+  <Col13>.ye</Col13>
+ </row>
+ <row>
+  <Col0>192</Col0>
+  <Col1>Zambia</Col1>
+  <Col2>Republic of Zambia</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Lusaka</Col6>
+  <Col7>ZMK</Col7>
+  <Col8>Kwacha</Col8>
+  <Col9>+260</Col9>
+  <Col10>ZM</Col10>
+  <Col11>ZMB</Col11>
+  <Col12>894</Col12>
+  <Col13>.zm</Col13>
+ </row>
+ <row>
+  <Col0>193</Col0>
+  <Col1>Zimbabwe</Col1>
+  <Col2>Republic of Zimbabwe</Col2>
+  <Col3>Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Harare</Col6>
+  <Col7>ZWD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+263</Col9>
+  <Col10>ZW</Col10>
+  <Col11>ZWE</Col11>
+  <Col12>716</Col12>
+  <Col13>.zw</Col13>
+ </row>
+ <row>
+  <Col0>194</Col0>
+  <Col1>Abkhazia</Col1>
+  <Col2>Republic of Abkhazia</Col2>
+  <Col3>Proto Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Sokhumi</Col6>
+  <Col7>RUB</Col7>
+  <Col8>Ruble</Col8>
+  <Col9>+995</Col9>
+  <Col10>GE</Col10>
+  <Col11>GEO</Col11>
+  <Col12>268</Col12>
+  <Col13>.ge</Col13>
+ </row>
+ <row>
+  <Col0>195</Col0>
+  <Col1>China, Republic of (Taiwan)</Col1>
+  <Col2>Republic of China</Col2>
+  <Col3>Proto Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Taipei</Col6>
+  <Col7>TWD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+886</Col9>
+  <Col10>TW</Col10>
+  <Col11>TWN</Col11>
+  <Col12>158</Col12>
+  <Col13>.tw</Col13>
+ </row>
+ <row>
+  <Col0>196</Col0>
+  <Col1>Nagorno-Karabakh</Col1>
+  <Col2>Nagorno-Karabakh Republic</Col2>
+  <Col3>Proto Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Stepanakert</Col6>
+  <Col7>AMD</Col7>
+  <Col8>Dram</Col8>
+  <Col9>+374-97</Col9>
+  <Col10>AZ</Col10>
+  <Col11>AZE</Col11>
+  <Col12>031</Col12>
+  <Col13>.az</Col13>
+ </row>
+ <row>
+  <Col0>197</Col0>
+  <Col1>Northern Cyprus</Col1>
+  <Col2>Turkish Republic of Northern Cyprus</Col2>
+  <Col3>Proto Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Nicosia</Col6>
+  <Col7>TRY</Col7>
+  <Col8>Lira</Col8>
+  <Col9>+90-392</Col9>
+  <Col10>CY</Col10>
+  <Col11>CYP</Col11>
+  <Col12>196</Col12>
+  <Col13>.nc.tr</Col13>
+ </row>
+ <row>
+  <Col0>198</Col0>
+  <Col1>Pridnestrovie (Transnistria)</Col1>
+  <Col2>Pridnestrovian Moldavian Republic</Col2>
+  <Col3>Proto Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tiraspol</Col6>
+  <Col7></Col7>
+  <Col8>Ruple</Col8>
+  <Col9>+373-533</Col9>
+  <Col10>MD</Col10>
+  <Col11>MDA</Col11>
+  <Col12>498</Col12>
+  <Col13>.md</Col13>
+ </row>
+ <row>
+  <Col0>199</Col0>
+  <Col1>Somaliland</Col1>
+  <Col2>Republic of Somaliland</Col2>
+  <Col3>Proto Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Hargeisa</Col6>
+  <Col7></Col7>
+  <Col8>Shilling</Col8>
+  <Col9>+252</Col9>
+  <Col10>SO</Col10>
+  <Col11>SOM</Col11>
+  <Col12>706</Col12>
+  <Col13>.so</Col13>
+ </row>
+ <row>
+  <Col0>200</Col0>
+  <Col1>South Ossetia</Col1>
+  <Col2>Republic of South Ossetia</Col2>
+  <Col3>Proto Independent State</Col3>
+  <Col4></Col4>
+  <Col5></Col5>
+  <Col6>Tskhinvali</Col6>
+  <Col7>RUB and GEL</Col7>
+  <Col8>Ruble and Lari</Col8>
+  <Col9>+995</Col9>
+  <Col10>GE</Col10>
+  <Col11>GEO</Col11>
+  <Col12>268</Col12>
+  <Col13>.ge</Col13>
+ </row>
+ <row>
+  <Col0>201</Col0>
+  <Col1>Ashmore and Cartier Islands</Col1>
+  <Col2>Territory of Ashmore and Cartier Islands</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>External Territory</Col4>
+  <Col5>Australia</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>AU</Col10>
+  <Col11>AUS</Col11>
+  <Col12>036</Col12>
+  <Col13>.au</Col13>
+ </row>
+ <row>
+  <Col0>202</Col0>
+  <Col1>Christmas Island</Col1>
+  <Col2>Territory of Christmas Island</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>External Territory</Col4>
+  <Col5>Australia</Col5>
+  <Col6>The Settlement (Flying Fish Cove)</Col6>
+  <Col7>AUD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+61</Col9>
+  <Col10>CX</Col10>
+  <Col11>CXR</Col11>
+  <Col12>162</Col12>
+  <Col13>.cx</Col13>
+ </row>
+ <row>
+  <Col0>203</Col0>
+  <Col1>Cocos (Keeling) Islands</Col1>
+  <Col2>Territory of Cocos (Keeling) Islands</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>External Territory</Col4>
+  <Col5>Australia</Col5>
+  <Col6>West Island</Col6>
+  <Col7>AUD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+61</Col9>
+  <Col10>CC</Col10>
+  <Col11>CCK</Col11>
+  <Col12>166</Col12>
+  <Col13>.cc</Col13>
+ </row>
+ <row>
+  <Col0>204</Col0>
+  <Col1>Coral Sea Islands</Col1>
+  <Col2>Coral Sea Islands Territory</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>External Territory</Col4>
+  <Col5>Australia</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>AU</Col10>
+  <Col11>AUS</Col11>
+  <Col12>036</Col12>
+  <Col13>.au</Col13>
+ </row>
+ <row>
+  <Col0>205</Col0>
+  <Col1>Heard Island and McDonald Islands</Col1>
+  <Col2>Territory of Heard Island and McDonald Islands</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>External Territory</Col4>
+  <Col5>Australia</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>HM</Col10>
+  <Col11>HMD</Col11>
+  <Col12>334</Col12>
+  <Col13>.hm</Col13>
+ </row>
+ <row>
+  <Col0>206</Col0>
+  <Col1>Norfolk Island</Col1>
+  <Col2>Territory of Norfolk Island</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>External Territory</Col4>
+  <Col5>Australia</Col5>
+  <Col6>Kingston</Col6>
+  <Col7>AUD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+672</Col9>
+  <Col10>NF</Col10>
+  <Col11>NFK</Col11>
+  <Col12>574</Col12>
+  <Col13>.nf</Col13>
+ </row>
+ <row>
+  <Col0>207</Col0>
+  <Col1>New Caledonia</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Sui generis Collectivity</Col4>
+  <Col5>France</Col5>
+  <Col6>Noumea</Col6>
+  <Col7>XPF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+687</Col9>
+  <Col10>NC</Col10>
+  <Col11>NCL</Col11>
+  <Col12>540</Col12>
+  <Col13>.nc</Col13>
+ </row>
+ <row>
+  <Col0>208</Col0>
+  <Col1>French Polynesia</Col1>
+  <Col2>Overseas Country of French Polynesia</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Collectivity</Col4>
+  <Col5>France</Col5>
+  <Col6>Papeete</Col6>
+  <Col7>XPF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+689</Col9>
+  <Col10>PF</Col10>
+  <Col11>PYF</Col11>
+  <Col12>258</Col12>
+  <Col13>.pf</Col13>
+ </row>
+ <row>
+  <Col0>209</Col0>
+  <Col1>Mayotte</Col1>
+  <Col2>Departmental Collectivity of Mayotte</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Collectivity</Col4>
+  <Col5>France</Col5>
+  <Col6>Mamoudzou</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+262</Col9>
+  <Col10>YT</Col10>
+  <Col11>MYT</Col11>
+  <Col12>175</Col12>
+  <Col13>.yt</Col13>
+ </row>
+ <row>
+  <Col0>210</Col0>
+  <Col1>Saint Barthelemy</Col1>
+  <Col2>Collectivity of Saint Barthelemy</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Collectivity</Col4>
+  <Col5>France</Col5>
+  <Col6>Gustavia</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+590</Col9>
+  <Col10>GP</Col10>
+  <Col11>GLP</Col11>
+  <Col12>312</Col12>
+  <Col13>.gp</Col13>
+ </row>
+ <row>
+  <Col0>211</Col0>
+  <Col1>Saint Martin</Col1>
+  <Col2>Collectivity of Saint Martin</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Collectivity</Col4>
+  <Col5>France</Col5>
+  <Col6>Marigot</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+590</Col9>
+  <Col10>GP</Col10>
+  <Col11>GLP</Col11>
+  <Col12>312</Col12>
+  <Col13>.gp</Col13>
+ </row>
+ <row>
+  <Col0>212</Col0>
+  <Col1>Saint Pierre and Miquelon</Col1>
+  <Col2>Territorial Collectivity of Saint Pierre and Miquelon</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Collectivity</Col4>
+  <Col5>France</Col5>
+  <Col6>Saint-Pierre</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+508</Col9>
+  <Col10>PM</Col10>
+  <Col11>SPM</Col11>
+  <Col12>666</Col12>
+  <Col13>.pm</Col13>
+ </row>
+ <row>
+  <Col0>213</Col0>
+  <Col1>Wallis and Futuna</Col1>
+  <Col2>Collectivity of the Wallis and Futuna Islands</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Collectivity</Col4>
+  <Col5>France</Col5>
+  <Col6>Mata&apos;utu</Col6>
+  <Col7>XPF</Col7>
+  <Col8>Franc</Col8>
+  <Col9>+681</Col9>
+  <Col10>WF</Col10>
+  <Col11>WLF</Col11>
+  <Col12>876</Col12>
+  <Col13>.wf</Col13>
+ </row>
+ <row>
+  <Col0>214</Col0>
+  <Col1>French Southern and Antarctic Lands</Col1>
+  <Col2>Territory of the French Southern and Antarctic Lands</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>France</Col5>
+  <Col6>Martin-de-Vivi&#232;s</Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>TF</Col10>
+  <Col11>ATF</Col11>
+  <Col12>260</Col12>
+  <Col13>.tf</Col13>
+ </row>
+ <row>
+  <Col0>215</Col0>
+  <Col1>Clipperton Island</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Possession</Col4>
+  <Col5>France</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>PF</Col10>
+  <Col11>PYF</Col11>
+  <Col12>258</Col12>
+  <Col13>.pf</Col13>
+ </row>
+ <row>
+  <Col0>216</Col0>
+  <Col1>Bouvet Island</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>Norway</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>BV</Col10>
+  <Col11>BVT</Col11>
+  <Col12>074</Col12>
+  <Col13>.bv</Col13>
+ </row>
+ <row>
+  <Col0>217</Col0>
+  <Col1>Cook Islands</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Self-Governing in Free Association</Col4>
+  <Col5>New Zealand</Col5>
+  <Col6>Avarua</Col6>
+  <Col7>NZD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+682</Col9>
+  <Col10>CK</Col10>
+  <Col11>COK</Col11>
+  <Col12>184</Col12>
+  <Col13>.ck</Col13>
+ </row>
+ <row>
+  <Col0>218</Col0>
+  <Col1>Niue</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Self-Governing in Free Association</Col4>
+  <Col5>New Zealand</Col5>
+  <Col6>Alofi</Col6>
+  <Col7>NZD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+683</Col9>
+  <Col10>NU</Col10>
+  <Col11>NIU</Col11>
+  <Col12>570</Col12>
+  <Col13>.nu</Col13>
+ </row>
+ <row>
+  <Col0>219</Col0>
+  <Col1>Tokelau</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>New Zealand</Col5>
+  <Col6></Col6>
+  <Col7>NZD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+690</Col9>
+  <Col10>TK</Col10>
+  <Col11>TKL</Col11>
+  <Col12>772</Col12>
+  <Col13>.tk</Col13>
+ </row>
+ <row>
+  <Col0>220</Col0>
+  <Col1>Guernsey</Col1>
+  <Col2>Bailiwick of Guernsey</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Crown Dependency</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Saint Peter Port</Col6>
+  <Col7>GGP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+44</Col9>
+  <Col10>GG</Col10>
+  <Col11>GGY</Col11>
+  <Col12>831</Col12>
+  <Col13>.gg</Col13>
+ </row>
+ <row>
+  <Col0>221</Col0>
+  <Col1>Isle of Man</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Crown Dependency</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Douglas</Col6>
+  <Col7>IMP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+44</Col9>
+  <Col10>IM</Col10>
+  <Col11>IMN</Col11>
+  <Col12>833</Col12>
+  <Col13>.im</Col13>
+ </row>
+ <row>
+  <Col0>222</Col0>
+  <Col1>Jersey</Col1>
+  <Col2>Bailiwick of Jersey</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Crown Dependency</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Saint Helier</Col6>
+  <Col7>JEP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+44</Col9>
+  <Col10>JE</Col10>
+  <Col11>JEY</Col11>
+  <Col12>832</Col12>
+  <Col13>.je</Col13>
+ </row>
+ <row>
+  <Col0>223</Col0>
+  <Col1>Anguilla</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>The Valley</Col6>
+  <Col7>XCD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-264</Col9>
+  <Col10>AI</Col10>
+  <Col11>AIA</Col11>
+  <Col12>660</Col12>
+  <Col13>.ai</Col13>
+ </row>
+ <row>
+  <Col0>224</Col0>
+  <Col1>Bermuda</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Hamilton</Col6>
+  <Col7>BMD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-441</Col9>
+  <Col10>BM</Col10>
+  <Col11>BMU</Col11>
+  <Col12>060</Col12>
+  <Col13>.bm</Col13>
+ </row>
+ <row>
+  <Col0>225</Col0>
+  <Col1>British Indian Ocean Territory</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9>+246</Col9>
+  <Col10>IO</Col10>
+  <Col11>IOT</Col11>
+  <Col12>086</Col12>
+  <Col13>.io</Col13>
+ </row>
+ <row>
+  <Col0>226</Col0>
+  <Col1>British Sovereign Base Areas</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Episkopi</Col6>
+  <Col7>CYP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+357</Col9>
+  <Col10></Col10>
+  <Col11></Col11>
+  <Col12></Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>227</Col0>
+  <Col1>British Virgin Islands</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Road Town</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-284</Col9>
+  <Col10>VG</Col10>
+  <Col11>VGB</Col11>
+  <Col12>092</Col12>
+  <Col13>.vg</Col13>
+ </row>
+ <row>
+  <Col0>228</Col0>
+  <Col1>Cayman Islands</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>George Town</Col6>
+  <Col7>KYD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-345</Col9>
+  <Col10>KY</Col10>
+  <Col11>CYM</Col11>
+  <Col12>136</Col12>
+  <Col13>.ky</Col13>
+ </row>
+ <row>
+  <Col0>229</Col0>
+  <Col1>Falkland Islands (Islas Malvinas)</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Stanley</Col6>
+  <Col7>FKP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+500</Col9>
+  <Col10>FK</Col10>
+  <Col11>FLK</Col11>
+  <Col12>238</Col12>
+  <Col13>.fk</Col13>
+ </row>
+ <row>
+  <Col0>230</Col0>
+  <Col1>Gibraltar</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Gibraltar</Col6>
+  <Col7>GIP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+350</Col9>
+  <Col10>GI</Col10>
+  <Col11>GIB</Col11>
+  <Col12>292</Col12>
+  <Col13>.gi</Col13>
+ </row>
+ <row>
+  <Col0>231</Col0>
+  <Col1>Montserrat</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Plymouth</Col6>
+  <Col7>XCD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-664</Col9>
+  <Col10>MS</Col10>
+  <Col11>MSR</Col11>
+  <Col12>500</Col12>
+  <Col13>.ms</Col13>
+ </row>
+ <row>
+  <Col0>232</Col0>
+  <Col1>Pitcairn Islands</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Adamstown</Col6>
+  <Col7>NZD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9></Col9>
+  <Col10>PN</Col10>
+  <Col11>PCN</Col11>
+  <Col12>612</Col12>
+  <Col13>.pn</Col13>
+ </row>
+ <row>
+  <Col0>233</Col0>
+  <Col1>Saint Helena</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Jamestown</Col6>
+  <Col7>SHP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+290</Col9>
+  <Col10>SH</Col10>
+  <Col11>SHN</Col11>
+  <Col12>654</Col12>
+  <Col13>.sh</Col13>
+ </row>
+ <row>
+  <Col0>234</Col0>
+  <Col1>South Georgia and the South Sandwich Islands</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>GS</Col10>
+  <Col11>SGS</Col11>
+  <Col12>239</Col12>
+  <Col13>.gs</Col13>
+ </row>
+ <row>
+  <Col0>235</Col0>
+  <Col1>Turks and Caicos Islands</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Grand Turk</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-649</Col9>
+  <Col10>TC</Col10>
+  <Col11>TCA</Col11>
+  <Col12>796</Col12>
+  <Col13>.tc</Col13>
+ </row>
+ <row>
+  <Col0>236</Col0>
+  <Col1>Northern Mariana Islands</Col1>
+  <Col2>Commonwealth of The Northern Mariana Islands</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Commonwealth</Col4>
+  <Col5>United States</Col5>
+  <Col6>Saipan</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-670</Col9>
+  <Col10>MP</Col10>
+  <Col11>MNP</Col11>
+  <Col12>580</Col12>
+  <Col13>.mp</Col13>
+ </row>
+ <row>
+  <Col0>237</Col0>
+  <Col1>Puerto Rico</Col1>
+  <Col2>Commonwealth of Puerto Rico</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Commonwealth</Col4>
+  <Col5>United States</Col5>
+  <Col6>San Juan</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-787 and 1-939</Col9>
+  <Col10>PR</Col10>
+  <Col11>PRI</Col11>
+  <Col12>630</Col12>
+  <Col13>.pr</Col13>
+ </row>
+ <row>
+  <Col0>238</Col0>
+  <Col1>American Samoa</Col1>
+  <Col2>Territory of American Samoa</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6>Pago Pago</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-684</Col9>
+  <Col10>AS</Col10>
+  <Col11>ASM</Col11>
+  <Col12>016</Col12>
+  <Col13>.as</Col13>
+ </row>
+ <row>
+  <Col0>239</Col0>
+  <Col1>Baker Island</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>UM</Col10>
+  <Col11>UMI</Col11>
+  <Col12>581</Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>240</Col0>
+  <Col1>Guam</Col1>
+  <Col2>Territory of Guam</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6>Hagatna</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-671</Col9>
+  <Col10>GU</Col10>
+  <Col11>GUM</Col11>
+  <Col12>316</Col12>
+  <Col13>.gu</Col13>
+ </row>
+ <row>
+  <Col0>241</Col0>
+  <Col1>Howland Island</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>UM</Col10>
+  <Col11>UMI</Col11>
+  <Col12>581</Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>242</Col0>
+  <Col1>Jarvis Island</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>UM</Col10>
+  <Col11>UMI</Col11>
+  <Col12>581</Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>243</Col0>
+  <Col1>Johnston Atoll</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>UM</Col10>
+  <Col11>UMI</Col11>
+  <Col12>581</Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>244</Col0>
+  <Col1>Kingman Reef</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>UM</Col10>
+  <Col11>UMI</Col11>
+  <Col12>581</Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>245</Col0>
+  <Col1>Midway Islands</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>UM</Col10>
+  <Col11>UMI</Col11>
+  <Col12>581</Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>246</Col0>
+  <Col1>Navassa Island</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>UM</Col10>
+  <Col11>UMI</Col11>
+  <Col12>581</Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>247</Col0>
+  <Col1>Palmyra Atoll</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>UM</Col10>
+  <Col11>UMI</Col11>
+  <Col12>581</Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>248</Col0>
+  <Col1>U.S. Virgin Islands</Col1>
+  <Col2>United States Virgin Islands</Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6>Charlotte Amalie</Col6>
+  <Col7>USD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+1-340</Col9>
+  <Col10>VI</Col10>
+  <Col11>VIR</Col11>
+  <Col12>850</Col12>
+  <Col13>.vi</Col13>
+ </row>
+ <row>
+  <Col0>249</Col0>
+  <Col1>Wake Island</Col1>
+  <Col2></Col2>
+  <Col3>Dependency</Col3>
+  <Col4>Territory</Col4>
+  <Col5>United States</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>UM</Col10>
+  <Col11>UMI</Col11>
+  <Col12>850</Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>250</Col0>
+  <Col1>Hong Kong</Col1>
+  <Col2>Hong Kong Special Administrative Region</Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4>Special Administrative Region</Col4>
+  <Col5>China</Col5>
+  <Col6></Col6>
+  <Col7>HKD</Col7>
+  <Col8>Dollar</Col8>
+  <Col9>+852</Col9>
+  <Col10>HK</Col10>
+  <Col11>HKG</Col11>
+  <Col12>344</Col12>
+  <Col13>.hk</Col13>
+ </row>
+ <row>
+  <Col0>251</Col0>
+  <Col1>Macau</Col1>
+  <Col2>Macau Special Administrative Region</Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4>Special Administrative Region</Col4>
+  <Col5>China</Col5>
+  <Col6>Macau</Col6>
+  <Col7>MOP</Col7>
+  <Col8>Pataca</Col8>
+  <Col9>+853</Col9>
+  <Col10>MO</Col10>
+  <Col11>MAC</Col11>
+  <Col12>446</Col12>
+  <Col13>.mo</Col13>
+ </row>
+ <row>
+  <Col0>252</Col0>
+  <Col1>Faroe Islands</Col1>
+  <Col2></Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4></Col4>
+  <Col5>Denmark</Col5>
+  <Col6>Torshavn</Col6>
+  <Col7>DKK</Col7>
+  <Col8>Krone</Col8>
+  <Col9>+298</Col9>
+  <Col10>FO</Col10>
+  <Col11>FRO</Col11>
+  <Col12>234</Col12>
+  <Col13>.fo</Col13>
+ </row>
+ <row>
+  <Col0>253</Col0>
+  <Col1>Greenland</Col1>
+  <Col2></Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4></Col4>
+  <Col5>Denmark</Col5>
+  <Col6>Nuuk (Godthab)</Col6>
+  <Col7>DKK</Col7>
+  <Col8>Krone</Col8>
+  <Col9>+299</Col9>
+  <Col10>GL</Col10>
+  <Col11>GRL</Col11>
+  <Col12>304</Col12>
+  <Col13>.gl</Col13>
+ </row>
+ <row>
+  <Col0>254</Col0>
+  <Col1>French Guiana</Col1>
+  <Col2>Overseas Region of Guiana</Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4>Overseas Region</Col4>
+  <Col5>France</Col5>
+  <Col6>Cayenne</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+594</Col9>
+  <Col10>GF</Col10>
+  <Col11>GUF</Col11>
+  <Col12>254</Col12>
+  <Col13>.gf</Col13>
+ </row>
+ <row>
+  <Col0>255</Col0>
+  <Col1>Guadeloupe</Col1>
+  <Col2>Overseas Region of Guadeloupe</Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4>Overseas Region</Col4>
+  <Col5>France</Col5>
+  <Col6>Basse-Terre</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+590</Col9>
+  <Col10>GP</Col10>
+  <Col11>GLP</Col11>
+  <Col12>312</Col12>
+  <Col13>.gp</Col13>
+ </row>
+ <row>
+  <Col0>256</Col0>
+  <Col1>Martinique</Col1>
+  <Col2>Overseas Region of Martinique</Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4>Overseas Region</Col4>
+  <Col5>France</Col5>
+  <Col6>Fort-de-France</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+596</Col9>
+  <Col10>MQ</Col10>
+  <Col11>MTQ</Col11>
+  <Col12>474</Col12>
+  <Col13>.mq</Col13>
+ </row>
+ <row>
+  <Col0>257</Col0>
+  <Col1>Reunion</Col1>
+  <Col2>Overseas Region of Reunion</Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4>Overseas Region</Col4>
+  <Col5>France</Col5>
+  <Col6>Saint-Denis</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+262</Col9>
+  <Col10>RE</Col10>
+  <Col11>REU</Col11>
+  <Col12>638</Col12>
+  <Col13>.re</Col13>
+ </row>
+ <row>
+  <Col0>258</Col0>
+  <Col1>Aland</Col1>
+  <Col2></Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4></Col4>
+  <Col5>Finland</Col5>
+  <Col6>Mariehamn</Col6>
+  <Col7>EUR</Col7>
+  <Col8>Euro</Col8>
+  <Col9>+358-18</Col9>
+  <Col10>AX</Col10>
+  <Col11>ALA</Col11>
+  <Col12>248</Col12>
+  <Col13>.ax</Col13>
+ </row>
+ <row>
+  <Col0>259</Col0>
+  <Col1>Aruba</Col1>
+  <Col2></Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4></Col4>
+  <Col5>Netherlands</Col5>
+  <Col6>Oranjestad</Col6>
+  <Col7>AWG</Col7>
+  <Col8>Guilder</Col8>
+  <Col9>+297</Col9>
+  <Col10>AW</Col10>
+  <Col11>ABW</Col11>
+  <Col12>533</Col12>
+  <Col13>.aw</Col13>
+ </row>
+ <row>
+  <Col0>260</Col0>
+  <Col1>Netherlands Antilles</Col1>
+  <Col2></Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4></Col4>
+  <Col5>Netherlands</Col5>
+  <Col6>Willemstad</Col6>
+  <Col7>ANG</Col7>
+  <Col8>Guilder</Col8>
+  <Col9>+599</Col9>
+  <Col10>AN</Col10>
+  <Col11>ANT</Col11>
+  <Col12>530</Col12>
+  <Col13>.an</Col13>
+ </row>
+ <row>
+  <Col0>261</Col0>
+  <Col1>Svalbard</Col1>
+  <Col2></Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4></Col4>
+  <Col5>Norway</Col5>
+  <Col6>Longyearbyen</Col6>
+  <Col7>NOK</Col7>
+  <Col8>Krone</Col8>
+  <Col9>+47</Col9>
+  <Col10>SJ</Col10>
+  <Col11>SJM</Col11>
+  <Col12>744</Col12>
+  <Col13>.sj</Col13>
+ </row>
+ <row>
+  <Col0>262</Col0>
+  <Col1>Ascension</Col1>
+  <Col2></Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4>Dependency of Saint Helena</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Georgetown</Col6>
+  <Col7>SHP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+247</Col9>
+  <Col10>AC</Col10>
+  <Col11>ASC</Col11>
+  <Col12></Col12>
+  <Col13>.ac</Col13>
+ </row>
+ <row>
+  <Col0>263</Col0>
+  <Col1>Tristan da Cunha</Col1>
+  <Col2></Col2>
+  <Col3>Proto Dependency</Col3>
+  <Col4>Dependency of Saint Helena</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6>Edinburgh</Col6>
+  <Col7>SHP</Col7>
+  <Col8>Pound</Col8>
+  <Col9>+290</Col9>
+  <Col10>TA</Col10>
+  <Col11>TAA</Col11>
+  <Col12></Col12>
+  <Col13></Col13>
+ </row>
+ <row>
+  <Col0>264</Col0>
+  <Col1>Antarctica</Col1>
+  <Col2></Col2>
+  <Col3>Disputed Territory</Col3>
+  <Col4></Col4>
+  <Col5>Undetermined</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>AQ</Col10>
+  <Col11>ATA</Col11>
+  <Col12>010</Col12>
+  <Col13>.aq</Col13>
+ </row>
+ <row>
+  <Col0>265</Col0>
+  <Col1>Kosovo</Col1>
+  <Col2></Col2>
+  <Col3>Disputed Territory</Col3>
+  <Col4></Col4>
+  <Col5>Administrated by the UN</Col5>
+  <Col6>Pristina</Col6>
+  <Col7>CSD and EUR</Col7>
+  <Col8>Dinar and Euro</Col8>
+  <Col9>+381</Col9>
+  <Col10>CS</Col10>
+  <Col11>SCG</Col11>
+  <Col12>891</Col12>
+  <Col13>.cs and .yu</Col13>
+ </row>
+ <row>
+  <Col0>266</Col0>
+  <Col1>Palestinian Territories (Gaza Strip and West Bank)</Col1>
+  <Col2></Col2>
+  <Col3>Disputed Territory</Col3>
+  <Col4></Col4>
+  <Col5>Administrated by Israel</Col5>
+  <Col6>Gaza City (Gaza Strip) and Ramallah (West Bank)</Col6>
+  <Col7>ILS</Col7>
+  <Col8>Shekel</Col8>
+  <Col9>+970</Col9>
+  <Col10>PS</Col10>
+  <Col11>PSE</Col11>
+  <Col12>275</Col12>
+  <Col13>.ps</Col13>
+ </row>
+ <row>
+  <Col0>267</Col0>
+  <Col1>Western Sahara</Col1>
+  <Col2></Col2>
+  <Col3>Disputed Territory</Col3>
+  <Col4></Col4>
+  <Col5>Administrated by Morocco</Col5>
+  <Col6>El-Aaiun</Col6>
+  <Col7>MAD</Col7>
+  <Col8>Dirham</Col8>
+  <Col9>+212</Col9>
+  <Col10>EH</Col10>
+  <Col11>ESH</Col11>
+  <Col12>732</Col12>
+  <Col13>.eh</Col13>
+ </row>
+ <row>
+  <Col0>268</Col0>
+  <Col1>Australian Antarctic Territory</Col1>
+  <Col2></Col2>
+  <Col3>Antarctic Territory</Col3>
+  <Col4>External Territory</Col4>
+  <Col5>Australia</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>AQ</Col10>
+  <Col11>ATA</Col11>
+  <Col12>010</Col12>
+  <Col13>.aq</Col13>
+ </row>
+ <row>
+  <Col0>269</Col0>
+  <Col1>Ross Dependency</Col1>
+  <Col2></Col2>
+  <Col3>Antarctic Territory</Col3>
+  <Col4>Territory</Col4>
+  <Col5>New Zealand</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>AQ</Col10>
+  <Col11>ATA</Col11>
+  <Col12>010</Col12>
+  <Col13>.aq</Col13>
+ </row>
+ <row>
+  <Col0>270</Col0>
+  <Col1>Peter I Island</Col1>
+  <Col2></Col2>
+  <Col3>Antarctic Territory</Col3>
+  <Col4>Territory</Col4>
+  <Col5>Norway</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>AQ</Col10>
+  <Col11>ATA</Col11>
+  <Col12>010</Col12>
+  <Col13>.aq</Col13>
+ </row>
+ <row>
+  <Col0>271</Col0>
+  <Col1>Queen Maud Land</Col1>
+  <Col2></Col2>
+  <Col3>Antarctic Territory</Col3>
+  <Col4>Territory</Col4>
+  <Col5>Norway</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>AQ</Col10>
+  <Col11>ATA</Col11>
+  <Col12>010</Col12>
+  <Col13>.aq</Col13>
+ </row>
+ <row>
+  <Col0>272</Col0>
+  <Col1>British Antarctic Territory</Col1>
+  <Col2></Col2>
+  <Col3>Antarctic Territory</Col3>
+  <Col4>Overseas Territory</Col4>
+  <Col5>United Kingdom</Col5>
+  <Col6></Col6>
+  <Col7></Col7>
+  <Col8></Col8>
+  <Col9></Col9>
+  <Col10>AQ</Col10>
+  <Col11>ATA</Col11>
+  <Col12>010</Col12>
+  <Col13>.aq</Col13>
+ </row>
+</document>

@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toxy", "ToxyFramework\Toxy.csproj", "{CCB814A5-A750-4B96-AFD3-F7E4D868F231}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToxyFramework", "ToxyFramework\ToxyFramework.csproj", "{CCB814A5-A750-4B96-AFD3-F7E4D868F231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toxy.Test", "Toxy.Test\Toxy.Test.csproj", "{E16C30D3-D4EB-4608-A292-5BCFBE86F230}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{CCB814A5-A750-4B96-AFD3-F7E4D868F231}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCB814A5-A750-4B96-AFD3-F7E4D868F231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCB814A5-A750-4B96-AFD3-F7E4D868F231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E16C30D3-D4EB-4608-A292-5BCFBE86F230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E16C30D3-D4EB-4608-A292-5BCFBE86F230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E16C30D3-D4EB-4608-A292-5BCFBE86F230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E16C30D3-D4EB-4608-A292-5BCFBE86F230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
