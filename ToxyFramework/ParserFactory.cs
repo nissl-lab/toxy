@@ -9,15 +9,30 @@ namespace Toxy
     public class ParserFactory
     {
         private ParserFactory() { }
-        static Dictionary<string, Type> parserMapping = new Dictionary<string, Type>();
+        static Dictionary<string, List<Type>> parserMapping = new Dictionary<string, List<Type>>();
 
         static ParserFactory()
         {
-            parserMapping.Add(".txt", typeof(PlainTextParser));
-            parserMapping.Add(".xml", typeof(PlainTextParser));
-            parserMapping.Add(".csv", typeof(CSVParser));
-            parserMapping.Add(".xls", typeof(ExcelParser));
-            parserMapping.Add(".xlsx", typeof(ExcelParser));
+            var type1=new List<Type>();
+            type1.Add(typeof(PlainTextParser));
+            parserMapping.Add(".txt", type1);
+
+            var type2 = new List<Type>();
+            type2.Add(typeof(PlainTextParser));
+            parserMapping.Add(".xml", type2);
+
+            var type3 = new List<Type>();
+            type3.Add(typeof(PlainTextParser));
+            type3.Add(typeof(CSVParser));
+            parserMapping.Add(".csv", type3);
+
+            var type4 = new List<Type>();
+            type4.Add(typeof(ExcelParser));
+            parserMapping.Add(".xls", type4);
+
+            var type5 = new List<Type>();
+            type5.Add(typeof(ExcelParser));
+            parserMapping.Add(".xlsx", type5);
         }
 
         static string GetFileExtention(string path)
@@ -30,9 +45,19 @@ namespace Toxy
         public static ITextParser CreateText(string path)
         {
             string ext = GetFileExtention(path);
-            Type parserType = parserMapping[ext];
-            var obj = Activator.CreateInstance(parserType);
-            if (!(obj is ITextParser))
+            var types= parserMapping[ext];
+            object obj = null;
+            bool isFound = false;
+            foreach (Type type in types)
+            {
+                obj = Activator.CreateInstance(type);
+                if (obj is ITextParser)
+                {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (!isFound)
                 throw new InvalidDataException(ext+" is not supported by TextParser");
             ITextParser parser = (ITextParser)obj;
             return parser;
@@ -40,12 +65,22 @@ namespace Toxy
         public static ISpreadsheetParser CreateSpreadsheet(string path)
         {
             string ext = GetFileExtention(path);
-            Type parserType = parserMapping[ext];
-            var obj = Activator.CreateInstance(parserType);
-            if (!(obj is ISpreadsheetParser))
+            bool isFound = false;
+            var types = parserMapping[ext];
+            object obj = null;
+            foreach (Type type in types)
+            {
+                obj = Activator.CreateInstance(type);
+                if (obj is ISpreadsheetParser)
+                {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (!isFound)
                 throw new InvalidDataException(ext + " is not supported by SpreadsheetParser");
             ISpreadsheetParser parser = (ISpreadsheetParser)obj;
-            return parser;            
+            return parser;
         }
     }
 }

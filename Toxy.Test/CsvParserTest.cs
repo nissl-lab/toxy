@@ -16,7 +16,7 @@ namespace Toxy.Test
 
             ParserContext context=new ParserContext(path);
             context.Properties.Add("HasHeader", "1");
-            ISpreadsheetParser parser = (ISpreadsheetParser)ParserFactory.CreateText(path);
+            ISpreadsheetParser parser = (ISpreadsheetParser)ParserFactory.CreateSpreadsheet(path);
             ToxySpreadsheet ss= parser.Parse(context);
             Assert.AreEqual(1, ss.Tables.Count);
             Assert.AreEqual(14, ss.Tables[0].ColumnHeaders.Count);
