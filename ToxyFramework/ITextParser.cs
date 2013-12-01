@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Toxy
 {
-    public interface IParser
+    public interface ITextParser
     {
         string Parse(ParserContext context);
     }
