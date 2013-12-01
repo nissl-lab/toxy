@@ -9,6 +9,6 @@ namespace Toxy
         string Title { get; set; }
         List<IParagraph> Paragraphs { get; set; }
         int TotalPageNumber { get; set; }
-        List<IProperty> Properties { get; set; }
+        List<Property> Properties { get; set; }
     }
 }

@@ -27,11 +27,9 @@ namespace Toxy.Parsers
                 throw new FileNotFoundException("File " + context.Path + " is not found");
 
             bool hasHeader=false;
-            if(context.Properties.ContainsKey("HasHeader"))
-            {
-                if(context.Properties["HasHeader"]=="1")
-                    hasHeader=true;
-            }
+            string sHasHeader = context.Properties["HasHeader"].ToLower();
+            if (sHasHeader == "1" || sHasHeader == "on" || sHasHeader == "true")
+                hasHeader = true;
             char delimiter =',';
             if(context.Properties.ContainsKey("delimiter"))
             {
@@ -55,20 +53,21 @@ namespace Toxy.Parsers
                 CsvReader reader=new CsvReader(sr, hasHeader,delimiter);
                 string[] headers = reader.GetFieldHeaders();
                 ToxySpreadsheet ss = new ToxySpreadsheet();
-                ss.Headers = new List<string>(headers.Length);
+                ToxyTable t1 = new ToxyTable();
+                ss.Tables.Add(t1);
                 foreach (string header in headers)
                 {
-                    ss.Headers.Add(header);
+                    t1.ColumnHeaders.Add(header);
                 }
                 while(reader.ReadNextRecord())
                 {
                     ToxyRow tr=new ToxyRow();
-                    for(int j=0;j<ss.Headers.Count;j++)
+                    for(int j=0;j<t1.ColumnHeaders.Count;j++)
                     {
                         tr.Cells.Add(reader[j]);
                     }
                     
-                    ss.Rows.Add(tr);
+                    t1.Rows.Add(tr);
                 }
                 return ss;
             }

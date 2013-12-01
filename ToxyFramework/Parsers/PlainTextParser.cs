@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class PlainTextParser:IParser
+    public class PlainTextParser:ITextParser
     {
         public class ParseLineEventArgs : EventArgs
         {

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Toxy
 {
-    public interface IProperty
+    public class Property
     {
-        string Key { get; set; }
-        string Value { get; set; }
+        public string Key { get; set; }
+        public string Value { get; set; }
     }
 }
