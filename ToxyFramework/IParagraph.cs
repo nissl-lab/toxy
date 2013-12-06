@@ -6,5 +6,6 @@ namespace Toxy
 {
     public interface IParagraph
     {
+
     }
 }

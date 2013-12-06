@@ -60,11 +60,9 @@ namespace Toxy.Test
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestExcelParserSimple()
         {
-            //
-            // TODO: Add test logic here
-            //
+
         }
     }
 }

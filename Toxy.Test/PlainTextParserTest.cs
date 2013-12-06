@@ -10,7 +10,7 @@ namespace Toxy.Test
         [TestMethod]
         public void TestReadWholeText()
         {
-            string path = TestDataSample.GetFilePath("utf8.txt");
+            string path = TestDataSample.GetTextPath("utf8.txt");
 
             ParserContext context=new ParserContext(path);
             ITextParser parser = ParserFactory.CreateText(path);
@@ -21,7 +21,7 @@ namespace Toxy.Test
         [TestMethod]
         public void TestParseLineEvent()
         {
-            string path = TestDataSample.GetFilePath("utf8.txt");
+            string path = TestDataSample.GetTextPath("utf8.txt");
             ParserContext context = new ParserContext(path);
             PlainTextParser parser = (PlainTextParser)ParserFactory.CreateText(path);
             parser.ParseLine += (sender, args) => 

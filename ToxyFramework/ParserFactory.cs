@@ -82,5 +82,9 @@ namespace Toxy
             ISpreadsheetParser parser = (ISpreadsheetParser)obj;
             return parser;
         }
+        public static IDocumentParser CreateDocument(string path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

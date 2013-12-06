@@ -12,7 +12,7 @@ namespace Toxy.Test
          [TestMethod]
          public void TestParseToxySpreadsheet()
          {
-             string path = TestDataSample.GetFilePath("countrylist.csv");
+             string path = TestDataSample.GetFilePath("countrylist.csv", null);
 
             ParserContext context=new ParserContext(path);
             context.Properties.Add("HasHeader", "1");
