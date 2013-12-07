@@ -16,15 +16,15 @@ namespace Toxy.Test
 
             ParserContext context=new ParserContext(path);
             context.Properties.Add("HasHeader", "1");
-            ISpreadsheetParser parser = (ISpreadsheetParser)ParserFactory.CreateSpreadsheet(path);
-            ToxySpreadsheet ss= parser.Parse(context);
+            ISpreadsheetParser parser = (ISpreadsheetParser)ParserFactory.CreateSpreadsheet(context);
+            ToxySpreadsheet ss= parser.Parse();
             Assert.AreEqual(1, ss.Tables.Count);
             Assert.AreEqual(14, ss.Tables[0].ColumnHeaders.Count);
             Assert.AreEqual("Sort Order", ss.Tables[0].ColumnHeaders[0]);
             Assert.AreEqual("Sub Type", ss.Tables[0].ColumnHeaders[4]);
             Assert.AreEqual(272, ss.Tables[0].Rows.Count);
-            Assert.AreEqual("Kingdom of Bahrain", ss.Tables[0].Rows[12].Cells[2]);
-            Assert.AreEqual(".bo", ss.Tables[0].Rows[20].Cells[13]);
+            Assert.AreEqual("Kingdom of Bahrain", ss.Tables[0].Rows[12].Cells[2].ToString());
+            Assert.AreEqual(".bo", ss.Tables[0].Rows[20].Cells[13].ToString());
          }
     }
 }

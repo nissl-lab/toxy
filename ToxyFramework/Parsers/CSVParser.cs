@@ -8,6 +8,12 @@ namespace Toxy.Parsers
 {
     public class CSVParser : PlainTextParser, ISpreadsheetParser
     {
+
+        public CSVParser(ParserContext context):base(context)
+        {
+            this.Context = context;
+        }
+
         public class ParseSegmentEventArgs : EventArgs
         {
             public ParseSegmentEventArgs(string text, int number)
@@ -21,19 +27,19 @@ namespace Toxy.Parsers
 
         public event EventHandler<ParseSegmentEventArgs> ParseSegment;
 
-        public ToxySpreadsheet Parse(ParserContext context)
+        public ToxySpreadsheet Parse()
         {
-            if (!File.Exists(context.Path))
-                throw new FileNotFoundException("File " + context.Path + " is not found");
+            if (!File.Exists(Context.Path))
+                throw new FileNotFoundException("File " + Context.Path + " is not found");
 
             bool hasHeader=false;
-            string sHasHeader = context.Properties["HasHeader"].ToLower();
+            string sHasHeader = Context.Properties["HasHeader"].ToLower();
             if (sHasHeader == "1" || sHasHeader == "on" || sHasHeader == "true")
                 hasHeader = true;
             char delimiter =',';
-            if(context.Properties.ContainsKey("delimiter"))
+            if (Context.Properties.ContainsKey("delimiter"))
             {
-                delimiter = context.Properties["delimiter"][0];
+                delimiter = Context.Properties["delimiter"][0];
             }
 
             
@@ -42,13 +48,13 @@ namespace Toxy.Parsers
             StreamReader sr = null;
             try
             {
-                if (context.Encoding == null)
+                if (Context.Encoding == null)
                 {
-                    sr = new StreamReader(context.Path, true);
+                    sr = new StreamReader(Context.Path, true);
                 }
                 else
                 {
-                    sr = new StreamReader(context.Path, true);
+                    sr = new StreamReader(Context.Path, true);
                 }
                 CsvReader reader=new CsvReader(sr, hasHeader,delimiter);
                 string[] headers = reader.GetFieldHeaders();
@@ -59,12 +65,17 @@ namespace Toxy.Parsers
                 {
                     t1.ColumnHeaders.Add(header);
                 }
+                int i=0;
                 while(reader.ReadNextRecord())
                 {
                     ToxyRow tr=new ToxyRow();
+                    tr.RowIndex = i;
                     for(int j=0;j<t1.ColumnHeaders.Count;j++)
                     {
-                        tr.Cells.Add(reader[j]);
+                        ToxyCell c = new ToxyCell();
+                        c.CellIndex = j;
+                        c.Value = reader[j];
+                        tr.Cells.Add(c);
                     }
                     
                     t1.Rows.Add(tr);
@@ -76,6 +87,12 @@ namespace Toxy.Parsers
                 if (sr != null)
                     sr.Close();
             }
+        }
+
+        public ParserContext Context
+        {
+            get;
+            set;
         }
     }
 }

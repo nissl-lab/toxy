@@ -54,21 +54,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Excel2007ParserTest.cs" />
     <Compile Include="CsvParserTest.cs" />
-    <Compile Include="ExcelParserTest.cs" />
+    <Compile Include="Excel2003ParserTest.cs" />
+    <Compile Include="ExcelParserBaseTest.cs" />
     <Compile Include="TestDataSample.cs" />
     <Compile Include="PlainTextParserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="testdata\ascii.txt" />
-    <Content Include="testdata\countrylist.xml" />
-    <Content Include="testdata\utf16.txt" />
-    <Content Include="testdata\utf8.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
-    <None Include="testdata\countrylist.csv" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToxyFramework\ToxyFramework.csproj">
@@ -76,6 +71,7 @@
       <Name>ToxyFramework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -22,11 +22,22 @@ namespace Toxy
 
     public class ToxyRow
     {
+        public int RowIndex { get; set; }
         public ToxyRow()
         {
-            Cells = new List<string>();
+            Cells = new List<ToxyCell>();
         }
-        public List<string> Cells {get;set;}
+        public List<ToxyCell> Cells { get; set; }
+    }
+    public class ToxyCell
+    {
+        public string Value { get; set; }
+        public int CellIndex { get; set; }
+        public string Comment { get; set; }
+        public override string ToString()
+        {
+            return this.Value;
+        }
     }
 
     public class ToxySpreadsheet

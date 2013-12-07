@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Toxy
 {
-    public interface IParagraph
+    public class Paragraph
     {
-
+        public string Text { get; set; }
     }
 }

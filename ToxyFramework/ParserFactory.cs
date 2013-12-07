@@ -42,15 +42,15 @@ namespace Toxy
                 throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
             return fi.Extension;
         }
-        public static ITextParser CreateText(string path)
+        public static ITextParser CreateText(ParserContext context)
         {
-            string ext = GetFileExtention(path);
+            string ext = GetFileExtention(context.Path);
             var types= parserMapping[ext];
             object obj = null;
             bool isFound = false;
             foreach (Type type in types)
             {
-                obj = Activator.CreateInstance(type);
+                obj = Activator.CreateInstance(type, context);
                 if (obj is ITextParser)
                 {
                     isFound = true;
@@ -62,15 +62,15 @@ namespace Toxy
             ITextParser parser = (ITextParser)obj;
             return parser;
         }
-        public static ISpreadsheetParser CreateSpreadsheet(string path)
+        public static ISpreadsheetParser CreateSpreadsheet(ParserContext context)
         {
-            string ext = GetFileExtention(path);
+            string ext = GetFileExtention(context.Path);
             bool isFound = false;
             var types = parserMapping[ext];
             object obj = null;
             foreach (Type type in types)
             {
-                obj = Activator.CreateInstance(type);
+                obj = Activator.CreateInstance(type,context);
                 if (obj is ISpreadsheetParser)
                 {
                     isFound = true;
@@ -82,9 +82,9 @@ namespace Toxy
             ISpreadsheetParser parser = (ISpreadsheetParser)obj;
             return parser;
         }
-        public static IDocumentParser CreateDocument(string path)
-        {
-            throw new NotImplementedException();
-        }
+        //public static IDocumentParser CreateDocument(string path)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

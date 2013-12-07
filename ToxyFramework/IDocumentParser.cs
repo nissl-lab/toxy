@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Toxy
 {
-    public interface ISpreadsheetParser
+    public interface IDocumentParser
     {
-        ToxySpreadsheet Parse();
+        ToxyDocument Parse();
         ParserContext Context { get; set; }
     }
 }

@@ -13,8 +13,8 @@ namespace Toxy.Test
             string path = TestDataSample.GetTextPath("utf8.txt");
 
             ParserContext context=new ParserContext(path);
-            ITextParser parser = ParserFactory.CreateText(path);
-            string text= parser.Parse(context);
+            ITextParser parser = ParserFactory.CreateText(context);
+            string text= parser.Parse();
             Assert.AreEqual("hello world\r\na2\r\na3\r\nbbb4\r\n", text);
         }
 
@@ -23,7 +23,7 @@ namespace Toxy.Test
         {
             string path = TestDataSample.GetTextPath("utf8.txt");
             ParserContext context = new ParserContext(path);
-            PlainTextParser parser = (PlainTextParser)ParserFactory.CreateText(path);
+            PlainTextParser parser = (PlainTextParser)ParserFactory.CreateText(context);
             parser.ParseLine += (sender, args) => 
             {
                 if (args.LineNumber == 0)
@@ -43,7 +43,7 @@ namespace Toxy.Test
                     Assert.AreEqual("bbb4", args.Text);
                 }
             };
-            string text = parser.Parse(context);
+            string text = parser.Parse();
         }
 
     }

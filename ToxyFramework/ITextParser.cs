@@ -6,6 +6,7 @@ namespace Toxy
 {
     public interface ITextParser
     {
-        string Parse(ParserContext context);
+        string Parse();
+        ParserContext Context { get; set; }
     }
 }

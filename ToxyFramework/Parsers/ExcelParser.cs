@@ -1,4 +1,5 @@
-﻿using NPOI.SS.UserModel;
+﻿using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
@@ -9,33 +10,48 @@ namespace Toxy.Parsers
 {
     public class ExcelParser : ISpreadsheetParser
     {
-        public ToxySpreadsheet Parse(ParserContext context)
+        public ExcelParser(ParserContext context)
         {
-            if (!File.Exists(context.Path))
-                throw new FileNotFoundException("File " + context.Path + " is not found");
+            this.Context = context;
+        }
+        public ToxySpreadsheet Parse()
+        {
+            if (!File.Exists(Context.Path))
+                throw new FileNotFoundException("File " + Context.Path + " is not found");
 
             bool hasHeader = false;
-            if (context.Properties.ContainsKey("HasColumnHeader"))
+            if (Context.Properties.ContainsKey("HasColumnHeader"))
             {
-                hasHeader = Utility.IsTrue(context.Properties["HasColumnHeader"]);
+                hasHeader = Utility.IsTrue(Context.Properties["HasColumnHeader"]);
             }
             bool extractHeader = false;
-            if (context.Properties.ContainsKey("ExtractSheetHeader"))
+            if (Context.Properties.ContainsKey("ExtractSheetHeader"))
             {
-                hasHeader = Utility.IsTrue(context.Properties["ExtractSheetHeader"]);
+                extractHeader = Utility.IsTrue(Context.Properties["ExtractSheetHeader"]);
             }
             bool extractFooter = false;
-            if (context.Properties.ContainsKey("ExtractFooter"))
+            if (Context.Properties.ContainsKey("ExtractSheetFooter"))
             {
-                extractFooter = Utility.IsTrue(context.Properties["ExtractFooter"]);
+                extractFooter = Utility.IsTrue(Context.Properties["ExtractSheetFooter"]);
             }
             bool showCalculatedResult = false;
-            if (context.Properties.ContainsKey("ShowCalculatedResult"))
+            if (Context.Properties.ContainsKey("ShowCalculatedResult"))
             {
-                showCalculatedResult = Utility.IsTrue(context.Properties["ShowCalculatedResult"]);
+                showCalculatedResult = Utility.IsTrue(Context.Properties["ShowCalculatedResult"]);
+            }
+            bool fillBlankCells = false;
+            if (Context.Properties.ContainsKey("FillBlankCells"))
+            {
+                fillBlankCells = Utility.IsTrue(Context.Properties["FillBlankCells"]);
+            }
+            bool includeComment = true;
+            if (Context.Properties.ContainsKey("IncludeComments"))
+            {
+                includeComment = Utility.IsTrue(Context.Properties["IncludeComments"]);
             }
             ToxySpreadsheet ss = new ToxySpreadsheet();
-            IWorkbook workbook = WorkbookFactory.Create(context.Path);
+            IWorkbook workbook = WorkbookFactory.Create(Context.Path);
+            HSSFDataFormatter formatter = new HSSFDataFormatter();
             for (int i = 0; i < workbook.NumberOfSheets; i++)
             {
                 ToxyTable table=new ToxyTable();
@@ -43,35 +59,55 @@ namespace Toxy.Parsers
                 table.Name = sheet.SheetName;
                 if (extractHeader && sheet.Header != null)
                 {
-                    table.PageHeader = sheet.Header.Left + " | " + sheet.Header.Center + " | " + sheet.Header.Right;
+                    table.PageHeader = sheet.Header.Left + "|" + sheet.Header.Center + "|" + sheet.Header.Right;
                 }
 
                 if (extractFooter && sheet.Footer != null)
                 {
-                    table.PageFooter = sheet.Footer.Left + " | " + sheet.Footer.Center + " | " + sheet.Footer.Right;
+                    table.PageFooter = sheet.Footer.Left + "|" + sheet.Footer.Center + "|" + sheet.Footer.Right;
                 }
+
+                bool firstRow = true;
                 foreach (IRow row in sheet)
                 {
                     ToxyRow tr=null;
-                    if(!hasHeader)
+                    if (!hasHeader || !firstRow)
                     {
                         tr=new ToxyRow();
                     }
-
                     foreach (ICell cell in row)
                     {
-                        if (hasHeader&& row.RowNum == 0)
+                        if (hasHeader&& firstRow)
                         {
                             table.ColumnHeaders.Add(cell.ToString());
                         }
-                        else
+                        else 
                         {
-                            tr.Cells.Add(cell.ToString());
+                            ToxyCell c = new ToxyCell();
+                            if (!string.IsNullOrEmpty(cell.ToString()))
+                            {
+                                c.Value = formatter.FormatCellValue(cell);
+                                c.CellIndex = cell.ColumnIndex;
+                                tr.Cells.Add(c);
+                            }
+                            else if (fillBlankCells)
+                            {
+                                c.Value = formatter.FormatCellValue(cell);
+                                c.CellIndex = cell.ColumnIndex;
+                                tr.Cells.Add(c);
+                            }
+                            if (cell.CellComment != null)
+                                c.Comment = cell.CellComment.String.String;
                         }
                     }
                     if (tr != null)
                     {
+                        tr.RowIndex = row.RowNum;
                         table.Rows.Add(tr);
+                    }
+                    if (firstRow)
+                    {
+                        firstRow = false;
                     }
                 }
                 ss.Tables.Add(table);
@@ -134,11 +170,11 @@ namespace Toxy.Parsers
                     {
                         ss.Properties.Add("AppVersion", extProps.AppVersion);
                     }
-                    if (extProps.Characters != null)
+                    if (extProps.Characters>0)
                     {
                         ss.Properties.Add("Characters", extProps.Characters);
                     }
-                    if (extProps.CharactersWithSpaces != null)
+                    if (extProps.CharactersWithSpaces>0)
                     {
                         ss.Properties.Add("CharactersWithSpaces", extProps.CharactersWithSpaces);
                     }
@@ -146,7 +182,7 @@ namespace Toxy.Parsers
                     {
                         ss.Properties.Add("Company", extProps.Company);
                     }
-                    if (extProps.Lines != null)
+                    if (extProps.Lines > 0)
                     {
                         ss.Properties.Add("Lines", extProps.Lines);
                     }
@@ -154,23 +190,23 @@ namespace Toxy.Parsers
                     {
                         ss.Properties.Add("Manager", extProps.Manager);
                     }
-                    if (extProps.Notes != null)
+                    if (extProps.Notes> 0)
                     {
                         ss.Properties.Add("Notes", extProps.Notes);
                     }
-                    if (extProps.Pages != null)
+                    if (extProps.Pages>0)
                     {
                         ss.Properties.Add("Pages", extProps.Pages);
                     }
-                    if (extProps.Paragraphs != null)
+                    if (extProps.Paragraphs>0)
                     {
                         ss.Properties.Add("Paragraphs", extProps.Paragraphs);
                     }
-                    if (extProps.Words != null)
+                    if (extProps.Words>0)
                     {
                         ss.Properties.Add("Words", extProps.Words);
                     }
-                    if (extProps.TotalTime != null)
+                    if (extProps.TotalTime>0)
                     {
                         ss.Properties.Add("TotalTime", extProps.TotalTime);
                     }
@@ -179,9 +215,130 @@ namespace Toxy.Parsers
             else
             {
                 //HSSFWorkbook
-                throw new NotImplementedException();
+                var si = ((HSSFWorkbook)workbook).SummaryInformation;
+                if (si != null)
+                {
+                    if (si.Title != null)
+                    {
+                        ss.Properties.Add("Title", si.Title);
+                    }
+                    else if (si.LastSaveDateTime != null)
+                    {
+                        ss.Properties.Add("LastSaveDateTime", si.LastSaveDateTime);
+                    }
+                    else if (si.PageCount > 0)
+                    {
+                        ss.Properties.Add("PageCount", si.PageCount);
+                    }
+                    else if (si.OSVersion > 0)
+                    {
+                        ss.Properties.Add("OSVersion", si.OSVersion);
+                    }
+                    else if (si.Security > 0)
+                    {
+                        ss.Properties.Add("Security", si.Security);
+                    }
+                    else if (si.Keywords != null)
+                    {
+                        ss.Properties.Add("Keywords", si.Keywords);
+                    }
+                    else if (si.EditTime > 0)
+                    {
+                        ss.Properties.Add("EditTime", si.EditTime);
+                    }
+                    else if (si.Subject != null)
+                    {
+                        ss.Properties.Add("Subject", si.Subject);
+                    }
+                    else if (si.CreateDateTime != null)
+                    {
+                        ss.Properties.Add("CreateDateTime", si.CreateDateTime);
+                    }
+                    else if (si.LastPrinted != null)
+                    {
+                        ss.Properties.Add("LastPrinted", si.LastPrinted);
+                    }
+                    else if (si.CharCount != null)
+                    {
+                        ss.Properties.Add("CharCount", si.CharCount);
+                    }
+                    else if (si.Author != null)
+                    {
+                        ss.Properties.Add("Author", si.Author);
+                    }
+                    else if (si.LastAuthor != null)
+                    {
+                        ss.Properties.Add("LastAuthor", si.LastAuthor);
+                    }
+                    else if (si.ApplicationName != null)
+                    {
+                        ss.Properties.Add("ApplicationName", si.ApplicationName);
+                    }
+                    else if (si.RevNumber != null)
+                    {
+                        ss.Properties.Add("RevNumber", si.RevNumber);
+                    }
+                    else if (si.Template != null)
+                    {
+                        ss.Properties.Add("Template", si.Template);
+                    }
+                }
+                var dsi = ((HSSFWorkbook)workbook).DocumentSummaryInformation;
+                if(dsi!=null)
+                {
+                    if (dsi.ByteCount > 0)
+                    {
+                        ss.Properties.Add("ByteCount", dsi.ByteCount);
+                    }
+                    else if (dsi.Company !=null)
+                    {
+                        ss.Properties.Add("Company", dsi.Company);
+                    }
+                    else if (dsi.Format>0)
+                    {
+                        ss.Properties.Add("Format", dsi.Format);
+                    }
+                    else if (dsi.LineCount!= null)
+                    {
+                        ss.Properties.Add("LineCount", dsi.Company);
+                    }
+                    else if (dsi.LinksDirty)
+                    {
+                        ss.Properties.Add("LinksDirty", true);
+                    }
+                    else if (dsi.Manager!=null)
+                    {
+                        ss.Properties.Add("Manager", dsi.Manager);
+                    }
+                    else if (dsi.NoteCount != null)
+                    {
+                        ss.Properties.Add("NoteCount", dsi.NoteCount);
+                    }
+                    else if (dsi.Scale)
+                    {
+                        ss.Properties.Add("Scale", dsi.Scale);
+                    }
+                    else if (dsi.Company != null)
+                    {
+                        ss.Properties.Add("Company", dsi.Company);
+                    }
+                    else if (dsi.MMClipCount != null)
+                    {
+                        ss.Properties.Add("MMClipCount", dsi.MMClipCount);
+                    }
+                    else if (dsi.ParCount != null)
+                    {
+                        ss.Properties.Add("ParCount", dsi.ParCount);
+                    }
+                }
             }
             return ss;
+        }
+
+        public ParserContext Context
+        {
+            get;
+            set;
         }
     }
 }

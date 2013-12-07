@@ -18,25 +18,33 @@ namespace Toxy.Parsers
             public string Text { get; set; }
         }
 
+        public PlainTextParser(ParserContext context)
+        {
+            this.Context = context;
+        }
+        public ParserContext Context
+        {
+            get; set;
+        }
 
         public event EventHandler<ParseLineEventArgs> ParseLine;
 
-        public string Parse(ParserContext context)
+        public string Parse()
         {
-            if (!File.Exists(context.Path))
-                throw new FileNotFoundException("File "+context.Path+" is not found");
+            if (!File.Exists(Context.Path))
+                throw new FileNotFoundException("File "+Context.Path+" is not found");
 
             Encoding encoding= Encoding.UTF8;
             StreamReader sr = null;
             try
             {
-                if (context.Encoding == null)
+                if (Context.Encoding == null)
                 {
-                    sr = new StreamReader(context.Path, true);
+                    sr = new StreamReader(Context.Path, true);
                 }
                 else
                 {
-                    sr = new StreamReader(context.Path, true);
+                    sr = new StreamReader(Context.Path, true);
                 }
                 string line = sr.ReadLine();
                 int i = 0;
