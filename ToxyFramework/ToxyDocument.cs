@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Toxy
 {
-    public class ToxyDocument
+    public class Paragraph
+    {
+        public string Text { get; set; }
+        public string StyleID { get; set; }
+    }
+    public class ToxyDocument:IToxyProperties
     {
         public ToxyDocument()
         {

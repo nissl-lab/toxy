@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace Toxy
+namespace Toxy.Test
 {
-    public class Paragraph
+    public class Word2007ParserTest
     {
-        public string Text { get; set; }
+
     }
 }

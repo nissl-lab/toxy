@@ -55,14 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="3rdParty\EMLReader.cs" />
-    <Compile Include="3rdParty\OutlookStorage.cs" />
     <Compile Include="IDocumentParser.cs" />
+    <Compile Include="IToxyProperties.cs" />
     <Compile Include="Parsers\ExcelParser.cs" />
-    <Compile Include="IParagraph.cs" />
     <Compile Include="ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
-    <Compile Include="IProperty.cs" />
     <Compile Include="ISpreadsheetParser.cs" />
+    <Compile Include="Parsers\WordParser.cs" />
     <Compile Include="ToxyDocument.cs" />
     <Compile Include="ToxySpreadsheet.cs" />
     <Compile Include="ParserFactory.cs" />

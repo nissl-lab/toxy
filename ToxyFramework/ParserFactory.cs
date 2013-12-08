@@ -33,6 +33,11 @@ namespace Toxy
             var type5 = new List<Type>();
             type5.Add(typeof(ExcelParser));
             parserMapping.Add(".xlsx", type5);
+
+            var type6 = new List<Type>();
+            type6.Add(typeof(WordParser));
+            parserMapping.Add(".docx", type6);
+
         }
 
         static string GetFileExtention(string path)

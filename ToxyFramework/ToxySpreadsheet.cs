@@ -17,7 +17,12 @@ namespace Toxy
         public string PageFooter { get; set; }
 
         public List<string> ColumnHeaders { get; set; }
-        public List<ToxyRow> Rows { get; set; }        
+        public List<ToxyRow> Rows { get; set; }
+
+        public DataSet ToDataTable()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class ToxyRow
@@ -40,7 +45,7 @@ namespace Toxy
         }
     }
 
-    public class ToxySpreadsheet
+    public class ToxySpreadsheet : IToxyProperties
     {
         public ToxySpreadsheet()
         {
