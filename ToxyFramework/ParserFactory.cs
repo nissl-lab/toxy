@@ -47,9 +47,9 @@ namespace Toxy
                 throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
             return fi.Extension;
         }
-        public static ITextParser CreateText(ParserContext context)
+        static object CreateObject(ParserContext context)
         {
-            string ext = GetFileExtention(context.Path);
+             string ext = GetFileExtention(context.Path);
             var types= parserMapping[ext];
             object obj = null;
             bool isFound = false;
@@ -62,34 +62,28 @@ namespace Toxy
                     break;
                 }
             }
-            if (!isFound)
-                throw new InvalidDataException(ext+" is not supported by TextParser");
+            if (isFound)
+                throw new InvalidDataException(ext + " is not supported");
+            return obj;
+        }
+        public static ITextParser CreateText(ParserContext context)
+        {
+            object obj = CreateObject(context);
             ITextParser parser = (ITextParser)obj;
             return parser;
         }
         public static ISpreadsheetParser CreateSpreadsheet(ParserContext context)
         {
-            string ext = GetFileExtention(context.Path);
-            bool isFound = false;
-            var types = parserMapping[ext];
-            object obj = null;
-            foreach (Type type in types)
-            {
-                obj = Activator.CreateInstance(type,context);
-                if (obj is ISpreadsheetParser)
-                {
-                    isFound = true;
-                    break;
-                }
-            }
-            if (!isFound)
-                throw new InvalidDataException(ext + " is not supported by SpreadsheetParser");
+            object obj = CreateObject(context); 
             ISpreadsheetParser parser = (ISpreadsheetParser)obj;
             return parser;
         }
-        //public static IDocumentParser CreateDocument(string path)
-        //{
-        //    throw new NotImplementedException();
-        //}
+
+        public static IDocumentParser CreateDocument(ParserContext context)
+        {
+            object obj = CreateObject(context);
+            IDocumentParser parser = (IDocumentParser)obj;
+            return parser;
+        }
     }
 }

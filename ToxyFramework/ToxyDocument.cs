@@ -8,6 +8,20 @@ namespace Toxy
     {
         public string Text { get; set; }
         public string StyleID { get; set; }
+        public ParagraphStyle EmbededStyle { get; set; }
+
+        public override string ToString()
+        {
+            return this.Text;
+        }
+    }
+    public class ParagraphStyle
+    {
+        public bool IsBold { get; set; }
+        public bool IsItalic { get; set; }
+        public bool IsUnderlined { get; set; }
+        public string FontFamily { get; set; }
+        public int FontSize { get; set; }
     }
     public class ToxyDocument:IToxyProperties
     {
