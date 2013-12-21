@@ -13,31 +13,40 @@ namespace Toxy
 
         static ParserFactory()
         {
-            var type1=new List<Type>();
-            type1.Add(typeof(PlainTextParser));
-            parserMapping.Add(".txt", type1);
+            var typeTxt=new List<Type>();
+            typeTxt.Add(typeof(PlainTextParser));
+            parserMapping.Add(".txt", typeTxt);
 
-            var type2 = new List<Type>();
-            type2.Add(typeof(PlainTextParser));
-            parserMapping.Add(".xml", type2);
+            var typeXml = new List<Type>();
+            typeXml.Add(typeof(PlainTextParser));
+            parserMapping.Add(".xml", typeXml);
 
-            var type3 = new List<Type>();
-            type3.Add(typeof(PlainTextParser));
-            type3.Add(typeof(CSVParser));
-            parserMapping.Add(".csv", type3);
+            var typeCSV = new List<Type>();
+            typeCSV.Add(typeof(PlainTextParser));
+            typeCSV.Add(typeof(CSVParser));
+            parserMapping.Add(".csv", typeCSV);
 
-            var type4 = new List<Type>();
-            type4.Add(typeof(ExcelParser));
-            parserMapping.Add(".xls", type4);
+            var typeXls = new List<Type>();
+            typeXls.Add(typeof(ExcelParser));
+            parserMapping.Add(".xls", typeXls);
+            parserMapping.Add(".xlsx", typeXls);
 
-            var type5 = new List<Type>();
-            type5.Add(typeof(ExcelParser));
-            parserMapping.Add(".xlsx", type5);
+            var typeDocx = new List<Type>();
+            typeDocx.Add(typeof(WordParser));
+            parserMapping.Add(".docx", typeDocx);
+            
+            var typeRtf = new List<Type>();
+            typeRtf.Add(typeof(WordParser));
+            parserMapping.Add(".rtf", typeRtf);
 
-            var type6 = new List<Type>();
-            type6.Add(typeof(WordParser));
-            parserMapping.Add(".docx", type6);
+            var typeHtml = new List<Type>();
+            typeHtml.Add(typeof(PlainTextParser));
+            parserMapping.Add(".html", typeHtml);
+            parserMapping.Add(".htm", typeHtml);
 
+            var typeEml = new List<Type>();
+            typeEml.Add(typeof(EMLParser));
+            parserMapping.Add(".eml", typeEml);
         }
 
         static string GetFileExtention(string path)
@@ -45,7 +54,7 @@ namespace Toxy
             FileInfo fi = new FileInfo(path);
             if (!parserMapping.ContainsKey(fi.Extension))
                 throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
-            return fi.Extension;
+            return fi.Extension.ToLower();
         }
         static object CreateObject(ParserContext context)
         {
