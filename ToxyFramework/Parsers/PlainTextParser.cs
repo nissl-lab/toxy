@@ -22,7 +22,7 @@ namespace Toxy.Parsers
         {
             this.Context = context;
         }
-        public ParserContext Context
+        public virtual ParserContext Context
         {
             get; set;
         }

@@ -89,7 +89,7 @@ namespace Toxy.Parsers
             }
         }
 
-        public ParserContext Context
+        public override ParserContext Context
         {
             get;
             set;
