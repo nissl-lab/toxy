@@ -55,15 +55,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="3rdParty\EMLReader.cs" />
-    <Compile Include="IDocumentParser.cs" />
-    <Compile Include="IToxyProperties.cs" />
+    <Compile Include="Entities\ToxyDom.cs" />
+    <Compile Include="Parsers\IEmailParser.cs" />
+    <Compile Include="Parsers\IDocumentParser.cs" />
+    <Compile Include="Entities\IToxyProperties.cs" />
+    <Compile Include="Parsers\EMLParser.cs" />
     <Compile Include="Parsers\ExcelParser.cs" />
-    <Compile Include="ITextParser.cs" />
+    <Compile Include="Parsers\ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
-    <Compile Include="ISpreadsheetParser.cs" />
+    <Compile Include="Parsers\ISpreadsheetParser.cs" />
+    <Compile Include="Parsers\RTFParser.cs" />
     <Compile Include="Parsers\WordParser.cs" />
-    <Compile Include="ToxyDocument.cs" />
-    <Compile Include="ToxySpreadsheet.cs" />
+    <Compile Include="Entities\ToxyDocument.cs" />
+    <Compile Include="Entities\ToxyEmail.cs" />
+    <Compile Include="Entities\ToxySpreadsheet.cs" />
     <Compile Include="ParserFactory.cs" />
     <Compile Include="Parsers\PlainTextParser.cs" />
     <Compile Include="Parsers\CSVParser.cs" />
