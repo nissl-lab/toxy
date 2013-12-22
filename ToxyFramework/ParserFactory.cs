@@ -56,7 +56,7 @@ namespace Toxy
                 throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
             return fi.Extension.ToLower();
         }
-        static object CreateObject(ParserContext context)
+        static object CreateObject(ParserContext context, Type itype)
         {
              string ext = GetFileExtention(context.Path);
             var types= parserMapping[ext];
@@ -65,32 +65,32 @@ namespace Toxy
             foreach (Type type in types)
             {
                 obj = Activator.CreateInstance(type, context);
-                if (obj is ITextParser)
+                if (itype.IsAssignableFrom(obj.GetType()))
                 {
                     isFound = true;
                     break;
                 }
             }
-            if (isFound)
+            if (!isFound)
                 throw new InvalidDataException(ext + " is not supported");
             return obj;
         }
         public static ITextParser CreateText(ParserContext context)
         {
-            object obj = CreateObject(context);
+            object obj = CreateObject(context, typeof(ITextParser));
             ITextParser parser = (ITextParser)obj;
             return parser;
         }
         public static ISpreadsheetParser CreateSpreadsheet(ParserContext context)
         {
-            object obj = CreateObject(context); 
+            object obj = CreateObject(context, typeof(ISpreadsheetParser)); 
             ISpreadsheetParser parser = (ISpreadsheetParser)obj;
             return parser;
         }
 
         public static IDocumentParser CreateDocument(ParserContext context)
         {
-            object obj = CreateObject(context);
+            object obj = CreateObject(context, typeof(IDocumentParser));
             IDocumentParser parser = (IDocumentParser)obj;
             return parser;
         }
