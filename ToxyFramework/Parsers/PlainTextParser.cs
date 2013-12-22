@@ -29,7 +29,7 @@ namespace Toxy.Parsers
 
         public event EventHandler<ParseLineEventArgs> ParseLine;
 
-        public string Parse()
+        public virtual string Parse()
         {
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File "+Context.Path+" is not found");

@@ -41,7 +41,10 @@ namespace Toxy.Entities
 
     public class ToxyDom
     {
+        private ToxyNode root = null;
         public ToxyNode Root
-        { get; set; }
+        {
+            get { return root; }
+        }
     }
 }

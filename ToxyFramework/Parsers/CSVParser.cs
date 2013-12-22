@@ -27,7 +27,7 @@ namespace Toxy.Parsers
 
         public event EventHandler<ParseSegmentEventArgs> ParseSegment;
 
-        public ToxySpreadsheet Parse()
+        public new ToxySpreadsheet Parse()
         {
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
@@ -61,20 +61,23 @@ namespace Toxy.Parsers
                 ToxySpreadsheet ss = new ToxySpreadsheet();
                 ToxyTable t1 = new ToxyTable();
                 ss.Tables.Add(t1);
-                foreach (string header in headers)
+
+                for (int j = 0; j < headers.Length;j++ )
                 {
-                    t1.ColumnHeaders.Add(header);
+                    t1.ColumnHeaders.Cells.Add(new ToxyCell(j, headers[j]));
                 }
                 int i=0;
                 while(reader.ReadNextRecord())
                 {
-                    ToxyRow tr=new ToxyRow();
-                    tr.RowIndex = i;
-                    for(int j=0;j<t1.ColumnHeaders.Count;j++)
+                    ToxyRow tr=new ToxyRow(i);
+                    tr.LastCellIndex = t1.ColumnHeaders.Cells.Count;
+                    for (int j = 0; j < tr.LastCellIndex; j++)
                     {
-                        ToxyCell c = new ToxyCell();
-                        c.CellIndex = j;
-                        c.Value = reader[j];
+                        ToxyCell c = new ToxyCell(j, reader[j]);
+                        if (tr.LastCellIndex < c.CellIndex)
+                        {
+                            tr.LastCellIndex = c.CellIndex;
+                        }
                         tr.Cells.Add(c);
                     }
                     

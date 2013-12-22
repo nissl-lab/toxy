@@ -73,31 +73,33 @@ namespace Toxy.Parsers
                     ToxyRow tr=null;
                     if (!hasHeader || !firstRow)
                     {
-                        tr=new ToxyRow();
+                        tr=new ToxyRow(row.RowNum);
                     }
                     foreach (ICell cell in row)
                     {
                         if (hasHeader&& firstRow)
                         {
-                            table.ColumnHeaders.Add(cell.ToString());
+                            table.ColumnHeaders.Cells.Add(new ToxyCell(cell.ColumnIndex, cell.ToString()));
                         }
                         else 
                         {
-                            ToxyCell c = new ToxyCell();
+                            if (tr.LastCellIndex < cell.ColumnIndex)
+                            {
+                                tr.LastCellIndex = cell.ColumnIndex;
+                            }
+                            ToxyCell c = new ToxyCell(cell.ColumnIndex, formatter.FormatCellValue(cell));
                             if (!string.IsNullOrEmpty(cell.ToString()))
                             {
-                                c.Value = formatter.FormatCellValue(cell);
-                                c.CellIndex = cell.ColumnIndex;
                                 tr.Cells.Add(c);
                             }
                             else if (fillBlankCells)
                             {
-                                c.Value = formatter.FormatCellValue(cell);
-                                c.CellIndex = cell.ColumnIndex;
                                 tr.Cells.Add(c);
                             }
                             if (cell.CellComment != null)
+                            {
                                 c.Comment = cell.CellComment.String.String;
+                            }
                         }
                     }
                     if (tr != null)
@@ -109,6 +111,8 @@ namespace Toxy.Parsers
                     {
                         firstRow = false;
                     }
+                    if(table.LastColumnIndex<tr.LastCellIndex)
+                        table.LastColumnIndex=tr.LastCellIndex;
                 }
                 ss.Tables.Add(table);
             }
