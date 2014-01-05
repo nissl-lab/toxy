@@ -1863,7 +1863,7 @@
         <member name="F:NPOI.XSSF.UserModel.XSSFChart.frame">
             Parent graphic frame.
         </member>
-        <member name="F:NPOI.XSSF.UserModel.XSSFChart.chartSpace">
+        <member name="F:NPOI.XSSF.UserModel.XSSFChart.chartSpaceDocument">
             Root element of the SpreadsheetML Chart part
         </member>
         <member name="F:NPOI.XSSF.UserModel.XSSFChart.chart">
@@ -5710,11 +5710,6 @@
             belongs.
             @return the Part, to which the body belongs
         </member>
-        <member name="M:NPOI.XWPF.UserModel.IBody.GetPartType">
-            Get the PartType of the body, for example
-            DOCUMENT, HEADER, FOOTER,	FOOTNOTE, 
-            @return the PartType of the body
-        </member>
         <member name="M:NPOI.XWPF.UserModel.IBody.GetParagraph(NPOI.OpenXmlFormats.Wordprocessing.CT_P)">
             if there is a corresponding {@link XWPFParagraph} of the parameter ctTable in the paragraphList of this header or footer
             the method will return this paragraph
@@ -5754,6 +5749,11 @@
         </member>
         <member name="M:NPOI.XWPF.UserModel.IBody.GetXWPFDocument">
             Return XWPFDocument
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.IBody.PartType">
+            Get the PartType of the body, for example
+            DOCUMENT, HEADER, FOOTER,	FOOTNOTE, 
+            @return the PartType of the body
         </member>
         <member name="P:NPOI.XWPF.UserModel.IBody.BodyElements">
             Returns an Iterator with paragraphs and tables, 
@@ -6310,7 +6310,7 @@
             Returns the policy on headers and footers, which
              also provides a way to Get at them.
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFDocument.GetStyle">
+        <member name="M:NPOI.XWPF.UserModel.XWPFDocument.GetCTStyle">
             Returns the styles object used
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFDocument.GetAllEmbedds">
@@ -6583,12 +6583,6 @@
             belongs.
             @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFDocument.GetPartType">
-             Get the PartType of the body, for example
-             DOCUMENT, HEADER, FOOTER,	FOOTNOTE,
-            
-             @see NPOI.XWPF.UserModel.IBody#getPartType()
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFDocument.GetTableCell(NPOI.OpenXmlFormats.Wordprocessing.CT_Tc)">
             Get the TableCell which belongs to the TableCell
             @param cell
@@ -6621,6 +6615,12 @@
         <member name="P:NPOI.XWPF.UserModel.XWPFDocument.AllPackagePictures">
             @return all Pictures in this package
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFDocument.PartType">
+             Get the PartType of the body, for example
+             DOCUMENT, HEADER, FOOTER,	FOOTNOTE,
+            
+             @see NPOI.XWPF.UserModel.IBody#getPartType()
+        </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFFactory">
             @author Yegor Kozlov
         </member>
@@ -6629,10 +6629,6 @@
         </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFHeaderFooter">
             Parent of XWPF headers and footers
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFHeaderFooter.GetText">
-            Returns the textual content of the header/footer,
-             by flattening out the text of its paragraph(s)
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFHeaderFooter.SetHeaderFooter(NPOI.OpenXmlFormats.Wordprocessing.CT_HdrFtr)">
             Set a new headerFooter
@@ -6684,10 +6680,6 @@
             @return XWPFPictureData of a specificID
             @throws Exception 
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFHeaderFooter.GetOwner">
-            verifies that cursor is on the right position
-            @param cursor
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFHeaderFooter.GetTableArray(System.Int32)">
             Returns the table at position pos
             @see NPOI.XWPF.UserModel.IBody#getTableArray(int)
@@ -6720,27 +6712,38 @@
              complex headers/footers have a table or two
              in Addition. 
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFHeaderFooter.Text">
+            Returns the textual content of the header/footer,
+             by flattening out the text of its paragraph(s)
+        </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFHeaderFooter.AllPackagePictures">
             Get all Pictures in this package
             @return all Pictures in this package
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFHeaderFooter.Owner">
+            verifies that cursor is on the right position
+            @param cursor
+        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFFooter.Commit">
             save and Commit footer
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFFooter.GetPartType">
+        <member name="P:NPOI.XWPF.UserModel.XWPFFooter.PartType">
             Get the PartType of the body
             @see NPOI.XWPF.UserModel.IBody#getPartType()
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFFootnote.GetTableArray(System.Int32)">
-            @param position in table array
-            @return The table at position pos
-            @see NPOI.XWPF.UserModel.IBody#getTableArray(int)
+            <summary>
+            
+            </summary>
+            <param name="pos">position in table array</param>
+            <returns>The table at position pos</returns>
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFFootnote.InsertTable(System.Int32,NPOI.XWPF.UserModel.XWPFTable)">
+            <summary>
             inserts an existing XWPFTable to the arrays bodyElements and tables
-            @param pos
-            @param table
-            @see NPOI.XWPF.UserModel.IBody#insertTable(int pos, XWPFTable table)
+            </summary>
+            <param name="pos"></param>
+            <param name="table"></param>
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFFootnote.GetTable(NPOI.OpenXmlFormats.Wordprocessing.CT_Tbl)">
             if there is a corresponding {@link XWPFTable} of the parameter ctTable in the tableList of this header
@@ -6759,14 +6762,18 @@
             @see NPOI.XWPF.UserModel.IBody#getParagraph(CTP p)
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFFootnote.GetParagraphArray(System.Int32)">
-            Returns the paragraph that holds
-             the text of the header or footer.
-            @see NPOI.XWPF.UserModel.IBody#getParagraphArray(int pos)
+            <summary>
+            Returns the paragraph that holds the text of the header or footer.
+            </summary>
+            <param name="pos"></param>
+            <returns></returns>
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFFootnote.GetTableCell(NPOI.OpenXmlFormats.Wordprocessing.CT_Tc)">
+            <summary>
             Get the TableCell which belongs to the TableCell
-            @param cell
-            @see NPOI.XWPF.UserModel.IBody#getTableCell(CTTc cell)
+            </summary>
+            <param name="cell"></param>
+            <returns></returns>
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFFootnote.IsCursorInFtn(System.Xml.XmlDocument)">
             verifies that cursor is on the right position
@@ -6801,7 +6808,7 @@
             returns the Part, to which the body belongs, which you need for Adding relationship to other parts
             @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFFootnote.GetPartType">
+        <member name="P:NPOI.XWPF.UserModel.XWPFFootnote.PartType">
             Get the PartType of the body
             @see NPOI.XWPF.UserModel.IBody#getPartType()
         </member>
@@ -6843,15 +6850,19 @@
             Sketch of XWPF header class
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFHeader.Commit">
-            save and Commit footer
+            <summary>
+            Save and commit footer
+            </summary>
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFHeader.OnDocumentRead">
-            Reads the document
-            @throws IOException 
+            <summary>
+            Read the document
+            </summary>
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFHeader.GetPartType">
+        <member name="P:NPOI.XWPF.UserModel.XWPFHeader.PartType">
+            <summary>
             Get the PartType of the body
-            @see NPOI.XWPF.UserModel.IBody#getPartType()
+            </summary>
         </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFHyperlink">
                  * Sketch of XWPF hyperlink class
@@ -7193,15 +7204,6 @@
              sub-paragraph that correspond to character text
              runs, and builds the appropriate runs for these.
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetText">
-            Return the textual content of the paragraph, including text from pictures
-            in it.
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetStyleID">
-            Return styleID of the paragraph if style exist for this paragraph
-            if not, null will be returned     
-            @return		styleID as String
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetNumID">
             If style exist for this paragraph
             NumId of the paragraph will be returned.
@@ -7218,10 +7220,6 @@
             </summary>
             <param name="numId"></param>
             <param name="ilvl"></param>
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetParagraphText">
-            Returns the text of the paragraph, but not of any objects in the
-            paragraph
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetPictureText">
             Returns any text from any suitable pictures in the paragraph
@@ -7439,24 +7437,6 @@
              @param pageBreak -
                               bool value
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.SetSpacingAfter(System.Int32)">
-             Specifies the spacing that should be Added After the last line in this
-             paragraph in the document in absolute units.
-             <p>
-             If the AfterLines attribute or the AfterAutoSpacing attribute is also
-             specified, then this attribute value is ignored.
-             </p>
-            
-             @param spaces -
-                           a positive whole number, whose contents consist of a
-                           measurement in twentieths of a point.
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetSpacingAfter">
-             Specifies the spacing that should be Added After the last line in this
-             paragraph in the document in absolute units.
-            
-             @return int - value representing the spacing After the paragraph
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.SetSpacingAfterLines(System.Int32)">
              Specifies the spacing that should be Added After the last line in this
              paragraph in the document in line units.
@@ -7535,121 +7515,6 @@
              @see LineSpacingRule
              @see #setSpacingLineRule(LineSpacingRule)
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.SetIndentationLeft(System.Int32)">
-             Specifies the indentation which shall be placed between the left text
-             margin for this paragraph and the left edge of that paragraph's content
-             in a left to right paragraph, and the right text margin and the right
-             edge of that paragraph's text in a right to left paragraph
-             <p>
-             If this attribute is omitted, its value shall be assumed to be zero.
-             Negative values are defined such that the text is Moved past the text margin,
-             positive values Move the text inside the text margin.
-             </p>
-            
-             @param indentation
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetIndentationLeft">
-             Specifies the indentation which shall be placed between the left text
-             margin for this paragraph and the left edge of that paragraph's content
-             in a left to right paragraph, and the right text margin and the right
-             edge of that paragraph's text in a right to left paragraph
-             <p>
-             If this attribute is omitted, its value shall be assumed to be zero.
-             Negative values are defined such that the text is Moved past the text margin,
-             positive values Move the text inside the text margin.
-             </p>
-            
-             @return indentation or null if indentation is not Set
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.SetIndentationRight(System.Int32)">
-             Specifies the indentation which shall be placed between the right text
-             margin for this paragraph and the right edge of that paragraph's content
-             in a left to right paragraph, and the right text margin and the right
-             edge of that paragraph's text in a right to left paragraph
-             <p>
-             If this attribute is omitted, its value shall be assumed to be zero.
-             Negative values are defined such that the text is Moved past the text margin,
-             positive values Move the text inside the text margin.
-             </p>
-            
-             @param indentation
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetIndentationRight">
-             Specifies the indentation which shall be placed between the right text
-             margin for this paragraph and the right edge of that paragraph's content
-             in a left to right paragraph, and the right text margin and the right
-             edge of that paragraph's text in a right to left paragraph
-             <p>
-             If this attribute is omitted, its value shall be assumed to be zero.
-             Negative values are defined such that the text is Moved past the text margin,
-             positive values Move the text inside the text margin.
-             </p>
-            
-             @return indentation or null if indentation is not Set
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.SetIndentationHanging(System.Int32)">
-             Specifies the indentation which shall be Removed from the first line of
-             the parent paragraph, by moving the indentation on the first line back
-             towards the beginning of the direction of text flow.
-             This indentation is specified relative to the paragraph indentation which is specified for
-             all other lines in the parent paragraph.
-             <p>
-             The firstLine and hanging attributes are mutually exclusive, if both are specified, then the
-             firstLine value is ignored.
-             </p>
-            
-             @param indentation
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetIndentationHanging">
-             Specifies the indentation which shall be Removed from the first line of
-             the parent paragraph, by moving the indentation on the first line back
-             towards the beginning of the direction of text flow.
-             This indentation is
-             specified relative to the paragraph indentation which is specified for
-             all other lines in the parent paragraph.
-             The firstLine and hanging
-             attributes are mutually exclusive, if both are specified, then the
-             firstLine value is ignored.
-            
-             @return indentation or null if indentation is not Set
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.SetIndentationFirstLine(System.Int32)">
-             Specifies the Additional indentation which shall be applied to the first
-             line of the parent paragraph. This Additional indentation is specified
-             relative to the paragraph indentation which is specified for all other
-             lines in the parent paragraph.
-             The firstLine and hanging attributes are
-             mutually exclusive, if both are specified, then the firstLine value is
-             ignored.
-             If the firstLineChars attribute is also specified, then this
-             value is ignored. If this attribute is omitted, then its value shall be
-             assumed to be zero (if needed).
-            
-             @param indentation
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetIndentationFirstLine">
-             Specifies the Additional indentation which shall be applied to the first
-             line of the parent paragraph. This Additional indentation is specified
-             relative to the paragraph indentation which is specified for all other
-             lines in the parent paragraph.
-             The firstLine and hanging attributes are
-             mutually exclusive, if both are specified, then the firstLine value is
-             ignored.
-             If the firstLineChars attribute is also specified, then this
-             value is ignored.
-             If this attribute is omitted, then its value shall be
-             assumed to be zero (if needed).
-            
-             @return indentation or null if indentation is not Set
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.SetStyle(System.String)">
-            This method provides a style to the paragraph
-            This is useful when, e.g. an Heading style has to be assigned
-            @param newStyle
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetStyle">
-            @return  the style of the paragraph
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetCTPBrd(System.Boolean)">
             Get a <b>copy</b> of the currently used CTPBrd, if none is used, return
             a new instance.
@@ -7696,11 +7561,6 @@
             returns the part of the bodyElement
             @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetPartType">
-            returns the partType of the bodyPart which owns the bodyElement
-            
-            @see NPOI.XWPF.UserModel.IBody#getPartType()
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.AddRun(NPOI.XWPF.UserModel.XWPFRun)">
             Adds a new Run to the Paragraph
             
@@ -7710,6 +7570,19 @@
             return the XWPFRun-Element which owns the CTR Run-Element
             
             @param r
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.Text">
+            Return the textual content of the paragraph, including text from pictures
+            in it.
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.StyleID">
+            Return styleID of the paragraph if style exist for this paragraph
+            if not, null will be returned     
+            @return		styleID as String
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.ParagraphText">
+            Returns the text of the paragraph, but not of any objects in the
+            paragraph
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.FootnoteText">
              Returns the footnote text of the paragraph
@@ -7731,6 +7604,66 @@
             
              @return bool - if page break is Set
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.SpacingAfter">
+             Specifies the spacing that should be Added After the last line in this
+             paragraph in the document in absolute units.
+            
+             @return int - value representing the spacing After the paragraph
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.IndentationLeft">
+             Specifies the indentation which shall be placed between the left text
+             margin for this paragraph and the left edge of that paragraph's content
+             in a left to right paragraph, and the right text margin and the right
+             edge of that paragraph's text in a right to left paragraph
+             <p>
+             If this attribute is omitted, its value shall be assumed to be zero.
+             Negative values are defined such that the text is Moved past the text margin,
+             positive values Move the text inside the text margin.
+             </p>
+            
+             @return indentation or null if indentation is not Set
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.IndentationRight">
+             Specifies the indentation which shall be placed between the right text
+             margin for this paragraph and the right edge of that paragraph's content
+             in a left to right paragraph, and the right text margin and the right
+             edge of that paragraph's text in a right to left paragraph
+             <p>
+             If this attribute is omitted, its value shall be assumed to be zero.
+             Negative values are defined such that the text is Moved past the text margin,
+             positive values Move the text inside the text margin.
+             </p>
+            
+             @return indentation or null if indentation is not Set
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.IndentationHanging">
+             Specifies the indentation which shall be Removed from the first line of
+             the parent paragraph, by moving the indentation on the first line back
+             towards the beginning of the direction of text flow.
+             This indentation is
+             specified relative to the paragraph indentation which is specified for
+             all other lines in the parent paragraph.
+             The firstLine and hanging
+             attributes are mutually exclusive, if both are specified, then the
+             firstLine value is ignored.
+            
+             @return indentation or null if indentation is not Set
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.IndentationFirstLine">
+             Specifies the Additional indentation which shall be applied to the first
+             line of the parent paragraph. This Additional indentation is specified
+             relative to the paragraph indentation which is specified for all other
+             lines in the parent paragraph.
+             The firstLine and hanging attributes are
+             mutually exclusive, if both are specified, then the firstLine value is
+             ignored.
+             If the firstLineChars attribute is also specified, then this
+             value is ignored.
+             If this attribute is omitted, then its value shall be
+             assumed to be zero (if needed).
+            
+             @return indentation or null if indentation is not Set
+        </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.IsWordWrap">
              This element specifies whether a consumer shall break Latin text which
              exceeds the text extents of a line by breaking the word across two lines
@@ -7739,9 +7672,17 @@
             
              @return bool
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.Style">
+            @return  the style of the paragraph
+        </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.ElementType">
             returns the type of the BodyElement Paragraph
             @see NPOI.XWPF.UserModel.IBodyElement#getElementType()
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.PartType">
+            returns the partType of the bodyPart which owns the bodyElement
+            
+            @see NPOI.XWPF.UserModel.IBody#getPartType()
         </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFPicture">
             @author Philipp Epp
@@ -8017,9 +7958,6 @@
         <member name="M:NPOI.XWPF.UserModel.XWPFTable.GetCTTbl">
             @return ctTbl object
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFTable.GetText">
-            @return text
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTable.AddNewCol">
             add a new column for each row in this table
         </member>
@@ -8055,13 +7993,12 @@
             returns the part of the bodyElement
             @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFTable.GetPartType">
-            returns the partType of the bodyPart which owns the bodyElement
-            @see NPOI.XWPF.UserModel.IBody#getPartType()
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTable.GetRow(NPOI.OpenXmlFormats.Wordprocessing.CT_Row)">
             returns the XWPFRow which belongs to the CTRow row
             if this row is not existing in the table null will be returned
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFTable.Text">
+            @return text
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFTable.Width">
             @return width value
@@ -8076,6 +8013,10 @@
         <member name="P:NPOI.XWPF.UserModel.XWPFTable.ElementType">
             returns the type of the BodyElement Table
             @see NPOI.XWPF.UserModel.IBodyElement#getElementType()
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFTable.PartType">
+            returns the partType of the bodyPart which owns the bodyElement
+            @see NPOI.XWPF.UserModel.IBody#getPartType()
         </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFTableCell">
              XWPFTableCell class.
@@ -8140,9 +8081,6 @@
             
             @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFTableCell.GetPartType">
-            @see NPOI.XWPF.UserModel.IBody#getPartType()
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTableCell.GetTable(NPOI.OpenXmlFormats.Wordprocessing.CT_Tbl)">
             Get a table by its CTTbl-Object
             @see NPOI.XWPF.UserModel.IBody#getTable(org.Openxmlformats.schemas.wordProcessingml.x2006.main.CTTbl)
@@ -8163,6 +8101,9 @@
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFTableCell.Paragraphs">
             returns a list of paragraphs
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFTableCell.PartType">
+            @see NPOI.XWPF.UserModel.IBody#getPartType()
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFTableCell.Tables">
             @see NPOI.XWPF.UserModel.IBody#getTables()
