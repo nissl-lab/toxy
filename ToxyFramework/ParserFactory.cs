@@ -13,7 +13,7 @@ namespace Toxy
 
         static ParserFactory()
         {
-            var typeTxt=new List<Type>();
+            var typeTxt = new List<Type>();
             typeTxt.Add(typeof(PlainTextParser));
             parserMapping.Add(".txt", typeTxt);
 
@@ -34,13 +34,14 @@ namespace Toxy
             var typeDocx = new List<Type>();
             typeDocx.Add(typeof(WordParser));
             parserMapping.Add(".docx", typeDocx);
-            
+
             var typeRtf = new List<Type>();
             typeRtf.Add(typeof(WordParser));
             parserMapping.Add(".rtf", typeRtf);
 
             var typeHtml = new List<Type>();
             typeHtml.Add(typeof(PlainTextParser));
+            typeHtml.Add(typeof(HtmlParser));
             parserMapping.Add(".html", typeHtml);
             parserMapping.Add(".htm", typeHtml);
 
@@ -58,8 +59,8 @@ namespace Toxy
         }
         static object CreateObject(ParserContext context, Type itype)
         {
-             string ext = GetFileExtention(context.Path);
-            var types= parserMapping[ext];
+            string ext = GetFileExtention(context.Path);
+            var types = parserMapping[ext];
             object obj = null;
             bool isFound = false;
             foreach (Type type in types)
@@ -83,7 +84,7 @@ namespace Toxy
         }
         public static ISpreadsheetParser CreateSpreadsheet(ParserContext context)
         {
-            object obj = CreateObject(context, typeof(ISpreadsheetParser)); 
+            object obj = CreateObject(context, typeof(ISpreadsheetParser));
             ISpreadsheetParser parser = (ISpreadsheetParser)obj;
             return parser;
         }
@@ -92,6 +93,13 @@ namespace Toxy
         {
             object obj = CreateObject(context, typeof(IDocumentParser));
             IDocumentParser parser = (IDocumentParser)obj;
+            return parser;
+        }
+
+        public static IDomParser CreateDom(ParserContext context)
+        {
+            object obj = CreateObject(context, typeof(IDomParser));
+            IDomParser parser = (IDomParser)obj;
             return parser;
         }
     }
