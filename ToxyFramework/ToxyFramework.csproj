@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\NPOI\dotnet2\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -61,6 +65,8 @@
   <ItemGroup>
     <Compile Include="3rdParty\EMLReader.cs" />
     <Compile Include="Entities\ToxyDom.cs" />
+    <Compile Include="Parsers\HtmlParser.cs" />
+    <Compile Include="Parsers\IDomParser.cs" />
     <Compile Include="Parsers\IEmailParser.cs" />
     <Compile Include="Parsers\IDocumentParser.cs" />
     <Compile Include="Entities\IToxyProperties.cs" />

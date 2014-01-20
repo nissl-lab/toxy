@@ -25,6 +25,10 @@ namespace Toxy.Test
         {
             return GetFilePath(filename, "txt");
         }
+        public static string GetHtmlPath(string filename)
+        {
+            return GetFilePath(filename, "Html");
+        }
 
         public static string GetFilePath(string filename, string subFolder)
         {
