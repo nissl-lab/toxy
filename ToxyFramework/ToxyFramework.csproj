@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="3rdParty\EMLReader.cs" />
+    <Compile Include="Entities\ToxyBusinessCard.cs" />
     <Compile Include="Entities\ToxyDom.cs" />
     <Compile Include="Parsers\HtmlParser.cs" />
     <Compile Include="Parsers\IDomParser.cs" />

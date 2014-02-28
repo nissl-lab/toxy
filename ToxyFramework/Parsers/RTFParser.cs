@@ -4,8 +4,18 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    class RTFParser
+    public class RTFParser : ITextParser
     {
 
+        public string Parse()
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual ParserContext Context
+        {
+            get;
+            set;
+        }
     }
 }
