@@ -1,0 +1,2873 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Thought.vCards</name>
+    </assembly>
+    <members>
+        <member name="T:Thought.vCards.vCardSocialProfile">
+            <summary>
+               IM info  <see cref="T:Thought.vCards.vCard"/>.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardSocialProfile.#ctor">
+            <summary>
+                Creates a new <see cref="T:Thought.vCards.vCardIMPP"/> object.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardSocialProfile.#ctor(System.String,Thought.vCards.SocialProfileServiceType,System.String)">
+            <summary>
+                Creates a new <see cref="T:Thought.vCards.vCardIMPP"/> object with the specified handle.
+            </summary>
+            <param name="username">the social profile username handle</param>
+            <param name="serviceType">Facebook, Twitter, Flickr, etc</param>
+            <param name="fullProfileUrl">the full url for the profile =&gt; http://twitter.com/username </param>
+        </member>
+        <member name="P:Thought.vCards.vCardSocialProfile.ProfileUrl">
+            <summary>
+            the full profile url of the socialProfile (http://twitter.com/username)
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardSocialProfile.Username">
+            <summary>
+                The username on the socialProfile
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardSocialProfile.ServiceType">
+            <summary>
+            the IMServiceType AIM, googletalk, etc
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.SocialProfileServiceType">
+            <summary>
+            simple enum for various types of SocialProfile services
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.SocialProfileServiceType.Unspecified">
+            <summary>
+            unspecified
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.SocialProfileServiceType.Facebook">
+            <summary>
+            Facebook
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.SocialProfileServiceType.LinkedIn">
+            <summary>
+            LinkedIn
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.SocialProfileServiceType.Twitter">
+            <summary>
+            Twitter
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.SocialProfileServiceType.Flickr">
+            <summary>
+            Flickr
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.SocialProfileServiceType.Myspace">
+            <summary>
+            Myspace
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.SocialProfileTypeUtils">
+            <summary>
+            utisl to handle string to enum conversion in one spot for SocialProfile types
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.SocialProfileTypeUtils.GetSocialProfileServiceType(System.String)">
+            <summary>
+            for parsing the type string
+            </summary>
+            <param name="profileType"></param>
+            <returns>nullable ServiceType for matching string of serviceType</returns>
+        </member>
+        <member name="M:Thought.vCards.SocialProfileTypeUtils.GetSocialProfileServicePropertyType(Thought.vCards.SocialProfileServiceType)">
+            <summary>
+            for returning the socialProfile type string that will be used in the type=twitter for reading socialProfile vCard data
+            </summary>
+            <param name="serviceType">the SocialProfile Type to get the lowercase string for to include in the type value</param>
+            <returns>facebook,twitter,etc</returns>
+        </member>
+        <member name="T:Thought.vCards.vCardSocialProfileCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardSocialProfile"/> objects.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardIMPP">
+            <summary>
+               IM info  <see cref="T:Thought.vCards.vCard"/>.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardIMPP.#ctor">
+            <summary>
+                Creates a new <see cref="T:Thought.vCards.vCardIMPP"/> object.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardIMPP.#ctor(System.String,Thought.vCards.IMServiceType,Thought.vCards.ItemType)">
+            <summary>
+                Creates a new <see cref="T:Thought.vCards.vCardIMPP"/> object with the specified handle.
+            </summary>
+            <param name="handle">the im handle</param>
+            <param name="serviceType">skype, aim, etc</param>
+            <param name="itemType">the type of IM, defaults to Unspecified</param>
+        </member>
+        <member name="P:Thought.vCards.vCardIMPP.Handle">
+            <summary>
+                The full IM handle.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardIMPP.ServiceType">
+            <summary>
+            the IMServiceType AIM, googletalk, etc
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardIMPP.ItemType">
+            <summary>
+                The IM ItemType. home work, unspecified
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardIMPP.IsPreferred">
+            <summary>
+            is PREF set on this IMPP item
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.IMServiceType">
+            <summary>
+            simple enum for various types of IM services
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.Unspecified">
+            <summary>
+            unspecified
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.Skype">
+            <summary>
+            for Skype
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.AIM">
+            <summary>
+            aim
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.GoogleTalk">
+            <summary>
+            gtalk
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.MSN">
+            <summary>
+            msn
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.Yahoo">
+            <summary>
+            yahoo
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.Facebook">
+            <summary>
+            facebook
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.Jabber">
+            <summary>
+            jabber
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.ICQ">
+            <summary>
+            icq
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.QQ">
+            <summary>
+            qq
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.IMServiceType.GaduGadu">
+            <summary>
+            gadu gadu
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.IMTypeUtils">
+            <summary>
+            simple class to generate the strings for given IMServiceType
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.IMTypeUtils.GetIMTypePropertyFull(Thought.vCards.IMServiceType)">
+            <summary>
+            will return the property meta info to be written for a given IM serviceType
+            </summary>
+            
+            <param name="serviceType">IMServiceType to get the subproperty info for </param>
+            <returns>for example GoogleTalk:xmpp, or for yahoo Yahoo:ymsgr</returns>
+        </member>
+        <member name="M:Thought.vCards.IMTypeUtils.GetIMTypePropertySuffix(Thought.vCards.IMServiceType)">
+            <summary>
+            returns the xmpp or aim or ymsgr portion of the lookup for AIM:aim, Yahoo:ysmgr, etc
+            </summary>
+            <param name="serviceType">IMServiceType  to fetch the lookup for</param>
+            <returns>xmpp or msnim</returns>
+        </member>
+        <member name="M:Thought.vCards.IMTypeUtils.GetIMTypePropertyPrefix(Thought.vCards.IMServiceType)">
+            <summary>
+            this method will return the first part of the AIM:aim , or MSN:msnim string used for writing out the property subproperty info for IMPP values
+            </summary>
+            <param name="serviceType">the IM service type to fetch from the dictionary</param>
+            <returns>AIM or QQ or Yahoo, the first string component for the lookup of serviceTypes</returns>
+        </member>
+        <member name="M:Thought.vCards.IMTypeUtils.StripHandlePrefix(Thought.vCards.IMServiceType,System.String)">
+            <summary>
+            the handle is coming back with the msnim:handle, so we want to return the pure handle minus the msnim:
+            </summary>
+            <param name="serviceType"></param>
+            <param name="handle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Thought.vCards.IMTypeUtils.GetIMServiceType(System.String)">
+            <summary>
+            for parsing the 
+            </summary>
+            <param name="imType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Thought.vCards.vCard">
+            <summary>
+                A vCard object for exchanging personal contact information.
+            </summary>
+            <remarks>
+                <para>
+                    A vCard contains personal information, such as postal
+                    addresses, public security certificates, email addresses, and
+                    web sites.  The vCard specification makes it possible for
+                    different computer programs to exchange personal contact
+                    information; for example, a vCard can be attached to an email or
+                    sent over a wireless connection.
+                </para>
+                <para>
+                    The standard vCard format is a text file with properties in
+                    name:value format.  However, there are multiple versions of
+                    this format as well as compatible alternatives in XML and
+                    HTML formats.  This class library aims to accomodate these
+                    variations but be aware some some formats do not support
+                    all possible properties.
+                </para>
+            </remarks>
+        </member>
+        <member name="M:Thought.vCards.vCard.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Thought.vCards.vCard"/> class.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCard.#ctor(System.IO.TextReader)">
+            <summary>
+                Loads a new instance of the <see cref="T:Thought.vCards.vCard"/> class
+                from a text reader.
+            </summary>
+            <param name="input">
+                An initialized text reader.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCard.#ctor(System.String)">
+            <summary>
+                Loads a new instance of the <see cref="T:Thought.vCards.vCard"/> class
+                from a text file.
+            </summary>
+            <param name="path">
+                The path to a text file containing vCard data in
+                any recognized vCard format.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCard.ToString">
+            <summary>
+                Builds a string that represents the vCard.
+            </summary>
+            <returns>
+                The formatted name of the contact person, if defined,
+                or the default object.ToString().
+            </returns>
+        </member>
+        <member name="P:Thought.vCards.vCard.AccessClassification">
+            <summary>
+                The security access classification of the vCard owner (e.g. private).
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.AdditionalNames">
+            <summary>
+                Any additional (e.g. middle) names of the person.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.FamilyName"/>
+            <seealso cref="P:Thought.vCards.vCard.FormattedName"/>
+            <seealso cref="P:Thought.vCards.vCard.GivenName"/>
+            <seealso cref="P:Thought.vCards.vCard.Nicknames"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.BirthDate">
+            <summary>
+                The birthdate of the person.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.Categories">
+            <summary>
+                Categories of the vCard.
+            </summary>
+            <remarks>
+                This property is a collection of strings containing
+                keywords or category names.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCard.Certificates">
+            <summary>
+                Public key certificates attached to the vCard.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardCertificate"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.DeliveryAddresses">
+            <summary>
+                Delivery addresses associated with the person.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.DeliveryLabels">
+            <summary>
+                Formatted delivery labels.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.Department">
+            <summary>
+                The department of the person in the organization.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.Office"/>
+            <seealso cref="P:Thought.vCards.vCard.Organization"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.DisplayName">
+            <summary>
+                The display name of the vCard.
+            </summary>
+            <remarks>
+                This property is used by vCard applications for titles,
+                headers, and other visual elements.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCard.EmailAddresses">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardEmailAddress"/> objects for the person.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardEmailAddress"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.FamilyName">
+            <summary>
+                The family (last) name of the person.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.AdditionalNames"/>
+            <seealso cref="P:Thought.vCards.vCard.FormattedName"/>
+            <seealso cref="P:Thought.vCards.vCard.GivenName"/>
+            <seealso cref="P:Thought.vCards.vCard.Nicknames"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.FormattedName">
+            <summary>
+                The formatted name of the person.
+            </summary>
+            <remarks>
+                This property allows the name of the person to be
+                written in a manner specific to his or her culture.
+                The formatted name is not required to strictly
+                correspond with the family name, given name, etc.
+            </remarks>
+            <seealso cref="P:Thought.vCards.vCard.AdditionalNames"/>
+            <seealso cref="P:Thought.vCards.vCard.FamilyName"/>
+            <seealso cref="P:Thought.vCards.vCard.GivenName"/>
+            <seealso cref="P:Thought.vCards.vCard.Nicknames"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.Gender">
+            <summary>
+                The gender of the person.
+            </summary>
+            <remarks>
+                The vCard specification does not define a property
+                to indicate the gender of the contact.  Microsoft
+                Outlook implements it as a custom property named
+                X-WAB-GENDER.
+            </remarks>
+            <seealso cref="T:Thought.vCards.vCardGender"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.GivenName">
+            <summary>
+                The given (first) name of the person.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.AdditionalNames"/>
+            <seealso cref="P:Thought.vCards.vCard.FamilyName"/>
+            <seealso cref="P:Thought.vCards.vCard.FormattedName"/>
+            <seealso cref="P:Thought.vCards.vCard.Nicknames"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.Latitude">
+            <summary>
+                The latitude of the person in decimal degrees.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.Longitude"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.Longitude">
+            <summary>
+                The longitude of the person in decimal degrees.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.Latitude"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.Mailer">
+            <summary>
+                The mail software used by the person.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.NamePrefix">
+            <summary>
+                The prefix (e.g. "Mr.") of the person.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.NameSuffix"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.NameSuffix">
+            <summary>
+                The suffix (e.g. "Jr.") of the person.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.NamePrefix"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.Nicknames">
+            <summary>
+                A collection of nicknames for the person.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.AdditionalNames"/>
+            <seealso cref="P:Thought.vCards.vCard.FamilyName"/>
+            <seealso cref="P:Thought.vCards.vCard.FormattedName"/>
+            <seealso cref="P:Thought.vCards.vCard.GivenName"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.Notes">
+            <summary>
+                A collection of notes or comments.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.Office">
+            <summary>
+                The office of the person at the organization.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.Department"/>
+            <seealso cref="P:Thought.vCards.vCard.Organization"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.Organization">
+            <summary>
+                The organization or company of the person.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.Office"/>
+            <seealso cref="P:Thought.vCards.vCard.Role"/>
+            <seealso cref="P:Thought.vCards.vCard.Title"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.Phones">
+            <summary>
+                A collection of telephone numbers.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.Photos">
+            <summary>
+                A collection of photographic images embedded or 
+                referenced by the vCard.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.ProductId">
+            <summary>
+                The name of the product that generated the vCard.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.RevisionDate">
+            <summary>
+                The revision date of the vCard.
+            </summary>
+            <remarks>
+                The revision date is not automatically updated by the
+                vCard when modifying properties.  It is up to the 
+                developer to change the revision date as needed.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCard.Role">
+            <summary>
+                The role of the person (e.g. Executive).
+            </summary>
+            <remarks>
+                The role is shown as "Profession" in Microsoft Outlook.
+            </remarks>
+            <seealso cref="P:Thought.vCards.vCard.Department"/>
+            <seealso cref="P:Thought.vCards.vCard.Office"/>
+            <seealso cref="P:Thought.vCards.vCard.Organization"/>
+            <seealso cref="P:Thought.vCards.vCard.Title"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.Sources">
+            <summary>
+                Directory sources for the vCard information.
+            </summary>
+            <remarks>
+                A vCard may contain zero or more sources.  A source
+                identifies a directory that contains (or provided)
+                information found in the vCard.  A program can
+                hypothetically connect to the source in order to
+                obtain updated information.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCard.TimeZone">
+            <summary>
+                A string identifying the time zone of the entity
+                represented by the vCard.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.Title">
+            <summary>
+                The job title of the person.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCard.Organization"/>
+            <seealso cref="P:Thought.vCards.vCard.Role"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.UniqueId">
+            <summary>
+                A value that uniquely identifies the vCard.
+            </summary>
+            <remarks>
+                This value is optional.  The string must be any string
+                that can be used to uniquely identify the vCard.  The
+                usage of the field is determined by the software.  Typical
+                possibilities for a unique string include a URL, a GUID,
+                or an LDAP directory path.  However, there is no particular
+                standard dictated by the vCard specification.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCard.Websites">
+            <summary>
+                Web sites associated with the person.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardWebsite"/>
+            <seealso cref="T:Thought.vCards.vCardWebsiteCollection"/>
+        </member>
+        <member name="P:Thought.vCards.vCard.IMs">
+            <summary>
+            IMPP Collection 
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCard.SocialProfiles">
+            <summary>
+            SocialProfile collection for the vCard in the X-SOCIALPROFILE property
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardAccessClassification">
+            <summary>
+                The access classification of a vCard.
+            </summary>
+            <remarks>
+                The access classification defines the intent of the vCard owner.
+            </remarks>
+        </member>
+        <member name="F:Thought.vCards.vCardAccessClassification.Unknown">
+            <summary>
+                The vCard classification is unknown.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardAccessClassification.Public">
+            <summary>
+                The vCard is classified as public.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardAccessClassification.Private">
+            <summary>
+                The vCard is classified as private.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardAccessClassification.Confidential">
+            <summary>
+                The vCard is classified as confidential.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardCertificate">
+            <summary>
+                A certificate attached to a vCard.
+            </summary>
+            <remarks>
+                <para>
+                    A vCard can be associated with a public key or
+                    authentication certificate.  This is typically
+                    a public X509 certificate that allows people to
+                    use the key for validating messages.
+                </para>
+            </remarks>
+        </member>
+        <member name="M:Thought.vCards.vCardCertificate.#ctor">
+            <summary>
+                Creates a new instance of the <see cref="T:Thought.vCards.vCardCertificate"/> class.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardCertificate.#ctor(System.String,System.Byte[])">
+            <summary>
+                Creates a new instance of the <see cref="T:Thought.vCards.vCardCertificate"/>
+                class using the specified key type and raw certificate data.
+            </summary>
+            <param name="keyType">
+                A string that identifies the type of certificate,
+                such as X509.
+            </param>
+            <param name="data">
+                The raw certificate data stored as a byte array.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardCertificate.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+                Creates a vCard certificate based on an X509 certificate.
+            </summary>
+            <param name="x509">
+                An initialized X509 certificate.
+            </param>
+        </member>
+        <member name="P:Thought.vCards.vCardCertificate.Data">
+            <summary>
+                The raw data of the certificate as a byte array.
+            </summary>
+            <remarks>
+                Most certificates consist of 8-bit binary data
+                that is encoded into a text format using BASE64
+                or a similar system.  This property provides
+                access to the computer-friendly, decoded data.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCardCertificate.KeyType">
+            <summary>
+                A short string that identifies the type of certificate.
+            </summary>
+            <remarks>
+                The most common type is X509.
+            </remarks>
+        </member>
+        <member name="T:Thought.vCards.vCardCertificateCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardCertificate"/> objects.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardCollection">
+            <summary>
+                A generic collection of <see cref="T:Thought.vCards.vCard"/> objects.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardDeliveryLabel">
+            <summary>
+                A formatted delivery label.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardDeliveryAddress"/>
+            <seealso cref="T:Thought.vCards.vCardDeliveryLabelCollection"/>
+        </member>
+        <member name="M:Thought.vCards.vCardDeliveryLabel.#ctor">
+            <summary>
+                Initializes a new <see cref="T:Thought.vCards.vCardDeliveryLabel"/>.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardDeliveryLabel.#ctor(System.String)">
+            <summary>
+                Initializes a new <see cref="T:Thought.vCards.vCardDeliveryLabel"/> to
+                the specified text.
+            </summary>
+            <param name="text">
+                The formatted text of a delivery label.  The label 
+                may contain carriage returns, line feeds, and other
+                control characters.
+            </param>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryLabel.AddressType">
+            <summary>
+                The type of postal address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryLabel.IsDomestic">
+            <summary>
+                Indicates a domestic delivery address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryLabel.IsHome">
+            <summary>
+                Indicates a home address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryLabel.IsInternational">
+            <summary>
+                Indicates an international address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryLabel.IsParcel">
+            <summary>
+                Indicates a parcel delivery address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryLabel.IsPostal">
+            <summary>
+                Indicates a postal address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryLabel.IsWork">
+            <summary>
+                Indicates a work address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryLabel.IsPreferred">
+            <summary>
+                Indicates a preferred address
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryLabel.Text">
+            <summary>
+                The formatted delivery text.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardDeliveryLabelCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardDeliveryLabel"/> objects.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardEmailAddress">
+            <summary>
+                An email address in a <see cref="T:Thought.vCards.vCard"/>.
+            </summary>
+            <remarks>
+                Most vCard email addresses are Internet email addresses.  However,
+                the vCard specification allows other email address formats,
+                such as CompuServe and X400.  Unless otherwise specified, an
+                address is assumed to be an Internet address.
+            </remarks>
+            <seealso cref="T:Thought.vCards.vCardEmailAddressCollection"/>
+            <seealso cref="T:Thought.vCards.vCardEmailAddressType"/>
+        </member>
+        <member name="M:Thought.vCards.vCardEmailAddress.#ctor">
+            <summary>
+                Creates a new <see cref="T:Thought.vCards.vCardEmailAddress"/>.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardEmailAddress.#ctor(System.String,Thought.vCards.vCardEmailAddressType,Thought.vCards.ItemType)">
+            <summary>
+                Creates a new Internet <see cref="T:Thought.vCards.vCardEmailAddress"/>.
+            </summary>
+            <param name="address">
+                The Internet email address.
+            </param>
+            <param name="emailType">type of address, usually Internet. Internet is the default.</param>
+            <param name="itemType">HOME,WORK, unspecified</param>
+        </member>
+        <member name="M:Thought.vCards.vCardEmailAddress.ToString">
+            <summary>
+                Builds a string that represents the email address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardEmailAddress.Address">
+            <summary>
+                The email address.
+            </summary>
+            <remarks>
+                The format of the email address is not validated by the class.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCardEmailAddress.EmailType">
+            <summary>
+                The email address type.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardEmailAddress.IsPreferred">
+            <summary>
+                Indicates a preferred (top priority) email address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardEmailAddress.ItemType">
+            <summary>
+            ItemType for this element (HOME,WORK,etc)
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardEmailAddressCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardEmailAddress"/> objects.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardEmailAddress"/>
+            <seealso cref="T:Thought.vCards.vCardEmailAddressType"/>
+        </member>
+        <member name="M:Thought.vCards.vCardEmailAddressCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Thought.vCards.vCardEmailAddressCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardEmailAddressCollection.GetFirstChoice(Thought.vCards.vCardEmailAddressType)">
+            <summary>
+                Locates the first email address of the specified type while 
+                giving preference to email addresses marked as preferred.
+            </summary>
+            <param name="emailType">
+                The type of email address to locate.  This can be any 
+                combination of values from <see cref="T:Thought.vCards.vCardEmailAddressType"/>.
+            </param>
+            <returns>
+                The function returns the first preferred email address that matches
+                the specified type.  If the collection does not contain a preferred
+                email address, then it will return the first non-preferred matching
+                email address.  The function returns null if no matches were found.
+            </returns>
+        </member>
+        <member name="T:Thought.vCards.vCardEmailAddressType">
+            <summary>
+                Identifies the type of email address in a vCard.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardEmailAddress"/>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.Internet">
+            <summary>
+                An Internet (SMTP) mail (default) address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.AOL">
+            <summary>
+                An America On-Line email address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.AppleLink">
+            <summary>
+                An AppleLink email address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.AttMail">
+            <summary>
+                An AT&amp;T Mail email address
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.CompuServe">
+            <summary>
+                A CompuServe Information Service (CIS) email address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.eWorld">
+            <summary>
+                An eWorld email address.
+            </summary>
+            <remarks>
+                eWorld was an online service by Apple Computer in the mid 1990s.
+                It was officially shut down on March 31, 1996.
+            </remarks>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.IBMMail">
+            <summary>
+                An IBM Mail email address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.MCIMail">
+            <summary>
+                An MCI Mail email address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.PowerShare">
+            <summary>
+                A PowerShare email address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.Prodigy">
+            <summary>
+                A Prodigy Information Service email address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.Telex">
+            <summary>
+                A telex email address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEmailAddressType.X400">
+            <summary>
+                An X.400 service email address.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.ItemType">
+            <summary>
+            Identifies the HOME,WORK,ETC typing of an element
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.ItemType.UNSPECIFIED">
+            <summary>
+            default - unknown
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.ItemType.WORK">
+            <summary>
+            work
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.ItemType.HOME">
+            <summary>
+            home
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardEncoding">
+            <summary>
+                The encoding used to store a vCard property value in text format.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEncoding.Unknown">
+            <summary>
+                Unknown or no encoding.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEncoding.Escaped">
+            <summary>
+                Standard escaped text.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEncoding.Base64">
+            <summary>
+              Binary or BASE64 encoding.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardEncoding.QuotedPrintable">
+            <summary>
+                Quoted-Printable encoding.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardException">
+            <summary>
+                Base class for <see cref="T:Thought.vCards.vCard"/>-specific exceptions.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardException.#ctor">
+            <summary>
+                Initializes a new instance of the vCardException class.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the vCardException
+                class with the specified error message.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the vCardException
+                class with a specified error message and a reference
+                to the inner exception that is the cause of the
+                exception.
+            </summary>
+            <param name="message">
+                The error message that explains the reason for the exception.
+            </param>
+            <param name="innerException">
+                The exception that is the cause of the current exception,
+                or a null reference (Nothing in Visual Basic) if no
+                inner exception is specified.
+            </param>
+        </member>
+        <member name="T:Thought.vCards.vCardFormat">
+            <summary>
+                Identifies different vCard formats.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardFormat.Text">
+            <summary>
+                Standard text format.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardFormat.JabberXml">
+            <summary>
+                Jabber XML format (not implemented yet).
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardFormat.Rdf">
+            <summary>
+                RDF format (not implemented yet).
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardFormat.hCard">
+            <summary>
+                hCard microformat (not implemented yet).
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardIMPPCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardIMPP"/> objects.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardNote">
+            <summary>
+                A note or comment in a vCard.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardNote.#ctor">
+            <summary>
+                Initializes a new vCard note.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardNote.#ctor(System.String)">
+            <summary>
+                Initializes a new vCard note with the specified text.
+            </summary>
+            <param name="text">
+                The text of the note or comment.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardNote.ToString">
+            <summary>
+                Returns the text of the note.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardNote.Language">
+            <summary>
+                The language of the note.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardNote.Text">
+            <summary>
+                The text of the note.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardNoteCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardNote"/> objects.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardNoteCollection.#ctor">
+            <summary>
+               Initializes a new instance of the <see cref="T:Thought.vCards.vCardNoteCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardNoteCollection.Add(System.String)">
+            <summary>
+                Adds a new note to the collection.
+            </summary>
+            <param name="text">
+                The text of the note.
+            </param>
+            <returns>
+                The <see cref="T:Thought.vCards.vCardNote"/> object representing the note.
+            </returns>
+        </member>
+        <member name="T:Thought.vCards.vCardDeliveryAddressTypes">
+            <summary>
+                The type of a delivery address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardDeliveryAddressTypes.Default">
+            <summary>
+                Default address settings.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardDeliveryAddressTypes.Domestic">
+            <summary>
+                A domestic delivery address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardDeliveryAddressTypes.International">
+            <summary>
+                An international delivery address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardDeliveryAddressTypes.Postal">
+            <summary>
+                A postal delivery address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardDeliveryAddressTypes.Parcel">
+            <summary>
+                A parcel delivery address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardDeliveryAddressTypes.Home">
+            <summary>
+                A home delivery address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardDeliveryAddressTypes.Work">
+            <summary>
+                A work delivery address.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardDeliveryAddressTypes.Preferred">
+            <summary>
+            you can mark an address as Preferred type="pref" 
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardGender">
+            <summary>
+                The gender (male or female) of the contact.
+            </summary>
+            <remarks>
+                <para>
+                    Gender is not directly supported by the vCard specification.
+                    It is recognized by Microsoft Outlook and the Windows Address
+                    Book through an extended property called X-WAB-GENDER.  This
+                    property has a value of 1 for women and 2 for men.
+                </para>
+            </remarks>
+            <seealso cref="P:Thought.vCards.vCard.Gender"/>
+        </member>
+        <member name="F:Thought.vCards.vCardGender.Unknown">
+            <summary>
+                Unknown gender.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardGender.Female">
+            <summary>
+                Female gender.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardGender.Male">
+            <summary>
+                Male gender.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardPhone">
+            <summary>
+                Telephone information for a <see cref="T:Thought.vCards.vCard"/>.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneCollection"/>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="M:Thought.vCards.vCardPhone.#ctor">
+            <summary>
+                Creates a new <see cref="T:Thought.vCards.vCardPhone"/> object.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardPhone.#ctor(System.String)">
+            <summary>
+                Creates a new <see cref="T:Thought.vCards.vCardPhone"/> object with the specified number.
+            </summary>
+            <param name="fullNumber">
+                The phone number.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardPhone.#ctor(System.String,Thought.vCards.vCardPhoneTypes)">
+            <summary>
+                Creates a new <see cref="T:Thought.vCards.vCardPhone"/> with the specified number and subtype.
+            </summary>
+            <param name="fullNumber">The phone number.</param>
+            <param name="phoneType">The phone subtype.</param>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.FullNumber">
+            <summary>
+                The full telephone number.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsBBS">
+            <summary>
+                Indicates a BBS number.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCardPhone.IsModem"/>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsCar">
+            <summary>
+                Indicates a car number.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsCellular">
+            <summary>
+                Indicates a cellular number.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsiPhone">
+            <summary>
+                Indicates an iphone
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsMain">
+            <summary>
+                Indicates a main number
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsFax">
+            <summary>
+                Indicates a fax number.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsHome">
+            <summary>
+                Indicates a home number.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCardPhone.IsWork"/>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsISDN">
+            <summary>
+                Indicates an ISDN number.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsMessagingService">
+            <summary>
+                Indicates a messaging service number.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsModem">
+            <summary>
+                Indicates a modem number.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCardPhone.IsBBS"/>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsPager">
+            <summary>
+                Indicates a pager number.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsPreferred">
+            <summary>
+                Indicates a preferred number.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsVideo">
+            <summary>
+                Indicates a video number.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsVoice">
+            <summary>
+                Indicates a voice number.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.IsWork">
+            <summary>
+                Indicates a work number.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCardPhone.IsHome"/>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhone.PhoneType">
+            <summary>
+                The phone subtype.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCardPhone.IsVideo"/>
+            <seealso cref="P:Thought.vCards.vCardPhone.IsVoice"/>
+            <seealso cref="P:Thought.vCards.vCardPhone.IsWork"/>
+        </member>
+        <member name="T:Thought.vCards.vCardPhoneCollection">
+            <summary>
+                A generic collection <see cref="T:Thought.vCards.vCardPhone"/> objects.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhone"/>
+            <seealso cref="T:Thought.vCards.vCardPhoneTypes"/>
+        </member>
+        <member name="M:Thought.vCards.vCardPhoneCollection.GetFirstChoice(Thought.vCards.vCardPhoneTypes)">
+            <summary>
+                Looks for the first phone of the specified
+                type that is a preferred phone.
+            </summary>
+            <param name="phoneType">
+                The type of phone to seek.
+            </param>
+            <returns>
+                The first <see cref="T:Thought.vCards.vCardPhone"/> that matches
+                the specified type.  A preferred number is returned
+                before a non-preferred number.
+            </returns>
+        </member>
+        <member name="T:Thought.vCards.vCardPhoto">
+            <summary>
+                A photo embedded in a vCard.
+            </summary>
+            <remarks>
+                <para>
+                    You must specify the photo using a path, a byte array,
+                    or a System.Drawing.Bitmap instance. The class will
+                    extract the underlying raw bytes for storage into the
+                    vCard.  You can call the <see cref="M:Thought.vCards.vCardPhoto.GetBitmap"/> function
+                    to create a new Windows bitmap object (e.g. for display
+                    on a form) or <see cref="M:Thought.vCards.vCardPhoto.GetBytes"/> to extract the raw
+                    bytes (e.g. for transmission from a web page).
+                </para>
+            </remarks>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoto.data">
+            <summary>
+                The raw bytes of the image data.
+            </summary>
+            <remarks>
+                The raw bytes can be passed directly to the photo object
+                or fetched from a file or remote URL.  A .NET bitmap object
+                can also be specified, in which case the constructor
+                will load the raw bytes from the bitmap.
+            </remarks>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoto.url">
+            <summary>
+                The url of the image.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardPhoto.#ctor(System.Byte[])">
+            <summary>
+                Loads a photograph from an array of bytes.
+            </summary>
+            <param name="buffer">
+                An array of bytes containing the raw data from
+                any of the supported image formats.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardPhoto.#ctor(System.Uri)">
+            <summary>
+                The URL of the image.
+            </summary>
+            <param name="url">
+                A URL pointing to an image.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardPhoto.#ctor(System.String)">
+            <summary>
+                Creates a new vCard photo from an image file.
+            </summary>
+            <param name="path">
+                The path to an image of any supported format.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardPhoto.#ctor(System.Drawing.Bitmap)">
+            <summary>
+                Creates a new vCard photo from an existing Bitmap object.
+            </summary>
+            <param name="bitmap">
+                A bitmap to be attached to the vCard as a photo.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardPhoto.Fetch">
+            <summary>
+                Fetches a linked image asynchronously.
+            </summary>
+            <remarks>
+                This is a simple utility method for accessing the image
+                referenced by the URL.  For asynchronous or advanced
+                loading you will need to download the image yourself
+                and load the bytes directly into the class.
+            </remarks>
+            <seealso cref="P:Thought.vCards.vCardPhoto.IsLoaded"/>
+            <seealso cref="P:Thought.vCards.vCardPhoto.Url"/>
+        </member>
+        <member name="M:Thought.vCards.vCardPhoto.GetBitmap">
+            <summary>
+                Creates a Bitmap object from the photo data.
+            </summary>
+            <remarks>
+                An initialized Bitmap object.  An exception is 
+                raised if the .NET framework is unable to identify
+                the format of the image data, or if the format
+                is not supported.
+            </remarks>
+        </member>
+        <member name="M:Thought.vCards.vCardPhoto.GetBytes">
+            <summary>
+                Returns a copy of the raw bytes of the image.
+            </summary>
+            <returns>
+                A byte array containing the raw bytes of the image.
+            </returns>
+            <remarks>
+                A copy of the raw bytes are returned.  Modifying the
+                array will not modify the photo.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCardPhoto.IsLoaded">
+            <summary>
+                Indicates the bytes of the raw image have
+                been loaded by the object.
+            </summary>
+            <seealso cref="M:Thought.vCards.vCardPhoto.Fetch"/>
+        </member>
+        <member name="P:Thought.vCards.vCardPhoto.HasEncodedData">
+            <summary>
+            property used to check if the data is already encoded in base64
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardPhoto.Url">
+            <summary>
+                The URL of the image.
+            </summary>
+            <remarks>
+                Changing the URL will automatically invalidate the internal
+                image data if previously fetched.
+            </remarks>
+            <seealso cref="M:Thought.vCards.vCardPhoto.Fetch"/>
+        </member>
+        <member name="T:Thought.vCards.vCardPhotoCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardPhoto"/> objects.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhoto"/>
+        </member>
+        <member name="M:Thought.vCards.vCardPhotoCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Thought.vCards.vCardPhotoCollection"/>.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardDeliveryAddress">
+            <summary>
+                A postal address.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardDeliveryAddressCollection"/>
+        </member>
+        <member name="M:Thought.vCards.vCardDeliveryAddress.#ctor">
+            <summary>
+                Creates a new delivery address object.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.AddressType">
+            <summary>
+                The type of postal address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.City">
+            <summary>
+                The city or locality of the address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.Country">
+            <summary>
+                The country name of the address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.IsDomestic">
+            <summary>
+                Indicates a domestic delivery address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.IsHome">
+            <summary>
+                Indicates a home address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.IsInternational">
+            <summary>
+                Indicates an international address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.IsParcel">
+            <summary>
+                Indicates a parcel delivery address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.IsPostal">
+            <summary>
+                Indicates a postal address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.IsWork">
+            <summary>
+                Indicates a work address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.IsPreferred">
+            <summary>
+                Indicates a preferred address
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.PostalCode">
+            <summary>
+                The postal code (e.g. ZIP code) of the address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.Region">
+            <summary>
+                The region (state or province) of the address.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardDeliveryAddress.Street">
+            <summary>
+                The street of the delivery address.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardDeliveryAddressCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardDeliveryAddress"/> objects.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardDeliveryAddress"/>
+        </member>
+        <member name="T:Thought.vCards.vCardProperty">
+            <summary>
+                A property of a <see cref="T:Thought.vCards.vCard"/>.
+            </summary>
+            <remarks>
+                <para>
+                    A vCard property specifies a single piece of information,
+                    such as an email address or telephone number.  A property
+                    can also specify meta-data like a revision number.  A full
+                    vCards is basically a collection of properties structured
+                    into a computer-friendly text format.
+                </para>
+                <para>
+                    A property has a name, a value, and optionally one or
+                    more subproperties.  A subproperty provides additional
+                    information about the property (such as the encoding 
+                    used to store the value).  The format of a value 
+                    depends on the property and in some cases may be broken
+                    into multiple values.
+                </para>
+            </remarks>
+            <seealso cref="T:Thought.vCards.vCardPropertyCollection"/>
+        </member>
+        <member name="M:Thought.vCards.vCardProperty.#ctor">
+            <summary>
+                Creates a blank <see cref="T:Thought.vCards.vCardProperty"/> object.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardProperty.#ctor(System.String)">
+            <summary>
+                Creates a <see cref="T:Thought.vCards.vCardProperty"/> object
+                with the specified name and a null value.
+            </summary>
+            <param name="name">
+                The name of the property.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardProperty.#ctor(System.String,System.String)">
+            <summary>
+                Creates a <see cref="T:Thought.vCards.vCardProperty"/> object with the
+                specified name and value.
+            </summary>
+            <remarks>
+                The vCard specification supports multiple values in
+                certain fields, such as the N field.  The value specified
+                in this constructor is loaded as the first value.
+            </remarks>
+        </member>
+        <member name="M:Thought.vCards.vCardProperty.#ctor(System.String,System.String,System.String)">
+            <summary>
+                Initializes a vCardProperty with the specified
+                name, value and group.
+            </summary>
+            <param name="name">
+                The name of the vCard property.
+            </param>
+            <param name="value">
+                The value of the vCard property.
+            </param>
+            <param name="group">
+                The group name of the vCard property.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardProperty.#ctor(System.String,System.Byte[])">
+            <summary>
+                Creates a <see cref="T:Thought.vCards.vCardProperty"/> with the
+                specified name and a byte array as a value.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <param name="value">The value as a byte array.</param>
+        </member>
+        <member name="M:Thought.vCards.vCardProperty.#ctor(System.String,System.DateTime)">
+            <summary>
+                Creates a <see cref="T:Thought.vCards.vCardProperty"/> with
+                the specified name and date/time as a value.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <param name="value">The date/time value.</param>
+        </member>
+        <member name="M:Thought.vCards.vCardProperty.#ctor(System.String,Thought.vCards.vCardValueCollection)">
+            <summary>
+                Initializes the vCard property with the specified
+                name and values.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardProperty.ToString">
+            <summary>
+                Returns the value of the property as a string.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardProperty.Group">
+            <summary>
+                The group name of the property.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardProperty.Language">
+            <summary>
+                The language code of the property.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardProperty.Name">
+            <summary>
+                The name of the property (e.g. TEL).
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardProperty.Subproperties">
+            <summary>
+                Subproperties of the vCard property, not including
+                the name, encoding, and character set.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardProperty.Value">
+            <summary>
+                The value of the property.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardPropertyCollection">
+            <summary>
+                A generic collection of <see cref="T:Thought.vCards.vCardProperty"/> objects.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardProperty"/>
+        </member>
+        <member name="T:Thought.vCards.vCardPhoneTypes">
+            <summary>
+                Identifies different phone types (e.g. Fax, BBS, etc).
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardPhone"/>
+            <seealso cref="T:Thought.vCards.vCardPhoneCollection"/>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Default">
+            <summary>
+                Indicates default properties.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.BBS">
+            <summary>
+                Indicates a bulletin board system.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Car">
+            <summary>
+                Indicates a car phone.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Cellular">
+            <summary>
+                Indicates a cell phone.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.CellularVoice">
+            <summary>
+                Indicates a celluar voice number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Fax">
+            <summary>
+                Indicates a facsimile number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Home">
+            <summary>
+                Indicates a home number
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.HomeVoice">
+            <summary>
+                Indicates a home and voice number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.ISDN">
+            <summary>
+                Indicates an ISDN number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.MessagingService">
+            <summary>
+                Indicates a messaging service on the number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Modem">
+            <summary>
+                Indicates a MODEM number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Pager">
+            <summary>
+                Indicates a pager number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Preferred">
+            <summary>
+                Indicates a preferred number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Video">
+            <summary>
+                Indicates a video number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Voice">
+            <summary>
+                Indicates a voice number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Work">
+            <summary>
+                Indicates a work number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.WorkFax">
+            <summary>
+                Indicates a work fax number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.WorkVoice">
+            <summary>
+                Indicates a work and voice number.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.IPhone">
+            <summary>
+            to handle iPhone type in NAB for phone
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardPhoneTypes.Main">
+            <summary>
+            to handle Main type for NAB
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardReader">
+            <summary>
+                An abstract reader for vCard and vCard-like file formats.
+            </summary>
+            <remarks>
+                <para>
+                    The <see cref="P:Thought.vCards.vCardReader.Warnings"/> property is a string collection
+                    containing a description of each warning encountered during
+                    the read process.  An implementor of a card reader should
+                    populate this collection as the vCard data is being parsed.
+                </para>
+            </remarks>
+        </member>
+        <member name="F:Thought.vCards.vCardReader.warnings">
+            <summary>
+                Stores the warnings issued by the implementor
+                of the vCard reader.  Currently warnings are
+                simple string messages; a future version will
+                store line numbers, severity levels, etc.
+            </summary>
+            <seealso cref="P:Thought.vCards.vCardReader.Warnings"/>
+        </member>
+        <member name="M:Thought.vCards.vCardReader.#ctor">
+            <summary>
+                Initializes the base reader.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardReader.Read(System.IO.TextReader)">
+            <summary>
+                Reads a vCard from the specified input stream.
+            </summary>
+            <param name="reader">
+                A text reader that points to the beginning of
+                a vCard in the format expected by the implementor.
+            </param>
+            <returns>
+                An initialized <see cref="T:Thought.vCards.vCard"/> object.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardReader.ReadInto(Thought.vCards.vCard,System.IO.TextReader)">
+            <summary>
+                Reads vCard information from a text reader and
+                populates into an existing vCard object.
+            </summary>
+            <param name="card">
+                An initialized vCard object.
+            </param>
+            <param name="reader">
+                A text reader containing vCard data in the format
+                expected by the card reader class.
+            </param>
+        </member>
+        <member name="P:Thought.vCards.vCardReader.Warnings">
+            <summary>
+                A collection of warning messages.
+            </summary>
+            <remarks>Reseved for future use.</remarks>
+        </member>
+        <member name="T:Thought.vCards.vCardSource">
+            <summary>
+                A source of directory information for a vCard.
+            </summary>
+            <remarks>
+                <para>
+                    A source identifies a directory that contains or provided
+                    information for the vCard.  A source consists of a URI
+                    and a context.  The URI is generally a URL; the
+                    context identifies the protocol and type of URI.  For
+                    example, a vCard associated with an LDAP directory entry
+                    will have an ldap:// URL and a context of "LDAP".
+                </para>
+            </remarks>
+            <seealso cref="T:Thought.vCards.vCardSourceCollection"/>
+        </member>
+        <member name="M:Thought.vCards.vCardSource.#ctor">
+            <summary>
+                Initializes a new instance of the vCardSource class.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardSource.#ctor(System.Uri)">
+            <summary>
+                Initializes a new source with the specified URI.
+            </summary>
+            <param name="uri">
+                The URI of the directory entry.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardSource.#ctor(System.Uri,System.String)">
+            <summary>
+                Initializes a new source with the specified
+                context and URI.
+            </summary>
+            <param name="uri">
+                The URI of the source of the vCard data.
+            </param>
+            <param name="context">
+                The context of the source.
+            </param>
+        </member>
+        <member name="P:Thought.vCards.vCardSource.Context">
+            <summary>
+                The context of the source URI.
+            </summary>
+            <remarks>
+                The context identifies how the URI should be
+                interpreted.  Example is "LDAP", which indicates
+                the URI is an LDAP reference.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCardSource.Uri">
+            <summary>
+                The URI of the source.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardSourceCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardSource"/> objects.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardSource"/>
+        </member>
+        <member name="M:Thought.vCards.vCardSourceCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Thought.vCards.vCardSourceCollection"/>.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardStandardWriter">
+            <summary>
+                Implements the standard vCard 2.1 and 3.0 text formats.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardWriter">
+            <summary>
+                Base class for vCard generators.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardReader"/>
+            <seealso cref="T:Thought.vCards.vCardStandardWriter"/>
+        </member>
+        <member name="F:Thought.vCards.vCardWriter.warnings">
+            <summary>
+                Holds output warnings.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardWriter.Write(Thought.vCards.vCard,System.IO.TextWriter)">
+            <summary>
+                Writes a vCard to an I/O stream using the format
+                implemented by the class.
+            </summary>
+            <param name="card">
+                The vCard to write the I/O string.
+            </param>
+            <param name="output">
+                The text writer to use for output.
+            </param>
+            <remarks>
+                The implementor should not close or flush the stream.
+                The caller owns the stream and may not wish for the
+                stream to be closed (e.g. the caller may call the
+                function again with a different vCard).
+            </remarks>
+        </member>
+        <member name="M:Thought.vCards.vCardWriter.Write(Thought.vCards.vCard,System.String)">
+            <summary>
+                Writes the vCard to the specified filename.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardWriter.Warnings">
+            <summary>
+                A collection of warning messages that were generated
+                during the output of a vCard.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardStandardWriter.standardEscapedCharacters">
+            <summary>
+                The characters that are escaped per the original
+                vCard specification.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardStandardWriter.outlookEscapedCharacters">
+            <summary>
+                The characters that are escaped by Microsoft Outlook.
+            </summary>
+            <remarks>
+                Microsoft Outlook does not property decode escaped
+                commas in values.
+            </remarks>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.#ctor">
+            <summary>
+                Creates a new instance of the standard writer.
+            </summary>
+            <remarks>
+                The standard writer is configured to create vCard
+                files in the highest supported version.  This is
+                currently version 3.0.
+            </remarks>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties(Thought.vCards.vCard)">
+            <summary>
+                Builds a collection of standard properties based on
+                the specified vCard.
+            </summary>
+            <returns>
+                A <see cref="T:Thought.vCards.vCardPropertyCollection"/> that contains all
+                properties for the current vCard, including the header
+                and footer properties.
+            </returns>
+            <seealso cref="T:Thought.vCards.vCard"/>
+            <seealso cref="T:Thought.vCards.vCardProperty"/>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_ADR(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds ADR properties.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_BDAY(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds the BDAY property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_EMAIL(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds EMAIL properties.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_GEO(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds the GEO property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_KEY(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds KEY properties.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_MAILER(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds the MAILER property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_NICKNAME(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds the NICKNAME property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_NOTE(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds the NOTE property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_ORG(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds the ORG property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_PRODID(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds PRODID properties.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_REV(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds the REV property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_ROLE(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds the ROLE property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_SOURCE(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds SOURCE properties.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.BuildProperties_TEL(Thought.vCards.vCardPropertyCollection,Thought.vCards.vCard)">
+            <summary>
+                Builds TEL properties.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.EncodeBase64(System.Byte)">
+            <summary>
+                Converts a byte to a BASE64 string.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.EncodeBase64(System.Byte[])">
+            <summary>
+                Converts a byte array to a BASE64 string.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.EncodeBase64(System.Int32)">
+            <summary>
+                Converts an integer to a BASE64 string.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.EncodeEscaped(System.String)">
+            <summary>
+                Encodes a string using simple escape codes.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.EncodeEscaped(System.String,System.Char[])">
+            <summary>
+                Encodes a character array using simple escape sequences.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.EncodeQuotedPrintable(System.String)">
+            <summary>
+                Converts a string to quoted-printable format.
+            </summary>
+            <param name="value">
+                The value to encode in Quoted Printable format.
+            </param>
+            <returns>
+                The value encoded in Quoted Printable format.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.EncodeProperty(Thought.vCards.vCardProperty)">
+            <summary>
+                Returns property encoded into a standard vCard NAME:VALUE format.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.Write(Thought.vCards.vCard,System.IO.TextWriter)">
+            <summary>
+                Writes a vCard to an output text writer.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardWriter.Write(Thought.vCards.vCardPropertyCollection,System.IO.TextWriter)">
+            <summary>
+                Writes a collection of vCard properties to an output text writer.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardStandardWriter.EmbedInternetImages">
+            <summary>
+                Indicates whether images that reference Internet
+                URLs should be embedded in the output.  If not, 
+                then a URL is written instead.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardStandardWriter.EmbedLocalImages">
+            <summary>
+                Indicates whether or not references to local
+                images should be embedded in the vCard.  If not,
+                then a local file reference is written instead.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardStandardWriter.Options">
+            <summary>
+                Extended options for the vCard writer.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardStandardWriter.ProductId">
+            <summary>
+                The product ID to use when writing a vCard.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardStandardWriterOptions">
+            <summary>
+                Extended options for the <see cref="T:Thought.vCards.vCardStandardWriter"/> class.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardStandardWriterOptions.None">
+            <summary>
+                No options.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardStandardWriterOptions.IgnoreCommas">
+            <summary>
+                Indicates whether or not commas should be escaped in values.
+            </summary>
+            <remarks>
+                The vCard specification requires that commas be escaped
+                in values (e.g. a "," is translated to "\,").  However, Microsoft
+                Outlook(tm) does not properly decode these escaped commas.  This
+                option instruct the writer to ignored (not translate) embedded
+                commas for better compatibility with Outlook.
+            </remarks>
+        </member>
+        <member name="T:Thought.vCards.vCardSubproperty">
+            <summary>
+                A subproperty of a vCard property.
+            </summary>
+            <remarks>
+                <para>
+                    A vCard is fundamentally a set of properties in NAME:VALUE
+                    format, where the name is a keyword like "EMAIL" and the 
+                    value is a string appropriate for the keyword (e.g. an email
+                    address for the EMAIL property, or a BASE64 encoded image
+                    for the PHOTO property).
+                </para>
+                <para>
+                    All vCard properties support subproperties.  These can
+                    be global options like encoding or value type, or might be
+                    options specific to the keyword.  For example, all vCard
+                    properties can have an encoding subproperty that identifies
+                    the text encoding of the value.  A phone property, however,
+                    supports special properties that identify the type and purpose
+                    of the phone.
+                </para>
+                <para>
+                    A subproperty is not required to have a value.  In such a case
+                    the subproperty acts like a flag.  For example, the TEL
+                    property of the vCard specification is used to indicate a 
+                    telephone number associated with the person.  This property
+                    supports a subproperty called BBS, which indicates the telephone
+                    number is for a dial-up bulletin board system.  The BBS
+                    subproperty does not need a value; the existance of the BBS
+                    subproperty is sufficient to indicate the telephone number is
+                    for a BBS system.
+                </para>
+            </remarks>
+        </member>
+        <member name="F:Thought.vCards.vCardSubproperty.name">
+            <summary>
+                Stores the name of the subproperty.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardSubproperty.value">
+            <summary>
+                Stores the value of the subproperty.  This can be null.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardSubproperty.#ctor(System.String)">
+            <summary>
+                Creates a subproperty with the specified
+                name and no value.
+            </summary>
+            <param name="name">
+                The name of the subproperty.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardSubproperty.#ctor(System.String,System.String)">
+            <summary>
+                Creates a subproperty with the specified
+                name and value.
+            </summary>
+            <param name="name">
+                The name of the subproperty.
+            </param>
+            <param name="value">
+                The value of the subproperty.  This can be null.
+            </param>
+        </member>
+        <member name="P:Thought.vCards.vCardSubproperty.Name">
+            <summary>
+                The name of the subproperty.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardSubproperty.Value">
+            <summary>
+                The optional value of the subproperty.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardSubpropertyCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardSubproperty"/> objects.
+            </summary>
+            <remarks>
+                <para>
+                    This class is a general-purpose collection of
+                    <see cref="T:Thought.vCards.vCardSubproperty"/> objects.
+                </para>
+                <para>
+                    A property of a vCard contains a piece of
+                    contact information, such as an email address
+                    or web site.  A subproperty indicates options
+                    or attributes of the property, such as the
+                    type of email address or character set.
+                </para>
+            </remarks>
+            <seealso cref="T:Thought.vCards.vCardProperty"/>
+            <seealso cref="T:Thought.vCards.vCardSubproperty"/>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.Add(System.String)">
+            <summary>
+                Adds a subproperty without a value.
+            </summary>
+            <param name="name">
+                The name of the subproperty.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.Add(System.String,System.String)">
+            <summary>
+                Adds a subproperty with the specified name and value.
+            </summary>
+            <param name="name">
+                The name of the new subproperty to add.
+            </param>
+            <param name="value">
+                The value of the new subproperty to add.  This can be null.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.AddOrUpdate(System.String,System.String)">
+            <summary>
+                Either adds or updates a subproperty with the specified name.
+            </summary>
+            <param name="name">
+                The name of the subproperty to add or update.
+            </param>
+            <param name="value">
+                The value of the subproperty to add or update.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.Contains(System.String)">
+            <summary>
+                Determines if the collection contains a subproperty
+                with the specified name.
+            </summary>
+            <param name="name">
+                The name of the subproperty.
+            </param>
+            <returns>
+                True if the collection contains a subproperty with the
+                specified name, or False otherwise.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.GetNames">
+            <summary>
+                Builds a string array containing subproperty names.
+            </summary>
+            <returns>
+                A string array containing the unmodified name of
+                each subproperty in the collection.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.GetNames(System.String[])">
+            <summary>
+                Builds a string array containing all subproperty
+                names that match one of the names in an array.
+            </summary>
+            <param name="filteredNames">
+                A list of valid subproperty names.
+            </param>
+            <returns>
+                A string array containing the names of all subproperties
+                that match an entry in the filterNames list.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.GetValue(System.String)">
+            <summary>
+                Get the value of the subproperty with
+                the specified name.
+            </summary>
+            <param name="name">
+                The name of the subproperty.
+            </param>
+            <returns>
+                The value of the subproperty or null if no
+                such subproperty exists in the collection.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.GetValue(System.String,System.String[])">
+            <summary>
+                Gets the value of the first subproperty with the
+                specified name, or the first value specified in
+                a list.
+            </summary>
+            <param name="name">
+                The expected name of the subproperty.
+            </param>
+            <param name="namelessValues">
+                A list of values that are sometimes listed as
+                subproperty names.  The first matching value is
+                returned if the name parameter does not match.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.IndexOf(System.String)">
+            <summary>
+                Searches for a subproperty with the specified name.
+            </summary>
+            <param name="name">
+                The name of the subproperty.
+            </param>
+            <returns>
+                The collection (zero-based) index of the first
+                subproperty that matches the specified name.  The
+                function returns -1 if no match is found.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardSubpropertyCollection.IndexOfAny(System.String[])">
+            <summary>
+                Finds the first subproperty that has any of the
+                specified names.
+            </summary>
+            <param name="names">
+                An array of names to search.
+            </param>
+            <returns>
+                The collection index of the first subproperty with
+                the specified name, or -1 if no subproperty was found.
+            </returns>
+        </member>
+        <member name="T:Thought.vCards.vCardStandardReader">
+            <summary>
+                Reads a vCard written in the standard 2.0 or 3.0 text formats.
+                This is the primary (standard) vCard format used by most
+                applications.  
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardReader"/>
+        </member>
+        <member name="F:Thought.vCards.vCardStandardReader.DeliveryAddressTypeNames">
+            <summary>
+                The DeliveryAddressTypeNames array contains the recognized
+                TYPE values for an ADR (delivery address).
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardStandardReader.PhoneTypeNames">
+            <summary>
+                The PhoneTypeNames constant defines the recognized
+                subproperty names that identify the category or
+                classification of a phone.  The names are used with
+                the TEL property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Thought.vCards.vCardStandardReader"/>.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.DecodeBase64(System.String)">
+            <summary>
+                Decodes a string containing BASE64 characters.
+            </summary>
+            <param name="value">
+                A string containing data that has been encoded with
+                the BASE64 format.
+            </param>
+            <returns>
+                The decoded data as a byte array.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.DecodeBase64(System.Char[])">
+            <summary>
+                Converts BASE64 data that has been stored in a 
+                character array.
+            </summary>
+            <param name="value">
+                A character array containing BASE64 data.
+            </param>
+            <returns>
+                A byte array containing the decoded BASE64 data.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.DecodeItemType(System.String)">
+            <summary>
+            returns the parsed ItemType for subProperty values like HOME and WORK. If no match is found, this method returns null
+            </summary>
+            <param name="keyword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.DecodeEmailAddressType(System.String)">
+            <summary>
+                Parses the name of an email address type.
+            </summary>
+            <param name="keyword">
+                The email address type keyword found in the vCard file (e.g. AOL or INTERNET).
+            </param>
+            <returns>
+                Null or the decoded <see cref="T:Thought.vCards.vCardEmailAddressType"/>.
+            </returns>
+            <seealso cref="T:Thought.vCards.vCardEmailAddress"/>
+            <seealso cref="T:Thought.vCards.vCardEmailAddressType"/>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.DecodeEscaped(System.String)">
+            <summary>
+                Decodes a string that has been encoded with the standard
+                vCard escape codes.
+            </summary>
+            <param name="value">
+                A string encoded with vCard escape codes.
+            </param>
+            <returns>
+                The decoded string.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.DecodeHexadecimal(System.Char)">
+            <summary>
+                Converts a single hexadecimal character to
+                its integer value.
+            </summary>
+            <param name="value">
+                A Unicode character.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.DecodeQuotedPrintable(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.DecodeQuotedPrintable(System.String,System.Text.Encoding)">
+            <summary>
+                Decodes a string that has been encoded in QUOTED-PRINTABLE format.
+            </summary>
+            <param name="value">
+                A string that has been encoded in QUOTED-PRINTABLE.
+            </param>
+            <param name="encoding">
+                charset encoding 
+            </param>
+            <returns>
+                The decoded string.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.IsHexDigit(System.Char)">
+            <summary>
+                Indicates whether the specified character is
+                a hexadecimal digit.
+            </summary>
+            
+            <param name="value">
+                A unicode character
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ParseDate(System.String)">
+            <summary>
+                Parses a string containing a date/time value.
+            </summary>
+            <param name="value">
+                A string containing a date/time value.
+            </param>
+            <returns>
+                The parsed date, or null if no date could be parsed.
+            </returns>
+            <remarks>
+                Some revision dates, such as those generated by Outlook,
+                are not directly supported by the .NET DateTime parser.
+                This function attempts to accomodate the non-standard formats.
+            </remarks>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ParseEncoding(System.String)">
+            <summary>
+                Parses an encoding name (such as "BASE64") and returns
+                the corresponding <see cref="T:Thought.vCards.vCardEncoding"/> value.
+            </summary>
+            <param name="name">
+                The name of an encoding from a standard vCard property.
+            </param>
+            <returns>
+                The enumerated value of the encoding.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ParsePhoneType(System.String)">
+            <summary>
+                Parses the name of a phone type and returns the
+                corresponding <see cref="T:Thought.vCards.vCardPhoneTypes"/> value.
+            </summary>
+            <param name="name">
+                The name of a phone type from a TEL vCard property.
+            </param>
+            <returns>
+                The enumerated value of the phone type, or Default
+                if the phone type could not be determined.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ParsePhoneType(System.String[])">
+            <summary>
+                Decodes the bitmapped phone type given an array of
+                phone type names.
+            </summary>
+            <param name="names">
+                An array containing phone type names such as BBS or VOICE.
+            </param>
+            <returns>
+                The phone type value that represents the combination
+                of all names defined in the array.  Unknown names are
+                ignored.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ParseDeliveryAddressType(System.String)">
+            <summary>
+                Parses the type of postal address.
+            </summary>
+            <param name="value">
+                The single value of a TYPE subproperty for the ADR property.
+            </param>
+            <returns>
+                The <see cref="T:Thought.vCards.vCardDeliveryAddressTypes"/> that corresponds
+                with the TYPE keyword, or vCardPostalAddressType.Default if
+                the type could not be identified.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ParseDeliveryAddressType(System.String[])">
+            <summary>
+                Parses a string array containing one or more
+                postal address types.
+            </summary>
+            <param name="typeNames">
+                A string array containing zero or more keywords
+                used with the TYPE subproperty of the ADR property.
+            </param>
+            <returns>
+                A <see cref="T:Thought.vCards.vCardDeliveryAddressTypes"/> flags enumeration
+                that corresponds with all known type names from the array.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto(Thought.vCards.vCard,System.IO.TextReader)">
+            <summary>
+                Reads a vCard (VCF) file from an input stream.
+            </summary>
+            <param name="card">
+                An initialized vCard.
+            </param>
+            <param name="reader">
+                A text reader pointing to the beginning of
+                a standard vCard file.
+            </param>
+            <returns>
+                The vCard with values updated from the file.
+            </returns>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Updates a vCard object based on the contents of a vCardProperty.
+            </summary>
+            <param name="card">
+                An initialized vCard object.
+            </param>
+            <param name="property">
+                An initialized vCardProperty object.
+            </param>
+            <remarks>
+                <para>
+                    This method examines the contents of a property
+                    and attempts to update an existing vCard based on
+                    the property name and value.  This function must
+                    be updated when new vCard properties are implemented.
+                </para>
+            </remarks>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_ADR(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads an ADR property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_BDAY(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the BDAY property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_CATEGORIES(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the CATEGORIES property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_CLASS(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the CLASS property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_EMAIL(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads an EMAIL property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_FN(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the FN property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_GEO(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the GEO property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_KEY(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the KEY property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_LABEL(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the LABEL property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_MAILER(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the MAILER property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_N(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the N property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_NAME(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the NAME property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_NICKNAME(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the NICKNAME property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_NOTE(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the NOTE property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_ORG(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the ORG property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_PHOTO(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the PHOTO property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_PRODID(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the PRODID property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_REV(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the REV property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_ROLE(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the ROLE property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_SOURCE(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the SOURCE property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_TEL(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the TEL property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_TITLE(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the TITLE property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_TZ(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads a TZ property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_UID(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the UID property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_URL(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the URL property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadInto_X_WAB_GENDER(Thought.vCards.vCard,Thought.vCards.vCardProperty)">
+            <summary>
+                Reads the X-WAB-GENDER property.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadProperty(System.String)">
+            <summary>
+                Reads a property from a string.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardStandardReader.ReadProperty(System.IO.TextReader)">
+            <summary>
+                Reads a property from a text reader.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardStandardReader.QuotedPrintableState">
+            <summary>
+                The state of the quoted-printable decoder (private).
+            </summary>
+            <remarks>
+                The <see cref="M:Thought.vCards.vCardStandardReader.DecodeQuotedPrintable(System.String)"/> function
+                is a utility function that parses a string that
+                has been encoded with the QUOTED-PRINTABLE format.
+                The function is implemented as a state-pased parser
+                where the state is updated after examining each 
+                character of the input string.  This enumeration
+                defines the various states of the parser.
+            </remarks>
+        </member>
+        <member name="T:Thought.vCards.vCardValueCollection">
+            <summary>
+                A collection of string values.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardValueCollection.#ctor">
+            <summary>
+                Initializes an empty <see cref="T:Thought.vCards.vCardValueCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardValueCollection.#ctor(System.Char)">
+            <summary>
+                Initializes the value collection with the specified separator.
+            </summary>
+            <param name="separator">
+                The suggested character to use as a separator when
+                writing the collection as a string.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardValueCollection.Add(System.Collections.Specialized.StringCollection)">
+            <summary>
+                Adds the contents of a StringCollection to the collection.
+            </summary>
+            <param name="values">
+                An initialized StringCollection containing zero or more values.
+            </param>
+        </member>
+        <member name="P:Thought.vCards.vCardValueCollection.Separator">
+            <summary>
+                The suggested separator when writing values to a string.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardWebsite">
+            <summary>
+                A web site defined in a vCard.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardWebsiteCollection"/>
+            <seealso cref="T:Thought.vCards.vCardWebsiteTypes"/>
+        </member>
+        <member name="M:Thought.vCards.vCardWebsite.#ctor">
+            <summary>
+                Creates a vCardWebSite object.
+            </summary>
+        </member>
+        <member name="M:Thought.vCards.vCardWebsite.#ctor(System.String)">
+            <summary>
+                Creates a new vCardWebSite object with the specified URL.
+            </summary>
+            <param name="url">
+                The URL of the web site.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardWebsite.#ctor(System.String,Thought.vCards.vCardWebsiteTypes)">
+            <summary>
+                Creates a new vCardWebSite with the
+                specified URL and classification.
+            </summary>
+            <param name="url">
+                The URL of the web site.
+            </param>
+            <param name="websiteType">
+                The classification of the web site.
+            </param>
+        </member>
+        <member name="M:Thought.vCards.vCardWebsite.ToString">
+            <summary>
+                Returns the string representation (URL) of the web site.
+            </summary>
+            <returns>
+                The URL of the web site.
+            </returns>
+        </member>
+        <member name="P:Thought.vCards.vCardWebsite.IsPersonalSite">
+            <summary>
+                Indicates a personal home page.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardWebsite.IsWorkSite">
+            <summary>
+                Indicates a work-related web site.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.vCardWebsite.Url">
+            <summary>
+                The URL of the web site.
+            </summary>
+            <remarks>
+                The format of the URL is not validated.
+            </remarks>
+        </member>
+        <member name="P:Thought.vCards.vCardWebsite.WebsiteType">
+            <summary>
+                The type of web site (e.g. home page, work, etc).
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.vCardWebsiteCollection">
+            <summary>
+                A collection of <see cref="T:Thought.vCards.vCardWebsite"/> objects.
+            </summary>
+            <seealso cref="T:Thought.vCards.vCardWebsite"/>
+            <seealso cref="T:Thought.vCards.vCardWebsiteTypes"/>
+        </member>
+        <member name="M:Thought.vCards.vCardWebsiteCollection.GetFirstChoice(Thought.vCards.vCardWebsiteTypes)">
+            <summary>
+                Returns the first web site of the specified type.  If
+                the collection does not contain a website of the specified
+                type, but does contain a default (uncategorized) website,
+                then that website will be returned.
+            </summary>
+            <param name="siteType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Thought.vCards.vCardWebsiteTypes">
+            <summary>
+                The type or classification of a web site.
+            </summary>
+            <remarks>
+                <para>
+                    The Microsoft Outlook contact editor has a field for
+                    entering a web site.  The default classification of
+                    this web site is work-related.  A personal web site
+                    can be viewed or entered through the All Fields tab.
+                </para>
+            </remarks>
+        </member>
+        <member name="F:Thought.vCards.vCardWebsiteTypes.Default">
+            <summary>
+                No web site designation.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardWebsiteTypes.Personal">
+            <summary>
+                A personal home page.
+            </summary>
+        </member>
+        <member name="F:Thought.vCards.vCardWebsiteTypes.Work">
+            <summary>
+                A work-related web site.
+            </summary>
+        </member>
+        <member name="T:Thought.vCards.WarningMessages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.WarningMessages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.WarningMessages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.WarningMessages.BlankLine">
+            <summary>
+              Looks up a localized string similar to Line {0} A blank line was encountered.  This is not allowed in the vCard specification..
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.WarningMessages.ColonMissing">
+            <summary>
+              Looks up a localized string similar to Line {0}: A colon (:) is missing.  All properties must be in NAME:VALUE format..
+            </summary>
+        </member>
+        <member name="P:Thought.vCards.WarningMessages.EmptyName">
+            <summary>
+              Looks up a localized string similar to Line {0}: The name section of the property is empty..
+            </summary>
+        </member>
+    </members>
+</doc>

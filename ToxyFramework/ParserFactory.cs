@@ -48,6 +48,10 @@ namespace Toxy
             var typeEml = new List<Type>();
             typeEml.Add(typeof(EMLParser));
             parserMapping.Add(".eml", typeEml);
+
+            var typeVcard= new List<Type>();
+            typeEml.Add(typeof(VCardParser));
+            parserMapping.Add(".vcard", typeVcard);
         }
 
         static string GetFileExtention(string path)
@@ -100,6 +104,13 @@ namespace Toxy
         {
             object obj = CreateObject(context, typeof(IDomParser));
             IDomParser parser = (IDomParser)obj;
+            return parser;
+        }
+
+        public static VCardParser CreateVCard(ParserContext context)
+        {
+            object obj = CreateObject(context, typeof(VCardParser));
+            VCardParser parser = (VCardParser)obj;
             return parser;
         }
     }

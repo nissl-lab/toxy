@@ -66,6 +66,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestToxySpreadsheet.cs" />
     <Compile Include="HtmlParserTest.cs" />
+    <Compile Include="VCardParserTest.cs" />
     <Compile Include="Word2007ParserTest.cs" />
   </ItemGroup>
   <ItemGroup>

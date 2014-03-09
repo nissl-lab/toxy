@@ -61,10 +61,15 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Thought.vCards">
+      <HintPath>..\Lib\Thought.vCards\Thought.vCards.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="3rdParty\EMLReader.cs" />
+    <Compile Include="Entities\ToxyAddress.cs" />
     <Compile Include="Entities\ToxyBusinessCard.cs" />
+    <Compile Include="Entities\ToxyContact.cs" />
     <Compile Include="Entities\ToxyDom.cs" />
     <Compile Include="Parsers\HtmlParser.cs" />
     <Compile Include="Parsers\IDomParser.cs" />
@@ -77,6 +82,7 @@
     <Compile Include="ParserContext.cs" />
     <Compile Include="Parsers\ISpreadsheetParser.cs" />
     <Compile Include="Parsers\RTFParser.cs" />
+    <Compile Include="Parsers\VCardParser.cs" />
     <Compile Include="Parsers\WordParser.cs" />
     <Compile Include="Entities\ToxyDocument.cs" />
     <Compile Include="Entities\ToxyEmail.cs" />
