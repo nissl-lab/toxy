@@ -20,6 +20,7 @@ namespace Toxy
         public string Name { get; set; }
         public string PageHeader { get; set; }
         public string PageFooter { get; set; }
+        public int LastRowIndex { get; set; }
         public int LastColumnIndex { get; set; }
 
         public ToxyRow ColumnHeaders { get; set; }
@@ -28,6 +29,8 @@ namespace Toxy
 
         public DataTable ToDataTable()
         {
+
+            int lastCol = 0;
             DataTable dt = new DataTable(this.Name);
             if (HasHeader)
             {
@@ -35,21 +38,49 @@ namespace Toxy
                 {
                     var col = new DataColumn(header.Value);
                     dt.Columns.Add(col);
+                    lastCol++;
                 }
                 for (int j = dt.Columns.Count; this.LastColumnIndex > 0 && j <= this.LastColumnIndex; j++)
                 {
                     dt.Columns.Add(string.Empty);
+                    lastCol++;
                 }
             }
+            int lastRow=0;
             foreach (var row in this.Rows)
             {
-                var drow = dt.NewRow();
+                DataRow drow = null;
+                if (lastRow < row.RowIndex)
+                {
+                    drow = dt.NewRow();
+                    while (lastRow < row.RowIndex)
+                    {
+                        dt.Rows.Add(drow);
+                        drow = dt.NewRow();
+                        lastRow++;
+                    }
+                }
+                else
+                {
+                    drow = dt.NewRow();
+                }
+
+                while (lastCol < row.LastCellIndex)
+                {
+                    dt.Columns.Add("Column" + lastCol);
+                    lastCol++;
+                }
 
                 foreach(var cell in row.Cells)
-                {
+                {                    
                     drow[cell.CellIndex] = cell.Value;   //no comment included
                 }
+                if (drow == null)
+                {
+                    drow = dt.NewRow();
+                }
                 dt.Rows.Add(drow);
+                lastRow++;
             }
             return dt;
         }
@@ -104,6 +135,7 @@ namespace Toxy
         public string Name { get; set; }
         public List<ToxyTable> Tables { get; set; }
         public Dictionary<string, object> Properties { get; set; }
+
 
         public DataSet ToDataSet()
         {

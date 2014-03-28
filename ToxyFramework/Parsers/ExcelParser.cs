@@ -50,6 +50,7 @@ namespace Toxy.Parsers
                 includeComment = Utility.IsTrue(Context.Properties["IncludeComments"]);
             }
             ToxySpreadsheet ss = new ToxySpreadsheet();
+            ss.Name = Context.Path;
             IWorkbook workbook = WorkbookFactory.Create(Context.Path);
             HSSFDataFormatter formatter = new HSSFDataFormatter();
             for (int i = 0; i < workbook.NumberOfSheets; i++)
@@ -68,6 +69,7 @@ namespace Toxy.Parsers
                 }
 
                 bool firstRow = true;
+                table.LastRowIndex = sheet.LastRowNum;
                 foreach (IRow row in sheet)
                 {
                     ToxyRow tr=null;

@@ -11,6 +11,30 @@ namespace Toxy.Test
     public class TestToxySpreadsheet
     {
         [TestMethod]
+        public void TestReadExcelAndConvertToDataSet()
+        { 
+            ParserContext c=new ParserContext(TestDataSample.GetExcelPath("employee.xls"));
+            var parser=ParserFactory.CreateSpreadsheet(c);
+            var spreadsheet= parser.Parse();
+            DataSet ds = spreadsheet.ToDataSet();
+            Assert.AreEqual(3, ds.Tables.Count);
+            Assert.AreEqual("Sheet1",ds.Tables[0].TableName);
+            Assert.AreEqual("Sheet2", ds.Tables[1].TableName);
+            Assert.AreEqual("Sheet3", ds.Tables[2].TableName);
+            
+            var s1 = ds.Tables[0];
+            Assert.AreEqual(System.DBNull.Value, s1.Rows[0][0]);
+            Assert.AreEqual(System.DBNull.Value, s1.Rows[0][1]);
+            Assert.AreEqual(System.DBNull.Value, s1.Rows[0][2]);
+            Assert.AreEqual("Employee Info", s1.Rows[1][1]);
+            Assert.AreEqual("Last name:", s1.Rows[3][1]);
+            Assert.AreEqual("lastName", s1.Rows[3][2]);
+            Assert.AreEqual("First name:", s1.Rows[4][1]);
+            Assert.AreEqual("firstName", s1.Rows[4][2]);
+            Assert.AreEqual("SSN:", s1.Rows[5][1]);
+            Assert.AreEqual("ssn", s1.Rows[5][2]);
+        }
+        [TestMethod]
         public void TestToxyTableToDataTable()
         {
             #region create ToxyTable
