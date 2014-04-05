@@ -1,21 +1,22 @@
-﻿using System;
+﻿using DCSoft.RTF;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class RTFParser : ITextParser
+    public class RTFParser : PlainTextParser
     {
-
-        public string Parse()
+        public RTFParser(ParserContext context): base(context)
         {
-            throw new NotImplementedException();
+            this.Context = context;
         }
 
-        public virtual ParserContext Context
+        public override string Parse()
         {
-            get;
-            set;
+            RTFDomDocument doc = new RTFDomDocument();
+            doc.Load(this.Context.Path);
+            return doc.InnerText;
         }
     }
 }

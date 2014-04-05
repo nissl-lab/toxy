@@ -36,7 +36,7 @@ namespace Toxy
             parserMapping.Add(".docx", typeDocx);
 
             var typeRtf = new List<Type>();
-            typeRtf.Add(typeof(WordParser));
+            typeRtf.Add(typeof(RTFParser));
             parserMapping.Add(".rtf", typeRtf);
 
             var typeHtml = new List<Type>();

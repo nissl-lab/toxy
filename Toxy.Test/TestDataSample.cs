@@ -17,6 +17,10 @@ namespace Toxy.Test
             return GetFilePath(filename, "Word");
         }
 
+        public static string GetRTFPath(string filename)
+        {
+            return GetFilePath(filename, "RTF");
+        }
         public static string GetVCardPath(string filename)
         {
             return GetFilePath(filename, "Vcard");

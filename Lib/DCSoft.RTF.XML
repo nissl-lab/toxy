@@ -1,0 +1,2666 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DCSoft.RTF</name>
+    </assembly>
+    <members>
+        <member name="T:DCSoft.RTF.ByteBuffer">
+            <summary>
+            Binary data buffer
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.ByteBuffer.#ctor">
+            <summary>
+            Initialize instance
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.ByteBuffer.intCount">
+            <summary>
+            Current contains validate bytes
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.ByteBuffer.bsBuffer">
+            <summary>
+            byte array 
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.ByteBuffer.Clear">
+            <summary>
+            Clear object's data
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.ByteBuffer.Reset">
+            <summary>
+            Reset current position without clear buffer
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.ByteBuffer.Add(System.Byte)">
+            <summary>
+            Add a byte
+            </summary>
+            <param name="b">byte data</param>
+        </member>
+        <member name="M:DCSoft.RTF.ByteBuffer.Add(System.Byte[])">
+            <summary>
+            Add bytes
+            </summary>
+            <param name="bs">bytes</param>
+        </member>
+        <member name="M:DCSoft.RTF.ByteBuffer.Add(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Add bytes
+            </summary>
+            <param name="bs">Bytes</param>
+            <param name="StartIndex">Start index</param>
+            <param name="Length">Length</param>
+        </member>
+        <member name="M:DCSoft.RTF.ByteBuffer.ToArray">
+            <summary>
+            Get validate bytes array
+            </summary>
+            <returns>bytes array</returns>
+        </member>
+        <member name="M:DCSoft.RTF.ByteBuffer.GetString(System.Text.Encoding)">
+            <summary>
+            Convert bytes data to a string
+            </summary>
+            <param name="encoding">string encoding</param>
+            <returns>string data</returns>
+        </member>
+        <member name="M:DCSoft.RTF.ByteBuffer.FixBuffer(System.Int32)">
+            <summary>
+            Fix inner buffer so it can fit to new size of buffer
+            </summary>
+            <param name="NewSize">new size</param>
+        </member>
+        <member name="P:DCSoft.RTF.ByteBuffer.Item(System.Int32)">
+            <summary>
+            Set of get byte at special index which starts with 0
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.ByteBuffer.Count">
+            <summary>
+            Validate bytes count
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.DocumentFormatInfo">
+            <summary>
+            RTF Document format information
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.DocumentFormatInfo.#ctor">
+            <summary>
+            Initialize instance
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.DocumentFormatInfo.NativeLevel">
+            <summary>
+            nest level in native rtf document
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.DocumentFormatInfo.Clone">
+            <summary>
+            close instance
+            </summary>
+            <returns>new instance</returns>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Parent">
+            <summary>
+            If this instance is create by Clone , return the parent instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.LeftBorder">
+            <summary>
+            Display left border line
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.TopBorder">
+            <summary>
+            Display top border line
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.RightBorder">
+            <summary>
+            Display right border line
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.BottomBorder">
+            <summary>
+            是否显示下边框线
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.BorderColor">
+            <summary>
+            Border line color
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.BorderWidth">
+            <summary>
+            Border line color
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.BorderStyle">
+            <summary>
+            边框线样式
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.BorderThickness">
+            <summary>
+            采用粗边框线样式
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.BorderSpacing">
+            <summary>
+            边框线距离
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Multiline">
+            <summary>
+            Word wrap
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.StandTabWidth">
+            <summary>
+            Standard tab width
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.ParagraphFirstLineIndent">
+            <summary>
+            indent of first line in a paragraph
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.LeftIndent">
+            <summary>
+            Indent of wholly paragraph
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Spacing">
+            <summary>
+            character spacing
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.LineSpacing">
+            <summary>
+            line spacing
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.MultipleLineSpacing">
+            <summary>
+            Current line spacing is multiple extractly line spacing.
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.SpacingBefore">
+            <summary>
+            Spacing before paragrah
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.SpacingAfter">
+            <summary>
+            Spacing after paragraph
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Align">
+            <summary>
+            text alignment
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.PageBreak">
+            <summary>
+            段落前强制分页
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.FontName">
+            <summary>
+            font name
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.FontSize">
+            <summary>
+            font size
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Bold">
+            <summary>
+            bold style
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Italic">
+            <summary>
+            italic style
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Underline">
+            <summary>
+            underline style
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Strikeout">
+            <summary>
+            strickout style
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Hidden">
+            <summary>
+            Hidden text
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.TextColor">
+            <summary>
+            text color
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.BackColor">
+            <summary>
+            back color
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Link">
+            <summary>
+            link
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Superscript">
+            <summary>
+            superscript
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.Subscript">
+            <summary>
+            subscript
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.ListID">
+            <summary>
+            list overried id 
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.DocumentFormatInfo.NoWwrap">
+            <summary>
+            no wrap in word
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Arabic">
+            <summary>	Arabic (1, 2, 3)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Uppercase_Roman_numeral">
+            <summary>	Uppercase Roman numeral (I, II, III)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Lowercase_Roman_numeral">
+            <summary>	Lowercase Roman numeral (i, ii, iii)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Uppercase_letter">
+            <summary>	Uppercase letter (A, B, C)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Lowercase_letter">
+            <summary>	Lowercase letter (a, b, c)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Ordinal_number">
+            <summary>	Ordinal number (1st, 2nd, 3rd)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Cardinal_text_number">
+            <summary>	Cardinal text number (One, Two Three)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Ordinal_text_number">
+            <summary>	Ordinal text number (First, Second, Third)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Kanji_numbering_without_the_digit_character">
+            <summary>	Kanji numbering without the digit character (*dbnum1)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Kanji_numbering_with_the_digit_characte">
+            <summary>	Kanji numbering with the digit character (*dbnum2)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType._46_phonetic_katakana_characters_in_aiueo_order">
+            <summary>	46 phonetic katakana characters in "aiueo" order (*aiueo)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType._46_phonetic_katakana_characters_in_iroha_order">
+            <summary>	46 phonetic katakana characters in "iroha" order (*iroha)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Double_byte_character">
+            <summary>	Double_byte character	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Single_byte_character">
+            <summary>	Single_byte character	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Kanji_numbering_3">
+            <summary>	Kanji numbering 3 (*dbnum3)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Kanji_numbering_4">
+            <summary>	Kanji numbering 4 (*dbnum4)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Circle_numbering">
+            <summary>	Circle numbering (*circlenum)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Double_byte_Arabic_numbering">
+            <summary>	Double_byte Arabic numbering	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType._46_phonetic_double_byte_katakana_characters_aiueo_dbchar">
+            <summary>	46 phonetic double_byte katakana characters (*aiueo*dbchar)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType._46_phonetic_double_byte_katakana_characters_iroha_dbchar">
+            <summary>	46 phonetic double_byte katakana characters (*iroha*dbchar)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Arabic_with_leading_zero">
+            <summary>	Arabic with leading zero (01, 02, 03, ..., 10, 11)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Bullet">
+            <summary>	Bullet (no number at all)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Korean_numbering_2">
+            <summary>	Korean numbering 2 (*ganada)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Korean_numbering_1">
+            <summary>	Korean numbering 1 (*chosung)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_numbering_1">
+            <summary>	Chinese numbering 1 (*gb1)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_numbering_2">
+            <summary>	Chinese numbering 2 (*gb2)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_numbering_3">
+            <summary>	Chinese numbering 3 (*gb3)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_numbering_4">
+            <summary>	Chinese numbering 4 (*gb4)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_Zodiac_numbering_1">
+            <summary>	Chinese Zodiac numbering 1 (* zodiac1)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_Zodiac_numbering_2">
+            <summary>	Chinese Zodiac numbering 2 (* zodiac2) 	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_Zodiac_numbering_3">
+            <summary>	Chinese Zodiac numbering 3 (* zodiac3)	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Taiwanese_double_byte_numbering_1">
+            <summary>	Taiwanese double_byte numbering 1	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Taiwanese_double_byte_numbering_2">
+            <summary>	Taiwanese double_byte numbering 2	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Taiwanese_double_byte_numbering_3">
+            <summary>	Taiwanese double_byte numbering 3	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Taiwanese_double_byte_numbering_4">
+            <summary>	Taiwanese double_byte numbering 4	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_double_byte_numbering_1">
+            <summary>	Chinese double_byte numbering 1	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_double_byte_numbering_2">
+            <summary>	Chinese double_byte numbering 2	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_double_byte_numbering_3">
+            <summary>	Chinese double_byte numbering 3	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Chinese_double_byte_numbering_4">
+            <summary>	Chinese double_byte numbering 4	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Korean_double_byte_numbering_1">
+            <summary>	Korean double_byte numbering 1	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Korean_double_byte_numbering_2">
+            <summary>	Korean double_byte numbering 2	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Korean_double_byte_numbering_3">
+            <summary>	Korean double_byte numbering 3	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Korean_double_byte_numbering_4">
+            <summary>	Korean double_byte numbering 4	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Hebrew_non_standard_decimal_">
+            <summary>	Hebrew non_standard decimal 	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Arabic_Alif_Ba_Tah">
+            <summary>	Arabic Alif Ba Tah	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Hebrew_Biblical_standard">
+            <summary>	Hebrew Biblical standard	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.Arabic_Abjad_style">
+            <summary>	Arabic Abjad style	</summary>
+        </member>
+        <member name="F:DCSoft.RTF.LevelNumberType.No_number">
+            <summary>	No number	</summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFBorderStyle.Clone">
+            <summary>
+            复制对象
+            </summary>
+            <returns>复制品</returns>
+        </member>
+        <member name="P:DCSoft.RTF.RTFBorderStyle.Thickness">
+            <summary>
+            粗边框样式
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomHeader">
+            <summary>
+            页眉元素
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomElement">
+            <summary>
+            RTF dom element
+            </summary>
+            <remarks>this is the most base element type</remarks>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomElement.AppendChild(DCSoft.RTF.RTFDomElement)">
+            <summary>
+            append child element
+            </summary>
+            <param name="element">child element</param>
+            <returns>index of element</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomElement.SetAttribute(System.String,System.Int32)">
+            <summary>
+            set attribute
+            </summary>
+            <param name="name">name</param>
+            <param name="Value">value</param>
+        </member>
+        <member name="F:DCSoft.RTF.RTFDomElement.NativeLevel">
+            <summary>
+            Native level in RTF document
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomElement.Attributes">
+            <summary>
+            RTF native attribute
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomElement.Elements">
+            <summary>
+            child elements list
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomElement.OwnerDocument">
+            <summary>
+            the docuemnt which owned this element
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomElement.Parent">
+            <summary>
+            parent element
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomElement.Locked">
+            <summary>
+            Whether element is locked , if element is lock , it can not append chidl element
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomHeader.Style">
+            <summary>
+            页眉页脚样式
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomHeader.HasContentElement">
+            <summary>
+            判断元素是否有实际内容
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomFooter">
+            <summary>
+            页脚元素
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomFooter.Style">
+            <summary>
+            页眉页脚样式
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomFooter.HasContentElement">
+            <summary>
+            判断元素是否有实际内容
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomObject">
+            <summary>
+            内嵌对象
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomObject.#ctor">
+            <summary>
+            初始化对象
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomObject.CustomAttributes">
+            <summary>
+            用户自定义的属性列表
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomObject.Type">
+            <summary>
+            对象类型
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomObject.ClassName">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomObject.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomObject.Content">
+            <summary>
+            对象二进制内容
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomObject.ContentText">
+            <summary>
+            文本格式的内容
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomObject.Width">
+            <summary>
+            宽度
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomObject.Height">
+            <summary>
+            高度
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomObject.Result">
+            <summary>
+            result
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomPageBreak">
+            <summary>
+            强制分页符
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomPageBreak.#ctor">
+            <summary>
+            初始化对象
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTempContainer.Format">
+            <summary>
+            format
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFInstanceDebugView">
+            <summary>
+            debug information dispalyer at design time
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFInstanceDebugView.#ctor(System.Object)">
+            <summary>
+            initialize instance
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="P:DCSoft.RTF.RTFInstanceDebugView.Items">
+            <summary>
+            output debug item at design time
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.ProgressEventHandler">
+            <summary>
+            progress event handler type
+            </summary>
+            <param name="sender">sender</param>
+            <param name="args">event arguments</param>
+        </member>
+        <member name="T:DCSoft.RTF.ProgressEventArgs">
+            <summary>
+            porgress event arguments
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.ProgressEventArgs.MaxValue">
+            <summary>
+            progress max value
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.ProgressEventArgs.Value">
+            <summary>
+            current value
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.ProgressEventArgs.Message">
+            <summary>
+            progress message
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.ProgressEventArgs.Cancel">
+            <summary>
+            cancel operation
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomBookmark">
+            <summary>
+            rtf bookmark
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomBookmark.Name">
+            <summary>
+            name
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomElementList">
+            <summary>
+            RTF element's list
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomElementList.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomElementList.Add(DCSoft.RTF.RTFDomElement)">
+            <summary>
+            add element
+            </summary>
+            <param name="element">element</param>
+            <returns>index</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomElementList.Insert(System.Int32,DCSoft.RTF.RTFDomElement)">
+            <summary>
+            insert element
+            </summary>
+            <param name="index">special index</param>
+            <param name="element">element</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomElementList.IndexOf(DCSoft.RTF.RTFDomElement)">
+            <summary>
+            Get the index of special element that starts with 0.
+            </summary>
+            <param name="element">element</param>
+            <returns>index , if not find element , then return -1</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomElementList.Remove(DCSoft.RTF.RTFDomElement)">
+            <summary>
+            delete element
+            </summary>
+            <param name="node">element</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomElementList.ToArray">
+            <summary>
+            return element array
+            </summary>
+            <returns>array</returns>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomElementList.Item(System.Int32)">
+            <summary>
+             get the element at special index
+            </summary>
+            <param name="index">index</param>
+            <returns>element</returns>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomElementList.LastElement">
+            <summary>
+            get the last element in the list
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomField">
+            <summary>
+            document field element
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomField.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomField.Method">
+            <summary>
+            method
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomField.Instructions">
+            <summary>
+            instructions
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomField.Result">
+            <summary>
+            result
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomImage">
+            <summary>
+            image element
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomImage.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.ID">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.Data">
+            <summary>
+            data
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.ScaleX">
+            <summary>
+            scale rate at the X coordinate, in percent unit.
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.ScaleY">
+            <summary>
+            scale rate at the Y coordinate , in percent unit.
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.DesiredWidth">
+            <summary>
+            desired width
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.DesiredHeight">
+            <summary>
+            desired height
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.Width">
+            <summary>
+            width
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.Height">
+            <summary>
+            height
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.PicType">
+            <summary>
+            图片格式
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomImage.Format">
+            <summary>
+            format
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFPicType.Emfblip">
+            <summary>
+            Source of the picture is an EMF (enhanced metafile).
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFPicType.Pngblip">
+            <summary>
+            Source of the picture is a PNG.
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFPicType.Jpegblip">
+            <summary>
+            Source of the picture is a JPEG.
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFPicType.Macpict">
+            <summary>
+            ource of the picture is QuickDraw.
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFPicType.Pmmetafile">
+            <summary>
+            Source of the picture is an OS/2 metafile. The N argument identifies the metafile type. The N values are described in the \pmmetafile table further on in this section.
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFPicType.Wmetafile">
+            <summary>
+            Source of the picture is a Windows metafile. The N argument identifies the metafile type (the default type is 1).
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFPicType.Dibitmap">
+            <summary>
+            Source of the picture is a Windows device-independent bitmap. The N argument identifies the bitmap type, which must equal 0.
+            The information to be included in RTF from a Windows device-independent bitmap is the concatenation of the BITMAPINFO structure followed by the actual pixel data.
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFPicType.Wbitmap">
+            <summary>
+            Source of the picture is a Windows device-dependent bitmap. The N argument identifies the bitmap type (must equal 0).
+            The information to be included in RTF from a Windows device-dependent bitmap is the result of the GetBitmapBits function.
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomLineBreak">
+            <summary>
+            line element
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomLineBreak.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomParagraph">
+            <summary>
+            paragraph element
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomParagraph.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomParagraph.IsTemplateGenerated">
+            <summary>
+            是否是临时生成的段落对象
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomParagraph.Format">
+            <summary>
+            format
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomShape">
+            <summary>
+            shape element
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomShape.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomShape.Left">
+            <summary>
+            left position
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomShape.Top">
+            <summary>
+            top position
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:DCSoft.RTF.RTFDomShape.Width" -->
+        <member name="P:DCSoft.RTF.RTFDomShape.Height">
+            <summary>
+            height
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomShape.ZIndex">
+            <summary>
+            Z index
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomShape.ShapeID">
+            <summary>
+            shape id
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomShape.ExtAttrbutes">
+            <summary>
+            ext attribute
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomShapeGroup">
+            <summary>
+            shape group
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomShapeGroup.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomShapeGroup.ExtAttrbutes">
+            <summary>
+            extern attributes
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomTable">
+            <summary>
+            table
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomTable.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTable.Columns">
+            <summary>
+            column list
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomTableCell">
+            <summary>
+            cell 
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomTableCell.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.RowSpan">
+            <summary>
+            row span
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.ColSpan">
+            <summary>
+            col span
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.PaddingLeft">
+            <summary>
+            left padding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.RuntimePaddingLeft">
+            <summary>
+            left padding in fact
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.PaddingTop">
+            <summary>
+            top padding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.RuntimePaddingTop">
+            <summary>
+            top padding in fact
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.PaddingRight">
+            <summary>
+            right padding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.RuntimePaddingRight">
+            <summary>
+            right padding in fact
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.PaddingBottom">
+            <summary>
+            bottom padding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.RuntimePaddingBottom">
+            <summary>
+            bottom padding in fact
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.VerticalAlignment">
+            <summary>
+            vertial alignment
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.Format">
+            <summary>
+            format
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.Multiline">
+            <summary>
+            allow multiline
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.Left">
+            <summary>
+            left position
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.Width">
+            <summary>
+            width
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.Height">
+            <summary>
+            height
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableCell.OverrideCell">
+            <summary>
+            this cell merged by another cell which this property specify
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomTableColumn">
+            <summary>
+            table column
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomTableColumn.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableColumn.Width">
+            <summary>
+            width
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomTableRow">
+            <summary>
+            table row
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomTableRow.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.CellSettings">
+            <summary>
+            cell settings
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.Format">
+            <summary>
+            format
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.Level">
+            <summary>
+            document level
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.RowIndex">
+            <summary>
+            row index
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.IsLastRow">
+            <summary>
+            is the last row
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.Header">
+            <summary>
+            is header row
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.Height">
+            <summary>
+            height
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.PaddingLeft">
+            <summary>
+            padding left
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.PaddingTop">
+            <summary>
+            top padding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.PaddingRight">
+            <summary>
+            right padding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.PaddingBottom">
+            <summary>
+            bottom padding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomTableRow.Width">
+            <summary>
+            width
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomText">
+            <summary>
+            text element
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomText.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomText.Format">
+            <summary>
+            format
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomText.Text">
+            <summary>
+            text
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomElementContainer">
+            <summary>
+            RTF element container
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomElementContainer.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomElementContainer.Name">
+            <summary>
+            name
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFList.FontName">
+            <summary>
+            字体名称
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawLayerInfo.CheckUCValueCount">
+            <summary>
+            检查UC累计值
+            </summary>
+            <returns>检查通过，能添加单字节字符</returns>
+        </member>
+        <member name="T:DCSoft.RTF.StringAttribute">
+            <summary>
+            string attribute
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.StringAttribute.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.StringAttribute.Name">
+            <summary>
+            name
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.StringAttribute.Value">
+            <summary>
+            value
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFTextContainer">
+            <summary>
+            RTF plain text container
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFTextContainer.#ctor(DCSoft.RTF.RTFDomDocument)">
+            <summary>
+            initialize instance
+            </summary>
+            <param name="doc">owner document</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFTextContainer.Append(System.String)">
+            <summary>
+            Append text content
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFTextContainer.Accept(DCSoft.RTF.RTFToken,DCSoft.RTF.RTFReader)">
+            <summary>
+            Accept rtf token
+            </summary>
+            <param name="token">RTF token</param>
+            <returns>Is accept it?</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFTextContainer.Clear">
+            <summary>
+            clear value
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFTextContainer.Document">
+            <summary>
+            Owner document
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFTextContainer.HasContent">
+            <summary>
+            this container has some text
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFTextContainer.Text">
+            <summary>
+            text value
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFReader.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFReader.LoadRTFFile(System.String)">
+            <summary>
+            load rtf document
+            </summary>
+            <param name="strFileName">spcial file name</param>
+            <returns>is operation successful</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFReader.LoadReader(System.IO.TextReader)">
+            <summary>
+            load rtf document
+            </summary>
+            <param name="reader">text reader</param>
+            <returns>is operation successful</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFReader.LoadRTFText(System.String)">
+            <summary>
+            load rtf text
+            </summary>
+            <param name="strText">RTF text</param>
+            <returns>is operation successful</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFReader.PeekTokenType">
+            <summary>
+            next token type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFReader.ReadToken">
+            <summary>
+            read token
+            </summary>
+            <returns>token readed</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFReader.ReadToEndGround">
+            <summary>
+            read and ignore data , until just the end of current group,preserve the end.
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFReader.CurrentToken">
+            <summary>
+            current token
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFReader.TokenType">
+            <summary>
+            current token's type
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFReader.Keyword">
+            <summary>
+            current keyword
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFReader.HasParam">
+            <summary>
+            is current token has a parameter
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFReader.Parameter">
+            <summary>
+            current parameter
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFReader.FirstTokenInGroup">
+            <summary>
+            Current token is the first token in owner group
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFReader.LastToken">
+            <summary>
+            lost token
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFReader.TokenCount">
+            <summary>
+            total of this object handle tokens
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFLex.#ctor(System.IO.TextReader)">
+            <summary>
+            Initialize instance
+            </summary>
+            <param name="reader">reader</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFLex.NextToken">
+            <summary>
+            read next token
+            </summary>
+            <returns>token</returns>
+        </member>
+        <member name="T:DCSoft.RTF.RTFToken">
+            <summary>
+            rtf token type
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFToken.Type">
+            <summary>
+            type
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFToken.Key">
+            <summary>
+            keyword
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFToken.HasParam">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFToken.Parent">
+            <summary>
+            parent token
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFTokenType">
+            <summary>
+            rtf token type
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFAlignment">
+            <summary>
+            text alignment
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFAlignment.Left">
+            <summary>
+            left
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFAlignment.Center">
+            <summary>
+            center
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFAlignment.Right">
+            <summary>
+            right
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFAlignment.Justify">
+            <summary>
+            justify
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFAttribute">
+            <summary>
+            rtf attribute
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFAttribute.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFAttribute.Name">
+            <summary>
+            attribute's name
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFAttribute.Value">
+            <summary>
+            value
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFAttributeList">
+            <summary>
+            RTF attribute list
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFAttributeList.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFColorTable">
+            <summary>
+            rtf color table
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFColorTable.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFColorTable.GetColor(System.Int32,System.Drawing.Color)">
+            <summary>
+            get color at special index , if index out of range , return default color
+            </summary>
+            <param name="index">index</param>
+            <param name="DefaultValue">default value</param>
+            <returns>color value</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFColorTable.Add(System.Drawing.Color)">
+            <summary>
+            add color to list
+            </summary>
+            <param name="c">new color value</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFColorTable.Remove(System.Drawing.Color)">
+            <summary>
+            delete special color
+            </summary>
+            <param name="c">color value</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFColorTable.IndexOf(System.Drawing.Color)">
+            <summary>
+            get color index
+            </summary>
+            <param name="c">color</param>
+            <returns>index , if not found , return -1</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFColorTable.Clear">
+            <summary>
+            清空列表
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFColorTable.Write(DCSoft.RTF.RTFWriter)">
+            <summary>
+            输出颜色表
+            </summary>
+            <param name="writer">RTF文档书写器</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFColorTable.Clone">
+            <summary>
+            复制对象
+            </summary>
+            <returns>复制品</returns>
+        </member>
+        <member name="P:DCSoft.RTF.RTFColorTable.Item(System.Int32)">
+            <summary>
+            get color at special index
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFColorTable.CheckValueExistWhenAdd">
+            <summary>
+            check color value exist when add color to list
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFColorTable.Count">
+            <summary>
+            元素个数
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFConsts">
+            <summary>
+            Define some rtf key word
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDocumentInfo">
+            <summary>
+            Document information
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentInfo.GetInfo(System.String)">
+            <summary>
+            get information specify name
+            </summary>
+            <param name="strName">name</param>
+            <returns>value</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentInfo.SetInfo(System.String,System.String)">
+            <summary>
+            set information specify name
+            </summary>
+            <param name="strName">name</param>
+            <param name="strValue">value</param>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.Title">
+            <summary>
+            document title
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.edmins">
+            <summary>
+            total edit minutes
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.vern">
+            <summary>
+            version
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.nofpages">
+            <summary>
+            number of pages
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.nofwords">
+            <summary>
+            number of words
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.nofchars">
+            <summary>
+            number of characters , include whitespace
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.nofcharsws">
+            <summary>
+            number of characters , exclude white space
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.id">
+            <summary>
+            inner id
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.Creatim">
+            <summary>
+            creation time
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.Revtim">
+            <summary>
+            modified time
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.Printim">
+            <summary>
+            last print time
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentInfo.Buptim">
+            <summary>
+            back up time
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDocumentWriter">
+            <summary>
+            RTF document writer
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFDocumentWriter.myInfo">
+            <summary>
+            document information
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFDocumentWriter.myFontTable">
+            <summary>
+            rtf font table
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFDocumentWriter.myColorTable">
+            <summary>
+            rtf color table
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteKeyword(System.String)">
+            <summary>
+            write rtf keyword
+            </summary>
+            <param name="Keyword">keyword</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteStartDocument">
+            <summary>
+            start write document
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteEndDocument">
+            <summary>
+            end write document
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteStartHeader">
+            <summary>
+            start write header
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteEndHeader">
+            <summary>
+            end write header
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteStartFooter">
+            <summary>
+            start write footer
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteEndFooter">
+            <summary>
+            end write end footer
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteStartParagraph(DCSoft.RTF.DocumentFormatInfo)">
+            <summary>
+            write write paragraph
+            </summary>
+            <param name="info">format</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteEndParagraph">
+            <summary>
+            end write paragraph
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteText(System.String)">
+            <summary>
+            write plain text
+            </summary>
+            <param name="strText">text</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteFont(System.Drawing.Font)">
+            <summary>
+            write font format
+            </summary>
+            <param name="font">font</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteStartString(DCSoft.RTF.DocumentFormatInfo)">
+            <summary>
+            start write formatted text
+            </summary>
+            <param name="info">format</param>
+            <remarks>
+            This function must assort with WriteEndString strict
+            </remarks>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteString(System.String,DCSoft.RTF.DocumentFormatInfo)">
+            <summary>
+            write formatted string
+            </summary>
+            <param name="strText">text</param>
+            <param name="info">format</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteEndString">
+            <summary>
+            end write string
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteStartBookmark(System.String)">
+            <summary>
+            start write bookmark
+            </summary>
+            <param name="strName">bookmark name</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteEndBookmark(System.String)">
+            <summary>
+            end write bookmark
+            </summary>
+            <param name="strName">bookmark name</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteLineBreak">
+            <summary>
+            write a line break
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDocumentWriter.WriteImage(System.Drawing.Image,System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            write image
+            </summary>
+            <param name="img">image</param>
+            <param name="width">pixel width</param>
+            <param name="height">pixel height</param>
+            <param name="ImageData">image binary data</param>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentWriter.Writer">
+            <summary>
+            base writer
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentWriter.FontTable">
+            <summary>
+            rtf font table
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentWriter.ColorTable">
+            <summary>
+            rtf color table
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentWriter.CollectionInfo">
+            <summary>
+            system collectiong document's information , maby generating
+            font table and color table , not writting content.
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDocumentWriter.DebugMode">
+            <summary>
+            处于调试模式
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFDomDocument">
+            <summary>
+            RTF Document
+            </summary>
+            <remarks>
+            This type is the root of RTF Dom tree structure
+            </remarks>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFDomDocument.myFontChartset">
+            <summary>
+            text encoding of current font
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFDomDocument.myAssociateFontChartset">
+            <summary>
+            text encoding of associate font 
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFDomDocument.DefaultFontName">
+            <summary>
+            default font name
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.OnProgress(System.Int32,System.Int32,System.String)">
+            <summary>
+            raise progress event
+            </summary>
+            <param name="max">progress max value</param>
+            <param name="Value">progress value</param>
+            <param name="message">progress message</param>
+            <returns>user cancel</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.Load(System.String)">
+            <summary>
+            load a rtf file and parse
+            </summary>
+            <param name="fileName">file name</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.Load(System.IO.Stream)">
+            <summary>
+            load a rtf document from a stream and parse content
+            </summary>
+            <param name="stream">stream</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.Load(System.IO.TextReader)">
+            <summary>
+            load a rtf document from a text reader and parse content
+            </summary>
+            <param name="reader">text reader</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.LoadRTFText(System.String)">
+            <summary>
+            load a rtf document from a string in rtf format and parse content
+            </summary>
+            <param name="rtfText">text</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.FixForParagraphs(DCSoft.RTF.RTFDomElement)">
+            <summary>
+            将文档中所有的内容都放置在段落中。
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.HexToBytes(System.String)">
+            <summary>
+            convert a hex string to a byte array
+            </summary>
+            <param name="hex">hex string</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.CombinTable(DCSoft.RTF.RTFDomElement)">
+            <summary>
+            将表格行元素合并成表格元素
+            </summary>
+            <param name="parentElement">父元素对象</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.CreateTable(System.Collections.ArrayList)">
+            <summary>
+            create table
+            </summary>
+            <param name="rows">table rows</param>
+            <returns>new table</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.ReadToEndGround(DCSoft.RTF.RTFReader)">
+            <summary>
+            read data , until at the front of the end token belong the current level.
+            </summary>
+            <param name="reader"></param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.ReadFontTable(DCSoft.RTF.RTFReader)">
+            <summary>
+            read font table
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.ReadColorTable(DCSoft.RTF.RTFReader)">
+            <summary>
+            read color table
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.ReadDocumentInfo(DCSoft.RTF.RTFReader)">
+            <summary>
+            read document information
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.ReadDateTime(DCSoft.RTF.RTFReader)">
+            <summary>
+            read datetime
+            </summary>
+            <param name="reader">reader</param>
+            <returns>datetime value</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.ReadDomObject(DCSoft.RTF.RTFReader,DCSoft.RTF.DocumentFormatInfo)">
+            <summary>
+            Read a rtf emb object
+            </summary>
+            <param name="reader">reader</param>
+            <param name="format">format</param>
+            <returns>rtf emb object instance</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.ReadDomField(DCSoft.RTF.RTFReader,DCSoft.RTF.DocumentFormatInfo)">
+            <summary>
+            read field
+            </summary>
+            <param name="reader"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFDomDocument.ReadInnerText(DCSoft.RTF.RTFReader,DCSoft.RTF.RTFToken,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            read the following plain text in the current level
+            </summary>
+            <param name="reader">RTF reader</param>
+            <param name="deeply">whether read the text in the sub level</param>
+            <returns>text</returns>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.FollowingChars">
+            <summary>
+            following characters
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.LeadingChars">
+            <summary>
+            leading characters
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.RuntimeEncoding">
+            <summary>
+            text encoding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.FontTable">
+            <summary>
+            font table
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.ColorTable">
+            <summary>
+            color table
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.Info">
+            <summary>
+            document information
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.Generator">
+            <summary>
+            document generator
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.PaperWidth">
+            <summary>
+            paper width,unit twips
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.PaperHeight">
+            <summary>
+            paper height,unit twips
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.LeftMargin">
+            <summary>
+            left margin,unit twips
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.TopMargin">
+            <summary>
+            top margin,unit twips
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.RightMargin">
+            <summary>
+            right margin,unit twips
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.BottomMargin">
+            <summary>
+            bottom margin,unit twips
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.Landscape">
+            <summary>
+            landscape
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.HeaderDistance">
+            <summary>
+            Header's distance from the top of the page( Twips)
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.FooterDistance">
+            <summary>
+            Footer's distance from the bottom of the page( twips)
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.ClientWidth">
+            <summary>
+            client area width,unit twips
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.ChangeTimesNewRoman">
+            <summary>
+            convert "Times new roman" to default font when parse rtf content
+            </summary>
+        </member>
+        <member name="E:DCSoft.RTF.RTFDomDocument.Progress">
+            <summary>
+            progress event
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.DefaultRowHeight">
+            <summary>
+            default row's height, in twips.
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFDomDocument.HtmlContent">
+            <summary>
+            HTML content in RTF
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFFontTable">
+            <summary>
+            font table
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFontTable.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFontTable.GetFontName(System.Int32)">
+            <summary>
+            get font object special font index
+            </summary>
+            <param name="fontIndex">font index</param>
+            <returns>font object</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFontTable.Add(System.String)">
+            <summary>
+            add font
+            </summary>
+            <param name="f">font name</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFontTable.Add(System.String,System.Text.Encoding)">
+            <summary>
+            add font
+            </summary>
+            <param name="f">font name</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFontTable.Add(System.Int32,System.String,System.Text.Encoding)">
+            <summary>
+            add font
+            </summary>
+            <param name="index">special font index</param>
+            <param name="f">font name</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFontTable.Remove(System.String)">
+            <summary>
+            Remove font
+            </summary>
+            <param name="f">font name</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFontTable.IndexOf(System.String)">
+            <summary>
+            Get font index special font name
+            </summary>
+            <param name="f">font name</param>
+            <returns>font index</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFontTable.Write(DCSoft.RTF.RTFWriter)">
+            <summary>
+            Write font table rtf
+            </summary>
+            <param name="writer">rtf text writer</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFontTable.Clone">
+            <summary>
+            close object
+            </summary>
+            <returns>new object</returns>
+        </member>
+        <member name="P:DCSoft.RTF.RTFFontTable.Item(System.Int32)">
+            <summary>
+            get font information special index
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFFontTable.Item(System.String)">
+            <summary>
+            get font object special name
+            </summary>
+            <param name="fontName">font name</param>
+            <returns>font object</returns>
+        </member>
+        <member name="T:DCSoft.RTF.RTFFont">
+            <summary>
+            rtf font information
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFFont.#ctor(System.Int32,System.String)">
+            <summary>
+            initialize instance
+            </summary>
+            <param name="index">font index</param>
+            <param name="name">font name</param>
+        </member>
+        <member name="P:DCSoft.RTF.RTFFont.Index">
+            <summary>
+            font index
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFFont.Name">
+            <summary>
+            font name
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFFont.Charset">
+            <summary>
+            charset 
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFFont.Encoding">
+            <summary>
+            encoding
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.ANSIEncoding">
+            <summary>
+            internal encoding for ansi
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFNode">
+            <summary>
+            RTF parser node, this source code evolution from other software.
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNode.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNode.strKeyword">
+            <summary>
+            key word
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNode.bolHasParameter">
+            <summary>
+            Whether this node has parameter
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNode.Write(DCSoft.RTF.RTFWriter)">
+            <summary>
+            write to rtf document
+            </summary>
+            <param name="writer">RTF text writer</param>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.Parent">
+            <summary>
+            parent node
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.OwnerDocument">
+            <summary>
+            raw document which owner this node
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.Keyword">
+            <summary>
+            Keyword
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.HasParameter">
+            <summary>
+            Whether this node has parameter
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.Parameter">
+            <summary>
+            paramter value
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.Nodes">
+            <summary>
+            child nodes
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.Index">
+            <summary>
+            index
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.Type">
+            <summary>
+            node type
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.PreviousNode">
+            <summary>
+            previous node in parent nodes list
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNode.NextNode">
+            <summary>
+            next node in parent nodes list
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFNodeGroup">
+            <summary>
+            RTF node group , this source code evolution from other software.
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeGroup.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNodeGroup.myNodes">
+            <summary>
+            child node list
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeGroup.GetAllNodes(System.Boolean)">
+            <summary>
+            get all child node deeply
+            </summary>
+            <param name="IncludeGroupNode">contains group type node</param>
+            <returns>child nodes list</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeGroup.Write(DCSoft.RTF.RTFWriter)">
+            <summary>
+            write content to rtf document
+            </summary>
+            <param name="writer">RTF text writer</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeGroup.SearchKey(System.String,System.Boolean)">
+            <summary>
+            search child node special keyword
+            </summary>
+            <param name="Key">special keyword</param>
+            <param name="Deeply">whether search deeplyl</param>
+            <returns>node find</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeGroup.AppendChild(DCSoft.RTF.RTFNode)">
+            <summary>
+            append child node
+            </summary>
+            <param name="node">node</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeGroup.RemoveChild(DCSoft.RTF.RTFNode)">
+            <summary>
+            delete node
+            </summary>
+            <param name="node">node</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeGroup.InsertNode(System.Int32,DCSoft.RTF.RTFNode)">
+            <summary>
+            insert node
+            </summary>
+            <param name="index">index</param>
+            <param name="node">node</param>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNodeGroup.Nodes">
+            <summary>
+            child node list
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNodeGroup.FirstNode">
+            <summary>
+            first child node
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFNodeList">
+            <summary>
+            RTF node list , this source code evolution from other software.
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeList.GetParameter(System.String,System.Int32)">
+            <summary>
+            get node's parameter value special keyword, if can not find , return default value.
+            </summary>
+            <param name="key">keyword</param>
+            <param name="DefaultValue">default value</param>
+            <returns>parameter value</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeList.ContainsKey(System.String)">
+            <summary>
+            detect whether exist node special keyword in this list
+            </summary>
+            <param name="Key">keyword</param>
+            <returns>exist or not</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeList.IndexOf(DCSoft.RTF.RTFNode)">
+            <summary>
+            get index of node in this list
+            </summary>
+            <param name="node">node</param>
+            <returns>index , if node does no in this list , return -1</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeList.Add(DCSoft.RTF.RTFNode)">
+            <summary>
+            add node
+            </summary>
+            <param name="node">node</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeList.Remove(DCSoft.RTF.RTFNode)">
+            <summary>
+            remvoe node
+            </summary>
+            <param name="node">node</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFNodeList.Insert(System.Int32,DCSoft.RTF.RTFNode)">
+            <summary>
+            insert node
+            </summary>
+            <param name="index">index</param>
+            <param name="node">node</param>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNodeList.Item(System.Int32)">
+            <summary>
+            get node special index
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNodeList.Item(System.String)">
+            <summary>
+            get node special keyword
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFNodeList.Item(System.Type)">
+            <summary>
+            get node special type
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFNodeType">
+            <summary>
+            RTF node type
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNodeType.Root">
+            <summary>
+            root
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNodeType.Keyword">
+            <summary>
+            keyword, etc /marginl
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNodeType.ExtKeyword">
+            <summary>
+            external keyword node , etc. /*/keyword
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNodeType.Control">
+            <summary>
+            control
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNodeType.Text">
+            <summary>
+            plain text
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNodeType.Group">
+            <summary>
+            group , etc . { }
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFNodeType.None">
+            <summary>
+            nothing
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFRawDocument">
+            <summary>
+            RTF raw document,this source code evolution from other software.
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.Test">
+            <summary>
+            test 
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.#ctor">
+            <summary>
+            initialize instance
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFRawDocument.myColorTable">
+            <summary>
+            color table
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFRawDocument.myFontTable">
+            <summary>
+            font table
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFRawDocument.myInfo">
+            <summary>
+            document information
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.ReadFontTable(DCSoft.RTF.RTFNodeGroup)">
+            <summary>
+            read font table
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.ReadColorTable(DCSoft.RTF.RTFNodeGroup)">
+            <summary>
+            read color table
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.ReadDocumentInfo(DCSoft.RTF.RTFNodeGroup)">
+            <summary>
+            read document information
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.LoadRTFText(System.String)">
+            <summary>
+            load rtf text
+            </summary>
+            <param name="strText">text in rtf format</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.Load(System.String)">
+            <summary>
+            load rtf file
+            </summary>
+            <param name="strFileName">file name</param>
+        </member>
+        <member name="F:DCSoft.RTF.RTFRawDocument.myFontChartset">
+            <summary>
+            text encoding for current font
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFRawDocument.myAssociateFontChartset">
+            <summary>
+            text encoding for current associate font
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.Load(DCSoft.RTF.RTFReader)">
+            <summary>
+            load rtf
+            </summary>
+            <param name="reader">RTF text reader</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.Write(DCSoft.RTF.RTFWriter)">
+            <summary>
+            write rtf
+            </summary>
+            <param name="writer">RTF writer</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.Save(System.String)">
+            <summary>
+            save rtf file
+            </summary>
+            <param name="strFileName">file name</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFRawDocument.Save(System.IO.Stream)">
+            <summary>
+            Save rtf to a stream
+            </summary>
+            <param name="stream">stream</param>
+        </member>
+        <member name="P:DCSoft.RTF.RTFRawDocument.OwnerDocument">
+            <summary>
+            this owner document is myself
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFRawDocument.Parent">
+            <summary>
+            no parent node
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFRawDocument.ColorTable">
+            <summary>
+            color table
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFRawDocument.FontTable">
+            <summary>
+            font table
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFRawDocument.Info">
+            <summary>
+            document information
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFRawDocument.Encoding">
+            <summary>
+            text encoding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFRawDocument.RuntimeEncoding">
+            <summary>
+            current text encoding
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFUtil">
+            <summary>
+            some utility functions , this source code evolution from other software.
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFUtil.HasContentElement(DCSoft.RTF.RTFDomElement)">
+            <summary>
+            判断对象是否有实际内容
+            </summary>
+            <param name="rootElement">根元素对象</param>
+            <returns>是否有实际内容</returns>
+        </member>
+        <member name="M:DCSoft.RTF.RTFUtil.GdipEmfToWmfBits(System.IntPtr,System.UInt32,System.Byte[],System.Int32,DCSoft.RTF.RTFUtil.EmfToWmfBitsFlags)">
+            <summary>
+            Use the EmfToWmfBits function in the GDI+ specification to convert a 
+            Enhanced Metafile to a Windows Metafile
+            </summary>
+            <param name="_hEmf">
+            A handle to the Enhanced Metafile to be converted
+            </param>
+            <param name="_bufferSize">
+            The size of the buffer used to store the Windows Metafile bits returned
+            </param>
+            <param name="_buffer">
+            An array of bytes used to hold the Windows Metafile bits returned
+            </param>
+            <param name="_mappingMode">
+            The mapping mode of the image.  This control uses MM_ANISOTROPIC.
+            </param>
+            <param name="_flags">
+            Flags used to specify the format of the Windows Metafile returned
+            </param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFUtil.GetRtfImage(System.Drawing.Image)">
+            <summary>
+            Wraps the image in an Enhanced Metafile by drawing the image onto the
+            graphics context, then converts the Enhanced Metafile to a Windows
+            Metafile, and finally appends the bits of the Windows Metafile in HEX
+            to a string and returns the string.
+            </summary>
+            <param name="_image"></param>
+            <returns>
+            A string containing the bits of a Windows Metafile in HEX
+            </returns>
+        </member>
+        <member name="T:DCSoft.RTF.RTFVerticalAlignment">
+            <summary>
+            vertiacal alignment
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFVerticalAlignment.Top">
+            <summary>
+            top alignment
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFVerticalAlignment.Middle">
+            <summary>
+            middle alignment
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFVerticalAlignment.Bottom">
+            <summary>
+            bottom alignment
+            </summary>
+        </member>
+        <member name="T:DCSoft.RTF.RTFWriter">
+            <summary>
+            RTF text writer ,  this source code evolution from other software.
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFWriter.Hexs">
+            <summary>
+            hex characters
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.TestWriteFile">
+            <summary>
+            Test generate rtf file
+            after execute this function you can open c:\a.rtf
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.TestClipboard">
+            <summary>
+            Test generate rtf text and copy to windows clipboard
+            after execute this function , you can paste rtf text in MS Word
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.TestBuildRTF(DCSoft.RTF.RTFWriter)">
+            <summary>
+            Test to generate a little rtf document
+            </summary>
+            <param name="w">RTF text writer</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.#ctor(System.IO.TextWriter)">
+            <summary>
+            Initialize instance
+            </summary>
+            <param name="w">text writer</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.#ctor(System.String)">
+            <summary>
+            Initialize instance
+            </summary>
+            <param name="strFileName">file name</param>
+        </member>
+        <member name="F:DCSoft.RTF.RTFWriter.myEncoding">
+            <summary>
+            for chinese , can use System.Text.Encoding.GetEncoding( 936 );
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFWriter.myWriter">
+            <summary>
+            inner text writer
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFWriter.intGroupLevel">
+            <summary>
+            current group level
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.Close">
+            <summary>
+            close 
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteGroup(System.String)">
+            <summary>
+            write completed group wich one keyword
+            </summary>
+            <param name="KeyWord">keyword</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteStartGroup">
+            <summary>
+            begin write group
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteEndGroup">
+            <summary>
+            end write group
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteRaw(System.String)">
+            <summary>
+            write raw text
+            </summary>
+            <param name="txt">text</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteKeyword(System.String)">
+            <summary>
+            write keyword
+            </summary>
+            <param name="Keyword">keyword</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteKeyword(System.String,System.Boolean)">
+            <summary>
+            write keyword
+            </summary>
+            <param name="Keyword">keyword</param>
+            <param name="Ext">whether extern key word</param>
+        </member>
+        <member name="F:DCSoft.RTF.RTFWriter.Unicode">
+            <summary>
+            text encoding
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteText(System.String)">
+            <summary>
+            write plain text
+            </summary>
+            <param name="Text">文本值</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteText(System.String,System.Boolean)">
+            <summary>
+            write plain text, can choose write a white space automatic
+            </summary>
+            <param name="Text">text</param>
+            <param name="AutoAddWhitespace">wirte a white space automatic</param>
+        </member>
+        <member name="F:DCSoft.RTF.RTFWriter.intPosition">
+            <summary>
+            current position
+            </summary>
+        </member>
+        <member name="F:DCSoft.RTF.RTFWriter.intLineHead">
+            <summary>
+            current line head
+            </summary>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteBytes(System.Byte[])">
+            <summary>
+            write binary data
+            </summary>
+            <param name="bs">binary data</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.WriteByte(System.Byte)">
+            <summary>
+            write a byte data
+            </summary>
+            <param name="b">byte data</param>
+        </member>
+        <member name="M:DCSoft.RTF.RTFWriter.Dispose">
+            <summary>
+            dispose instance
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFWriter.Encoding">
+            <summary>
+            text encoding
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFWriter.Indent">
+            <summary>
+            whether output rtf code with indent style
+            </summary>
+            <remarks>
+            In rtf formation , recommend do not use indent . this option just to debugger , 
+            in software development , use this option can genereate indented rtf code friendly to read,
+            but after debug , recommend clear this option and set this attribute = false.
+            </remarks>
+        </member>
+        <member name="P:DCSoft.RTF.RTFWriter.IndentString">
+            <summary>
+            string used to indent
+            </summary>
+        </member>
+        <member name="P:DCSoft.RTF.RTFWriter.GroupLevel">
+            <summary>
+            当前组合等级
+            </summary>
+        </member>
+    </members>
+</doc>
