@@ -1,0 +1,1172 @@
+{\rtf1\ansi\ansicpg1252\fromhtml1 \fbidis \deff0{\fonttbl
+
+{\f0\fswiss Arial;}
+
+{\f1\fmodern Courier New;}
+
+{\f2\fnil\fcharset2 Symbol;}
+
+{\f3\fmodern\fcharset0 Courier New;}}
+
+{\colortbl\red0\green0\blue0;\red0\green0\blue255;}
+
+\uc1\pard\plain\deftab360 \f0\fs24 
+
+{\*\htmltag19 <html>}
+
+{\*\htmltag2 \par }
+
+{\*\htmltag242   }
+
+{\*\htmltag34 <head>}
+
+{\*\htmltag1 \par }
+
+{\*\htmltag1 \par }
+
+{\*\htmltag241     }
+
+{\*\htmltag1 \par }
+
+{\*\htmltag241   }
+
+{\*\htmltag41 </head>}
+
+{\*\htmltag2 \par }
+
+{\*\htmltag242   }
+
+{\*\htmltag50 <body bgcolor="#FFFFFF" text="#000000">}\htmlrtf \viewkind5
+
+{\*\background {\shp{\*\shpinst{\sp{\sn fillColor}{\sv 16777215}}{\sp{\sn fFilled}{\sv 1}}}}}\htmlrtf0 
+
+{\*\htmltag0 \par }
+
+{\*\htmltag240     }
+
+{\*\htmltag128 <pre style="background-color:#ffffcc; font-size:smaller; margin:0px; padding-bottom:1ex; padding-left:1ex; padding-right:1ex; padding-top:1ex;">}\htmlrtf {\pard\plain\f1\fs20 \htmlrtf0 \htmlrtf {\htmlrtf0 
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // DECODERTFHTML -- Given an uncompressed RTF body of the message,
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // and assuming that it contains encoded-html, this function
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // turns it onto regular html.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // [in] (buf,*len) indicate the start and length of the uncompressed RTF body.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // [out] the buffer is overwritten with the HTML version, null-terminated,
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // and *len indicates the length of this HTML.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 //
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // Notes: (1) because of how the encoding works, the HTML version is necessarily
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // shorter than the encoded version. That's why it's safe for the function to
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // place the decoded html in the same buffer that formerly held the encoded stuff.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // (2) Some messages include characters \\'XX, where XX is a hexedecimal number.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // This function simply converts this into ASCII. The conversion will only make
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // sense if the right code-page is being used. I don't know how rtf specifies which
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // code page it wants.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // (3) By experiment, I discovered that \\pntext\{..\} and \\liN and \\fi-N are RTF
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // markup that should be removed. There might be other RTF markup that should
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // also be removed. But I don't know what else.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 //
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 void
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  decodertfhtml(
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 char
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  *buf,unsigned 
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 int
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  *len)\line
+
+\{ 
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // c -- pointer to where we're reading from
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // d -- pointer to where we're writing to. Invariant: d
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 c
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // max -- how far we can read from (i.e. to the end of the original rtf)
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // ignore_tag -- stores 'N': after \\mhtmlN, we will ignore the subsequent \\htmlN.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 char
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  *c=buf, *max=buf+*len, *d=buf; 
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 int
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  ignore_tag=-
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 1
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ;\line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // First, we skip forwards to the first \\htmltag.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 while
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 max 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\{\\\\*\\\\htmltag"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 11
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )!=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 //
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // Now work through the document. Our plan is as follows:
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * Ignore \{ and \}. These are part of RTF markup.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * Ignore \\htmlrtf...\\htmlrtf0. This is how RTF keeps its equivalent markup separate from the html.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * Ignore \\r and \\n. The real carriage returns are stored in \\par tags.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * Ignore \\pntext\{..\} and \\liN and \\fi-N. These are RTF junk.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * Convert \\par and \\tab into \\r\\n and \\t
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * Convert \\'XX into the ascii character indicated by the hex number XX
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * Convert \\\{ and \\\} into \{ and \}. This is how RTF escapes its curly braces.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * When we get \\*\\mhtmltagN, keep the tag, but ignore the subsequent \\*\\htmltagN
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * When we get \\*\\htmltagN, keep the tag as long as it isn't subsequent to a \\*\\mhtmltagN
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:green; font-style:italic;">}\htmlrtf {\htmlrtf0 // * All other text should be kept as it is.
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 \line
+
+  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 while
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 max)\line
+
+  \{ 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '\{'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '\}'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\*\\\\htmltag"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 10
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )\line
+
+    \{ c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 10
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 int
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  tag=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 while
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  *c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '9'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) \{tag=tag*
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 10
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 +*c-
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; c++;\}\line
+
+      
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 ' '
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+      
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (tag==ignore_tag) \{
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 while
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 max 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  *c!=
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '\}'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '\}'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\}\line
+
+      ignore_tag=-
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 1
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ;\line
+
+    \}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\*\\\\mhtmltag"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 11
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )\line
+
+    \{ c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 11
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 int
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  tag=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 while
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  *c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '9'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) \{tag=tag*
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 10
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 +*c-
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; c++;\}\line
+
+      
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 ' '
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+      ignore_tag=tag;\line
+
+    \}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\par"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 4
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) \{strcpy(d,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\r\\n"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ); d+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 2
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 4
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 ' '
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\tab"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 4
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) \{strcpy(d,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "   "
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ); d+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 3
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 4
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 ' '
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\li"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 3
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )\line
+
+    \{ c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 3
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 while
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  *c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '9'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 ' '
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+    \}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\fi-"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 4
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )\line
+
+    \{ c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 4
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 while
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  *c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '9'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 ' '
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+    \}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\'"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 2
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )\line
+
+    \{ unsigned 
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 int
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  hi=c[
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 2
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ], lo=c[
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 3
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ];\line
+
+      
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (hi
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  hi
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '9'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) hi-=
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (hi
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'A'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  hi
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'Z'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) hi=hi-
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'A'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 +
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 10
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (hi
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'a'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  hi
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'z'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) hi=hi-
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'a'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 +
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 10
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ;\line
+
+      
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (lo
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  lo
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '9'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) lo-=
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '0'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (lo
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'A'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  lo
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'Z'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) lo=lo-
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'A'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 +
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 10
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (lo
+
+{\*\htmltag84 &gt;}\htmlrtf >\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'a'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  lo
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 =
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'z'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) lo=lo-
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 'a'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 +
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 10
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ;\line
+
+      *((unsigned 
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 char
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 *)d) = (unsigned 
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 char
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )(hi*
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 16
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 +lo);\line
+
+      c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 4
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; d++;\line
+
+    \}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\pntext"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 7
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) \{c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 7
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 while
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 max 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  *c!=
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '\}'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\htmlrtf"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 8
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )\line
+
+    \{ c++; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 while
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 max 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0 
+
+{\*\htmltag84 &amp;}\htmlrtf &\htmlrtf0  strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\htmlrtf0"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 9
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )!=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+      
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (c
+
+{\*\htmltag84 &lt;}\htmlrtf <\htmlrtf0 max) c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 9
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; 
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 ' '
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+    \}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (*c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '\\r'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  || *c==
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '\\n'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) c++;\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\\{"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 2
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) \{*d=
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '\{'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; d++; c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 2
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ;\}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 if
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  (strncmp(c,
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 "\\\\\}"
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ,
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 2
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )==
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ) \{*d=
+
+{\*\htmltag84 <span style="color:rgb(140,0,40);">}\htmlrtf {\htmlrtf0 '\}'
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; d++; c+=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 2
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ;\}\line
+
+    
+
+{\*\htmltag84 <span style="color:black; font-weight:bold;">}\htmlrtf {\htmlrtf0 else
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0  \{*d=*c; c++; d++;\}\line
+
+  \}\line
+
+  *d=
+
+{\*\htmltag84 <span style="color:rgb(0,10,100);">}\htmlrtf {\htmlrtf0 0
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 ; d++;\line
+
+  *len = (unsigned 
+
+{\*\htmltag84 <span style="color:blue;">}\htmlrtf {\htmlrtf0 int
+
+{\*\htmltag92 </span>}\htmlrtf }\htmlrtf0 )(d-buf);\line
+
+\}\par\htmlrtf}\htmlrtf0
+
+
+{\*\htmltag136 </pre>}\htmlrtf }\htmlrtf0 
+
+{\*\htmltag0 \par }
+
+{\*\htmltag240   }
+
+{\*\htmltag58 </body>}
+
+{\*\htmltag2 \par }
+
+{\*\htmltag27 </html>}
+
+{\*\htmltag3 \par }}
