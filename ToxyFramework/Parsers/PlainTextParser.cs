@@ -34,7 +34,6 @@ namespace Toxy.Parsers
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File "+Context.Path+" is not found");
 
-            Encoding encoding= Encoding.UTF8;
             StreamReader sr = null;
             try
             {
@@ -44,7 +43,7 @@ namespace Toxy.Parsers
                 }
                 else
                 {
-                    sr = new StreamReader(Context.Path, true);
+                    sr = new StreamReader(Context.Path, Context.Encoding);
                 }
                 string line = sr.ReadLine();
                 int i = 0;

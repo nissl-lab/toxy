@@ -35,5 +35,15 @@ namespace Toxy
         public List<Paragraph> Paragraphs { get; set; }
         public int TotalPageNumber { get; set; }
         public Dictionary<string, object> Properties { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var para in Paragraphs)
+            {
+                sb.AppendLine(para.Text);
+            }
+            return sb.ToString();
+        }
     }
 }

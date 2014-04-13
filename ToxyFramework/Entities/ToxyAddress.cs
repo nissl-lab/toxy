@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Toxy.Entities
+namespace Toxy
 {
     public class ToxyAddress
     {

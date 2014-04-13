@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Toxy.Entities;
+
 using Toxy.Parsers;
 
 namespace Toxy.Test

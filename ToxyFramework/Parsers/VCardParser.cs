@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Thought.vCards;
-using Toxy.Entities;
 
 namespace Toxy.Parsers
 {
