@@ -65,9 +65,9 @@ namespace Toxy
                     drow = dt.NewRow();
                 }
 
-                while (lastCol < row.LastCellIndex)
+                while (lastCol <= row.LastCellIndex)
                 {
-                    dt.Columns.Add("Column" + lastCol);
+                    dt.Columns.Add("Col " + lastCol);
                     lastCol++;
                 }
 

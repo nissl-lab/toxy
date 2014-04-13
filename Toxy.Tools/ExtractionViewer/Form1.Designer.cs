@@ -37,16 +37,16 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnReopen = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbPath = new System.Windows.Forms.TextBox();
+            this.tbExtension = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tbParserType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbExtension = new System.Windows.Forms.TextBox();
-            this.tbPath = new System.Windows.Forms.TextBox();
+
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -79,14 +79,14 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -126,7 +126,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.richTextBox1);
             // 
             // splitContainer1.Panel2
             // 
@@ -136,15 +135,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(1086, 465);
             this.splitContainer1.SplitterDistance = 785;
             this.splitContainer1.TabIndex = 5;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(785, 465);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
             // 
             // comboBox1
             // 
@@ -188,6 +178,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File Extraction Info";
             // 
+            // tbPath
+            // 
+            this.tbPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPath.Location = new System.Drawing.Point(6, 114);
+            this.tbPath.Multiline = true;
+            this.tbPath.Name = "tbPath";
+            this.tbPath.Size = new System.Drawing.Size(267, 85);
+            this.tbPath.TabIndex = 5;
+            // 
+            // tbExtension
+            // 
+            this.tbExtension.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbExtension.Location = new System.Drawing.Point(96, 65);
+            this.tbExtension.Name = "tbExtension";
+            this.tbExtension.Size = new System.Drawing.Size(129, 21);
+            this.tbExtension.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Extension: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Path:";
+            // 
             // tbParserType
             // 
             this.tbParserType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -204,41 +229,7 @@
             this.label1.Size = new System.Drawing.Size(83, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "Parser Type: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Path:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Extension: ";
-            // 
-            // tbExtension
-            // 
-            this.tbExtension.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbExtension.Location = new System.Drawing.Point(96, 65);
-            this.tbExtension.Name = "tbExtension";
-            this.tbExtension.Size = new System.Drawing.Size(129, 21);
-            this.tbExtension.TabIndex = 4;
-            // 
-            // tbPath
-            // 
-            this.tbPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbPath.Location = new System.Drawing.Point(6, 114);
-            this.tbPath.Multiline = true;
-            this.tbPath.Name = "tbPath";
-            this.tbPath.Size = new System.Drawing.Size(267, 85);
-            this.tbPath.TabIndex = 5;
+
             // 
             // Form1
             // 
@@ -277,7 +268,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnReopen;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbParserType;
         private System.Windows.Forms.Label label3;

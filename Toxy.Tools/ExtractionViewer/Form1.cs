@@ -49,6 +49,52 @@ namespace ExtractionViewer
             OpenFile(filepath, comboBox1.Text);
         }
 
+
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+
+        private void AppendRichTextBox()
+        {
+            
+            
+            if (richTextBox1 == null)
+            {
+                this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+                this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+                this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+                this.richTextBox1.Name = "richTextBox1";
+                this.richTextBox1.TabIndex = 1;
+                this.richTextBox1.Text = "";
+                this.splitContainer1.Panel1.Controls.Add(this.richTextBox1);
+            }
+            this.richTextBox1.Clear();
+            this.richTextBox1.Visible = true;
+            if(this.dataGridView1!=null)
+                this.dataGridView1.Visible = false;
+        }
+        private void AppendDataGridView()
+        {
+            if (dataGridView1 == null)
+            {
+                this.dataGridView1 = new System.Windows.Forms.DataGridView();
+                ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+                this.dataGridView1.AllowUserToAddRows = false;
+                this.dataGridView1.AllowUserToDeleteRows = false;
+                this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+                this.dataGridView1.Name = "dataGridView1";
+                this.dataGridView1.ReadOnly = true;
+                this.dataGridView1.RowTemplate.Height = 23;
+                this.dataGridView1.TabIndex = 0;
+
+                this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
+            }
+
+            if (richTextBox1 != null)
+                this.richTextBox1.Visible = false;
+            this.dataGridView1.Visible = true;
+        }
+
         private void OpenFile(string filepath, string encoding)
         {
 
@@ -57,6 +103,7 @@ namespace ExtractionViewer
                 tbPath.Clear();
                 return;
             }
+            
             tbPath.Text = filepath;
             FileInfo fi = new FileInfo(filepath);
             ParserContext context = new ParserContext(filepath);
@@ -64,17 +111,23 @@ namespace ExtractionViewer
             string extension = fi.Extension;
             tbExtension.Text = extension;
 
+
+
+
+
             switch (extension)
             {
                 case ".txt":
                 case ".html":
                 case ".htm":
+                    AppendRichTextBox();
                     var tparser = ParserFactory.CreateText(context);
                     richTextBox1.Text = tparser.Parse();
                     tbParserType.Text = tparser.GetType().Name;
                     break;
                 case ".rtf":
                 case ".docx":
+                    AppendRichTextBox();
                     IDocumentParser docparser = ParserFactory.CreateDocument(context);
                     ToxyDocument doc = docparser.Parse();
                     tbParserType.Text = docparser.GetType().Name;
@@ -83,18 +136,21 @@ namespace ExtractionViewer
                 case ".csv":
                 case ".xlsx":
                 case ".xls":
+                    AppendDataGridView();
                     ISpreadsheetParser ssparser = ParserFactory.CreateSpreadsheet(context);
                     ToxySpreadsheet ss = ssparser.Parse();
-                    tbParserType.Text = ssparser.GetType().Name;
-                    richTextBox1.Text = ss.ToString();
+                    dataGridView1.DataSource = ss.ToDataSet().Tables[0].DefaultView;
+                    
                     break;
                 case ".vcard":
+                    AppendRichTextBox();
                     var vparser = ParserFactory.CreateVCard(context);
                     ToxyBusinessCards vcards = vparser.Parse();
                     tbParserType.Text = vparser.GetType().Name;
                     richTextBox1.Text = vcards.ToString();
                     break;
                 default:
+                    AppendRichTextBox();
                     richTextBox1.Text = "Unknown document";
                     tbParserType.Text = "";
                     break;
