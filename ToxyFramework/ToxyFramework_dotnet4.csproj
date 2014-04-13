@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Build\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,42 +25,56 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Build\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DCSoft.RTF">
+      <HintPath>..\3rdParty\DCSoft.RTF.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\3rdParty\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\NPOI\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\3rdParty\NPOI\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="LumenWorks.Framework.IO">
-      <HintPath>..\Lib\LumenWorks.Framework.IO.dll</HintPath>
+      <HintPath>..\3rdParty\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
     <Reference Include="NPOI, Version=2.0.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\NPOI\dotnet4\NPOI.dll</HintPath>
+      <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML, Version=2.0.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\NPOI\dotnet4\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net, Version=2.0.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\NPOI\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats, Version=2.0.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\NPOI\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Thought.vCards">
+      <HintPath>..\3rdParty\Thought.vCards\Thought.vCards.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="3rdParty\EMLReader.cs" />
+    <Compile Include="Entities\ToxyAddress.cs" />
+    <Compile Include="Entities\ToxyBusinessCard.cs" />
+    <Compile Include="Entities\ToxyContact.cs" />
     <Compile Include="Entities\ToxyDom.cs" />
+    <Compile Include="Parsers\HtmlParser.cs" />
+    <Compile Include="Parsers\IDomParser.cs" />
     <Compile Include="Parsers\IEmailParser.cs" />
     <Compile Include="Parsers\IDocumentParser.cs" />
     <Compile Include="Entities\IToxyProperties.cs" />
@@ -70,6 +84,7 @@
     <Compile Include="ParserContext.cs" />
     <Compile Include="Parsers\ISpreadsheetParser.cs" />
     <Compile Include="Parsers\RTFParser.cs" />
+    <Compile Include="Parsers\VCardParser.cs" />
     <Compile Include="Parsers\WordParser.cs" />
     <Compile Include="Entities\ToxyDocument.cs" />
     <Compile Include="Entities\ToxyEmail.cs" />
