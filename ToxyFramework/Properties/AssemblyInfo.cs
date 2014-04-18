@@ -9,10 +9,10 @@ using System.Security;
 [assembly: AssemblyTitle("Toxy Framework")]
 [assembly: AssemblyDescription(".Net Data/Text Extraction Framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DotX")]
+[assembly: AssemblyCompany("Neuzilla")]
 [assembly: AssemblyProduct("Toxy")]
 [assembly: AssemblyCopyright("Apache 2.0")]
-[assembly: AssemblyTrademark("Toxy")]
+[assembly: AssemblyTrademark("Neuzilla")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -33,8 +33,8 @@ using System.Security;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.5.0.0")]
-[assembly: AssemblyFileVersion("0.5.0.0")]
-[assembly: AssemblyInformationalVersion("Toxy 0.5")]
+[assembly: AssemblyVersion("0.8.0.0")]
+[assembly: AssemblyFileVersion("0.8.0.0")]
+[assembly: AssemblyInformationalVersion("Toxy 0.8")]
 
 [assembly: AllowPartiallyTrustedCallers]

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Toxy
 {
-    public class ToxyAttribute
-    {
-        public string Name { get; set; }
-        public string Value { get; set; }
-    }
     public class ToxyNode
     {
         public string Name { get; set; }
@@ -64,16 +60,6 @@ namespace Toxy
         public string ToText()
         {
             return HtmlNode.OuterHtml;
-        }
-    }
-
-    public class ToxyDom
-    {
-        private ToxyNode root = null;
-        public ToxyNode Root
-        {
-            get { return root; }
-            internal set { root = value; }
         }
     }
 }
