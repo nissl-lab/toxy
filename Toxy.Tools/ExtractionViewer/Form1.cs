@@ -82,6 +82,9 @@ namespace ExtractionViewer
                 this.dataGridView1.AllowUserToDeleteRows = false;
                 this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
                 this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+                var headerstyle = new DataGridViewCellStyle();
+                headerstyle.Alignment = DataGridViewContentAlignment.BottomCenter;
+                this.dataGridView1.ColumnHeadersDefaultCellStyle = headerstyle;
                 this.dataGridView1.Name = "dataGridView1";
                 this.dataGridView1.ReadOnly = true;
                 this.dataGridView1.RowTemplate.Height = 23;
@@ -94,7 +97,8 @@ namespace ExtractionViewer
                 this.richTextBox1.Visible = false;
             this.dataGridView1.Visible = true;
         }
-
+        ToxySpreadsheet ss = null;
+        
         private void OpenFile(string filepath, string encoding)
         {
 
@@ -113,6 +117,7 @@ namespace ExtractionViewer
 
 
 
+            panel1.Visible = false;
 
 
             switch (extension)
@@ -138,9 +143,17 @@ namespace ExtractionViewer
                 case ".xls":
                     AppendDataGridView();
                     ISpreadsheetParser ssparser = ParserFactory.CreateSpreadsheet(context);
-                    ToxySpreadsheet ss = ssparser.Parse();
-                    dataGridView1.DataSource = ss.ToDataSet().Tables[0].DefaultView;
-                    
+                    ss = ssparser.Parse();
+                    DataSet ds = ss.ToDataSet();
+                    dataGridView1.DataSource = ds.Tables[0].DefaultView;
+
+                    cbSheets.Items.Clear();
+                    foreach (var table in ss.Tables)
+                    {
+                        cbSheets.Items.Add(table.Name);
+                    }
+                    cbSheets.SelectedIndex = 0;
+                    panel1.Visible = true;
                     break;
                 case ".vcard":
                     AppendRichTextBox();
@@ -161,6 +174,18 @@ namespace ExtractionViewer
         private void btnReopen_Click(object sender, EventArgs e)
         {
             OpenFile(filepath, comboBox1.Text);
+        }
+
+        private void btnSelectSheet_Click(object sender, EventArgs e)
+        {
+            if (ss == null)
+            {
+                return;
+            }
+            var table= ss[cbSheets.Text];
+            if(table==null)
+                return;
+                dataGridView1.DataSource = table.ToDataTable().DefaultView;
         }
 
     }

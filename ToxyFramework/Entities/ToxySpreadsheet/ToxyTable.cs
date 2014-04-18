@@ -30,6 +30,21 @@ namespace Toxy
 
         public List<ToxyRow> Rows { get; set; }
 
+        private string ExcelColumnFromNumber(int column)
+        {
+            column++;
+            string columnString = "";
+            decimal columnNumber = column;
+            while (columnNumber > 0)
+            {
+                decimal currentLetterNumber = (columnNumber - 1) % 26;
+                char currentLetter = (char)(currentLetterNumber + 65);
+                columnString = currentLetter + columnString;
+                columnNumber = (columnNumber - (currentLetterNumber + 1)) / 26;
+            }
+            return columnString; 
+        }
+
         public DataTable ToDataTable()
         {
 
@@ -70,7 +85,7 @@ namespace Toxy
 
                 while (lastCol <= row.LastCellIndex)
                 {
-                    dt.Columns.Add("Col " + lastCol);
+                    dt.Columns.Add(ExcelColumnFromNumber(lastCol));
                     lastCol++;
                 }
 

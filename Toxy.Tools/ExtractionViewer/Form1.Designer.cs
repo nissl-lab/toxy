@@ -46,13 +46,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbParserType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbSheets = new System.Windows.Forms.ComboBox();
+            this.btnSelectSheet = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -124,9 +127,6 @@
             this.splitContainer1.Location = new System.Drawing.Point(0, 25);
             this.splitContainer1.Name = "splitContainer1";
             // 
-            // splitContainer1.Panel1
-            // 
-            // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.comboBox1);
@@ -165,6 +165,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.tbPath);
             this.groupBox1.Controls.Add(this.tbExtension);
             this.groupBox1.Controls.Add(this.label3);
@@ -229,7 +230,44 @@
             this.label1.Size = new System.Drawing.Size(83, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "Parser Type: ";
-
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnSelectSheet);
+            this.panel1.Controls.Add(this.cbSheets);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(9, 222);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(264, 64);
+            this.panel1.TabIndex = 7;
+            this.panel1.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 12);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Sheet: ";
+            // 
+            // cbSheets
+            // 
+            this.cbSheets.FormattingEnabled = true;
+            this.cbSheets.Location = new System.Drawing.Point(58, 7);
+            this.cbSheets.Name = "cbSheets";
+            this.cbSheets.Size = new System.Drawing.Size(203, 20);
+            this.cbSheets.TabIndex = 8;
+            // 
+            // btnSelectSheet
+            // 
+            this.btnSelectSheet.Location = new System.Drawing.Point(198, 33);
+            this.btnSelectSheet.Name = "btnSelectSheet";
+            this.btnSelectSheet.Size = new System.Drawing.Size(64, 23);
+            this.btnSelectSheet.TabIndex = 9;
+            this.btnSelectSheet.Text = "Select";
+            this.btnSelectSheet.UseVisualStyleBackColor = true;
+            this.btnSelectSheet.Click += new System.EventHandler(this.btnSelectSheet_Click);
             // 
             // Form1
             // 
@@ -243,12 +281,13 @@
             this.Text = "Toxy Extraction Viewer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,6 +313,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbPath;
         private System.Windows.Forms.TextBox tbExtension;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnSelectSheet;
+        private System.Windows.Forms.ComboBox cbSheets;
+        private System.Windows.Forms.Label label4;
     }
 }
 
