@@ -23,6 +23,7 @@ namespace Toxy
         public string Value { get; set; }
         public int CellIndex { get; set; }
         public string Comment { get; set; }
+        
         public override string ToString()
         {
             return this.Value;

@@ -50,8 +50,8 @@ namespace Toxy
             parserMapping.Add(".eml", typeEml);
 
             var typeVcard= new List<Type>();
-            typeEml.Add(typeof(VCardParser));
-            parserMapping.Add(".vcard", typeVcard);
+            typeVcard.Add(typeof(VCardParser));
+            parserMapping.Add(".vcf", typeVcard);
         }
 
         static string GetFileExtention(string path)

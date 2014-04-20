@@ -20,9 +20,9 @@ namespace Toxy.Parsers
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
 
             bool hasHeader = false;
-            if (Context.Properties.ContainsKey("HasColumnHeader"))
+            if (Context.Properties.ContainsKey("GenerateColumnHeader"))
             {
-                hasHeader = Utility.IsTrue(Context.Properties["HasColumnHeader"]);
+                hasHeader = Utility.IsTrue(Context.Properties["GenerateColumnHeader"]);
             }
             bool extractHeader = false;
             if (Context.Properties.ContainsKey("ExtractSheetHeader"))
