@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractionViewer", "ExtractionViewer\ExtractionViewer.csproj", "{C868FA3C-4E7B-4AE3-B440-5838A53FE672}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuplicateContactMerger", "DuplicateContactMerger\DuplicateContactMerger.csproj", "{B6B3FAD4-3481-4B27-B81A-CB7E8A106AD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{C868FA3C-4E7B-4AE3-B440-5838A53FE672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C868FA3C-4E7B-4AE3-B440-5838A53FE672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C868FA3C-4E7B-4AE3-B440-5838A53FE672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6B3FAD4-3481-4B27-B81A-CB7E8A106AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B3FAD4-3481-4B27-B81A-CB7E8A106AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B3FAD4-3481-4B27-B81A-CB7E8A106AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6B3FAD4-3481-4B27-B81A-CB7E8A106AD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
