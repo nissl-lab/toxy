@@ -32,24 +32,22 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.excelDataSetViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnReopen = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSelectSheet = new System.Windows.Forms.Button();
+            this.cbSheets = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tbPath = new System.Windows.Forms.TextBox();
             this.tbExtension = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbParserType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbSheets = new System.Windows.Forms.ComboBox();
-            this.btnSelectSheet = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,7 +60,6 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.toolsToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -82,30 +79,16 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.excelDataSetViewerToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(52, 21);
-            this.toolsToolStripMenuItem.Text = "&Tools";
-            // 
-            // excelDataSetViewerToolStripMenuItem
-            // 
-            this.excelDataSetViewerToolStripMenuItem.Name = "excelDataSetViewerToolStripMenuItem";
-            this.excelDataSetViewerToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
-            this.excelDataSetViewerToolStripMenuItem.Text = "DataGrid Viewer for Excel/CSV";
             // 
             // aboutToolStripMenuItem
             // 
@@ -118,8 +101,9 @@
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem1.Text = "&About";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // splitContainer1
             // 
@@ -179,6 +163,44 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File Extraction Info";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnSelectSheet);
+            this.panel1.Controls.Add(this.cbSheets);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(9, 222);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(264, 64);
+            this.panel1.TabIndex = 7;
+            this.panel1.Visible = false;
+            // 
+            // btnSelectSheet
+            // 
+            this.btnSelectSheet.Location = new System.Drawing.Point(198, 33);
+            this.btnSelectSheet.Name = "btnSelectSheet";
+            this.btnSelectSheet.Size = new System.Drawing.Size(64, 23);
+            this.btnSelectSheet.TabIndex = 9;
+            this.btnSelectSheet.Text = "Select";
+            this.btnSelectSheet.UseVisualStyleBackColor = true;
+            this.btnSelectSheet.Click += new System.EventHandler(this.btnSelectSheet_Click);
+            // 
+            // cbSheets
+            // 
+            this.cbSheets.FormattingEnabled = true;
+            this.cbSheets.Location = new System.Drawing.Point(58, 7);
+            this.cbSheets.Name = "cbSheets";
+            this.cbSheets.Size = new System.Drawing.Size(203, 20);
+            this.cbSheets.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 12);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Sheet: ";
+            // 
             // tbPath
             // 
             this.tbPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -231,44 +253,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Parser Type: ";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnSelectSheet);
-            this.panel1.Controls.Add(this.cbSheets);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(9, 222);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(264, 64);
-            this.panel1.TabIndex = 7;
-            this.panel1.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 12);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Sheet: ";
-            // 
-            // cbSheets
-            // 
-            this.cbSheets.FormattingEnabled = true;
-            this.cbSheets.Location = new System.Drawing.Point(58, 7);
-            this.cbSheets.Name = "cbSheets";
-            this.cbSheets.Size = new System.Drawing.Size(203, 20);
-            this.cbSheets.TabIndex = 8;
-            // 
-            // btnSelectSheet
-            // 
-            this.btnSelectSheet.Location = new System.Drawing.Point(198, 33);
-            this.btnSelectSheet.Name = "btnSelectSheet";
-            this.btnSelectSheet.Size = new System.Drawing.Size(64, 23);
-            this.btnSelectSheet.TabIndex = 9;
-            this.btnSelectSheet.Text = "Select";
-            this.btnSelectSheet.UseVisualStyleBackColor = true;
-            this.btnSelectSheet.Click += new System.EventHandler(this.btnSelectSheet_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -299,8 +283,6 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem excelDataSetViewerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.SplitContainer splitContainer1;

@@ -35,7 +35,7 @@ namespace ExtractionViewer
             dialog.Filter += "|All Excel Files|*.xls;*.xlsx";
             dialog.Filter += "|Rich Text Files (*.rtf)|*.rtf";
             dialog.Filter += "|Word 2007-2013 Files (*.docx)|*.docx";
-            dialog.Filter += "|Business Card Files (*.vcard)|*.vcard";
+            dialog.Filter += "|Business Card Files (*.vcf)|*.vcf";
             dialog.Filter += "|Email Files (*.eml)|*.eml";
             dialog.Filter += "|Html Files (*.html, *.htm)|*.html;*.htm";
             dialog.Filter += "|XML Files (*.xml)|*.xml";
@@ -186,6 +186,12 @@ namespace ExtractionViewer
             if(table==null)
                 return;
                 dataGridView1.DataSource = table.ToDataTable().DefaultView;
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AboutBox1 ab = new AboutBox1();
+            ab.ShowDialog();
         }
 
     }
