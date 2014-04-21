@@ -29,7 +29,7 @@ namespace ExtractionViewer
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = false;
-            dialog.Filter = "All Supported Files |*.csv;*.txt;*.xls;*.xlsx;*.docx;*.rtf;*.eml;*.xml;*.html;*.htm;*.pdf;*.vcard";
+            dialog.Filter = "All Supported Files |*.csv;*.txt;*.xls;*.xlsx;*.docx;*.rtf;*.eml;*.xml;*.html;*.htm;*.pdf;*.vcf";
             dialog.Filter += "|Comma Seperated Files (*.csv)|*.csv";
             dialog.Filter += "|Text Files (*.txt)|*.txt";
             dialog.Filter += "|All Excel Files|*.xls;*.xlsx";
@@ -155,12 +155,12 @@ namespace ExtractionViewer
                     cbSheets.SelectedIndex = 0;
                     panel1.Visible = true;
                     break;
-                case ".vcard":
-                    AppendRichTextBox();
+                case ".vcf":
+                    AppendDataGridView();
                     var vparser = ParserFactory.CreateVCard(context);
                     ToxyBusinessCards vcards = vparser.Parse();
                     tbParserType.Text = vparser.GetType().Name;
-                    richTextBox1.Text = vcards.ToString();
+                    dataGridView1.DataSource =vcards.ToDataTable().DefaultView;
                     break;
                 default:
                     AppendRichTextBox();
