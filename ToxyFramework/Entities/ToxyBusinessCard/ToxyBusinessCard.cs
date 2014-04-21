@@ -4,38 +4,12 @@ using System.Text;
 
 namespace Toxy
 {
-    public class ToxyBusinessCards
-    {
-        public ToxyBusinessCards()
-        {
-            this.Cards = new List<ToxyBusinessCard>();
-        }
-        public List<ToxyBusinessCard> Cards { get; set; }
-    }
+
 
     public enum GenderType
     { 
         Male,
         Female
-    }
-
-    public class ToxyName
-    {
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get; set; }
-
-        public override string ToString()
-        {
-            if (!string.IsNullOrEmpty(FullName))
-                return FullName;
-
-            if (string.IsNullOrEmpty(MiddleName))
-                return FirstName + " " + LastName;
-
-            return FirstName + " " + MiddleName +" " + LastName;
-        }
     }
 
 
@@ -66,6 +40,11 @@ namespace Toxy
         public List<ToxyContact> Contacts { get; set; }
 
         public GenderType Gender { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}-{1}",this.Name.FullName,this.Title);
+        }
     }
 
 

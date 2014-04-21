@@ -70,10 +70,12 @@
   <ItemGroup>
     <Compile Include="3rdParty\EMLReader.cs" />
     <Compile Include="Entities\ToxyAddress.cs" />
-    <Compile Include="Entities\ToxyBusinessCard.cs" />
-    <Compile Include="Entities\ToxyContact.cs" />
+    <Compile Include="Entities\ToxyBusinessCard\ToxyBusinessCard.cs" />
+    <Compile Include="Entities\ToxyBusinessCard\ToxyBusinessCards.cs" />
+    <Compile Include="Entities\ToxyBusinessCard\ToxyContact.cs" />
     <Compile Include="Entities\ToxyDom\ToxyDom.cs" />
     <Compile Include="Entities\ToxyDom\ToxyNode.cs" />
+    <Compile Include="Entities\ToxyName.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyRow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyTable.cs" />
