@@ -17,10 +17,15 @@ namespace DuplicateContactMerger
         {
             InitializeComponent();
         }
-        void FillListView(ToxyBusinessCards bcs, bool includeEmptyContacts)
+
+        void FillListView(ToxyBusinessCards bcs, bool includeEmptyContacts, bool includeDuplicateName)
         {
             listView1.Items.Clear();
             int total = 0;
+            bcs.IncludeEmptyContact = includeEmptyContacts;
+
+            Dictionary<string, ToxyBusinessCard> tbcs = new Dictionary<string, ToxyBusinessCard>();
+
             foreach (var card in bcs.Cards)
             {
                 ListViewItem item = new ListViewItem();
@@ -28,6 +33,19 @@ namespace DuplicateContactMerger
                 string fax = null;
                 int phoneCount = 0;
                 bool isEmpty = true;
+
+                if (!includeDuplicateName)
+                {
+                    if (!tbcs.ContainsKey(card.Name.FullName))
+                    {
+                        tbcs.Add(card.Name.FullName, card);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+
                 foreach (var contact in card.Contacts)
                 {
                     if (contact.Name == "Cellular" || contact.Name == "Home" || contact.Name == "Work" || contact.Name == "Voice")
@@ -69,8 +87,10 @@ namespace DuplicateContactMerger
                     total++;
                     listView1.Items.Add(item);
                 }
-                label2.Text = total.ToString();
+
             }
+            label2.Text = total.ToString();
+            
         }
         ToxyBusinessCards bcs=null;
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,7 +106,7 @@ namespace DuplicateContactMerger
                 VCardParser vparser=ParserFactory.CreateVCard(context);
                 bcs = vparser.Parse();
 
-                FillListView(bcs, checkBox1.Checked);
+                FillListView(bcs, checkBox1.Checked, checkBox2.Checked);
             }
             
         }
@@ -101,7 +121,16 @@ namespace DuplicateContactMerger
             CheckBox cb1 = (CheckBox)sender;
             if (bcs != null)
             {
-                FillListView(bcs, checkBox1.Checked);
+                FillListView(bcs, checkBox1.Checked, checkBox2.Checked);
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb1 = (CheckBox)sender;
+            if (bcs != null)
+            {
+                FillListView(bcs, checkBox1.Checked, checkBox2.Checked);
             }
         }
     }
