@@ -33,28 +33,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DCSoft.RTF">
-      <HintPath>..\..\Build\Release\DCSoft.RTF.dll</HintPath>
+      <HintPath>..\..\Build\Debug\DCSoft.RTF.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\Build\Release\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\Build\Debug\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\Build\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\Build\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="LumenWorks.Framework.IO">
-      <HintPath>..\..\Build\Release\LumenWorks.Framework.IO.dll</HintPath>
+      <HintPath>..\..\Build\Debug\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>..\..\Build\Release\NPOI.dll</HintPath>
+      <HintPath>..\..\Build\Debug\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML">
-      <HintPath>..\..\Build\Release\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\..\Build\Debug\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\..\Build\Release\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\..\Build\Debug\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\..\Build\Release\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\..\Build\Debug\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,10 +67,10 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Thought.vCards">
-      <HintPath>..\..\Build\Release\Thought.vCards.dll</HintPath>
+      <HintPath>..\..\Build\Debug\Thought.vCards.dll</HintPath>
     </Reference>
     <Reference Include="Toxy">
-      <HintPath>..\..\Build\Release\Toxy.dll</HintPath>
+      <HintPath>..\..\Build\Debug\Toxy.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

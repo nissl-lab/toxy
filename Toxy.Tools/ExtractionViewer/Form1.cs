@@ -144,6 +144,7 @@ namespace ExtractionViewer
                     AppendDataGridView();
                     ISpreadsheetParser ssparser = ParserFactory.CreateSpreadsheet(context);
                     ss = ssparser.Parse();
+                    tbParserType.Text = ssparser.GetType().Name;
                     DataSet ds = ss.ToDataSet();
                     dataGridView1.DataSource = ds.Tables[0].DefaultView;
 
