@@ -33,9 +33,12 @@ namespace Toxy.Parsers
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
 
             bool hasHeader=false;
-            string sHasHeader = Context.Properties["HasHeader"].ToLower();
-            if (sHasHeader == "1" || sHasHeader == "on" || sHasHeader == "true")
-                hasHeader = true;
+            if (Context.Properties.ContainsKey("HasHeader"))
+            {
+                string sHasHeader = Context.Properties["HasHeader"].ToLower();
+                if (sHasHeader == "1" || sHasHeader == "on" || sHasHeader == "true")
+                    hasHeader = true;
+            }
             char delimiter =',';
             if (Context.Properties.ContainsKey("delimiter"))
             {
