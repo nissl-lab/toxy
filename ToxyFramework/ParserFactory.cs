@@ -39,6 +39,10 @@ namespace Toxy
             typeRtf.Add(typeof(RTFParser));
             parserMapping.Add(".rtf", typeRtf);
 
+            var typePdf = new List<Type>();
+            typePdf.Add(typeof(PDFParser));
+            parserMapping.Add(".pdf", typePdf);
+
             var typeHtml = new List<Type>();
             typeHtml.Add(typeof(PlainTextParser));
             typeHtml.Add(typeof(HtmlParser));
@@ -52,6 +56,7 @@ namespace Toxy
             var typeVcard= new List<Type>();
             typeVcard.Add(typeof(VCardParser));
             parserMapping.Add(".vcf", typeVcard);
+
         }
 
         static string GetFileExtention(string path)

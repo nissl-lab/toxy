@@ -125,6 +125,7 @@ namespace ExtractionViewer
                 case ".txt":
                 case ".html":
                 case ".htm":
+                case ".pdf":
                     AppendRichTextBox();
                     var tparser = ParserFactory.CreateText(context);
                     richTextBox1.Text = tparser.Parse();

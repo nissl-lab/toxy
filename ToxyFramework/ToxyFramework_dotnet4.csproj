@@ -60,6 +60,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
+    <Reference Include="PdfSharp-WPF">
+      <HintPath>..\3rdParty\PDFsharp\WPF\PdfSharp-WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -89,6 +92,7 @@
     <Compile Include="Parsers\ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
     <Compile Include="Parsers\ISpreadsheetParser.cs" />
+    <Compile Include="Parsers\PDFParser.cs" />
     <Compile Include="Parsers\RTFParser.cs" />
     <Compile Include="Parsers\VCardParser.cs" />
     <Compile Include="Parsers\WordParser.cs" />
