@@ -52,12 +52,14 @@ namespace Toxy.Parsers
             ToxySpreadsheet ss = new ToxySpreadsheet();
             ss.Name = Context.Path;
             IWorkbook workbook = WorkbookFactory.Create(Context.Path);
+           
             HSSFDataFormatter formatter = new HSSFDataFormatter();
             for (int i = 0; i < workbook.NumberOfSheets; i++)
             {
                 ToxyTable table=new ToxyTable();
                 ISheet sheet = workbook.GetSheetAt(i);
                 table.Name = sheet.SheetName;
+                
                 if (extractHeader && sheet.Header != null)
                 {
                     table.PageHeader = sheet.Header.Left + "|" + sheet.Header.Center + "|" + sheet.Header.Right;
@@ -115,6 +117,11 @@ namespace Toxy.Parsers
                     }
                     if(table.LastColumnIndex<tr.LastCellIndex)
                         table.LastColumnIndex=tr.LastCellIndex;
+                }
+                for (int j = 0; j < sheet.NumMergedRegions; j++)
+                { 
+                    var range = sheet.GetMergedRegion(j);
+                    table.MergeCells.Add(new MergeCellRange() { FirstRow = range.FirstRow, FirstColumn = range.FirstColumn, LastRow = range.LastRow, LastColumn = range.LastColumn });
                 }
                 ss.Tables.Add(table);
             }

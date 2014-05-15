@@ -35,7 +35,7 @@ namespace Toxy.Parsers
             get;
             set;
         }
-
+        //http://stackoverflow.com/questions/248768/how-do-i-walk-through-tree-of-pdf-objects-in-pdfsharp
         #region CObject Visitor
         private static void ExtractText(CObject obj, StringBuilder target)
         {

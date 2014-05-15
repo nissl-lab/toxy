@@ -14,11 +14,14 @@ namespace Toxy
             this.ColumnHeaders = new ToxyRow(0);
             this.Rows = new List<ToxyRow>();
             this.LastColumnIndex = -1;
+            this.MergeCells = new List<MergeCellRange>();
         }
         public bool HasHeader
         {
             get { return this.ColumnHeaders.Cells.Count > 0; }
         }
+
+        public List<MergeCellRange> MergeCells { get; set; }
         public string Name { get; set; }
         public string PageHeader { get; set; }
         public string PageFooter { get; set; }
