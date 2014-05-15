@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Toxy;
+using unvell.ReoGrid;
 
 namespace ExtractionViewer
 {
@@ -69,8 +70,10 @@ namespace ExtractionViewer
             }
             this.richTextBox1.Clear();
             this.richTextBox1.Visible = true;
-            if(this.dataGridView1!=null)
+            if (this.dataGridView1 != null)
                 this.dataGridView1.Visible = false;
+            if (this.reoGridControl1!=null)
+                this.reoGridControl1.Visible = false;
         }
         private void AppendDataGridView()
         {
@@ -95,7 +98,36 @@ namespace ExtractionViewer
 
             if (richTextBox1 != null)
                 this.richTextBox1.Visible = false;
+            if (this.reoGridControl1 != null)
+                this.reoGridControl1.Visible = false;
             this.dataGridView1.Visible = true;
+        }
+        private void AppendSpreadsheetGrid()
+        {
+            if (reoGridControl1 == null)
+            {
+                this.reoGridControl1 = new ReoGridControl();
+                this.reoGridControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+                this.reoGridControl1.CellContextMenuStrip = null;
+                this.reoGridControl1.ColCount = 100;
+                this.reoGridControl1.ColHeadContextMenuStrip = null;
+                this.reoGridControl1.Location = new System.Drawing.Point(189, 243);
+                this.reoGridControl1.Name = "reoGridControl1";
+                this.reoGridControl1.RowCount = 200;
+                this.reoGridControl1.RowHeadContextMenuStrip = null;
+                this.reoGridControl1.Script = null;
+                this.reoGridControl1.Dock = DockStyle.Fill;
+                this.reoGridControl1.TabIndex = 0;
+                this.reoGridControl1.Text = "reoGridControl1";
+                this.splitContainer1.Panel1.Controls.Add(this.reoGridControl1);
+
+            }
+
+            if (richTextBox1 != null)
+                this.richTextBox1.Visible = false;
+            if (this.dataGridView1 != null)
+                this.dataGridView1.Visible = false;
+            this.reoGridControl1.Visible = true;
         }
         ToxySpreadsheet ss = null;
         
@@ -142,13 +174,14 @@ namespace ExtractionViewer
                 case ".csv":
                 case ".xlsx":
                 case ".xls":
-                    AppendDataGridView();
+                    AppendSpreadsheetGrid();
                     ISpreadsheetParser ssparser = ParserFactory.CreateSpreadsheet(context);
                     ss = ssparser.Parse();
                     tbParserType.Text = ssparser.GetType().Name;
-                    DataSet ds = ss.ToDataSet();
-                    dataGridView1.DataSource = ds.Tables[0].DefaultView;
-
+                    //DataSet ds = ss.ToDataSet();
+                    //dataGridView1.DataSource = ds.Tables[0].DefaultView;
+                    var table0=ss.Tables[0];
+                    ShowToGrid(table0);
                     cbSheets.Items.Clear();
                     foreach (var table in ss.Tables)
                     {
@@ -172,7 +205,26 @@ namespace ExtractionViewer
             }
             
         }
-
+        private void ShowToGrid(ToxyTable table)
+        {
+            reoGridControl1.Reset();
+            reoGridControl1.ColCount = table.LastColumnIndex + 1; 
+            reoGridControl1.RowCount = table.LastRowIndex+1; 
+            foreach (var row in table.Rows)
+            {
+                foreach (var cell in row.Cells)
+                {
+                    reoGridControl1.SetCellData(new ReoGridPos(row.RowIndex, cell.CellIndex), cell.Value);
+                }
+            }
+            foreach (var cellrange in table.MergeCells)
+            {
+                reoGridControl1.MergeRange(new ReoGridRange(
+                    new ReoGridPos(cellrange.FirstRow, cellrange.FirstColumn),
+                    new ReoGridPos(cellrange.LastRow, cellrange.LastColumn)));
+            }
+            //    dataGridView1.DataSource = table.ToDataTable().DefaultView;
+        }
         private void btnReopen_Click(object sender, EventArgs e)
         {
             OpenFile(filepath, comboBox1.Text);
@@ -187,7 +239,8 @@ namespace ExtractionViewer
             var table= ss[cbSheets.Text];
             if(table==null)
                 return;
-                dataGridView1.DataSource = table.ToDataTable().DefaultView;
+            ShowToGrid(table);
+           
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)

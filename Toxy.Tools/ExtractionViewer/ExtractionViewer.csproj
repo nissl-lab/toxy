@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,6 +72,9 @@
     </Reference>
     <Reference Include="Toxy">
       <HintPath>..\..\Build\Debug\Toxy.dll</HintPath>
+    </Reference>
+    <Reference Include="unvell.ReoGrid">
+      <HintPath>..\..\3rdParty\ReoGrid-0.8.5-Editor\unvell.ReoGrid.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
