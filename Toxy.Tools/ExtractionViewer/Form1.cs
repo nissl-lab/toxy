@@ -144,7 +144,7 @@ namespace ExtractionViewer
             FileInfo fi = new FileInfo(filepath);
             ParserContext context = new ParserContext(filepath);
             context.Encoding = Encoding.GetEncoding(encoding);
-            string extension = fi.Extension;
+            string extension = fi.Extension.ToLower();
             tbExtension.Text = extension;
 
 
