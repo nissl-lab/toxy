@@ -41,6 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\3rdParty\NPOI\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\3rdParty\itextsharp-dll-core\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="LumenWorks.Framework.IO">
       <HintPath>..\3rdParty\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
@@ -59,9 +62,6 @@
     <Reference Include="NPOI.OpenXmlFormats, Version=2.0.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp-WPF">
-      <HintPath>..\3rdParty\PDFsharp\WPF\PdfSharp-WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -93,16 +93,17 @@
     <Compile Include="Parsers\ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
     <Compile Include="Parsers\ISpreadsheetParser.cs" />
-    <Compile Include="Parsers\PDFParser.cs" />
+    <Compile Include="Parsers\PDFTextParser.cs" />
     <Compile Include="Parsers\RTFParser.cs" />
     <Compile Include="Parsers\VCardParser.cs" />
-    <Compile Include="Parsers\WordParser.cs" />
+    <Compile Include="Parsers\WordDocumentParser.cs" />
     <Compile Include="Entities\ToxyDocument.cs" />
     <Compile Include="Entities\ToxyEmail.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxySpreadsheet.cs" />
     <Compile Include="ParserFactory.cs" />
     <Compile Include="Parsers\PlainTextParser.cs" />
     <Compile Include="Parsers\CSVParser.cs" />
+    <Compile Include="Parsers\PDFDocumentParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>

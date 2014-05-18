@@ -32,7 +32,7 @@ namespace Toxy
             parserMapping.Add(".xlsx", typeXls);
 
             var typeDocx = new List<Type>();
-            typeDocx.Add(typeof(WordParser));
+            typeDocx.Add(typeof(WordDocumentParser));
             parserMapping.Add(".docx", typeDocx);
 
             var typeRtf = new List<Type>();
@@ -40,7 +40,8 @@ namespace Toxy
             parserMapping.Add(".rtf", typeRtf);
 
             var typePdf = new List<Type>();
-            typePdf.Add(typeof(PDFParser));
+            typePdf.Add(typeof(PDFTextParser));
+			typePdf.Add(typeof(PDFDocumentParser));
             parserMapping.Add(".pdf", typePdf);
 
             var typeHtml = new List<Type>();
@@ -62,7 +63,7 @@ namespace Toxy
         static string GetFileExtention(string path)
         {
             FileInfo fi = new FileInfo(path);
-            if (!parserMapping.ContainsKey(fi.Extension))
+            if (!parserMapping.ContainsKey(fi.Extension.ToLower()))
                 throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
             return fi.Extension.ToLower();
         }

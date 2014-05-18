@@ -61,6 +61,7 @@
     <Compile Include="CsvParserTest.cs" />
     <Compile Include="Excel2003ParserTest.cs" />
     <Compile Include="ExcelParserBaseTest.cs" />
+    <Compile Include="PDFParserTest.cs" />
     <Compile Include="RTFParserTest.cs" />
     <Compile Include="TestDataSample.cs" />
     <Compile Include="PlainTextParserTest.cs" />

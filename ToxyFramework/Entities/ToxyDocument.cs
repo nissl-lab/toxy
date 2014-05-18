@@ -4,18 +4,18 @@ using System.Text;
 
 namespace Toxy
 {
-    public class Paragraph
+    public class ToxyParagraph
     {
         public string Text { get; set; }
         public string StyleID { get; set; }
-        public ParagraphStyle EmbededStyle { get; set; }
+        public ToxyParagraphStyle EmbededStyle { get; set; }
 
         public override string ToString()
         {
             return this.Text;
         }
     }
-    public class ParagraphStyle
+    public class ToxyParagraphStyle
     {
         public bool IsBold { get; set; }
         public bool IsItalic { get; set; }
@@ -27,12 +27,12 @@ namespace Toxy
     {
         public ToxyDocument()
         {
-            this.Paragraphs = new List<Paragraph>();
+            this.Paragraphs = new List<ToxyParagraph>();
             this.Properties = new Dictionary<string,object>();
         }
         public string Header { get; set; }
         public string Footer { get; set; }
-        public List<Paragraph> Paragraphs { get; set; }
+        public List<ToxyParagraph> Paragraphs { get; set; }
         public int TotalPageNumber { get; set; }
         public Dictionary<string, object> Properties { get; set; }
 
