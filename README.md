@@ -1,3 +1,5 @@
+If you need support service, you can contact support@neuzilla.com
+
 What's Toxy
 ============
 
