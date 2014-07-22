@@ -42,6 +42,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\3rdParty\NPOI\dotnet2\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\3rdParty\itextsharp-dll-core\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="LumenWorks.Framework.IO">
       <HintPath>..\3rdParty\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
@@ -77,6 +81,7 @@
     <Compile Include="Entities\ToxyDom\ToxyDom.cs" />
     <Compile Include="Entities\ToxyDom\ToxyNode.cs" />
     <Compile Include="Entities\ToxyName.cs" />
+    <Compile Include="Entities\ToxySpreadsheet\MergeCellRange.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyRow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxySpreadsheet.cs" />
@@ -91,9 +96,11 @@
     <Compile Include="Parsers\ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
     <Compile Include="Parsers\ISpreadsheetParser.cs" />
+    <Compile Include="Parsers\PDFDocumentParser.cs" />
+    <Compile Include="Parsers\PDFTextParser.cs" />
     <Compile Include="Parsers\RTFParser.cs" />
     <Compile Include="Parsers\VCardParser.cs" />
-    <Compile Include="Parsers\WordParser.cs" />
+    <Compile Include="Parsers\WordDocumentParser.cs" />
     <Compile Include="Entities\ToxyDocument.cs" />
     <Compile Include="Entities\ToxyEmail.cs" />
     <Compile Include="ParserFactory.cs" />

@@ -34,21 +34,24 @@ namespace Toxy.Parsers
                     //}
                     rdoc.Paragraphs.Add(p);
                 }
+               
                 var tables = worddoc.Tables;
                 foreach (var table in tables)
                 {
                     foreach (var row in table.Rows)
                     {
-                        var c1 = row.GetCell(0);
-
-                        foreach (var para in c1.Paragraphs)
+                        var cells = row.GetTableCells();
+                        foreach(var cell in cells)
                         {
-                            string text = para.ParagraphText;
-                            ToxyParagraph p = new ToxyParagraph();
-                            p.Text = text;
-                            //var runs = para.Runs;
-                            p.StyleID= para.Style;
-                            rdoc.Paragraphs.Add(p);
+                            foreach (var para in cell.Paragraphs)
+                            {
+                                string text = para.ParagraphText;
+                                ToxyParagraph p = new ToxyParagraph();
+                                p.Text = text;
+                                //var runs = para.Runs;
+                                p.StyleID= para.Style;
+                                rdoc.Paragraphs.Add(p);
+                            }
                         }
                     }
                 }

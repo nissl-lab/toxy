@@ -32,6 +32,7 @@ namespace Toxy
             parserMapping.Add(".xlsx", typeXls);
 
             var typeDocx = new List<Type>();
+            typeDocx.Add(typeof(WordTextParser));
             typeDocx.Add(typeof(WordDocumentParser));
             parserMapping.Add(".docx", typeDocx);
 
