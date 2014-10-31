@@ -9,7 +9,10 @@ namespace Toxy.Parsers
 {
     public class WordTextParser:ITextParser
     {
-
+        public WordTextParser(ParserContext context)
+        {
+            this.Context = context;
+        }
         public string Parse()
         {
             StringBuilder sb = new StringBuilder();
