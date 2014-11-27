@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class HtmlParser : IDomParser
+    public class HtmlDomParser : IDomParser
     {
         public ParserContext Context { get; set; }
 
-        public HtmlParser(ParserContext context)
+        public HtmlDomParser(ParserContext context)
         {
             this.Context = context;
         }

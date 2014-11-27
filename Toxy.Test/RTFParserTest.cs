@@ -14,7 +14,7 @@ namespace Toxy.Test
         public void TestReadRTF()
         {
             string path = TestDataSample.GetRTFPath("Formated text.rtf");
-            var parser = new RTFParser(new ParserContext(path));
+            var parser = new RTFTextParser(new ParserContext(path));
             string result = parser.Parse();
             string[] lines = result.Replace("\r\n", "\n").Split('\n');
             Assert.AreEqual(lines.Length, 11);

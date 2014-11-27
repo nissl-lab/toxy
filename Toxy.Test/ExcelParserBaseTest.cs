@@ -24,6 +24,17 @@ namespace Toxy.Test
             Assert.IsNotNull(ss2.Tables[0].PageFooter);
             Assert.AreEqual("testdoc|test phrase|",ss2.Tables[0].PageFooter);
         }
+        public void BaseTestWithoutHeader(string filename)
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
+            ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
+            ToxySpreadsheet ss = parser.Parse();
+            Assert.IsNull(ss.Tables[0].PageHeader);
+
+            ToxySpreadsheet ss2 = parser.Parse();
+            Assert.AreEqual(0, ss.Tables[0].ColumnHeaders.Cells.Count);
+            Assert.AreEqual(9, ss.Tables[0].Rows.Count);
+        }
         public void BaseTestHeader(string filename)
         {
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));

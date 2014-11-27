@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class CSVParser : PlainTextParser, ISpreadsheetParser
+    public class CSVSpreadsheetParser : ISpreadsheetParser
     {
 
-        public CSVParser(ParserContext context):base(context)
+        public CSVSpreadsheetParser(ParserContext context)
         {
             this.Context = context;
         }
@@ -27,7 +27,7 @@ namespace Toxy.Parsers
 
         public event EventHandler<ParseSegmentEventArgs> ParseSegment;
 
-        public new ToxySpreadsheet Parse()
+        public ToxySpreadsheet Parse()
         {
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
@@ -95,7 +95,7 @@ namespace Toxy.Parsers
             }
         }
 
-        public override ParserContext Context
+        public ParserContext Context
         {
             get;
             set;

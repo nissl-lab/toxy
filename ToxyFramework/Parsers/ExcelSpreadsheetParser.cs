@@ -8,9 +8,9 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class ExcelParser : ISpreadsheetParser
+    public class ExcelSpreadsheetParser : ISpreadsheetParser
     {
-        public ExcelParser(ParserContext context)
+        public ExcelSpreadsheetParser(ParserContext context)
         {
             this.Context = context;
         }

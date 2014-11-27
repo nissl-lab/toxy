@@ -30,6 +30,11 @@ namespace Toxy.Test
             BaseTestHeader("45540_classic_Header.xlsx");
         }
         [TestMethod]
+        public void TestExtractWithoutHeader()
+        {
+            BaseTestWithoutHeader("WithVariousData.xlsx");
+        }
+        [TestMethod]
         public void TestExcelWithFormats()
         {
             BaseTestExcelFormatedString("Formatting.xlsx");

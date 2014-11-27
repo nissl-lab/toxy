@@ -23,11 +23,11 @@ namespace Toxy
 
             var typeCSV = new List<Type>();
             typeCSV.Add(typeof(PlainTextParser));
-            typeCSV.Add(typeof(CSVParser));
+            typeCSV.Add(typeof(CSVSpreadsheetParser));
             parserMapping.Add(".csv", typeCSV);
 
             var typeXls = new List<Type>();
-            typeXls.Add(typeof(ExcelParser));
+            typeXls.Add(typeof(ExcelSpreadsheetParser));
             parserMapping.Add(".xls", typeXls);
             parserMapping.Add(".xlsx", typeXls);
 
@@ -37,7 +37,7 @@ namespace Toxy
             parserMapping.Add(".docx", typeDocx);
 
             var typeRtf = new List<Type>();
-            typeRtf.Add(typeof(RTFParser));
+            typeRtf.Add(typeof(RTFTextParser));
             parserMapping.Add(".rtf", typeRtf);
 
             var typePdf = new List<Type>();
@@ -47,7 +47,7 @@ namespace Toxy
 
             var typeHtml = new List<Type>();
             typeHtml.Add(typeof(PlainTextParser));
-            typeHtml.Add(typeof(HtmlParser));
+            typeHtml.Add(typeof(HtmlDomParser));
             parserMapping.Add(".html", typeHtml);
             parserMapping.Add(".htm", typeHtml);
 
@@ -68,7 +68,7 @@ namespace Toxy
                 throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
             return fi.Extension.ToLower();
         }
-        static object CreateObject(ParserContext context, Type itype)
+        static object CreateObject(ParserContext context, Type itype, string operationName)
         {
             string ext = GetFileExtention(context.Path);
             var types = parserMapping[ext];
@@ -84,39 +84,39 @@ namespace Toxy
                 }
             }
             if (!isFound)
-                throw new InvalidDataException(ext + " is not supported");
+                throw new InvalidDataException(ext + " is not supported for " + operationName);
             return obj;
         }
         public static ITextParser CreateText(ParserContext context)
         {
-            object obj = CreateObject(context, typeof(ITextParser));
+            object obj = CreateObject(context, typeof(ITextParser), "CreateText");
             ITextParser parser = (ITextParser)obj;
             return parser;
         }
         public static ISpreadsheetParser CreateSpreadsheet(ParserContext context)
         {
-            object obj = CreateObject(context, typeof(ISpreadsheetParser));
+            object obj = CreateObject(context, typeof(ISpreadsheetParser), "CreateSpreadsheet");
             ISpreadsheetParser parser = (ISpreadsheetParser)obj;
             return parser;
         }
 
         public static IDocumentParser CreateDocument(ParserContext context)
         {
-            object obj = CreateObject(context, typeof(IDocumentParser));
+            object obj = CreateObject(context, typeof(IDocumentParser), "CreateDocument");
             IDocumentParser parser = (IDocumentParser)obj;
             return parser;
         }
 
         public static IDomParser CreateDom(ParserContext context)
         {
-            object obj = CreateObject(context, typeof(IDomParser));
+            object obj = CreateObject(context, typeof(IDomParser), "CreateDom");
             IDomParser parser = (IDomParser)obj;
             return parser;
         }
 
         public static VCardParser CreateVCard(ParserContext context)
         {
-            object obj = CreateObject(context, typeof(VCardParser));
+            object obj = CreateObject(context, typeof(VCardParser), "CreateVCard");
             VCardParser parser = (VCardParser)obj;
             return parser;
         }

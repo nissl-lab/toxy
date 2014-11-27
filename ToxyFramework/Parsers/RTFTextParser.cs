@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class RTFParser : PlainTextParser
+    public class RTFTextParser : PlainTextParser
     {
-        public RTFParser(ParserContext context): base(context)
+        public RTFTextParser(ParserContext context): base(context)
         {
             this.Context = context;
         }
