@@ -68,13 +68,19 @@ namespace Toxy.Parsers
                 for (int j = 0; j < headers.Length;j++ )
                 {
                     t1.ColumnHeaders.Cells.Add(new ToxyCell(j, headers[j]));
+                    t1.LastColumnIndex = t1.ColumnHeaders.Cells.Count-1;
                 }
                 int i=0;
                 while(reader.ReadNextRecord())
                 {
                     ToxyRow tr=new ToxyRow(i);
-                    tr.LastCellIndex = t1.ColumnHeaders.Cells.Count;
-                    for (int j = 0; j < tr.LastCellIndex; j++)
+                    tr.LastCellIndex = reader.FieldCount-1;
+                    if (tr.LastCellIndex > t1.LastColumnIndex)
+                    {
+                        t1.LastColumnIndex = tr.LastCellIndex;
+                    }
+                    tr.RowIndex = i;
+                    for (int j = 0; j <= tr.LastCellIndex; j++)
                     {
                         ToxyCell c = new ToxyCell(j, reader[j]);
                         if (tr.LastCellIndex < c.CellIndex)
@@ -85,7 +91,9 @@ namespace Toxy.Parsers
                     }
                     
                     t1.Rows.Add(tr);
+                    i++;
                 }
+                t1.LastRowIndex = i - 1;
                 return ss;
             }
             finally

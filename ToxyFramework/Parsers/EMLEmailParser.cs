@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class EMLParser:IEmailParser
+    public class EMLEmailParser:IEmailParser
     {
-        public EMLParser(ParserContext context)
+        public EMLEmailParser(ParserContext context)
         {
             this.Context = context;
         }

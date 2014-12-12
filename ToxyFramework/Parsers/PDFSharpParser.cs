@@ -4,7 +4,6 @@ using PdfSharp.Pdf.Content;
 using PdfSharp.Pdf.Content.Objects;
 using PdfSharp.Pdf.IO;
 using System;
-using System.Linq;
 using System.Text;
 
 namespace Toxy.Parsers

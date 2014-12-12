@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace Toxy.Parsers
@@ -15,10 +14,32 @@ namespace Toxy.Parsers
         }
         public string Parse()
         {
+            if (!File.Exists(Context.Path))
+                throw new FileNotFoundException("File " + Context.Path + " is not found");
+
+            bool extractHeader = false;
+            if (Context.Properties.ContainsKey("ExtractHeader"))
+            {
+                extractHeader = Utility.IsTrue(Context.Properties["ExtractHeader"]);
+            }
+            bool extractFooter = false;
+            if (Context.Properties.ContainsKey("ExtractFooter"))
+            {
+                extractFooter = Utility.IsTrue(Context.Properties["ExtractFooter"]);
+            }
+
             StringBuilder sb = new StringBuilder();
             using (FileStream stream = File.OpenRead(Context.Path))
             {
                 XWPFDocument worddoc = new XWPFDocument(stream);
+                if (extractHeader && worddoc.HeaderList!=null)
+                {
+                    foreach (var header in worddoc.HeaderList)
+                    { 
+                        sb.Append("[Header] ");
+                        sb.AppendLine(header.Text);
+                    }
+                }
                 foreach (var elem in worddoc.BodyElements)
                 {
                     if (elem is XWPFParagraph)
@@ -32,6 +53,14 @@ namespace Toxy.Parsers
                         XWPFTable table = elem as XWPFTable;
                         string text = table.Text;
                         sb.AppendLine(text);
+                    }
+                }
+                if (extractFooter && worddoc.FooterList != null)
+                {
+                    foreach (var footer in worddoc.FooterList)
+                    {
+                        sb.Append("[Footer] ");
+                        sb.AppendLine(footer.Text);
                     }
                 }
             }

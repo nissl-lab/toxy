@@ -6,7 +6,14 @@ namespace Toxy
 {
     public class ToxyNode
     {
+        /// <summary>
+        /// node name, if it's a textnode, this will be "#text"
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// for text node use only
+        /// </summary>
+        public string Text { get; set; }
         private List<ToxyAttribute> attributes;
         public List<ToxyAttribute> Attributes { get { return attributes ?? (attributes = new List<ToxyAttribute>()); } set { attributes = value; } }
 
@@ -56,9 +63,34 @@ namespace Toxy
             }
             return toxyNodeList;
         }
-        public string ToText()
+        /// <summary>
+        /// node string with name and attributes
+        /// </summary>
+        public string NodeString
         {
-            return HtmlNode.OuterHtml;
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("<");
+                sb.Append(this.Name);
+                for (int i = 0; i < this.Attributes.Count; i++)
+                {
+                    sb.Append(" ");
+                    sb.Append(this.Attributes[i].Name);
+                    if (this.Attributes[i].Value!=null)
+                    {
+                        sb.Append("=\"");
+                        sb.Append(this.Attributes[i].Value);
+                        sb.Append("\"");
+                    }
+                }
+                sb.Append(">");
+                return sb.ToString();
+            }
+        }
+        public string InnerText
+        {
+            get{return HtmlNode.InnerText;}
         }
     }
 }

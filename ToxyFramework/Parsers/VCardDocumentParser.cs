@@ -6,7 +6,7 @@ using Thought.vCards;
 
 namespace Toxy.Parsers
 {
-    public class VCardParser
+    public class VCardDocumentParser
     {
         public ParserContext Context
         {
@@ -14,13 +14,16 @@ namespace Toxy.Parsers
             set;
         }
 
-        public VCardParser(ParserContext context)
+        public VCardDocumentParser(ParserContext context)
         {
             this.Context = context;
         }
 
         public ToxyBusinessCards Parse()
         {
+            if (!File.Exists(Context.Path))
+                throw new FileNotFoundException("File " + Context.Path + " is not found");
+
             string path = Context.Path;
             ToxyBusinessCards tbcs = new ToxyBusinessCards();
             using (StreamReader sr = new StreamReader(path))

@@ -40,6 +40,8 @@ namespace Toxy.Parsers
                 foreach (HtmlNode htmlChildNode in htmlParentNode.ChildNodes)
                 {
                     ToxyNode toxyChildNode = ToxyNode.TransformHtmlNodeToToxyNode(htmlChildNode);
+                    if (htmlChildNode.Name == "#text")
+                        toxyChildNode.Text = htmlChildNode.InnerText;
                     toxyParentNode.ChildrenNodes.Add(toxyChildNode);
                     nodeQueue.Enqueue(new KeyValuePair<HtmlNode, ToxyNode>(htmlChildNode, toxyChildNode));
                 }

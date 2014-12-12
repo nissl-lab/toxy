@@ -15,10 +15,44 @@ namespace Toxy.Parsers
 
         public ToxyDocument Parse()
         {
+            if (!File.Exists(Context.Path))
+                throw new FileNotFoundException("File " + Context.Path + " is not found");
+
+            bool extractHeader = false;
+            if (Context.Properties.ContainsKey("ExtractHeader"))
+            {
+                extractHeader = Utility.IsTrue(Context.Properties["ExtractHeader"]);
+            }
+            bool extractFooter = false;
+            if (Context.Properties.ContainsKey("ExtractFooter"))
+            {
+                extractFooter = Utility.IsTrue(Context.Properties["ExtractFooter"]);
+            }
+
             ToxyDocument rdoc = new ToxyDocument();
+
+
             using (FileStream stream = File.OpenRead(Context.Path))
             {
                 XWPFDocument worddoc = new XWPFDocument(stream);
+                if (extractHeader && worddoc.HeaderList != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var header in worddoc.HeaderList)
+                    {
+                        sb.AppendLine(header.Text);
+                    }
+                    rdoc.Header = sb.ToString();
+                }
+                if (extractFooter && worddoc.FooterList != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var footer in worddoc.FooterList)
+                    {
+                        sb.AppendLine(footer.Text);
+                    }
+                    rdoc.Footer = sb.ToString();
+                }
                 foreach (var para in worddoc.Paragraphs)
                 {
                     string text = para.ParagraphText;

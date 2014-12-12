@@ -17,6 +17,9 @@ namespace Toxy.Parsers
 
         public ToxyDocument Parse()
         {
+            if (!File.Exists(Context.Path))
+                throw new FileNotFoundException("File " + Context.Path + " is not found");
+
             ToxyDocument rdoc = new ToxyDocument();
             ITextExtractionStrategy its = new iTextSharp.text.pdf.parser.LocationTextExtractionStrategy();
 
