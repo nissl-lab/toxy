@@ -4593,22 +4593,16 @@
         <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.Prototype">
             Prototype with the default structure of a new auto-shape.
         </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.GetShapeType">
-             Gets the shape type, one of the constants defined in {@link NPOI.ss.usermodel.ShapeTypes}.
-            
-             @return the shape type
-             @see NPOI.ss.usermodel.ShapeTypes
-        </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.SetShapeType(System.Int32)">
-             Sets the shape types.
-            
-             @param type the shape type, one of the constants defined in {@link NPOI.ss.usermodel.ShapeTypes}.
-             @see NPOI.ss.usermodel.ShapeTypes
-        </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.ApplyAttributes(NPOI.OpenXmlFormats.Spreadsheet.CT_RPrElt,NPOI.OpenXmlFormats.Dml.CT_TextCharacterProperties)">
             
              org.openxmlformats.schemas.spreadsheetml.x2006.main.CTRPrElt to
              org.openxmlformats.schemas.drawingml.x2006.main.CTFont adapter
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.ShapeType">
+             Gets the shape type, one of the constants defined in {@link NPOI.ss.usermodel.ShapeTypes}.
+            
+             @return the shape type
+             @see NPOI.ss.usermodel.ShapeTypes
         </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFTable">
              
