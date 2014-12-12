@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3rdParty\DateTimeParser.cs" />
     <Compile Include="3rdParty\EMLReader.cs" />
     <Compile Include="Entities\ToxyAddress.cs" />
     <Compile Include="Entities\ToxyBusinessCard\ToxyBusinessCard.cs" />
@@ -83,19 +84,21 @@
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyRow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyTable.cs" />
+    <Compile Include="Parsers\EMLTextParser.cs" />
     <Compile Include="Parsers\HtmlDomParser.cs" />
     <Compile Include="IDomParser.cs" />
     <Compile Include="IEmailParser.cs" />
     <Compile Include="IDocumentParser.cs" />
     <Compile Include="Entities\IToxyProperties.cs" />
-    <Compile Include="Parsers\EMLParser.cs" />
+    <Compile Include="Parsers\EMLEmailParser.cs" />
     <Compile Include="Parsers\ExcelSpreadsheetParser.cs" />
     <Compile Include="ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
     <Compile Include="ISpreadsheetParser.cs" />
     <Compile Include="Parsers\PDFTextParser.cs" />
     <Compile Include="Parsers\RTFTextParser.cs" />
-    <Compile Include="Parsers\VCardParser.cs" />
+    <Compile Include="Parsers\VCardDocumentParser.cs" />
+    <Compile Include="Parsers\VCardTextParser.cs" />
     <Compile Include="Parsers\WordDocumentParser.cs" />
     <Compile Include="Entities\ToxyDocument.cs" />
     <Compile Include="Entities\ToxyEmail.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="Parsers\CSVSpreadsheetParser.cs" />
     <Compile Include="Parsers\PDFDocumentParser.cs" />
     <Compile Include="Parsers\WordTextParser.cs" />
+    <Compile Include="Parsers\XMLDomParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
