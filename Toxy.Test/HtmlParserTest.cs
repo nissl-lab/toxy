@@ -27,7 +27,7 @@ namespace Toxy.Test
 
             ToxyNode titleNode = toxyDom.Root.ChildrenNodes[0].ChildrenNodes[0].ChildrenNodes[0];
             Assert.AreEqual("title", titleNode.Name);
-            Assert.AreEqual("Microsoft Corporation", titleNode.ChildrenNodes[0].ToText());
+            Assert.AreEqual("Microsoft Corporation", titleNode.ChildrenNodes[0].InnerText);
 
             ToxyNode metaNode = toxyDom.Root.ChildrenNodes[0].ChildrenNodes[0].ChildrenNodes[7];
             Assert.AreEqual("meta", metaNode.Name);

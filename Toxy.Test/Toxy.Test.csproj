@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DateTimeParserTest.cs" />
     <Compile Include="Excel2007ParserTest.cs" />
     <Compile Include="CsvParserTest.cs" />
     <Compile Include="Excel2003ParserTest.cs" />

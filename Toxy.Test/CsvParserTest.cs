@@ -23,8 +23,11 @@ namespace Toxy.Test
             Assert.AreEqual("Sort Order", ss.Tables[0].ColumnHeaders.Cells[0].Value);
             Assert.AreEqual("Sub Type", ss.Tables[0].ColumnHeaders.Cells[4].Value);
             Assert.AreEqual(272, ss.Tables[0].Rows.Count);
+            Assert.AreEqual(12, ss.Tables[0].Rows[12].RowIndex);
             Assert.AreEqual("Kingdom of Bahrain", ss.Tables[0].Rows[12].Cells[2].ToString());
             Assert.AreEqual(".bo", ss.Tables[0].Rows[20].Cells[13].ToString());
+
+            Assert.AreEqual(271, ss.Tables[0].LastRowIndex);
          }
     }
 }
