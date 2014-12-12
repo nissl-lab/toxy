@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Diagnostics;
+using Toxy;
 
 namespace HLIB.MailFormats
 {
@@ -282,7 +283,12 @@ namespace HLIB.MailFormats
                         CC = saHdr[1];
                         break;
                     case "date":
-                        Date = DateTime.Parse(saHdr[1]);
+                        //DateTime dt=DateTime.MinValue;
+                        //if(DateTime.TryParse(saHdr[1],out dt))
+                        //{
+                        //    Date = dt;
+                        //}
+                        Date = DateTimeParser.Parse(saHdr[1]);
                         break;
                     case "subject":
                         Subject = saHdr[1];

@@ -70,7 +70,8 @@
     <Reference Include="Thought.vCards">
       <HintPath>..\..\Build\Debug\Thought.vCards.dll</HintPath>
     </Reference>
-    <Reference Include="Toxy">
+    <Reference Include="Toxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Build\Debug\Toxy.dll</HintPath>
     </Reference>
     <Reference Include="unvell.ReoGrid">
@@ -90,13 +91,40 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GridPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GridPanel.Designer.cs">
+      <DependentUpon>GridPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RichTextBoxPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RichTextBoxPanel.Designer.cs">
+      <DependentUpon>RichTextBoxPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpreadsheetPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SpreadsheetPanel.Designer.cs">
+      <DependentUpon>SpreadsheetPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeViewPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TreeViewPanel.Designer.cs">
+      <DependentUpon>TreeViewPanel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridPanel.resx">
+      <DependentUpon>GridPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -107,6 +135,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RichTextBoxPanel.resx">
+      <DependentUpon>RichTextBoxPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpreadsheetPanel.resx">
+      <DependentUpon>SpreadsheetPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeViewPanel.resx">
+      <DependentUpon>TreeViewPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

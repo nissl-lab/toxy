@@ -51,83 +51,40 @@ namespace ExtractionViewer
         }
 
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        //private System.Windows.Forms.RichTextBox richTextBox1;
+        RichTextBoxPanel rtbPanel;
+        SpreadsheetPanel ssPanel;
+        GridPanel gridPanel;
+        TreeViewPanel treePanel;
 
         private void AppendRichTextBox()
         {
-            
-            
-            if (richTextBox1 == null)
-            {
-                this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-                this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-                this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-                this.richTextBox1.Name = "richTextBox1";
-                this.richTextBox1.TabIndex = 1;
-                this.richTextBox1.Text = "";
-                this.splitContainer1.Panel1.Controls.Add(this.richTextBox1);
-            }
-            this.richTextBox1.Clear();
-            this.richTextBox1.Visible = true;
-            if (this.dataGridView1 != null)
-                this.dataGridView1.Visible = false;
-            if (this.reoGridControl1!=null)
-                this.reoGridControl1.Visible = false;
+            this.splitContainer1.Panel1.Controls.Clear();
+            this.rtbPanel = new RichTextBoxPanel();
+            this.rtbPanel.Dock = DockStyle.Fill;
+            this.splitContainer1.Panel1.Controls.Add(this.rtbPanel);
         }
         private void AppendDataGridView()
         {
-            if (dataGridView1 == null)
-            {
-                this.dataGridView1 = new System.Windows.Forms.DataGridView();
-                ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-                this.dataGridView1.AllowUserToAddRows = false;
-                this.dataGridView1.AllowUserToDeleteRows = false;
-                this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-                this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-                var headerstyle = new DataGridViewCellStyle();
-                headerstyle.Alignment = DataGridViewContentAlignment.BottomCenter;
-                this.dataGridView1.ColumnHeadersDefaultCellStyle = headerstyle;
-                this.dataGridView1.Name = "dataGridView1";
-                this.dataGridView1.ReadOnly = true;
-                this.dataGridView1.RowTemplate.Height = 23;
-                this.dataGridView1.TabIndex = 0;
-
-                this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
-            }
-
-            if (richTextBox1 != null)
-                this.richTextBox1.Visible = false;
-            if (this.reoGridControl1 != null)
-                this.reoGridControl1.Visible = false;
-            this.dataGridView1.Visible = true;
+            this.splitContainer1.Panel1.Controls.Clear();
+            this.gridPanel = new GridPanel();
+            this.gridPanel.Dock = DockStyle.Fill;
+            this.splitContainer1.Panel1.Controls.Add(this.gridPanel);
         }
         private void AppendSpreadsheetGrid()
         {
-            if (reoGridControl1 == null)
-            {
-                this.reoGridControl1 = new ReoGridControl();
-                this.reoGridControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-                this.reoGridControl1.CellContextMenuStrip = null;
-                this.reoGridControl1.ColCount = 100;
-                this.reoGridControl1.ColHeadContextMenuStrip = null;
-                this.reoGridControl1.Location = new System.Drawing.Point(189, 243);
-                this.reoGridControl1.Name = "reoGridControl1";
-                this.reoGridControl1.RowCount = 200;
-                this.reoGridControl1.RowHeadContextMenuStrip = null;
-                this.reoGridControl1.Script = null;
-                this.reoGridControl1.Dock = DockStyle.Fill;
-                this.reoGridControl1.TabIndex = 0;
-                this.reoGridControl1.Text = "reoGridControl1";
-                this.splitContainer1.Panel1.Controls.Add(this.reoGridControl1);
+            this.splitContainer1.Panel1.Controls.Clear();
+            this.ssPanel = new SpreadsheetPanel();
+            this.ssPanel.Dock = DockStyle.Fill;
+            this.splitContainer1.Panel1.Controls.Add(this.ssPanel);
+        }
 
-            }
-
-            if (richTextBox1 != null)
-                this.richTextBox1.Visible = false;
-            if (this.dataGridView1 != null)
-                this.dataGridView1.Visible = false;
-            this.reoGridControl1.Visible = true;
+        private void AppendTreePanel()
+        {
+            this.splitContainer1.Panel1.Controls.Clear();
+            this.treePanel = new TreeViewPanel();
+            this.treePanel.Dock = DockStyle.Fill;
+            this.splitContainer1.Panel1.Controls.Add(this.treePanel);
         }
         ToxySpreadsheet ss = null;
         
@@ -142,88 +99,156 @@ namespace ExtractionViewer
             
             tbPath.Text = filepath;
             FileInfo fi = new FileInfo(filepath);
-            ParserContext context = new ParserContext(filepath);
-            context.Encoding = Encoding.GetEncoding(encoding);
             string extension = fi.Extension.ToLower();
             tbExtension.Text = extension;
 
-
-
             panel1.Visible = false;
-
-
             switch (extension)
             {
-                case ".txt":
+                case ".pdf":
+                case ".docx":
+                case ".csv":
+                case ".eml":
+                case ".vcf":
                 case ".html":
                 case ".htm":
-                case ".pdf":
-                    AppendRichTextBox();
-                    var tparser = ParserFactory.CreateText(context);
-                    richTextBox1.Text = tparser.Parse();
-                    tbParserType.Text = tparser.GetType().Name;
+                case ".xml":
+                    textModeToolStripMenuItem.Checked = true;
+                    textModeToolStripMenuItem.Enabled = true;
+                    documentObjectModeToolStripMenuItem.Checked = false;
+                    documentObjectModeToolStripMenuItem.Enabled = true;
+                    break;
+                case ".txt":
+                    textModeToolStripMenuItem.Enabled = true;
+                    textModeToolStripMenuItem.Checked = true;
+                    documentObjectModeToolStripMenuItem.Enabled = false;
+                    documentObjectModeToolStripMenuItem.Checked = false;
                     break;
                 case ".rtf":
-                case ".docx":
-                    AppendRichTextBox();
-                    IDocumentParser docparser = ParserFactory.CreateDocument(context);
-                    ToxyDocument doc = docparser.Parse();
-                    tbParserType.Text = docparser.GetType().Name;
-                    richTextBox1.Text = doc.ToString();
-                    break;
-                case ".csv":
                 case ".xlsx":
                 case ".xls":
-                    AppendSpreadsheetGrid();
-                    ISpreadsheetParser ssparser = ParserFactory.CreateSpreadsheet(context);
-                    ss = ssparser.Parse();
-                    tbParserType.Text = ssparser.GetType().Name;
-                    //DataSet ds = ss.ToDataSet();
-                    //dataGridView1.DataSource = ds.Tables[0].DefaultView;
-                    var table0=ss.Tables[0];
-                    ShowToGrid(table0);
-                    cbSheets.Items.Clear();
-                    foreach (var table in ss.Tables)
-                    {
-                        cbSheets.Items.Add(table.Name);
-                    }
-                    cbSheets.SelectedIndex = 0;
-                    panel1.Visible = true;
-                    break;
-                case ".vcf":
-                    AppendDataGridView();
-                    var vparser = ParserFactory.CreateVCard(context);
-                    ToxyBusinessCards vcards = vparser.Parse();
-                    tbParserType.Text = vparser.GetType().Name;
-                    dataGridView1.DataSource =vcards.ToDataTable().DefaultView;
+                    textModeToolStripMenuItem.Enabled = false;
+                    textModeToolStripMenuItem.Checked = false;
+                    documentObjectModeToolStripMenuItem.Checked = true;
+                    documentObjectModeToolStripMenuItem.Enabled = true;
                     break;
                 default:
                     AppendRichTextBox();
-                    richTextBox1.Text = "Unknown document";
-                    tbParserType.Text = "";
-                    break;
+                    rtbPanel.Text = "Unknown document";
+                    tbParserType.Text = "Unknown";
+                    return;
             }
-            
+            ShowDocument(filepath, encoding, extension);
+        }
+        private void ShowDocument(string filepath, string encoding, string extension)
+        {
+            ParserContext context = new ParserContext(filepath);
+            context.Encoding = Encoding.GetEncoding(encoding);
+
+            if (Mode == ViewMode.Text)
+            {
+                AppendRichTextBox();
+                var tparser = ParserFactory.CreateText(context);
+                rtbPanel.Text = tparser.Parse();
+                tbParserType.Text = tparser.GetType().Name;
+            }
+            else
+            {
+                switch (extension)
+                {
+                    case ".csv":
+                        AppendSpreadsheetGrid();
+                        context.Properties.Add("HasHeader", "1");
+                        ISpreadsheetParser csvparser = ParserFactory.CreateSpreadsheet(context);
+                        ss = csvparser.Parse();
+                        tbParserType.Text = csvparser.GetType().Name;
+                        var table1 = ss.Tables[0];
+                        ShowToGrid(table1);
+                        cbSheets.Items.Clear();
+                        foreach (var table in ss.Tables)
+                        {
+                            cbSheets.Items.Add(table.Name);
+                        }
+                        cbSheets.SelectedIndex = 0;
+                        panel1.Visible = true;
+                        break;
+                    case ".xlsx":
+                    case ".xls":
+                        AppendSpreadsheetGrid();
+                        ISpreadsheetParser ssparser = ParserFactory.CreateSpreadsheet(context);
+                        ss = ssparser.Parse();
+                        tbParserType.Text = ssparser.GetType().Name;
+                        //DataSet ds = ss.ToDataSet();
+                        //dataGridView1.DataSource = ds.Tables[0].DefaultView;
+                        var table0 = ss.Tables[0];
+                        ShowToGrid(table0);
+                        cbSheets.Items.Clear();
+                        foreach (var table in ss.Tables)
+                        {
+                            cbSheets.Items.Add(table.Name);
+                        }
+                        cbSheets.SelectedIndex = 0;
+                        panel1.Visible = true;
+                        break;
+                    case ".vcf":
+                        AppendDataGridView();
+                        var vparser = ParserFactory.CreateVCard(context);
+                        ToxyBusinessCards vcards = vparser.Parse();
+                        tbParserType.Text = vparser.GetType().Name;
+                        gridPanel.GridView.DataSource = vcards.ToDataTable().DefaultView;
+                        break;
+                    case ".xml":
+                    case ".htm":
+                    case ".html":
+                        AppendTreePanel();
+                        var domparser = ParserFactory.CreateDom(context);
+                        ToxyDom htmlDom = domparser.Parse();
+                        TreeNode rootNode = treePanel.Tree.Nodes.Add(htmlDom.Root.NodeString);
+                        treePanel.Tree.BeginUpdate();
+                        AppendTree(rootNode, htmlDom.Root);
+                        treePanel.Tree.EndUpdate();
+                        //rootNode.ExpandAll();
+                        break;
+                }
+            }
+        }
+        void AppendTree(TreeNode node, ToxyNode tnode)
+        { 
+           if(tnode.ChildrenNodes==null||tnode.ChildrenNodes.Count==0)
+               return;
+           foreach (var child in tnode.ChildrenNodes)
+           {
+               TreeNode childNode ;
+               if(child.Name=="#text")
+                   childNode = node.Nodes.Add(child.Text);
+               else
+                    childNode = node.Nodes.Add(child.NodeString);
+               AppendTree(childNode, child);
+           }
         }
         private void ShowToGrid(ToxyTable table)
         {
-            reoGridControl1.Reset();
-            reoGridControl1.ColCount = table.LastColumnIndex + 1; 
-            reoGridControl1.RowCount = table.LastRowIndex+1; 
+            ssPanel.ReoGridControl.Reset();
+            ssPanel.ReoGridControl.ColCount = table.LastColumnIndex + 1;
+            ssPanel.ReoGridControl.RowCount = table.LastRowIndex + 2; 
+            if(table.HasHeader)
+                foreach (var cell in table.ColumnHeaders.Cells)
+                {
+                    ssPanel.ReoGridControl.SetCellData(new ReoGridPos(0, cell.CellIndex), cell.Value);
+                }
             foreach (var row in table.Rows)
             {
                 foreach (var cell in row.Cells)
                 {
-                    reoGridControl1.SetCellData(new ReoGridPos(row.RowIndex, cell.CellIndex), cell.Value);
+                    ssPanel.ReoGridControl.SetCellData(new ReoGridPos(row.RowIndex+1, cell.CellIndex), cell.Value);
                 }
             }
             foreach (var cellrange in table.MergeCells)
             {
-                reoGridControl1.MergeRange(new ReoGridRange(
+                ssPanel.ReoGridControl.MergeRange(new ReoGridRange(
                     new ReoGridPos(cellrange.FirstRow, cellrange.FirstColumn),
                     new ReoGridPos(cellrange.LastRow, cellrange.LastColumn)));
             }
-            //    dataGridView1.DataSource = table.ToDataTable().DefaultView;
         }
         private void btnReopen_Click(object sender, EventArgs e)
         {
@@ -247,6 +272,44 @@ namespace ExtractionViewer
         {
             AboutBox1 ab = new AboutBox1();
             ab.ShowDialog();
+        }
+        public enum ViewMode
+        { 
+            Text,
+            Structured
+        }
+        ViewMode Mode { 
+            get {
+                if (textModeToolStripMenuItem.Checked)
+                    return ViewMode.Text;
+                else
+                    return ViewMode.Structured;
+            } 
+        }
+        void SwitchMode(ViewMode mode)
+        {
+            if (mode == ViewMode.Text)
+            {
+                documentObjectModeToolStripMenuItem.Checked = false;
+                textModeToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                documentObjectModeToolStripMenuItem.Checked = true;
+                textModeToolStripMenuItem.Checked = false;          
+            }
+        }
+
+        private void documentObjectModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchMode(ViewMode.Structured);
+            ShowDocument(filepath, comboBox1.Text, tbExtension.Text);
+        }
+
+        private void textModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchMode(ViewMode.Text);
+            ShowDocument(filepath, comboBox1.Text, tbExtension.Text);
         }
 
     }

@@ -34,6 +34,9 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.documentObjectModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnReopen = new System.Windows.Forms.Button();
@@ -50,7 +53,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -61,6 +63,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.modeToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -106,12 +109,36 @@
             this.aboutToolStripMenuItem1.Text = "&About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
+            // modeToolStripMenuItem
+            // 
+            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.textModeToolStripMenuItem,
+            this.documentObjectModeToolStripMenuItem});
+            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
+            this.modeToolStripMenuItem.Text = "&Mode";
+            // 
+            // textModeToolStripMenuItem
+            // 
+            this.textModeToolStripMenuItem.Enabled = false;
+            this.textModeToolStripMenuItem.Name = "textModeToolStripMenuItem";
+            this.textModeToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.textModeToolStripMenuItem.Text = "&Text Mode";
+            this.textModeToolStripMenuItem.Click += new System.EventHandler(this.textModeToolStripMenuItem_Click);
+            // 
+            // documentObjectModeToolStripMenuItem
+            // 
+            this.documentObjectModeToolStripMenuItem.Enabled = false;
+            this.documentObjectModeToolStripMenuItem.Name = "documentObjectModeToolStripMenuItem";
+            this.documentObjectModeToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.documentObjectModeToolStripMenuItem.Text = "&Document/Structured Mode";
+            this.documentObjectModeToolStripMenuItem.Click += new System.EventHandler(this.documentObjectModeToolStripMenuItem_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 25);
             this.splitContainer1.Name = "splitContainer1";
-
             // 
             // splitContainer1.Panel2
             // 
@@ -217,6 +244,7 @@
             this.tbExtension.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbExtension.Location = new System.Drawing.Point(96, 65);
             this.tbExtension.Name = "tbExtension";
+            this.tbExtension.ReadOnly = true;
             this.tbExtension.Size = new System.Drawing.Size(129, 21);
             this.tbExtension.TabIndex = 4;
             // 
@@ -243,6 +271,7 @@
             this.tbParserType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbParserType.Location = new System.Drawing.Point(96, 29);
             this.tbParserType.Name = "tbParserType";
+            this.tbParserType.ReadOnly = true;
             this.tbParserType.Size = new System.Drawing.Size(129, 21);
             this.tbParserType.TabIndex = 1;
             // 
@@ -254,7 +283,6 @@
             this.label1.Size = new System.Drawing.Size(83, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "Parser Type: ";
-
             // 
             // Form1
             // 
@@ -268,7 +296,6 @@
             this.Text = "Toxy Extraction Viewer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -303,7 +330,9 @@
         private System.Windows.Forms.Button btnSelectSheet;
         private System.Windows.Forms.ComboBox cbSheets;
         private System.Windows.Forms.Label label4;
-        private unvell.ReoGrid.ReoGridControl reoGridControl1;
+        private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem textModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem documentObjectModeToolStripMenuItem;
     }
 }
 
