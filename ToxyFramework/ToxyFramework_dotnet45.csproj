@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Toxy</RootNamespace>
     <AssemblyName>Toxy</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -17,53 +17,53 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Build\Net20\Debug\</OutputPath>
+    <OutputPath>..\Build\Net45\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Build\Net20\Release\</OutputPath>
+    <OutputPath>..\Build\Net45\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DCSoft.RTF">
       <HintPath>..\3rdParty\DCSoft.RTF.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="HtmlAgilityPack">
       <HintPath>..\3rdParty\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\3rdParty\NPOI\dotnet2\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="itextsharp">
       <HintPath>..\3rdParty\itextsharp-dll-core\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="LumenWorks.Framework.IO">
       <HintPath>..\3rdParty\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI, Version=2.0.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+    <Reference Include="NPOI, Version=2.1.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.dll</HintPath>
+      <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI.OOXML, Version=2.0.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+    <Reference Include="NPOI.OOXML, Version=2.1.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.OOXML.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI.OpenXml4Net, Version=2.0.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+    <Reference Include="NPOI.OpenXml4Net, Version=2.1.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI.OpenXmlFormats, Version=2.0.5.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.1.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -85,21 +85,18 @@
     <Compile Include="Entities\ToxySpreadsheet\MergeCellRange.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyRow.cs" />
-    <Compile Include="Entities\ToxySpreadsheet\ToxySpreadsheet.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyTable.cs" />
-    <Compile Include="Entities\IToxyProperties.cs" />
-    <Compile Include="IDocumentParser.cs" />
+    <Compile Include="Parsers\EMLTextParser.cs" />
+    <Compile Include="Parsers\HtmlDomParser.cs" />
     <Compile Include="IDomParser.cs" />
     <Compile Include="IEmailParser.cs" />
-    <Compile Include="ISpreadsheetParser.cs" />
+    <Compile Include="IDocumentParser.cs" />
+    <Compile Include="Entities\IToxyProperties.cs" />
+    <Compile Include="Parsers\EMLEmailParser.cs" />
+    <Compile Include="Parsers\ExcelSpreadsheetParser.cs" />
     <Compile Include="ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
-    <Compile Include="Parsers\CSVSpreadsheetParser.cs" />
-    <Compile Include="Parsers\EMLEmailParser.cs" />
-    <Compile Include="Parsers\EMLTextParser.cs" />
-    <Compile Include="Parsers\ExcelSpreadsheetParser.cs" />
-    <Compile Include="Parsers\HtmlDomParser.cs" />
-    <Compile Include="Parsers\PDFDocumentParser.cs" />
+    <Compile Include="ISpreadsheetParser.cs" />
     <Compile Include="Parsers\PDFTextParser.cs" />
     <Compile Include="Parsers\RTFTextParser.cs" />
     <Compile Include="Parsers\VCardDocumentParser.cs" />
@@ -107,8 +104,11 @@
     <Compile Include="Parsers\WordDocumentParser.cs" />
     <Compile Include="Entities\ToxyDocument.cs" />
     <Compile Include="Entities\ToxyEmail.cs" />
+    <Compile Include="Entities\ToxySpreadsheet\ToxySpreadsheet.cs" />
     <Compile Include="ParserFactory.cs" />
     <Compile Include="Parsers\PlainTextParser.cs" />
+    <Compile Include="Parsers\CSVSpreadsheetParser.cs" />
+    <Compile Include="Parsers\PDFDocumentParser.cs" />
     <Compile Include="Parsers\WordTextParser.cs" />
     <Compile Include="Parsers\XMLDomParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
