@@ -129,7 +129,7 @@ namespace Toxy
                 // just a plain date
                 return ConvertedDate;
             }
-            catch (FormatException fex)
+            catch (FormatException)
             {
 
                 // try finding a timezone in the date

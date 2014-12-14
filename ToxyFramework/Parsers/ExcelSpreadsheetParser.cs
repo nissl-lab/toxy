@@ -271,7 +271,7 @@ namespace Toxy.Parsers
                     {
                         ss.Properties.Add("LastPrinted", si.LastPrinted);
                     }
-                    else if (si.CharCount != null)
+                    else if (si.CharCount>0)
                     {
                         ss.Properties.Add("CharCount", si.CharCount);
                     }
@@ -311,9 +311,9 @@ namespace Toxy.Parsers
                     {
                         ss.Properties.Add("Format", dsi.Format);
                     }
-                    else if (dsi.LineCount!= null)
+                    else if (dsi.LineCount>0)
                     {
-                        ss.Properties.Add("LineCount", dsi.Company);
+                        ss.Properties.Add("LineCount", dsi.LineCount);
                     }
                     else if (dsi.LinksDirty)
                     {
@@ -323,7 +323,7 @@ namespace Toxy.Parsers
                     {
                         ss.Properties.Add("Manager", dsi.Manager);
                     }
-                    else if (dsi.NoteCount != null)
+                    else if (dsi.NoteCount >0)
                     {
                         ss.Properties.Add("NoteCount", dsi.NoteCount);
                     }
@@ -331,15 +331,15 @@ namespace Toxy.Parsers
                     {
                         ss.Properties.Add("Scale", dsi.Scale);
                     }
-                    else if (dsi.Company != null)
+                    else if (dsi.HiddenCount>0)
                     {
-                        ss.Properties.Add("Company", dsi.Company);
+                        ss.Properties.Add("HiddenCount", dsi.Company);
                     }
-                    else if (dsi.MMClipCount != null)
+                    else if (dsi.MMClipCount>0)
                     {
                         ss.Properties.Add("MMClipCount", dsi.MMClipCount);
                     }
-                    else if (dsi.ParCount != null)
+                    else if (dsi.ParCount>0)
                     {
                         ss.Properties.Add("ParCount", dsi.ParCount);
                     }

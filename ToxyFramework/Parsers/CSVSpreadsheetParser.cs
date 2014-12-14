@@ -16,12 +16,14 @@ namespace Toxy.Parsers
 
         public class ParseSegmentEventArgs : EventArgs
         {
-            public ParseSegmentEventArgs(string text, int number)
+            public ParseSegmentEventArgs(string text, int rowIndex, int cellIndex)
             {
-                this.LineNumber = number;
+                this.RowIndex = rowIndex;
+                this.CellIndex = cellIndex;
                 this.Text = text;
             }
-            public int LineNumber { get; set; }
+            public int RowIndex { get; set; }
+            public int CellIndex { get; set; }
             public string Text { get; set; }
         }
 
@@ -82,6 +84,10 @@ namespace Toxy.Parsers
                     tr.RowIndex = i;
                     for (int j = 0; j <= tr.LastCellIndex; j++)
                     {
+                        if (this.ParseSegment != null)
+                        {
+                            this.ParseSegment(this, new ParseSegmentEventArgs(reader[j], i, j));
+                        }
                         ToxyCell c = new ToxyCell(j, reader[j]);
                         if (tr.LastCellIndex < c.CellIndex)
                         {
