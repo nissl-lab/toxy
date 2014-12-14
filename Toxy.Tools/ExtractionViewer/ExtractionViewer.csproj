@@ -33,28 +33,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DCSoft.RTF">
-      <HintPath>..\..\Build\Debug\DCSoft.RTF.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Release\DCSoft.RTF.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\Build\Debug\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Release\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\Build\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\Build\Net40\Release\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="LumenWorks.Framework.IO">
-      <HintPath>..\..\Build\Debug\LumenWorks.Framework.IO.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Release\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>..\..\Build\Debug\NPOI.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Release\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML">
-      <HintPath>..\..\Build\Debug\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Release\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\..\Build\Debug\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Release\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\..\Build\Debug\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Release\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,11 +71,10 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Thought.vCards">
-      <HintPath>..\..\Build\Debug\Thought.vCards.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Release\Thought.vCards.dll</HintPath>
     </Reference>
-    <Reference Include="Toxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Build\Debug\Toxy.dll</HintPath>
+    <Reference Include="Toxy">
+      <HintPath>..\..\Build\Net40\Release\Toxy.dll</HintPath>
     </Reference>
     <Reference Include="unvell.ReoGrid">
       <HintPath>..\..\3rdParty\ReoGrid-0.8.5-Editor\unvell.ReoGrid.dll</HintPath>
