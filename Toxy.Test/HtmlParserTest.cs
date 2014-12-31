@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Toxy.Test
 {
-    [TestClass]
+    [TestFixture]
     public class HtmlParserTest
     {
-        [TestMethod]
+        [Test]
         public void TestParseHtml()
         {
             string path = Path.GetFullPath(TestDataSample.GetHtmlPath("mshome.html"));

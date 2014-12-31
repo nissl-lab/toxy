@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,10 +7,10 @@ using System.Text;
 
 namespace Toxy.Test
 {
-    [TestClass]
+    [TestFixture]
     public class TestToxySpreadsheet
     {
-        [TestMethod]
+        [Test]
         public void TestReadExcelAndConvertToDataSet()
         { 
             ParserContext c=new ParserContext(TestDataSample.GetExcelPath("employee.xls"));
@@ -34,7 +34,7 @@ namespace Toxy.Test
             Assert.AreEqual("SSN:", s1.Rows[5][1]);
             Assert.AreEqual("ssn", s1.Rows[5][2]);
         }
-        [TestMethod]
+        [Test]
         public void TestToxyTableToDataTable()
         {
             #region create ToxyTable
@@ -87,7 +87,7 @@ namespace Toxy.Test
             Assert.AreEqual("9", dt.Rows[2][3].ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestToxyTableToDataTable_withEmptyColumnHeader()
         {
             #region create ToxyTable

@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +7,10 @@ using Toxy.Parsers;
 
 namespace Toxy.Test
 {
-    [TestClass]
+    [TestFixture]
     public class RTFParserTest
     {
-        [TestMethod]
+        [Test]
         public void TestReadRTF()
         {
             string path = TestDataSample.GetRTFPath("Formated text.rtf");

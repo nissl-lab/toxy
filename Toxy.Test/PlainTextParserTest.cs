@@ -1,13 +1,13 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Toxy.Parsers;
 
 namespace Toxy.Test
 {
-    [TestClass]
+    [TestFixture]
     public class PlainTextParserTest
     {
-        [TestMethod]
+        [Test]
         public void TestReadWholeText()
         {
             string path = TestDataSample.GetTextPath("utf8.txt");
@@ -18,7 +18,7 @@ namespace Toxy.Test
             Assert.AreEqual("hello world\r\na2\r\na3\r\nbbb4\r\n", text);
         }
 
-        [TestMethod]
+        [Test]
         public void TestParseLineEvent()
         {
             string path = TestDataSample.GetTextPath("utf8.txt");

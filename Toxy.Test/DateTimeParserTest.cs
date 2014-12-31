@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Toxy.Test
 {
-    [TestClass]
+    [TestFixture]
     public class DateTimeParserTest
     {
-        [TestMethod]
+        [Test]
         public void TestParseDatetimeWithTimezone()
         {
             Assert.AreEqual(new DateTime(2008, 10, 25, 3, 9, 6), DateTimeParser.Parse("24-oct-08 21:09:06 CEST"));
@@ -18,7 +18,7 @@ namespace Toxy.Test
 
         }
 
-        [TestMethod]
+        [Test]
         public void TestParseDatetimeWithoutTimezone()
         {
             Assert.AreEqual(new DateTime(2014, 12, 12, 12, 13, 30), DateTimeParser.Parse("Fri, 12 Dec 2014 12:13:30"));

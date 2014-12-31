@@ -1,13 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 using Toxy.Parsers;
 
 namespace Toxy.Test
 {
-    [TestClass]
+    [TestFixture]
     public class VCardParserTest
     {
-        [TestMethod]
+        [Test]
         public void TestRead2Cards()
         {
             string path = TestDataSample.GetVCardPath("RfcAuthors.vcf");
@@ -58,7 +58,7 @@ namespace Toxy.Test
 
         }
 
-        [TestMethod]
+        [Test]
         public void TestUTF8Card()
         {
             string path = TestDataSample.GetVCardPath("UnicodeNameSample.vcf");
@@ -76,7 +76,7 @@ namespace Toxy.Test
             Assert.AreEqual("Preferred, CellularVoice", tbc1.Contacts[0].Name);
         }
 
-        [TestMethod]
+        [Test]
         public void TestForeignNames()
         {
             string path = TestDataSample.GetVCardPath("PalmAgentSamples.vcf");

@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Toxy.Test
 {
-    [TestClass]
+    [TestFixture]
     public class Word2007ParserTest
     {
 
-        [TestMethod]
+        [Test]
         public void TestParseTextFromWord()
         {
             ParserContext context = new ParserContext(TestDataSample.GetWordPath("SampleDoc.docx"));
@@ -29,7 +29,7 @@ namespace Toxy.Test
             Assert.AreEqual("It’s Arial Black in 16 point", lines[5]);
             Assert.AreEqual("It’s also in blue", lines[6]);
         }
-        [TestMethod]
+        [Test]
         public void TestParseSimpleDocumentFromWord()
         {
             ParserContext context = new ParserContext(TestDataSample.GetWordPath("SampleDoc.docx"));

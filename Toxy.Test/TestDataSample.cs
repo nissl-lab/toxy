@@ -38,7 +38,22 @@ namespace Toxy.Test
         {
             return GetFilePath(filename, "Html");
         }
-
+        public static string GetAudioPath(string filename)
+        {
+            return GetFilePath(filename, "Audio");
+        }
+        public static string GetImagePath(string filename)
+        {
+            return GetFilePath(filename, "Image");
+        }
+        public static string GetOLE2Path(string filename)
+        {
+            return GetFilePath(filename, "OLE2");
+        }
+        public static string GetOOXMLPath(string filename)
+        {
+            return GetFilePath(filename, "OOXML");
+        }
         public static string GetFilePath(string filename, string subFolder)
         {
             string path = ConfigurationManager.AppSettings["testdataPath"];

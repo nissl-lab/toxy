@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Toxy.Test
 {
-        [TestClass]
+        [TestFixture]
     public class ZipParserTest
     {
-            [TestMethod]
+            [Test]
             public void TestParseDirectoryFromZip()
             {
                 ParserContext context = new ParserContext(TestDataSample.GetFilePath("toxy.zip",null));

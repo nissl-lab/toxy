@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\3rdParty\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -50,38 +53,39 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-      </ItemGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AudioParserTest.cs" />
     <Compile Include="DateTimeParserTest.cs" />
     <Compile Include="Excel2007ParserTest.cs" />
     <Compile Include="CsvParserTest.cs" />
     <Compile Include="Excel2003ParserTest.cs" />
     <Compile Include="ExcelParserBaseTest.cs" />
+    <Compile Include="ImageParserTest.cs" />
+    <Compile Include="OLE2MetadataParserTest.cs" />
+    <Compile Include="OOXMLParserTest.cs" />
     <Compile Include="PDFParserTest.cs" />
     <Compile Include="RTFParserTest.cs" />
     <Compile Include="TestDataSample.cs" />
     <Compile Include="PlainTextParserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ExcelTextParserTest.cs" />
     <Compile Include="TestToxySpreadsheet.cs" />
     <Compile Include="HtmlParserTest.cs" />
     <Compile Include="VCardParserTest.cs" />
     <Compile Include="Word2007ParserTest.cs" />
+    <Compile Include="ZipParserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ToxyFramework\ToxyFramework.csproj">
+    <ProjectReference Include="..\ToxyFramework\ToxyFramework_dotnet4.csproj">
       <Project>{ccb814a5-a750-4b96-afd3-f7e4d868f231}</Project>
-      <Name>ToxyFramework</Name>
+      <Name>ToxyFramework_dotnet4</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

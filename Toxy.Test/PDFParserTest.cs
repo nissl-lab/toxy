@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +7,10 @@ using Toxy.Parsers;
 
 namespace Toxy.Test
 {
-    [TestClass]
+    [TestFixture]
     public class PDFParserTest
     {
-        [TestMethod]
+        [Test]
         public void TestParsePlainTextFromPDF()
         {
             string path = TestDataSample.GetPdfPath("Sample1.PDF");
@@ -19,7 +19,7 @@ namespace Toxy.Test
             Assert.IsTrue(result.StartsWith("LA MARCHE"));
         }
 
-        [TestMethod]
+        [Test]
         public void TestParseToxyDocumentFromPDF()
         {
             string path = TestDataSample.GetPdfPath("Sample1.PDF");

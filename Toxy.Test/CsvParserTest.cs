@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Toxy.Test
 {
-     [TestClass]
+     [TestFixture]
     public class CsvParserTest
     {
-         [TestMethod]
+         [Test]
          public void TestParseToxySpreadsheet()
          {
              string path = TestDataSample.GetFilePath("countrylist.csv", null);

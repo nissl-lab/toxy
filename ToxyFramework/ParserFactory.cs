@@ -27,15 +27,40 @@ namespace Toxy
             typeCSV.Add(typeof(CSVSpreadsheetParser));
             parserMapping.Add(".csv", typeCSV);
 
+            #region Office Formats
             var typeXls = new List<Type>();
             typeXls.Add(typeof(ExcelSpreadsheetParser));
+            typeXls.Add(typeof(ExcelTextParser));
+            typeXls.Add(typeof(OLE2MetadataParser));
             parserMapping.Add(".xls", typeXls);
-            parserMapping.Add(".xlsx", typeXls);
+
+            var typeXlsx = new List<Type>();
+            typeXlsx.Add(typeof(ExcelSpreadsheetParser));
+            typeXlsx.Add(typeof(ExcelTextParser));
+            typeXlsx.Add(typeof(OOXMLMetadataParser));
+            parserMapping.Add(".xlsx", typeXlsx);
+
+            var typeOLE2 = new List<Type>();
+            typeOLE2.Add(typeof(OLE2MetadataParser));
+            parserMapping.Add(".doc", typeOLE2);
+            parserMapping.Add(".ppt", typeOLE2);
+            parserMapping.Add(".vsd", typeOLE2);
+            parserMapping.Add(".pub", typeOLE2);
+            parserMapping.Add(".shw", typeOLE2);
+            parserMapping.Add(".sldprt", typeOLE2);     
+
+            var typeOOXML = new List<Type>();
+            typeOOXML.Add(typeof(OOXMLMetadataParser));
+            parserMapping.Add(".pptx", typeOOXML);
+            parserMapping.Add(".pubx", typeOOXML);
+            parserMapping.Add(".vsdx", typeOOXML);
 
             var typeDocx = new List<Type>();
             typeDocx.Add(typeof(WordTextParser));
             typeDocx.Add(typeof(WordDocumentParser));
+            typeDocx.Add(typeof(OOXMLMetadataParser));
             parserMapping.Add(".docx", typeDocx);
+            #endregion
 
             var typeRtf = new List<Type>();
             typeRtf.Add(typeof(RTFTextParser));
@@ -62,6 +87,25 @@ namespace Toxy
             typeVcard.Add(typeof(VCardTextParser));
             parserMapping.Add(".vcf", typeVcard);
 
+            var typeZip = new List<Type>();
+            typeZip.Add(typeof(ZipTextParser));
+            parserMapping.Add(".zip", typeZip);
+
+            var typeAudio = new List<Type>();
+            typeAudio.Add(typeof(AudioMetadataParser));
+            parserMapping.Add(".mp3", typeAudio);
+            parserMapping.Add(".ape", typeAudio);
+            parserMapping.Add(".wma", typeAudio);
+            parserMapping.Add(".flac", typeAudio);
+            parserMapping.Add(".aif", typeAudio);
+
+            var typeImage = new List<Type>();
+            typeImage.Add(typeof(ImageMetadataParser));
+            parserMapping.Add(".jpeg", typeImage);
+            parserMapping.Add(".jpg", typeImage);
+            parserMapping.Add(".gif", typeImage);
+            parserMapping.Add(".tiff", typeImage);
+            parserMapping.Add(".png", typeImage);
         }
 
         static string GetFileExtention(string path)
@@ -121,6 +165,13 @@ namespace Toxy
         {
             object obj = CreateObject(context, typeof(VCardDocumentParser), "CreateVCard");
             VCardDocumentParser parser = (VCardDocumentParser)obj;
+            return parser;
+        }
+
+        public static IMetadataParser CreateMetadata(ParserContext context)
+        {
+            object obj = CreateObject(context, typeof(IMetadataParser), "CreateMetadata");
+            IMetadataParser parser = (IMetadataParser)obj;
             return parser;
         }
     }

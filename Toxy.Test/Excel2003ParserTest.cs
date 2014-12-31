@@ -2,14 +2,14 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Toxy.Test
 {
     /// <summary>
     /// Summary description for ExcelParserTest
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class Excel2003ParserTest:ExcelParserBaseTest
     {
         public Excel2003ParserTest()
@@ -18,34 +18,34 @@ namespace Toxy.Test
             // TODO: Add constructor logic here
             //
         }
-        [TestMethod]
+        [Test]
         public void TestExtractFooter()
         {
             BaseTestFooter("45538_classic_Footer.xls");
         }
-        [TestMethod]
+        [Test]
         public void TestExtractHeader()
         {
             BaseTestHeader("45538_classic_Header.xls");
         }
-        [TestMethod]
+        [Test]
         public void TestFillBlankCells()
         {
             base.BaseTestFillBlankCells("Employee.xls");
         }
 
-        [TestMethod]
+        [Test]
         public void TestExcelWithFormats()
         {
             BaseTestExcelFormatedString("Formatting.xls");
         }
 
-        [TestMethod]
+        [Test]
         public void TestExcelParserSimple()
         {
             base.BaseTestExcelContent("Employee.xls");
         }
-        [TestMethod]
+        [Test]
         public void TestExcelWithComments()
         {
             base.BaseTestExcelComment("comments.xls");
