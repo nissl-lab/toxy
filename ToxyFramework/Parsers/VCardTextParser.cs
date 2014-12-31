@@ -58,8 +58,7 @@ namespace Toxy.Parsers
                         sb.AppendLine("[Addresses]");
                         foreach (var dAddr in card.DeliveryAddresses)
                         {
-                            if (dAddr.AddressType.Count>0)
-                                sb.Append(dAddr.AddressType[0] + ":");
+                            sb.Append(dAddr.AddressType + ":");
                             if (!string.IsNullOrEmpty(dAddr.Street))
                                 sb.Append(dAddr.Street + ",");
                             if (!string.IsNullOrEmpty(dAddr.City))
