@@ -35,7 +35,7 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
-            Assert.AreEqual(16, x.Count);
+            Assert.AreEqual(17, x.Count);
             Assert.AreEqual(3008, x.Get("PhotoHeight").Value);
             Assert.AreEqual(96, x.Get("PhotoQuality").Value);
             Assert.AreEqual(2000, x.Get("PhotoWidth").Value);

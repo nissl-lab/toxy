@@ -16,7 +16,7 @@ FOR /F "tokens=*" %%G IN ('DIR /B /AD /S obj') DO RMDIR /S /Q "%%G"
 
 FOR /F "tokens=*" %%G IN ('DIR /B /AD /S obj') DO RMDIR /S /Q "%%G"
 
-%msbuild% ToxyFramework\ToxyFramework.csproj  /p:Configuration=Release /t:Rebuild /p:OutputPath=..\Build\Net20\Release
+%msbuild% ToxyFramework\ToxyFramework.csproj  /p:Configuration=Release /t:Rebuild /p:OutputPath=..\Build\Net35\Release
 
 FOR /F "tokens=*" %%G IN ('DIR /B /AD /S obj') DO RMDIR /S /Q "%%G"
 
@@ -28,7 +28,7 @@ FOR /F "tokens=*" %%G IN ('DIR /B /AD /S obj') DO RMDIR /S /Q "%%G"
 
 FOR /F "tokens=*" %%G IN ('DIR /B /AD /S obj') DO RMDIR /S /Q "%%G"
 
-%msbuild% ToxyFramework\ToxyFramework.csproj  /p:Configuration=Debug /t:Rebuild /p:OutputPath=..\Build\Net20\Debug
+%msbuild% ToxyFramework\ToxyFramework.csproj  /p:Configuration=Debug /t:Rebuild /p:OutputPath=..\Build\Net35\Debug
 
 FOR /F "tokens=*" %%G IN ('DIR /B /AD /S obj') DO RMDIR /S /Q "%%G"
 

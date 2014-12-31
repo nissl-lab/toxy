@@ -30,7 +30,7 @@ namespace Toxy.Parsers
             OPCPackage pack=null;
             try
             {
-                pack = POIXMLDocument.OpenPackage(Context.Path);
+                pack = OPCPackage.Open(Context.Path, PackageAccess.READ);
                 POIXMLProperties props = new POIXMLProperties(pack);
                 if (props.CoreProperties != null)
                 {

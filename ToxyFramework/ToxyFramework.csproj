@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Toxy</RootNamespace>
     <AssemblyName>Toxy</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Build\Net20\Debug\</OutputPath>
+    <OutputPath>..\Build\Net35\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,10 +25,16 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Build\Net20\Release\</OutputPath>
+    <OutputPath>..\Build\Net35\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>toxy.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DCSoft.RTF">
@@ -68,6 +74,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="taglib-sharp">
+      <HintPath>..\3rdParty\taglib-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="Thought.vCards">
       <HintPath>..\3rdParty\Thought.vCards\Thought.vCards.dll</HintPath>
     </Reference>
@@ -81,6 +90,7 @@
     <Compile Include="Entities\ToxyBusinessCard\ToxyContact.cs" />
     <Compile Include="Entities\ToxyDom\ToxyDom.cs" />
     <Compile Include="Entities\ToxyDom\ToxyNode.cs" />
+    <Compile Include="Entities\ToxyMetadata.cs" />
     <Compile Include="Entities\ToxyName.cs" />
     <Compile Include="Entities\ToxySpreadsheet\MergeCellRange.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
@@ -91,14 +101,20 @@
     <Compile Include="IDocumentParser.cs" />
     <Compile Include="IDomParser.cs" />
     <Compile Include="IEmailParser.cs" />
+    <Compile Include="IMetadataParser.cs" />
     <Compile Include="ISpreadsheetParser.cs" />
     <Compile Include="ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
+    <Compile Include="Parsers\AudioMetadataParser.cs" />
     <Compile Include="Parsers\CSVSpreadsheetParser.cs" />
     <Compile Include="Parsers\EMLEmailParser.cs" />
     <Compile Include="Parsers\EMLTextParser.cs" />
     <Compile Include="Parsers\ExcelSpreadsheetParser.cs" />
+    <Compile Include="Parsers\ExcelTextParser.cs" />
     <Compile Include="Parsers\HtmlDomParser.cs" />
+    <Compile Include="Parsers\ImageMetadataParser.cs" />
+    <Compile Include="Parsers\OLE2MetadataParser.cs" />
+    <Compile Include="Parsers\OOXMLMetadataParser.cs" />
     <Compile Include="Parsers\PDFDocumentParser.cs" />
     <Compile Include="Parsers\PDFTextParser.cs" />
     <Compile Include="Parsers\RTFTextParser.cs" />
@@ -111,10 +127,13 @@
     <Compile Include="Parsers\PlainTextParser.cs" />
     <Compile Include="Parsers\WordTextParser.cs" />
     <Compile Include="Parsers\XMLDomParser.cs" />
+    <Compile Include="Parsers\ZipTextParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="toxy.snk" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

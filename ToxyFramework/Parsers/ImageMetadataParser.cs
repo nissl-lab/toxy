@@ -46,7 +46,7 @@ namespace Toxy.Parsers
                 metadatas.Add("ISOSpeedRatings", (uint)tags.ISOSpeedRatings);
             if (tags.Creator != null)
                 metadatas.Add("Creator", tags.Creator);
-            if (!string.IsNullOrWhiteSpace(tags.Comment))
+            if (!string.IsNullOrEmpty(tags.Comment))
                 metadatas.Add("Comment", tags.Comment);
             if (tags.Rating != null)
                 metadatas.Add("Rating", (uint)tags.Rating);
@@ -68,7 +68,7 @@ namespace Toxy.Parsers
                 TagLib.Xmp.XmpTag tagXmp = file.GetTag(TagLib.TagTypes.XMP) as TagLib.Xmp.XmpTag;
                 foreach (TagLib.Xmp.XmpNode node in tagXmp.NodeTree.Children)
                 {
-                    if(!string.IsNullOrWhiteSpace(node.Value))
+                    if(!string.IsNullOrEmpty(node.Value))
                     metadatas.Add(node.Name, node.Value);
                 }
             }
