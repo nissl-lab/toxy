@@ -18,6 +18,7 @@ namespace Toxy
         }
         public string Name { get; set; }
         public List<ToxyTable> Tables { get; set; }
+        [Obsolete("use ToxyMetadata instead")]
         public Dictionary<string, object> Properties { get; set; }
 
         public ToxyTable this[string name]
