@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace Toxy.Test
 {
@@ -10,7 +11,7 @@ namespace Toxy.Test
     {
         public static string GetPdfPath(string filename)
         {
-            return GetFilePath(filename, "Pdf");
+            return GetFilePath(filename, "PDF");
         }
         public static string GetWordPath(string filename)
         {
@@ -32,7 +33,7 @@ namespace Toxy.Test
         }
         public static string GetTextPath(string filename)
         {
-            return GetFilePath(filename, "txt");
+            return GetFilePath(filename, "Txt");
         }
         public static string GetHtmlPath(string filename)
         {
@@ -48,23 +49,23 @@ namespace Toxy.Test
         }
         public static string GetOLE2Path(string filename)
         {
-            return GetFilePath(filename, "OLE2");
+            return GetFilePath(filename, "ole2");
         }
         public static string GetOOXMLPath(string filename)
         {
-            return GetFilePath(filename, "OOXML");
+            return GetFilePath(filename, "ooxml");
         }
         public static string GetFilePath(string filename, string subFolder)
         {
-            string path = ConfigurationManager.AppSettings["testdataPath"];
-            if (!path.EndsWith("\\"))
+			string path = ConfigurationManager.AppSettings["testdataPath"].Replace('\\',Path.DirectorySeparatorChar);
+			if (!path.EndsWith(string.Empty+Path.DirectorySeparatorChar))
             {
-                path += "\\";
+				path += Path.DirectorySeparatorChar;
             }
             if(subFolder==null)
                 return path + filename;
             else
-                return path +subFolder+"\\" + filename;
+				return path +subFolder+Path.DirectorySeparatorChar + filename;
         }
     }
 }

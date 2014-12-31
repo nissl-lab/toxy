@@ -55,17 +55,17 @@ namespace Toxy.Parsers
                         metadata.Add("LastPrinted", si.LastPrinted);
                     if (si.LastSaveDateTime != null)
                         metadata.Add("LastSaveDateTime", si.LastSaveDateTime);
-                    if (si.PageCount != null)
+                    if (si.PageCount != 0)
                         metadata.Add("PageCount", si.PageCount);
-                    if (si.WordCount != null)
+                    if (si.WordCount != 0)
                         metadata.Add("WordCount", si.WordCount);
                     if (si.Comments != null)
                         metadata.Add("Comments", si.Comments);
-                    if (si.EditTime != null)
+                    if (si.EditTime != 0)
                         metadata.Add("EditTime", si.EditTime);
                     if (si.RevNumber != null)
                         metadata.Add("RevNumber", si.RevNumber);
-                    if (si.Security != null)
+                    if (si.Security != 0)
                         metadata.Add("Security", si.Security);
                     if (si.Subject != null)
                         metadata.Add("Subject", si.Subject);

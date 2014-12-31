@@ -17,13 +17,13 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
-            Assert.AreEqual(19, x.Count);
+            Assert.AreEqual(18, x.Count);
 
             path = Path.GetFullPath(TestDataSample.GetOLE2Path("TestChineseProperties.doc"));
             context = new ParserContext(path);
             parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             x = parser.Parse();
-            Assert.AreEqual(19, x.Count);
+            Assert.AreEqual(18, x.Count);
             Assert.AreEqual("雅虎網站分類", x.Get("Comments").Value);
             Assert.AreEqual("參考資料", x.Get("Title").Value);
         }
@@ -34,7 +34,7 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
-            Assert.AreEqual(12, x.Count);
+            Assert.AreEqual(8, x.Count);
             Assert.AreEqual("Microsoft Excel", x.Get("ApplicationName").Value);
         }
         [Test]
@@ -44,7 +44,7 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
-            Assert.AreEqual(11, x.Count);
+            Assert.AreEqual(8, x.Count);
             Assert.AreEqual("Funny Factory", x.Get("Title").Value);
         }
         [Test]
@@ -54,7 +54,7 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
-            Assert.AreEqual(10, x.Count);
+            Assert.AreEqual(6, x.Count);
             Assert.AreEqual("thorsteb", x.Get("Author").Value);
             Assert.AreEqual("thorsteb", x.Get("LastAuthor").Value);
         }
@@ -65,7 +65,7 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
-            Assert.AreEqual(14, x.Count);
+            Assert.AreEqual(10, x.Count);
             Assert.AreEqual("{F29F85E0-4FF9-1068-AB91-08002B27B3D9}", x.Get("ClassID").Value);
             Assert.AreEqual("scj", x.Get("LastAuthor").Value);
         }

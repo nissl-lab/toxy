@@ -9,17 +9,14 @@ namespace Toxy
 
 
 
-    public class ToxySpreadsheet : IToxyProperties
+    public class ToxySpreadsheet
     {
         public ToxySpreadsheet()
         {
             this.Tables = new List<ToxyTable>();
-            this.Properties = new Dictionary<string, object>();
         }
         public string Name { get; set; }
         public List<ToxyTable> Tables { get; set; }
-        [Obsolete("use ToxyMetadata instead")]
-        public Dictionary<string, object> Properties { get; set; }
 
         public ToxyTable this[string name]
         {

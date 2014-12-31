@@ -13,7 +13,7 @@ namespace Toxy.Test
         [Test]
         public void TestReadExcelAndConvertToDataSet()
         { 
-            ParserContext c=new ParserContext(TestDataSample.GetExcelPath("employee.xls"));
+            ParserContext c=new ParserContext(TestDataSample.GetExcelPath("Employee.xls"));
             var parser=ParserFactory.CreateSpreadsheet(c);
             var spreadsheet= parser.Parse();
             DataSet ds = spreadsheet.ToDataSet();

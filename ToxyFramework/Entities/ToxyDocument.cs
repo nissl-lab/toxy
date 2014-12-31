@@ -23,18 +23,16 @@ namespace Toxy
         public string FontFamily { get; set; }
         public int FontSize { get; set; }
     }
-    public class ToxyDocument:IToxyProperties
+    public class ToxyDocument
     {
         public ToxyDocument()
         {
             this.Paragraphs = new List<ToxyParagraph>();
-            this.Properties = new Dictionary<string,object>();
         }
         public string Header { get; set; }
         public string Footer { get; set; }
         public List<ToxyParagraph> Paragraphs { get; set; }
         public int TotalPageNumber { get; set; }
-        public Dictionary<string, object> Properties { get; set; }
 
         public override string ToString()
         {
