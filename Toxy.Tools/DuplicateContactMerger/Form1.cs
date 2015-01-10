@@ -103,7 +103,7 @@ namespace DuplicateContactMerger
             {
                 string path= dialog.FileName;
                 ParserContext context=new ParserContext(path);
-                VCardParser vparser=ParserFactory.CreateVCard(context);
+                VCardDocumentParser vparser=ParserFactory.CreateVCard(context);
                 bcs = vparser.Parse();
 
                 FillListView(bcs, checkBox1.Checked, checkBox2.Checked);
@@ -131,6 +131,16 @@ namespace DuplicateContactMerger
             if (bcs != null)
             {
                 FillListView(bcs, checkBox1.Checked, checkBox2.Checked);
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Business Card Files (*.vcf)|*.vcf";
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string savePath = sfd.FileName;
             }
         }
     }

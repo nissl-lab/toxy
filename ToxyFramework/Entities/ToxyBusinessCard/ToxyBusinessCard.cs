@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Thought.vCards;
 
 namespace Toxy
 {
@@ -40,6 +41,30 @@ namespace Toxy
         public List<ToxyContact> Contacts { get; set; }
 
         public GenderType Gender { get; set; }
+
+        public vCard ToVCard()
+        {
+            vCard card = new vCard();
+            if(this.Name!=null)
+            {
+            card.DisplayName = this.Name.FullName;
+            card.FamilyName = this.Name.LastName;
+            card.GivenName = this.Name.FirstName;
+            }
+            card.Gender = this.Gender== GenderType.Male?vCardGender.Male:vCardGender.Female;
+            if (this.NickName != null)
+                card.Nicknames.Add(this.NickName.FullName);
+
+            card.Organization = this.Orgnization;
+            if (this.Contacts != null)
+            {
+                foreach (var contact in this.Contacts)
+                {
+                    card.Phones.Add(new vCardPhone(contact.Name, vCardPhoneTypes.Cellular));
+                }
+            }
+            return card;
+        }
 
         public override string ToString()
         {

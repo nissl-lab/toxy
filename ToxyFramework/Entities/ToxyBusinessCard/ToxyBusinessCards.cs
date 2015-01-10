@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Text;
+using Thought.vCards;
 
 namespace Toxy
 {
@@ -23,6 +25,22 @@ namespace Toxy
 
                 return this.cards.FindAll(delegate(ToxyBusinessCard s) { return s.Contacts.Count > 0; });
             }
+        }
+        public void SaveAs(string path)
+        {
+            if (this.cards == null || this.cards.Count == 0)
+            {
+                throw new InvalidDataException("No data to be saved");
+            }
+            vCardStandardWriter writer = new vCardStandardWriter();
+            using (TextWriter tw = File.CreateText(path))
+            {
+                foreach (var card in this.cards)
+                {
+                    writer.Write(card.ToVCard(), tw);
+                }
+            }
+
         }
         public DataTable ToDataTable()
         {
