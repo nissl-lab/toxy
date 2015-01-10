@@ -10,7 +10,7 @@ namespace Toxy
         public string Name { get; set; }
         public object Value { get; set; }
     }
-    public class ToxyMetadata
+    public class ToxyMetadata:IEnumerable<ToxyProperty>
     {
         Dictionary<string, ToxyProperty> list = new Dictionary<string, ToxyProperty>();
         public ToxyProperty Add(string name, object value)
@@ -56,6 +56,17 @@ namespace Toxy
                 sb.AppendLine(string.Format("{0}:{1}",prop.Name, prop.Value.ToString()));
             }
             return sb.ToString();
+        }
+
+
+        public IEnumerator<ToxyProperty> GetEnumerator()
+        {
+            return list.Values.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return list.Values.GetEnumerator();
         }
     }   
 }
