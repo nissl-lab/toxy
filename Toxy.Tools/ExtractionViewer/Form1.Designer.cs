@@ -32,11 +32,11 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentObjectModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnReopen = new System.Windows.Forms.Button();
@@ -51,6 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbParserType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.metadataModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -94,6 +95,32 @@
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // modeToolStripMenuItem
+            // 
+            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.textModeToolStripMenuItem,
+            this.documentObjectModeToolStripMenuItem,
+            this.metadataModeToolStripMenuItem});
+            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
+            this.modeToolStripMenuItem.Text = "&Mode";
+            // 
+            // textModeToolStripMenuItem
+            // 
+            this.textModeToolStripMenuItem.Enabled = false;
+            this.textModeToolStripMenuItem.Name = "textModeToolStripMenuItem";
+            this.textModeToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.textModeToolStripMenuItem.Text = "&Text Mode";
+            this.textModeToolStripMenuItem.Click += new System.EventHandler(this.textModeToolStripMenuItem_Click);
+            // 
+            // documentObjectModeToolStripMenuItem
+            // 
+            this.documentObjectModeToolStripMenuItem.Enabled = false;
+            this.documentObjectModeToolStripMenuItem.Name = "documentObjectModeToolStripMenuItem";
+            this.documentObjectModeToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.documentObjectModeToolStripMenuItem.Text = "&Document/Structured Mode";
+            this.documentObjectModeToolStripMenuItem.Click += new System.EventHandler(this.documentObjectModeToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -108,31 +135,6 @@
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
             this.aboutToolStripMenuItem1.Text = "&About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
-            // 
-            // modeToolStripMenuItem
-            // 
-            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.textModeToolStripMenuItem,
-            this.documentObjectModeToolStripMenuItem});
-            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
-            this.modeToolStripMenuItem.Text = "&Mode";
-            // 
-            // textModeToolStripMenuItem
-            // 
-            this.textModeToolStripMenuItem.Enabled = false;
-            this.textModeToolStripMenuItem.Name = "textModeToolStripMenuItem";
-            this.textModeToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.textModeToolStripMenuItem.Text = "&Text Mode";
-            this.textModeToolStripMenuItem.Click += new System.EventHandler(this.textModeToolStripMenuItem_Click);
-            // 
-            // documentObjectModeToolStripMenuItem
-            // 
-            this.documentObjectModeToolStripMenuItem.Enabled = false;
-            this.documentObjectModeToolStripMenuItem.Name = "documentObjectModeToolStripMenuItem";
-            this.documentObjectModeToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.documentObjectModeToolStripMenuItem.Text = "&Document/Structured Mode";
-            this.documentObjectModeToolStripMenuItem.Click += new System.EventHandler(this.documentObjectModeToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -284,6 +286,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Parser Type: ";
             // 
+            // metadataModeToolStripMenuItem
+            // 
+            this.metadataModeToolStripMenuItem.Enabled = false;
+            this.metadataModeToolStripMenuItem.Name = "metadataModeToolStripMenuItem";
+            this.metadataModeToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.metadataModeToolStripMenuItem.Text = "Metadata Mode";
+            this.metadataModeToolStripMenuItem.Click += new System.EventHandler(this.metadataModeToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -333,6 +343,7 @@
         private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem documentObjectModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem metadataModeToolStripMenuItem;
     }
 }
 

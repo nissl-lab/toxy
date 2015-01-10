@@ -30,12 +30,16 @@ namespace ExtractionViewer
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = false;
-            dialog.Filter = "All Supported Files |*.csv;*.txt;*.xls;*.xlsx;*.docx;*.rtf;*.eml;*.xml;*.html;*.htm;*.pdf;*.vcf";
+            dialog.Filter = "All Supported Files |*.csv;*.txt;*.xls;*.xlsx;*.docx;*.rtf;*.eml;*.xml;*.html;*.htm;*.doc;*.ppt;*.vsd;*.pdf;*.vcf;*.zip;*.mp3;*.ape;*.wma;*.flac;*.aif;*.jpeg;*.jpg;*.tiff;*.png;*.gif";
             dialog.Filter += "|Comma Seperated Files (*.csv)|*.csv";
+            dialog.Filter += "|Audio Files|*.mp3;*.ape;*.wma;*.flac;*.aif";
+            dialog.Filter += "|Image Files|*.jpeg;*.jpg;*.tiff;*.png;*.gif";
+            dialog.Filter += "|Zip Package|*.zip";
             dialog.Filter += "|Text Files (*.txt)|*.txt";
-            dialog.Filter += "|All Excel Files|*.xls;*.xlsx";
+            dialog.Filter += "|Excel Files|*.xls;*.xlsx";
             dialog.Filter += "|Rich Text Files (*.rtf)|*.rtf";
-            dialog.Filter += "|Word 2007-2013 Files (*.docx)|*.docx";
+            dialog.Filter += "|Word Files|*.docx;*.doc";
+            dialog.Filter += "|PowerPoint Files|*.ppt;*.pptx";
             dialog.Filter += "|Business Card Files (*.vcf)|*.vcf";
             dialog.Filter += "|Email Files (*.eml)|*.eml";
             dialog.Filter += "|Html Files (*.html, *.htm)|*.html;*.htm";
@@ -56,6 +60,7 @@ namespace ExtractionViewer
         SpreadsheetPanel ssPanel;
         GridPanel gridPanel;
         TreeViewPanel treePanel;
+        PropertyListPanel plPanel;
 
         private void AppendRichTextBox()
         {
@@ -70,6 +75,13 @@ namespace ExtractionViewer
             this.gridPanel = new GridPanel();
             this.gridPanel.Dock = DockStyle.Fill;
             this.splitContainer1.Panel1.Controls.Add(this.gridPanel);
+        }
+        private void AppendPropertyListPanel()
+        {
+            this.splitContainer1.Panel1.Controls.Clear();
+            this.plPanel = new PropertyListPanel();
+            this.plPanel.Dock = DockStyle.Fill;
+            this.splitContainer1.Panel1.Controls.Add(this.plPanel);
         }
         private void AppendSpreadsheetGrid()
         {
@@ -117,20 +129,53 @@ namespace ExtractionViewer
                     textModeToolStripMenuItem.Enabled = true;
                     documentObjectModeToolStripMenuItem.Checked = false;
                     documentObjectModeToolStripMenuItem.Enabled = true;
+                    metadataModeToolStripMenuItem.Checked = false;
+                    metadataModeToolStripMenuItem.Enabled = false;
                     break;
                 case ".txt":
+                case ".rtf":
+                case ".zip":
                     textModeToolStripMenuItem.Enabled = true;
                     textModeToolStripMenuItem.Checked = true;
                     documentObjectModeToolStripMenuItem.Enabled = false;
                     documentObjectModeToolStripMenuItem.Checked = false;
+                    metadataModeToolStripMenuItem.Checked = false;
+                    metadataModeToolStripMenuItem.Enabled = false;
                     break;
-                case ".rtf":
                 case ".xlsx":
                 case ".xls":
                     textModeToolStripMenuItem.Enabled = false;
                     textModeToolStripMenuItem.Checked = false;
                     documentObjectModeToolStripMenuItem.Checked = true;
                     documentObjectModeToolStripMenuItem.Enabled = true;
+                    metadataModeToolStripMenuItem.Checked = false;
+                    metadataModeToolStripMenuItem.Enabled = true;
+                    break;
+                case ".doc":
+                case ".ppt":
+                case ".vsd":
+                case ".pub":
+                case ".shw":
+                case ".sldprt":
+                case ".pptx":
+                case ".pubx":
+                case ".vsdx":
+                case ".mp3":
+                case ".ape":
+                case ".wma":
+                case ".flac":
+                case ".aif":
+                case ".jpeg":
+                case ".jpg":
+                case ".gif":
+                case ".tiff":
+                case ".png":
+                    textModeToolStripMenuItem.Enabled = false;
+                    textModeToolStripMenuItem.Checked = false;
+                    documentObjectModeToolStripMenuItem.Checked = false;
+                    documentObjectModeToolStripMenuItem.Enabled = false;
+                    metadataModeToolStripMenuItem.Checked = true;
+                    metadataModeToolStripMenuItem.Enabled = true;
                     break;
                 default:
                     AppendRichTextBox();
@@ -152,7 +197,7 @@ namespace ExtractionViewer
                 rtbPanel.Text = tparser.Parse();
                 tbParserType.Text = tparser.GetType().Name;
             }
-            else
+            else if (Mode == ViewMode.Structured)
             {
                 switch (extension)
                 {
@@ -211,7 +256,21 @@ namespace ExtractionViewer
                         break;
                 }
             }
+            else
+            {
+                AppendPropertyListPanel();
+                var tparser = ParserFactory.CreateMetadata(context);
+                ToxyMetadata metadatas = tparser.Parse();
+                plPanel.Clear();
+                foreach (var data in metadatas)
+                {
+                    plPanel.AddItem(data.Name, data.Value.ToString());
+                }
+                tbParserType.Text = tparser.GetType().Name;
+            }
         }
+
+
         void AppendTree(TreeNode node, ToxyNode tnode)
         { 
            if(tnode.ChildrenNodes==null||tnode.ChildrenNodes.Count==0)
@@ -276,14 +335,17 @@ namespace ExtractionViewer
         public enum ViewMode
         { 
             Text,
-            Structured
+            Structured,
+            Metadata
         }
         ViewMode Mode { 
             get {
                 if (textModeToolStripMenuItem.Checked)
                     return ViewMode.Text;
-                else
+                else if (documentObjectModeToolStripMenuItem.Checked)
                     return ViewMode.Structured;
+                else
+                    return ViewMode.Metadata;
             } 
         }
         void SwitchMode(ViewMode mode)
@@ -292,11 +354,19 @@ namespace ExtractionViewer
             {
                 documentObjectModeToolStripMenuItem.Checked = false;
                 textModeToolStripMenuItem.Checked = true;
+                metadataModeToolStripMenuItem.Checked = false;
             }
-            else
+            else if(mode== ViewMode.Structured)
             {
                 documentObjectModeToolStripMenuItem.Checked = true;
-                textModeToolStripMenuItem.Checked = false;          
+                textModeToolStripMenuItem.Checked = false;
+                metadataModeToolStripMenuItem.Checked = false;
+            }
+            else if (mode == ViewMode.Metadata)
+            {
+                documentObjectModeToolStripMenuItem.Checked = false;
+                textModeToolStripMenuItem.Checked = false;
+                metadataModeToolStripMenuItem.Checked =true;
             }
         }
 
@@ -309,6 +379,12 @@ namespace ExtractionViewer
         private void textModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SwitchMode(ViewMode.Text);
+            ShowDocument(filepath, comboBox1.Text, tbExtension.Text);
+        }
+
+        private void metadataModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SwitchMode(ViewMode.Metadata);
             ShowDocument(filepath, comboBox1.Text, tbExtension.Text);
         }
 

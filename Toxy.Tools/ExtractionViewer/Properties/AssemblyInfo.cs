@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Toxy Extraction Viewer")]
-[assembly: AssemblyDescription("This is a visual tool of Toxy framework, which is used to view extracted data")]
+[assembly: AssemblyDescription("This is a visual tool of Toxy framework, which is used to view extracted data. \r\n\r\nYou can contact tonyqus@163.com for customization service.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Neuzilla")]
 [assembly: AssemblyProduct("Toxy Extraction Viewer")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.3.0.0")]
+[assembly: AssemblyFileVersion("1.3.0.0")]
