@@ -1,4 +1,4 @@
-If you need support service, you can contact support@neuzilla.com
+If you need support service, you can contact tonyqus(at)163.com
 
 What's Toxy
 ============
