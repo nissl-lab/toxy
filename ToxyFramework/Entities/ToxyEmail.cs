@@ -12,12 +12,14 @@ namespace Toxy
             this.To = new List<string>();
             this.Cc = new List<string>();
             this.Bcc = new List<string>();
+            this.Attachments = new List<string>();
         }
 
         public List<string> From { get; set; }
         public List<string> To { get; set; }
         public List<string> Cc { get; set; }
         public List<string> Bcc { get; set; }
+        public List<string> Attachments { get; set; }
 
         public string HtmlBody { get; set; }
         public string Subject { get; set; }

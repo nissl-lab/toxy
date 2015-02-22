@@ -42,6 +42,9 @@
     <Reference Include="DCSoft.RTF">
       <HintPath>..\3rdParty\DCSoft.RTF.dll</HintPath>
     </Reference>
+    <Reference Include="dmach.Mail">
+      <HintPath>..\3rdParty\dmach.Mail.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\3rdParty\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -80,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3rdParty\CnmFile.cs" />
     <Compile Include="3rdParty\DateTimeParser.cs" />
     <Compile Include="3rdParty\EMLReader.cs" />
     <Compile Include="Entities\ToxyAddress.cs" />
@@ -96,6 +100,7 @@
     <Compile Include="Entities\ToxySpreadsheet\ToxyTable.cs" />
     <Compile Include="IMetadataParser.cs" />
     <Compile Include="Parsers\AudioMetadataParser.cs" />
+    <Compile Include="Parsers\CnmEmailParser.cs" />
     <Compile Include="Parsers\EMLTextParser.cs" />
     <Compile Include="Parsers\ExcelTextParser.cs" />
     <Compile Include="Parsers\HtmlDomParser.cs" />

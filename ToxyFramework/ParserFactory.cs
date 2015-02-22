@@ -83,10 +83,16 @@ namespace Toxy
             parserMapping.Add(".html", typeHtml);
             parserMapping.Add(".htm", typeHtml);
 
+            #region Email formats
             var typeEml = new List<Type>();
             typeEml.Add(typeof(EMLEmailParser));
             typeEml.Add(typeof(EMLTextParser));
             parserMapping.Add(".eml", typeEml);
+
+            var typeCnm = new List<Type>();
+            typeCnm.Add(typeof(CnmEmailParser));
+            parserMapping.Add(".cnm", typeCnm);
+            #endregion
 
             var typeVcard= new List<Type>();
             typeVcard.Add(typeof(VCardDocumentParser));
@@ -144,6 +150,12 @@ namespace Toxy
         {
             object obj = CreateObject(context, typeof(ITextParser), "CreateText");
             ITextParser parser = (ITextParser)obj;
+            return parser;
+        }
+        public static IEmailParser CreateEmail(ParserContext context)
+        {
+            object obj = CreateObject(context, typeof(IEmailParser), "CreateEmail");
+            IEmailParser parser = (IEmailParser)obj;
             return parser;
         }
         public static ISpreadsheetParser CreateSpreadsheet(ParserContext context)

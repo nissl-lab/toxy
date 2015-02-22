@@ -42,8 +42,23 @@
     <Reference Include="DCSoft.RTF">
       <HintPath>..\3rdParty\DCSoft.RTF.dll</HintPath>
     </Reference>
+    <Reference Include="dmach.Mail">
+      <HintPath>..\3rdParty\dmach.Mail.dll</HintPath>
+    </Reference>
     <Reference Include="LumenWorks.Framework.IO">
       <HintPath>..\3rdParty\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.ScratchPad.HWPF">
       <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.ScratchPad.HWPF.dll</HintPath>
@@ -68,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3rdParty\CnmFile.cs" />
     <Compile Include="3rdParty\DateTimeParser.cs" />
     <Compile Include="3rdParty\EMLReader.cs" />
     <Compile Include="Entities\ToxyAddress.cs" />
@@ -91,6 +107,7 @@
     <Compile Include="ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
     <Compile Include="Parsers\AudioMetadataParser.cs" />
+    <Compile Include="Parsers\CnmEmailParser.cs" />
     <Compile Include="Parsers\CSVSpreadsheetParser.cs" />
     <Compile Include="Parsers\EMLEmailParser.cs" />
     <Compile Include="Parsers\EMLTextParser.cs" />

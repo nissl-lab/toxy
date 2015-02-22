@@ -55,6 +55,10 @@ namespace Toxy.Test
         {
             return GetFilePath(filename, "ooxml");
         }
+        public static string GetCNMPath(string filename)
+        {
+            return GetFilePath(filename, "cnm");
+        }
         public static string GetFilePath(string filename, string subFolder)
         {
 			string path = ConfigurationManager.AppSettings["testdataPath"].Replace('\\',Path.DirectorySeparatorChar);

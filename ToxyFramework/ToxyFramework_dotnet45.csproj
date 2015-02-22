@@ -82,6 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3rdParty\CnmFile.cs" />
     <Compile Include="3rdParty\DateTimeParser.cs" />
     <Compile Include="3rdParty\EMLReader.cs" />
     <Compile Include="Entities\ToxyAddress.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Entities\ToxySpreadsheet\ToxyTable.cs" />
     <Compile Include="IMetadataParser.cs" />
     <Compile Include="Parsers\AudioMetadataParser.cs" />
+    <Compile Include="Parsers\CnmEmailParser.cs" />
     <Compile Include="Parsers\EMLTextParser.cs" />
     <Compile Include="Parsers\ExcelTextParser.cs" />
     <Compile Include="Parsers\HtmlDomParser.cs" />
