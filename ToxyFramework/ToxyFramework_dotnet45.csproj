@@ -44,6 +44,9 @@
     <Reference Include="DCSoft.RTF">
       <HintPath>..\3rdParty\DCSoft.RTF.dll</HintPath>
     </Reference>
+    <Reference Include="dmach.Mail">
+      <HintPath>..\3rdParty\dmach.Mail.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\3rdParty\HtmlAgilityPack.dll</HintPath>
     </Reference>
