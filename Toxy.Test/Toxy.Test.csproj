@@ -73,6 +73,7 @@
     <Compile Include="TestToxySpreadsheet.cs" />
     <Compile Include="HtmlParserTest.cs" />
     <Compile Include="VCardParserTest.cs" />
+    <Compile Include="Word2003ParserTest.cs" />
     <Compile Include="Word2007ParserTest.cs" />
     <Compile Include="ZipParserTest.cs" />
   </ItemGroup>
@@ -84,6 +85,9 @@
       <Project>{ccb814a5-a750-4b96-afd3-f7e4d868f231}</Project>
       <Name>ToxyFramework_dotnet4</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

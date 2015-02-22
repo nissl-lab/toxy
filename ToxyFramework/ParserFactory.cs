@@ -40,9 +40,9 @@ namespace Toxy
             typeXlsx.Add(typeof(OOXMLMetadataParser));
             parserMapping.Add(".xlsx", typeXlsx);
 
+
             var typeOLE2 = new List<Type>();
             typeOLE2.Add(typeof(OLE2MetadataParser));
-            parserMapping.Add(".doc", typeOLE2);
             parserMapping.Add(".ppt", typeOLE2);
             parserMapping.Add(".vsd", typeOLE2);
             parserMapping.Add(".pub", typeOLE2);
@@ -55,9 +55,15 @@ namespace Toxy
             parserMapping.Add(".pubx", typeOOXML);
             parserMapping.Add(".vsdx", typeOOXML);
 
+            var typeDoc = new List<Type>();
+            typeDoc.Add(typeof(Word2003DocumentParser));
+            typeDoc.Add(typeof(Word2003TextParser));
+            typeDoc.Add(typeof(OLE2MetadataParser));
+            parserMapping.Add(".doc", typeDoc);
+
             var typeDocx = new List<Type>();
-            typeDocx.Add(typeof(WordTextParser));
-            typeDocx.Add(typeof(WordDocumentParser));
+            typeDocx.Add(typeof(Word2007TextParser));
+            typeDocx.Add(typeof(Word2007DocumentParser));
             typeDocx.Add(typeof(OOXMLMetadataParser));
             parserMapping.Add(".docx", typeDocx);
             #endregion

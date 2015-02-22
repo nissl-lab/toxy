@@ -45,6 +45,9 @@
     <Reference Include="LumenWorks.Framework.IO">
       <HintPath>..\3rdParty\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
+    <Reference Include="NPOI.ScratchPad.HWPF">
+      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.ScratchPad.HWPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -62,18 +65,6 @@
     </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\3rdParty\itextsharp-dll-core\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI">
-      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OOXML">
-      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.OOXML.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.OpenXml4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\3rdParty\NPOI\dotnet2\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -114,12 +105,14 @@
     <Compile Include="Parsers\RTFTextParser.cs" />
     <Compile Include="Parsers\VCardDocumentParser.cs" />
     <Compile Include="Parsers\VCardTextParser.cs" />
-    <Compile Include="Parsers\WordDocumentParser.cs" />
+    <Compile Include="Parsers\Word2003DocumentParser.cs" />
+    <Compile Include="Parsers\Word2007DocumentParser.cs" />
     <Compile Include="Entities\ToxyDocument.cs" />
     <Compile Include="Entities\ToxyEmail.cs" />
     <Compile Include="ParserFactory.cs" />
     <Compile Include="Parsers\PlainTextParser.cs" />
-    <Compile Include="Parsers\WordTextParser.cs" />
+    <Compile Include="Parsers\Word2003TextParser.cs" />
+    <Compile Include="Parsers\Word2007TextParser.cs" />
     <Compile Include="Parsers\XMLDomParser.cs" />
     <Compile Include="Parsers\ZipTextParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

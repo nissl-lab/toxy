@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class WordDocumentParser : IDocumentParser
+    public class Word2007DocumentParser : IDocumentParser
     {
-        public WordDocumentParser(ParserContext context)
+        public Word2007DocumentParser(ParserContext context)
         {
             this.Context = context;
         }

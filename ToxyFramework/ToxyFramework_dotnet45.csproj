@@ -53,6 +53,9 @@
     <Reference Include="LumenWorks.Framework.IO">
       <HintPath>..\3rdParty\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
+    <Reference Include="NPOI.ScratchPad.HWPF">
+      <HintPath>..\3rdParty\NPOI\dotnet4\NPOI.ScratchPad.HWPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -113,7 +116,6 @@
     <Compile Include="Parsers\RTFTextParser.cs" />
     <Compile Include="Parsers\VCardDocumentParser.cs" />
     <Compile Include="Parsers\VCardTextParser.cs" />
-    <Compile Include="Parsers\WordDocumentParser.cs" />
     <Compile Include="Entities\ToxyDocument.cs" />
     <Compile Include="Entities\ToxyEmail.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxySpreadsheet.cs" />
@@ -121,7 +123,10 @@
     <Compile Include="Parsers\PlainTextParser.cs" />
     <Compile Include="Parsers\CSVSpreadsheetParser.cs" />
     <Compile Include="Parsers\PDFDocumentParser.cs" />
-    <Compile Include="Parsers\WordTextParser.cs" />
+    <Compile Include="Parsers\Word2003DocumentParser.cs" />
+    <Compile Include="Parsers\Word2003TextParser.cs" />
+    <Compile Include="Parsers\Word2007DocumentParser.cs" />
+    <Compile Include="Parsers\Word2007TextParser.cs" />
     <Compile Include="Parsers\XMLDomParser.cs" />
     <Compile Include="Parsers\ZipTextParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
