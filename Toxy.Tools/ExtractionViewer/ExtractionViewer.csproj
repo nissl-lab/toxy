@@ -33,31 +33,37 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DCSoft.RTF">
-      <HintPath>..\..\Build\Net40\Release\DCSoft.RTF.dll</HintPath>
+      <HintPath>..\..\packages\DCSoft.RTF.dll</HintPath>
+    </Reference>
+    <Reference Include="dmach.Mail">
+      <HintPath>..\..\packages\dmach.Mail.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\Build\Net40\Release\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\Build\Net40\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\Build\Net40\Release\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="LumenWorks.Framework.IO">
-      <HintPath>..\..\Build\Net40\Release\LumenWorks.Framework.IO.dll</HintPath>
+      <HintPath>..\..\packages\iTextSharp.5.5.5\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>..\..\Build\Net40\Release\NPOI.dll</HintPath>
+      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML">
-      <HintPath>..\..\Build\Net40\Release\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\..\Build\Net40\Release\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\..\Build\Net40\Release\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.ScratchPad.HWPF">
+      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\NPOI.ScratchPad.HWPF.dll</HintPath>
+    </Reference>
+    <Reference Include="policy.2.0.taglib-sharp">
+      <HintPath>..\..\packages\taglib.2.1.0.0\lib\policy.2.0.taglib-sharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,14 +76,18 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="taglib-sharp">
+      <HintPath>..\..\packages\taglib.2.1.0.0\lib\taglib-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="Thought.vCards">
-      <HintPath>..\..\Build\Net40\Release\Thought.vCards.dll</HintPath>
+      <HintPath>..\..\packages\Thought.vCards.dll</HintPath>
     </Reference>
     <Reference Include="Toxy">
-      <HintPath>..\..\Build\Net40\Release\Toxy.dll</HintPath>
+      <HintPath>..\..\Build\Net40\Debug\Toxy.dll</HintPath>
     </Reference>
-    <Reference Include="unvell.ReoGrid">
-      <HintPath>..\..\3rdParty\ReoGrid-0.8.5-Editor\unvell.ReoGrid.dll</HintPath>
+    <Reference Include="unvell.ReoGrid, Version=0.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\ReoGrid-0.8.5-Editor\unvell.ReoGrid.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
