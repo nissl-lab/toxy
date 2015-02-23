@@ -7,7 +7,7 @@ using System.IO;
 using InSolve.dmach.Mail;
 using InSolve.dmach.Mail.Decoders;
 
-namespace CnmViewer
+namespace Toxy
 {
     public class CnmFile : IMessageConstructor
     {

@@ -21,7 +21,7 @@ namespace ExtractionViewer
             richTextBox1.Clear();
         }
 
-        public string Text
+        public override string Text
         {
             get { return this.richTextBox1.Text; }
             set { this.richTextBox1.Text = value; }
