@@ -25,8 +25,12 @@ namespace Toxy.Test
             string path = TestDataSample.GetPdfPath("Sample1.PDF");
             var parser = new PDFDocumentParser(new ParserContext(path));
             var result = parser.Parse();
-            Assert.AreEqual(1474, result.Paragraphs.Count);
-            Assert.AreEqual("LA MARCHE MONDIALE DES FEMMES : UN MOUVEMENT IRRÉVERSIBLE", result.Paragraphs[0].Text);
+            Assert.AreEqual(88, result.Paragraphs.Count);
+            string[] results=result.Paragraphs[0].Text.Split('\n');
+            Assert.AreEqual("LA MARCHE MONDIALE DES FEMMES : UN MOUVEMENT IRRÉVERSIBLE", results[0]);
+            Assert.AreEqual("DOCUMENT PRÉPARATOIRE", results[1]);
+            Assert.AreEqual("4eRencontre internationale de la Marche mondiale des femmes", results[2]);
+            Assert.AreEqual("du 18-22 Mars 2003", results[3]);
         }
     }
 }
