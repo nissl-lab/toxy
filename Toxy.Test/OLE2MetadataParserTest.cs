@@ -15,7 +15,7 @@ namespace Toxy.Test
         {
             string path = Path.GetFullPath(TestDataSample.GetOLE2Path("TestEditTime.doc"));
             ParserContext context = new ParserContext(path);
-            IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
+            IMetadataParser parser = ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
             Assert.AreEqual(18, x.Count);
 

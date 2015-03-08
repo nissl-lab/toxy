@@ -70,6 +70,8 @@
     <Compile Include="OLE2MetadataParserTest.cs" />
     <Compile Include="OOXMLParserTest.cs" />
     <Compile Include="PDFParserTest.cs" />
+    <Compile Include="Powerpoint2007SlideshowParserTest.cs" />
+    <Compile Include="Powerpoint2007TextParserTest.cs" />
     <Compile Include="RTFParserTest.cs" />
     <Compile Include="TestDataSample.cs" />
     <Compile Include="PlainTextParserTest.cs" />

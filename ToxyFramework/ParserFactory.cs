@@ -47,11 +47,16 @@ namespace Toxy
             parserMapping.Add(".vsd", typeOLE2);
             parserMapping.Add(".pub", typeOLE2);
             parserMapping.Add(".shw", typeOLE2);
-            parserMapping.Add(".sldprt", typeOLE2);     
+            parserMapping.Add(".sldprt", typeOLE2);
+
+            var typePptx = new List<Type>();
+            typePptx.Add(typeof(Powerpoint2007TextParser));
+            typePptx.Add(typeof(Powerpoint2007SlideshowParser));
+            typePptx.Add(typeof(OOXMLMetadataParser));
+            parserMapping.Add(".pptx", typePptx);
 
             var typeOOXML = new List<Type>();
             typeOOXML.Add(typeof(OOXMLMetadataParser));
-            parserMapping.Add(".pptx", typeOOXML);
             parserMapping.Add(".pubx", typeOOXML);
             parserMapping.Add(".vsdx", typeOOXML);
 
@@ -191,6 +196,13 @@ namespace Toxy
             object obj = CreateObject(context, typeof(IMetadataParser), "CreateMetadata");
             IMetadataParser parser = (IMetadataParser)obj;
             return parser;
+        }
+
+        public static ISlideshowParser CreateSlideshow(ParserContext context)
+        {
+            object obj = CreateObject(context, typeof(ISlideshowParser), "CreateSlideshow");
+            ISlideshowParser parser = (ISlideshowParser)obj;
+            return parser;            
         }
     }
 }

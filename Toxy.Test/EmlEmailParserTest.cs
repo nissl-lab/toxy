@@ -15,7 +15,7 @@ namespace Toxy.Test
         {
             string path = TestDataSample.GetFilePath("test.eml",null);
             ParserContext context = new ParserContext(path);
-            IEmailParser parser = ParserFactory.CreateEmail(context) as IEmailParser;
+            IEmailParser parser = ParserFactory.CreateEmail(context);
             ToxyEmail email = parser.Parse();
             Assert.AreEqual(1, email.From.Count);
             Assert.AreEqual(1, email.To.Count);

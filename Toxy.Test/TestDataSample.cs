@@ -55,6 +55,10 @@ namespace Toxy.Test
         {
             return GetFilePath(filename, "ooxml");
         }
+        public static string GetPowerpointPath(string filename)
+        {
+            return GetFilePath(filename, "powerpoint");
+        }
         public static string GetCNMPath(string filename)
         {
             return GetFilePath(filename, "cnm");

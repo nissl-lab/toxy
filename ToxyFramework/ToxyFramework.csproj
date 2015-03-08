@@ -45,6 +45,9 @@
     <Reference Include="dmach.Mail">
       <HintPath>..\packages\dmach.Mail.dll</HintPath>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\packages\DocumentFormat.OpenXmlSDK.2.0\lib\Net35\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net20\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -84,6 +87,7 @@
     <Reference Include="Thought.vCards">
       <HintPath>..\packages\Thought.vCards.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="3rdParty\CnmFile.cs" />
@@ -98,6 +102,8 @@
     <Compile Include="Entities\ToxyDom\ToxyNode.cs" />
     <Compile Include="Entities\ToxyMetadata.cs" />
     <Compile Include="Entities\ToxyName.cs" />
+    <Compile Include="Entities\ToxySlide.cs" />
+    <Compile Include="Entities\ToxySlideshow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\MergeCellRange.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyRow.cs" />
@@ -107,6 +113,7 @@
     <Compile Include="IDomParser.cs" />
     <Compile Include="IEmailParser.cs" />
     <Compile Include="IMetadataParser.cs" />
+    <Compile Include="ISlideshowParser.cs" />
     <Compile Include="ISpreadsheetParser.cs" />
     <Compile Include="ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
@@ -123,6 +130,8 @@
     <Compile Include="Parsers\OOXMLMetadataParser.cs" />
     <Compile Include="Parsers\PDFDocumentParser.cs" />
     <Compile Include="Parsers\PDFTextParser.cs" />
+    <Compile Include="Parsers\Powerpoint2007SlideshowParser.cs" />
+    <Compile Include="Parsers\PowerPoint2007TextParser.cs" />
     <Compile Include="Parsers\RTFTextParser.cs" />
     <Compile Include="Parsers\VCardDocumentParser.cs" />
     <Compile Include="Parsers\VCardTextParser.cs" />
