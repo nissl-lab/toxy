@@ -45,5 +45,19 @@ namespace Toxy.Test
         {
             base.BaseTestExcelComment("comments.xlsx");
         }
+        [Test]
+        public void TestParseSheetIndexOutOfRange()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetExcelPath("Formatting.xlsx"));
+            ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
+            try
+            {
+                ToxyTable ss = parser.Parse(50);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Assert.IsTrue(ex.Message.Contains("This file only contains 3 sheet(s)."));
+            }
+        }
     }
 }

@@ -114,5 +114,14 @@ namespace Toxy.Parsers
             get;
             set;
         }
+
+
+        public ToxyTable Parse(int sheetIndex)
+        {
+            if (sheetIndex > 0)
+                throw new ArgumentOutOfRangeException("CSV only has one table");
+
+            return this.Parse().Tables[0];
+        }
     }
 }

@@ -29,6 +29,22 @@ namespace Toxy.Test
 
             Assert.AreEqual(271, ss.Tables[0].LastRowIndex);
          }
+         [Test]
+         public void TestParseIndexOutOfRange()
+         {
+             string path = TestDataSample.GetFilePath("countrylist.csv", null);
+             ParserContext context = new ParserContext(path);
+             context.Properties.Add("HasHeader", "1");
+             ISpreadsheetParser parser = (ISpreadsheetParser)ParserFactory.CreateSpreadsheet(context);
+             try
+             {
+                 ToxyTable ss = parser.Parse(1);
+             }
+             catch (ArgumentOutOfRangeException ex)
+             {
+                 Assert.IsTrue(ex.Message.Contains("CSV only has one table"));
+             }
+         }
     }
 }
 
