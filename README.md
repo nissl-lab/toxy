@@ -1,4 +1,6 @@
-If you need support service, you can contact tonyqus(at)163.com
+Who are We
+==========
+Neuzilla is the studio behind Toxy. For detail, you can check http://www.neuzilla.com/blog
 
 What's Toxy
 ============
@@ -12,4 +14,15 @@ For documents, the data structure is called ToxyDocument.
 For spreadsheets, the data structure is called ToxySpreadsheet.
 For emails, the data structure is called ToxyEmail.
 For business cards, the data structure is called ToxyBusinessCard.
-For DOM based structue, the data structue is called ToxyDom.
+For DOM based structure, the data structue is called ToxyDom.
+For metadata, the data structure is called ToxyMetadata (Since Toxy 1.3)
+
+Contact Neuzilla
+============
+QQ Group:297128022
+Email: support@neuzilla.com
+Twitter: tonyqus
+
+Latest Source Code
+====================
+Github: https://github.com/tonyqus/toxy
