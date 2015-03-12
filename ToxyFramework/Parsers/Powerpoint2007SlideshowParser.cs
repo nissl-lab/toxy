@@ -59,6 +59,9 @@ namespace Toxy.Parsers
                         slide.Texts.Add(text.Text);
                     }
                 }
+                //get note of each slide
+                if(slidePart.NotesSlidePart!=null)
+                    slide.Note=slidePart.NotesSlidePart.NotesSlide.InnerText;
             }
             return slide;
         }
