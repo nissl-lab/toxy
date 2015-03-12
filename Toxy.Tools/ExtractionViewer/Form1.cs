@@ -30,21 +30,22 @@ namespace ExtractionViewer
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = false;
-            dialog.Filter = "All Supported Files |*.csv;*.txt;*.xls;*.xlsx;*.docx;*.rtf;*.eml;*.xml;*.html;*.htm;*.doc;*.ppt;*.vsd;*.pdf;*.vcf;*.zip;*.mp3;*.ape;*.wma;*.flac;*.aif;*.jpeg;*.jpg;*.tiff;*.png;*.gif";
+            dialog.Filter = "All Supported Files |*.csv;*.txt;*.xls;*.xlsx;*.docx;*.rtf;*.eml;*.xml;*.html;*.htm;*.doc;*.ppt;*.pptx;*.cnm;*.vsd;*.pdf;*.vcf;*.zip;*.mp3;*.ape;*.wma;*.flac;*.aif;*.jpeg;*.jpg;*.tiff;*.png;*.gif";
             dialog.Filter += "|Comma Seperated Files (*.csv)|*.csv";
             dialog.Filter += "|Audio Files|*.mp3;*.ape;*.wma;*.flac;*.aif";
             dialog.Filter += "|Image Files|*.jpeg;*.jpg;*.tiff;*.png;*.gif";
             dialog.Filter += "|Zip Package|*.zip";
             dialog.Filter += "|Text Files (*.txt)|*.txt";
-            dialog.Filter += "|Excel Files|*.xls;*.xlsx";
+            dialog.Filter += "|Excel Documents|*.xls;*.xlsx";
             dialog.Filter += "|Rich Text Files (*.rtf)|*.rtf";
-            dialog.Filter += "|Word Files|*.docx;*.doc";
-            dialog.Filter += "|PowerPoint Files|*.ppt;*.pptx";
+            dialog.Filter += "|Word Documents|*.docx;*.doc";
+            dialog.Filter += "|PowerPoint Documents|*.ppt;*.pptx";
             dialog.Filter += "|Business Card Files (*.vcf)|*.vcf";
             dialog.Filter += "|Email Files (*.eml)|*.eml";
             dialog.Filter += "|Html Files (*.html, *.htm)|*.html;*.htm";
             dialog.Filter += "|XML Files (*.xml)|*.xml";
             dialog.Filter += "|Adobe PDF Files (*.pdf)|*.pdf";
+            dialog.Filter += "|Pegsus Mailbox file (*.cnm)|*.cnm";
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -142,22 +143,29 @@ namespace ExtractionViewer
                     metadataModeToolStripMenuItem.Checked = false;
                     metadataModeToolStripMenuItem.Enabled = false;
                     break;
+                case ".pptx":
+                    textModeToolStripMenuItem.Enabled = true;
+                    textModeToolStripMenuItem.Checked = true;
+                    documentObjectModeToolStripMenuItem.Checked = false;
+                    documentObjectModeToolStripMenuItem.Enabled = true;
+                    metadataModeToolStripMenuItem.Checked = false;
+                    metadataModeToolStripMenuItem.Enabled = true;
+                    break;
+                case ".doc":
                 case ".xlsx":
                 case ".xls":
-                    textModeToolStripMenuItem.Enabled = false;
+                    textModeToolStripMenuItem.Enabled = true;
                     textModeToolStripMenuItem.Checked = false;
                     documentObjectModeToolStripMenuItem.Checked = true;
                     documentObjectModeToolStripMenuItem.Enabled = true;
                     metadataModeToolStripMenuItem.Checked = false;
                     metadataModeToolStripMenuItem.Enabled = true;
                     break;
-                case ".doc":
                 case ".ppt":
                 case ".vsd":
                 case ".pub":
                 case ".shw":
                 case ".sldprt":
-                case ".pptx":
                 case ".pubx":
                 case ".vsdx":
                 case ".mp3":
@@ -223,8 +231,6 @@ namespace ExtractionViewer
                         ISpreadsheetParser ssparser = ParserFactory.CreateSpreadsheet(context);
                         ss = ssparser.Parse();
                         tbParserType.Text = ssparser.GetType().Name;
-                        //DataSet ds = ss.ToDataSet();
-                        //dataGridView1.DataSource = ds.Tables[0].DefaultView;
                         var table0 = ss.Tables[0];
                         ShowToGrid(table0);
                         cbSheets.Items.Clear();
@@ -241,6 +247,9 @@ namespace ExtractionViewer
                         ToxyBusinessCards vcards = vparser.Parse();
                         tbParserType.Text = vparser.GetType().Name;
                         gridPanel.GridView.DataSource = vcards.ToDataTable().DefaultView;
+                        break;
+                    case ".pptx":
+                        //TODO: show slides
                         break;
                     case ".xml":
                     case ".htm":
