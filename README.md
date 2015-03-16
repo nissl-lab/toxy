@@ -1,6 +1,6 @@
 Who are We
 ==========
-Neuzilla is the studio behind Toxy. For detail, you can check http://www.neuzilla.com/blog
+Neuzilla is the studio behind Toxy. For detail, you can check http://www.linkedin.com/company/neuzilla 
 
 What's Toxy
 ============
@@ -17,11 +17,17 @@ For business cards, the data structure is called ToxyBusinessCard.
 For DOM based structure, the data structue is called ToxyDom.
 For metadata, the data structure is called ToxyMetadata (Since Toxy 1.3)
 
+How to join
+============
+If you have passion to contribute code, please contact tony.qu@neuzilla.com
+
 Contact Neuzilla
 ============
+Homepage: http://blog.neuzilla.com
+Linkedin User Group: http://www.linkedin.com/groups/Neuzilla-User-Group-6655065 
 QQ Group:297128022
+Twitter: http://twitter.com/tonyqus
 Email: support@neuzilla.com
-Twitter: tonyqus
 
 Latest Source Code
 ====================
