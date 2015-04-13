@@ -1,5 +1,7 @@
 Who are We
 ==========
+
+[![Join the chat at https://gitter.im/tonyqus/toxy](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tonyqus/toxy?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Neuzilla is the studio behind Toxy. For detail, you can check http://www.linkedin.com/company/neuzilla 
 
 What's Toxy
