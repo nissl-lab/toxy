@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Toxy</RootNamespace>
     <AssemblyName>Toxy</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <ProductVersion>12.0.0</ProductVersion>
@@ -39,6 +39,9 @@
     <AssemblyOriginatorKeyFile>toxy.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Clifton.Tools.Data">
+      <HintPath>..\packages\Clifton.Tools.Data.dll</HintPath>
+    </Reference>
     <Reference Include="DCSoft.RTF">
       <HintPath>..\packages\DCSoft.RTF.dll</HintPath>
     </Reference>
@@ -105,6 +108,7 @@
     <Compile Include="Entities\ToxySlide.cs" />
     <Compile Include="Entities\ToxySlideshow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\MergeCellRange.cs" />
+    <Compile Include="Entities\ToxySpreadsheet\SpreadsheetSerialize.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyRow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxySpreadsheet.cs" />

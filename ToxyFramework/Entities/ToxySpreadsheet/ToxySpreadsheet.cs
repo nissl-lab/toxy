@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Toxy
 {
-    public class ToxySpreadsheet
+    public  partial class ToxySpreadsheet
     {
         public ToxySpreadsheet()
         {
