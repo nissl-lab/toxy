@@ -1,7 +1,9 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -11,9 +13,10 @@ namespace Toxy.Test
     public class TestToxySpreadsheetSerialize
     {
         [Test]
-        public void TestSpreadsheetSerialize()
+        private void TestSpreadsheetSerialize(string filename = "countrylist.csv") // "Employee.xls"
         {
-            ParserContext c = new ParserContext(TestDataSample.GetExcelPath("Employee.xls"));
+            ParserContext c = new ParserContext(TestDataSample.GetExcelPath(filename));
+           // ParserContext c = new ParserContext(filename);
             var parser = ParserFactory.CreateSpreadsheet(c);
             var tss1 = parser.Parse();
 
@@ -98,7 +101,41 @@ namespace Toxy.Test
 
         }
 
+        public void Testallworkbook()
+        {
 
+
+            IEnumerable<string> dirs, files;
+
+            string subFolder = "Excel";
+
+            string path = ConfigurationManager.AppSettings["testdataPath"].Replace('\\', Path.DirectorySeparatorChar);
+            if (!path.EndsWith(string.Empty + Path.DirectorySeparatorChar))
+            {
+                path += Path.DirectorySeparatorChar;
+            }
+
+
+            dirs = Directory.EnumerateDirectories(path);
+            foreach (string dir in dirs)
+            {
+
+                files = Directory.EnumerateFiles(path + subFolder);
+                foreach (string excelfile in files)
+                {
+
+                    TestSpreadsheetSerialize(excelfile);
+
+
+                }
+            }
+
+
+
+
+
+
+        }
 
 
     }

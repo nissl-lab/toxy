@@ -17,7 +17,7 @@ namespace Toxy
             RawSerializer rs = new RawSerializer(ms);
 
             //sheet Serialize
-            rs.Serialize(Name);
+            rs.SerializeNullable(Name);
 
             //table Serialize
             rs.Serialize(Tables.Count);
@@ -94,7 +94,11 @@ namespace Toxy
             
 
             //sheet Serialize
-            Name=rd.DeserializeString();
+             var   sheetName=rd.DeserializeNullable(typeof(string));
+            if (sheetName != null)
+            {
+                Name = (string)sheetName;
+            }
 
             //table Serialize
             int TablesCount=rd.DeserializeInt();
@@ -103,8 +107,17 @@ namespace Toxy
                 ToxyTable tb=new ToxyTable();
                bool tbHasHeader=rd.DeserializeBool();
                 tb.Name= rd   .DeserializeString()   ;
-                tb.PageHeader = (string) rd.DeserializeNullable(typeof(string));
-                tb.PageFooter = (string)rd.DeserializeNullable(typeof(string));
+                var  tbPageHeader  =rd.DeserializeNullable(typeof(string));
+                if (   tbPageHeader  !=  null )
+                {
+                    tb.PageHeader = (string)tbPageHeader;
+                }
+                 var tbPageFooter = rd.DeserializeNullable(typeof(string));
+                if (tbPageFooter != null)
+                {
+                     tb.PageFooter =(string)tbPageFooter;
+                }
+                 
                 tb.LastRowIndex= rd  .DeserializeInt()    ;
                 tb.LastColumnIndex = rd.DeserializeInt();
                 //mergecell 
@@ -133,7 +146,13 @@ namespace Toxy
                         string cellValue = rd.DeserializeString();
                         int cellCellIndex = rd.DeserializeInt();
                         ToxyCell cell = new ToxyCell(cellCellIndex,cellValue);
-                        cell.Comment = rd.DeserializeString();
+                        var cellComment = rd.DeserializeNullable(typeof(string));
+                        if (cellComment   != null)
+                        {
+                            cell.Comment = (string)cellComment;
+                        }
+
+                        
                         tb.ColumnHeaders.Cells.Add(cell);
                     }
                 }
@@ -154,11 +173,16 @@ namespace Toxy
                         string cellValue = rd.DeserializeString();
                         int cellCellIndex = rd.DeserializeInt();
                         ToxyCell cell = new ToxyCell(cellCellIndex, cellValue);
-                        cell.Comment = rd.DeserializeString();
+                        var cellComment = rd.DeserializeNullable(typeof(string));
+                        if (cellComment != null)
+                        {
+                            cell.Comment = (string)cellComment;
+                        }
+
                         row.Cells.Add(cell);
                     }
 
-
+                    tb.Rows.Add(row);
                 }
 
 

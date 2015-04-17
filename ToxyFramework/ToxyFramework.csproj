@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Clifton.Tools.Data">
-      <HintPath>..\..\ToxySpreadsheetCacheDbAdpater\RawSerializer\bin\Debug\Clifton.Tools.Data.dll</HintPath>
+      <HintPath>..\packages\Clifton.Tools.Data.dll</HintPath>
     </Reference>
     <Reference Include="DCSoft.RTF">
       <HintPath>..\packages\DCSoft.RTF.dll</HintPath>
