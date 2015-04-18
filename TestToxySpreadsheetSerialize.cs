@@ -119,8 +119,8 @@ namespace Toxy.Test
             ParserContext c = new ParserContext(TestDataSample.GetExcelPath(filename));
             // ParserContext c = new ParserContext(filename);
             var parser = ParserFactory.CreateSpreadsheet(c);
-            ToxySpreadsheet tmpsheet = parser.Parse();
-            MemoryStream ms = tmpsheet.Serialize();
+            ToxySpreadsheet tmpsheet =parser.Parse();
+            MemoryStream ms =tmpsheet.Serialize();
             return ms;
 
 
@@ -130,7 +130,7 @@ namespace Toxy.Test
         {
             ParserContext c = new ParserContext(TestDataSample.GetExcelPath(fn));
             // ParserContext c = new ParserContext(filename);
-
+           
             var parser = ParserFactory.CreateSpreadsheet(c);
             ToxySpreadsheet tmpsheet = parser.Parse();
             return tmpsheet;
