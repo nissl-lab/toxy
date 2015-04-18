@@ -34,12 +34,12 @@ namespace Toxy.Parsers
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
 
-            bool hasHeader=false;
-            if (Context.Properties.ContainsKey("HasHeader"))
+            bool extractHeader=false;
+            if (Context.Properties.ContainsKey("ExtractHeader"))
             {
-                string sHasHeader = Context.Properties["HasHeader"].ToLower();
+                string sHasHeader = Context.Properties["ExtractHeader"].ToLower();
                 if (sHasHeader == "1" || sHasHeader == "on" || sHasHeader == "true")
-                    hasHeader = true;
+                    extractHeader = true;
             }
             char delimiter =',';
             if (Context.Properties.ContainsKey("delimiter"))
@@ -61,18 +61,23 @@ namespace Toxy.Parsers
                 {
                     sr = new StreamReader(Context.Path, true);
                 }
-                CsvReader reader=new CsvReader(sr, hasHeader,delimiter);
+                CsvReader reader=new CsvReader(sr, extractHeader,delimiter);
                 string[] headers = reader.GetFieldHeaders();
                 ToxySpreadsheet ss = new ToxySpreadsheet();
                 ToxyTable t1 = new ToxyTable();
                 ss.Tables.Add(t1);
 
+                int i = 0;
+                if (headers.Length > 0)
+                {
+                    t1.HeaderRows.Add(new ToxyRow(i));
+                    i++;
+                }
                 for (int j = 0; j < headers.Length;j++ )
                 {
-                    t1.ColumnHeaders.Cells.Add(new ToxyCell(j, headers[j]));
-                    t1.LastColumnIndex = t1.ColumnHeaders.Cells.Count-1;
+                    t1.HeaderRows[0].Cells.Add(new ToxyCell(j, headers[j]));
+                    t1.LastColumnIndex = t1.HeaderRows[0].Cells.Count-1;
                 }
-                int i=0;
                 while(reader.ReadNextRecord())
                 {
                     ToxyRow tr=new ToxyRow(i);

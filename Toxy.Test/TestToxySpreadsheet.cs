@@ -40,24 +40,25 @@ namespace Toxy.Test
             #region create ToxyTable
             ToxyTable ttable = new ToxyTable();
             ttable.Name = "Test1";
-            ttable.ColumnHeaders.Cells.Add(new ToxyCell(0, "C1"));
-            ttable.ColumnHeaders.Cells.Add(new ToxyCell(1, "C2"));
-            ttable.ColumnHeaders.Cells.Add(new ToxyCell(2, "C3"));
-            ttable.ColumnHeaders.Cells.Add(new ToxyCell(3, "C4"));
-            ToxyRow trow1=new ToxyRow(0);
+            ttable.HeaderRows.Add(new ToxyRow(0));
+            ttable.HeaderRows[0].Cells.Add(new ToxyCell(0, "C1"));
+            ttable.HeaderRows[0].Cells.Add(new ToxyCell(1, "C2"));
+            ttable.HeaderRows[0].Cells.Add(new ToxyCell(2, "C3"));
+            ttable.HeaderRows[0].Cells.Add(new ToxyCell(3, "C4"));
+            ToxyRow trow1=new ToxyRow(1);
             trow1.Cells.Add(new ToxyCell(0,"1"));
             trow1.Cells.Add(new ToxyCell(1,"2"));
             trow1.Cells.Add(new ToxyCell(2,"3"));
             ttable.Rows.Add(trow1);
 
-            ToxyRow trow2 = new ToxyRow(1);
+            ToxyRow trow2 = new ToxyRow(2);
             trow2.Cells.Add(new ToxyCell(0, "4"));
             trow2.Cells.Add(new ToxyCell(1, "5"));
             trow2.Cells.Add(new ToxyCell(3, "6"));
             trow2.LastCellIndex = 3;
             ttable.Rows.Add(trow2);
 
-            ToxyRow trow3 = new ToxyRow(2);
+            ToxyRow trow3 = new ToxyRow(3);
             trow3.LastCellIndex = 3;
             trow3.Cells.Add(new ToxyCell(1, "7"));
             trow3.Cells.Add(new ToxyCell(2, "8"));
@@ -93,12 +94,13 @@ namespace Toxy.Test
             #region create ToxyTable
             ToxyTable ttable = new ToxyTable();
             ttable.Name = "Test1";
-            ttable.ColumnHeaders.Cells.Add(new ToxyCell(0, "C1"));
-            ttable.ColumnHeaders.Cells.Add(new ToxyCell(1, null));
-            ttable.ColumnHeaders.Cells.Add(new ToxyCell(2, "C2"));
-            ttable.ColumnHeaders.Cells.Add(new ToxyCell(3, null));
-            ttable.ColumnHeaders.Cells.Add(new ToxyCell(4, "C4"));
-            ToxyRow trow1 = new ToxyRow(0);
+            ttable.HeaderRows.Add(new ToxyRow(0));
+            ttable.HeaderRows[0].Cells.Add(new ToxyCell(0, "C1"));
+            ttable.HeaderRows[0].Cells.Add(new ToxyCell(1, null));
+            ttable.HeaderRows[0].Cells.Add(new ToxyCell(2, "C2"));
+            ttable.HeaderRows[0].Cells.Add(new ToxyCell(3, null));
+            ttable.HeaderRows[0].Cells.Add(new ToxyCell(4, "C4"));
+            ToxyRow trow1 = new ToxyRow(1);
             trow1.Cells.Add(new ToxyCell(0, "1"));
             trow1.Cells.Add(new ToxyCell(1, "2"));
             trow1.Cells.Add(new ToxyCell(4, "3"));
@@ -106,14 +108,14 @@ namespace Toxy.Test
             trow1.LastCellIndex = 5;
             ttable.Rows.Add(trow1);
 
-            ToxyRow trow2 = new ToxyRow(1);
-            trow2.LastCellIndex = 3;
+
+            ToxyRow trow2 = new ToxyRow(2);
             trow2.Cells.Add(new ToxyCell(0, "5"));
             trow2.Cells.Add(new ToxyCell(1, "6"));
             trow2.Cells.Add(new ToxyCell(3, "7"));
+            trow2.LastCellIndex = 3;
             ttable.Rows.Add(trow2);
-
-            ttable.LastColumnIndex = 5;
+            ttable.LastColumnIndex = 3;
             #endregion
 
             DataTable dt = ttable.ToDataTable();
