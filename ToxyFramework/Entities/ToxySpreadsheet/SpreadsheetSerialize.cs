@@ -15,7 +15,7 @@ namespace Toxy
     public partial class ToxySpreadsheet
     {
 
-
+        private static int compresslevel = 9;
 
         public MemoryStream Serialize(bool bcompress = true)
         {
@@ -85,18 +85,19 @@ namespace Toxy
             }
 
             rs.Flush();
-
+            //http://m.blog.csdn.net/blog/jecray/1554669
             //http://blog.sina.com.cn/s/blog_40678c33010007zk.html
 
-            byte[] bms = ms.ToArray();
+   
             MemoryStream ms2=new MemoryStream();
-            Stream compressms = new BZip2OutputStream(ms2);
+
+            
              if (bcompress)
              {
-                 
-
-                 compressms.Write(bms, 0,bms.Length);
-                 compressms.Close();
+                 ms.Position = 0;
+                 BZip2.Compress(ms, ms2, false, compresslevel);
+                 //ms2.Position = 0;
+                 //BZip2.Decompress(ms2,ms3, false);
                  return ms2;
              }
              else
@@ -118,21 +119,13 @@ namespace Toxy
 
            
             MemoryStream msd = new MemoryStream();
-            Stream compress = new BZip2InputStream(ms);
+            
             RawDeserializer rd;
             if (bcompress)
             {
-
-                byte[] buf = new byte[1024 ];
-                int count = 0;
-                do
-                {
-                    count = compress.Read(buf, 0, buf.Length);
-                    msd.Write(buf, 0, count);
-                   
-                }
-                while (count > 0);      
-
+                ms.Position = 0;
+                BZip2.Decompress(ms, msd, false);
+                msd.Position = 0;
 
                 rd = new RawDeserializer(msd);
             }
