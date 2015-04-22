@@ -124,7 +124,10 @@ namespace Toxy
             {
                 newtt.Rows.Add(row.Clone() as ToxyRow);
             }
-            newtt.ColumnHeaders = this.ColumnHeaders.Clone() as ToxyRow;
+            foreach (ToxyRow header in this.HeaderRows)
+            {
+                newtt.HeaderRows.Add(header.Clone() as ToxyRow);
+            }
             return newtt;
         }
     }
