@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Toxy
 {
-    public class ToxyRow
+    public class ToxyRow:ICloneable
     {
         public int RowIndex { get; set; }
         public int LastCellIndex { get; set; }
@@ -18,6 +18,16 @@ namespace Toxy
         {
             get;
             set;
+        }
+
+        public object Clone()
+        {
+            ToxyRow clonedrow = new ToxyRow(this.RowIndex);
+            foreach (ToxyCell cell in this.Cells)
+            {
+                clonedrow.Cells.Add(cell.Clone() as ToxyCell);
+            }
+            return clonedrow;
         }
     }
 }

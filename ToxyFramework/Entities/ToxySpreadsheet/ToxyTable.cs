@@ -6,7 +6,7 @@ using System.Text;
 namespace Toxy
 {
 
-    public class ToxyTable
+    public class ToxyTable:ICloneable
     {
         public ToxyTable()
         {
@@ -110,6 +110,22 @@ namespace Toxy
         public override string ToString()
         {
             return string.Format("[{0}]",this.Name);
+        }
+
+        public object Clone()
+        {
+            ToxyTable newtt = new ToxyTable();
+            newtt.PageFooter = this.PageFooter;
+            newtt.PageHeader = this.PageHeader;
+            newtt.Name = this.Name;
+            newtt.LastColumnIndex = this.LastColumnIndex;
+            newtt.LastRowIndex = this.LastRowIndex;
+            foreach(ToxyRow row in this.Rows)
+            {
+                newtt.Rows.Add(row.Clone() as ToxyRow);
+            }
+            newtt.ColumnHeaders = this.ColumnHeaders.Clone() as ToxyRow;
+            return newtt;
         }
     }
 }
