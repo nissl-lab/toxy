@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Toxy
 {
-    public  partial class ToxySpreadsheet
+    public class ToxySpreadsheet:ICloneable
     {
         public ToxySpreadsheet()
         {
@@ -30,6 +30,9 @@ namespace Toxy
             }
         }
 
+
+        
+
         public DataSet ToDataSet()
         {
             DataSet ds = new DataSet();
@@ -39,6 +42,17 @@ namespace Toxy
                 ds.Tables.Add(table.ToDataTable());
             }
             return ds;
+        }
+
+        public object Clone()
+        {
+            ToxySpreadsheet newss = new ToxySpreadsheet();
+            newss.Name = this.Name;
+            for (int i = 0; i < this.Tables.Count; i++)
+            {
+                newss.Tables.Add(this.Tables[i].Clone() as ToxyTable);
+            }
+            return newss;
         }
     }
 }

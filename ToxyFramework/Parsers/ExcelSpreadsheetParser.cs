@@ -101,7 +101,8 @@ namespace Toxy.Parsers
                 {
                     if (hasHeader && firstRow)
                     {
-                        table.ColumnHeaders.Cells.Add(new ToxyCell(cell.ColumnIndex, cell.ToString()));
+                        table.HeaderRows.Add(new ToxyRow(row.RowNum));
+                        table.HeaderRows[0].Cells.Add(new ToxyCell(cell.ColumnIndex, cell.ToString()));
                     }
                     else
                     {

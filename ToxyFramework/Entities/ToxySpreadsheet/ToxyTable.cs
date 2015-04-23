@@ -6,19 +6,19 @@ using System.Text;
 namespace Toxy
 {
 
-    public class ToxyTable
+    public class ToxyTable:ICloneable
     {
         public ToxyTable()
         {
             this.Name = string.Empty;
-            this.ColumnHeaders = new ToxyRow(0);
+            this.HeaderRows = new List<ToxyRow>();
             this.Rows = new List<ToxyRow>();
             this.LastColumnIndex = -1;
             this.MergeCells = new List<MergeCellRange>();
         }
         public bool HasHeader
         {
-            get { return this.ColumnHeaders.Cells.Count > 0; }
+            get { return this.HeaderRows.Count> 0; }
         }
 
         public List<MergeCellRange> MergeCells { get; set; }
@@ -28,7 +28,7 @@ namespace Toxy
         public int LastRowIndex { get; set; }
         public int LastColumnIndex { get; set; }
 
-        public ToxyRow ColumnHeaders { get; set; }
+        public List<ToxyRow> HeaderRows { get; set; }
 
         public List<ToxyRow> Rows { get; set; }
 
@@ -52,9 +52,11 @@ namespace Toxy
 
             int lastCol = 0;
             DataTable dt = new DataTable(this.Name);
+
+            int rowIndex = 0;
             if (HasHeader)
             {
-                foreach (var header in ColumnHeaders.Cells)
+                foreach (var header in HeaderRows[0].Cells)
                 {
                     var col = new DataColumn(header.Value);
                     dt.Columns.Add(col);
@@ -65,19 +67,19 @@ namespace Toxy
                     dt.Columns.Add(string.Empty);
                     lastCol++;
                 }
+                rowIndex++;
             }
-            int lastRow = 0;
             foreach (var row in this.Rows)
             {
                 DataRow drow = null;
-                if (lastRow < row.RowIndex)
+                if (rowIndex < row.RowIndex)
                 {
                     drow = dt.NewRow();
-                    while (lastRow < row.RowIndex)
+                    while (rowIndex < row.RowIndex)
                     {
                         dt.Rows.Add(drow);
                         drow = dt.NewRow();
-                        lastRow++;
+                        rowIndex++;
                     }
                 }
                 else
@@ -100,7 +102,7 @@ namespace Toxy
                     drow = dt.NewRow();
                 }
                 dt.Rows.Add(drow);
-                lastRow++;
+                rowIndex++;
             }
             return dt;
         }
@@ -108,6 +110,25 @@ namespace Toxy
         public override string ToString()
         {
             return string.Format("[{0}]",this.Name);
+        }
+
+        public object Clone()
+        {
+            ToxyTable newtt = new ToxyTable();
+            newtt.PageFooter = this.PageFooter;
+            newtt.PageHeader = this.PageHeader;
+            newtt.Name = this.Name;
+            newtt.LastColumnIndex = this.LastColumnIndex;
+            newtt.LastRowIndex = this.LastRowIndex;
+            foreach(ToxyRow row in this.Rows)
+            {
+                newtt.Rows.Add(row.Clone() as ToxyRow);
+            }
+            foreach (ToxyRow header in this.HeaderRows)
+            {
+                newtt.HeaderRows.Add(header.Clone() as ToxyRow);
+            }
+            return newtt;
         }
     }
 }

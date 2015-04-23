@@ -32,7 +32,7 @@ namespace Toxy.Test
             Assert.IsNull(ss.Tables[0].PageHeader);
 
             ToxySpreadsheet ss2 = parser.Parse();
-            Assert.AreEqual(0, ss2.Tables[0].ColumnHeaders.Cells.Count);
+            Assert.AreEqual(0, ss2.Tables[0].HeaderRows.Count);
             Assert.AreEqual(9, ss2.Tables[0].Rows.Count);
         }
         public void BaseTestHeader(string filename)
