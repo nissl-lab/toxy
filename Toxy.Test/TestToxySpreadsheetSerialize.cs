@@ -71,16 +71,22 @@ namespace Toxy.Test
                 if (tss1.Tables[i].HasHeader && tss2.Tables[i].HasHeader)
                 {
 
-                    Assert.AreEqual(tss1.Tables[i].ColumnHeaders.RowIndex, tss2.Tables[i].ColumnHeaders.RowIndex);
-                    Assert.AreEqual(tss1.Tables[i].ColumnHeaders.LastCellIndex, tss2.Tables[i].ColumnHeaders.LastCellIndex);
-
-                    //cells
-                    Assert.AreEqual(tss1.Tables[i].ColumnHeaders.Cells.Count, tss2.Tables[i].ColumnHeaders.Cells.Count);
-                    for (int j = 0; j < tss1.Tables[i].ColumnHeaders.Cells.Count; j++)
+                    Assert.AreEqual(tss1.Tables[i].HeaderRows.Count, tss2.Tables[i].HeaderRows.Count);
+                    for (int m = 0; m < tss1.Tables[i].HeaderRows.Count; m++)
                     {
-                        Assert.AreEqual(tss1.Tables[i].ColumnHeaders.Cells[j].Value, tss2.Tables[i].ColumnHeaders.Cells[j].Value);
-                        Assert.AreEqual(tss1.Tables[i].ColumnHeaders.Cells[j].CellIndex, tss2.Tables[i].ColumnHeaders.Cells[j].CellIndex);
-                        Assert.AreEqual(tss1.Tables[i].ColumnHeaders.Cells[j].Comment, tss2.Tables[i].ColumnHeaders.Cells[j].Comment);
+                        Assert.AreEqual(tss1.Tables[i].HeaderRows[m].RowIndex, tss2.Tables[i].HeaderRows[m].RowIndex);
+                        Assert.AreEqual(tss1.Tables[i].HeaderRows[m].LastCellIndex, tss2.Tables[i].HeaderRows[m].LastCellIndex);
+
+                        //cells
+                        Assert.AreEqual(tss1.Tables[i].HeaderRows[m].Cells.Count, tss2.Tables[i].HeaderRows[m].Cells.Count);
+                        for (int n = 0; n < tss1.Tables[i].HeaderRows[m].Cells.Count; n++)
+                        {
+                            Assert.AreEqual(tss1.Tables[i].HeaderRows[m].Cells[n].Value, tss2.Tables[i].HeaderRows[m].Cells[n].Value);
+                            Assert.AreEqual(tss1.Tables[i].HeaderRows[m].Cells[n].CellIndex, tss2.Tables[i].HeaderRows[m].Cells[n].CellIndex);
+                            Assert.AreEqual(tss1.Tables[i].HeaderRows[m].Cells[n].Comment, tss2.Tables[i].HeaderRows[m].Cells[n].Comment);
+                            Assert.AreEqual(tss1.Tables[i].HeaderRows[m].Cells[n].Formula, tss2.Tables[i].HeaderRows[m].Cells[n].Formula);
+                        }
+
                     }
 
                 }
@@ -99,7 +105,7 @@ namespace Toxy.Test
                         Assert.AreEqual(tss1.Tables[i].Rows[m].Cells[n].Value, tss2.Tables[i].Rows[m].Cells[n].Value);
                         Assert.AreEqual(tss1.Tables[i].Rows[m].Cells[n].CellIndex, tss2.Tables[i].Rows[m].Cells[n].CellIndex);
                         Assert.AreEqual(tss1.Tables[i].Rows[m].Cells[n].Comment, tss2.Tables[i].Rows[m].Cells[n].Comment);
-
+                        Assert.AreEqual(tss1.Tables[i].Rows[m].Cells[n].Formula, tss2.Tables[i].Rows[m].Cells[n].Formula);
                     }
 
                 }

@@ -12,7 +12,7 @@ using ICSharpCode.SharpZipLib.GZip;
 
 namespace Toxy
 {
-    public partial class ToxySpreadsheet
+    public partial class  ToxySpreadsheet:ICloneable
     {
 
         private static int compresslevel = 9;
@@ -50,15 +50,23 @@ namespace Toxy
 
                 if (tb.HasHeader)
                 {
-                    rs.Serialize(tb.ColumnHeaders.RowIndex);
-                    rs.Serialize(tb.ColumnHeaders.LastCellIndex);
-                    //cells
-                    rs.Serialize(tb.ColumnHeaders.Cells.Count);
-                    foreach (ToxyCell cell in tb.ColumnHeaders.Cells)
+                    rs.Serialize(tb.HeaderRows.Count);
+                    foreach (ToxyRow row in tb.HeaderRows)
                     {
-                        rs.Serialize(cell.Value);
-                        rs.Serialize(cell.CellIndex);
-                        rs.SerializeNullable(cell.Comment);
+                        rs.Serialize(row.RowIndex);
+                        rs.Serialize(row.LastCellIndex);
+                        //cells
+                        rs.Serialize(row.Cells.Count);
+                        foreach (ToxyCell cell in row.Cells)
+                        {
+                            rs.Serialize(cell.Value);
+                            rs.Serialize(cell.CellIndex);
+                            rs.SerializeNullable(cell.Comment);
+                            rs.SerializeNullable(cell.Formula);
+
+                        }
+
+
                     }
                 }
 
@@ -75,6 +83,7 @@ namespace Toxy
                         rs.Serialize(cell.Value);
                         rs.Serialize(cell.CellIndex);
                         rs.SerializeNullable(cell.Comment);
+                        rs.SerializeNullable(cell.Formula);
 
                     }
 
@@ -88,22 +97,22 @@ namespace Toxy
             //http://m.blog.csdn.net/blog/jecray/1554669
             //http://blog.sina.com.cn/s/blog_40678c33010007zk.html
 
-   
-            MemoryStream ms2=new MemoryStream();
 
-            
-             if (bcompress)
-             {
-                 ms.Position = 0;
-                 BZip2.Compress(ms, ms2, false, compresslevel);
-                 //ms2.Position = 0;
-                 //BZip2.Decompress(ms2,ms3, false);
-                 return ms2;
-             }
-             else
-             {
-                 return ms;
-             }
+            MemoryStream ms2 = new MemoryStream();
+            ms.Position = 0;
+
+            if (bcompress)
+            {
+
+                BZip2.Compress(ms, ms2, false, compresslevel);
+                //ms2.Position = 0;
+                //BZip2.Decompress(ms2,ms3, false);
+                return ms2;
+            }
+            else
+            {
+                return ms;
+            }
 
 
 
@@ -115,15 +124,15 @@ namespace Toxy
 
         public bool Deserialize(MemoryStream ms, bool bcompress = true)
         {
-            
 
-           
+
+            ms.Position = 0;
             MemoryStream msd = new MemoryStream();
-            
+
             RawDeserializer rd;
             if (bcompress)
             {
-                ms.Position = 0;
+
                 BZip2.Decompress(ms, msd, false);
                 msd.Position = 0;
 
@@ -133,12 +142,6 @@ namespace Toxy
             {
                 rd = new RawDeserializer(ms);
             }
-
-
-
-
-
-            ms.Position = 0;
 
 
 
@@ -185,24 +188,36 @@ namespace Toxy
 
                 if (tbHasHeader)
                 {
-                    tb.ColumnHeaders.RowIndex = rd.DeserializeInt();
-                    tb.ColumnHeaders.LastCellIndex = rd.DeserializeInt();
-                    //cells
-                    int tbColumnHeadersCellsCount = rd.DeserializeInt();
-                    for (int k = 0; k < tbColumnHeadersCellsCount; k++)
+                    int tbHeaderCount = rd.DeserializeInt();
+                    for (int m = 0; m < tbHeaderCount; m++)
                     {
+                        int rowRowIndex = rd.DeserializeInt();
+                        ToxyRow row = new ToxyRow(rowRowIndex);
 
-                        string cellValue = rd.DeserializeString();
-                        int cellCellIndex = rd.DeserializeInt();
-                        ToxyCell cell = new ToxyCell(cellCellIndex, cellValue);
-                        var cellComment = rd.DeserializeNullable(typeof(string));
-                        if (cellComment != null)
+                        row.LastCellIndex = rd.DeserializeInt();
+                        //cells
+                        int rowCellsCount = rd.DeserializeInt();
+                        for (int n = 0; n < rowCellsCount; n++)
                         {
-                            cell.Comment = (string)cellComment;
+
+                            string cellValue = rd.DeserializeString();
+                            int cellCellIndex = rd.DeserializeInt();
+                            ToxyCell cell = new ToxyCell(cellCellIndex, cellValue);
+                            var cellComment = rd.DeserializeNullable(typeof(string));
+                            if (cellComment != null)
+                            {
+                                cell.Comment = (string)cellComment;
+                            }
+                            var cellformula = rd.DeserializeNullable(typeof(string));
+                            if (cellformula != null)
+                            {
+                                cell.Formula = (string)cellformula;
+                            }
+
+                            row.Cells.Add(cell);
                         }
 
-
-                        tb.ColumnHeaders.Cells.Add(cell);
+                        tb.HeaderRows.Add(row);
                     }
                 }
 
@@ -226,6 +241,11 @@ namespace Toxy
                         if (cellComment != null)
                         {
                             cell.Comment = (string)cellComment;
+                        }
+                        var cellformula = rd.DeserializeNullable(typeof(string));
+                        if (cellformula != null)
+                        {
+                            cell.Formula = (string)cellformula;
                         }
 
                         row.Cells.Add(cell);
