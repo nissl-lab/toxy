@@ -110,6 +110,7 @@
     <Compile Include="Entities\ToxySlide.cs" />
     <Compile Include="Entities\ToxySlideshow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\MergeCellRange.cs" />
+    <Compile Include="Entities\ToxySpreadsheet\SpreadsheetExport.cs" />
     <Compile Include="Entities\ToxySpreadsheet\SpreadsheetSerialize.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyRow.cs" />
