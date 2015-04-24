@@ -21,11 +21,16 @@ namespace Toxy
     public partial class ToxySpreadsheet : ICloneable
     {
 
-        public bool ToCSV(string filename)
+        public bool ToCSV(string filename, string Separatedstring = ",")
         {
+
+
+
+
+
             FileStream fs = File.Create(filename);
 
-            StreamWriter sw = new StreamWriter(fs);
+            StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
 
 
             foreach (ToxyTable tsheet in Tables)
@@ -34,36 +39,77 @@ namespace Toxy
                 sw.WriteLine("Tabel:" + tsheet.Name);
                 if (tsheet.HasHeader)
                 {
-
-                    for (int j = 0; j < tsheet.HeaderRows.Count; j++)
+                    for (int j = 0; j <= tsheet.HeaderRows.Count; j++)
                     {
                         string row = string.Empty;
-                        for (int k = 0; k < tsheet.HeaderRows[j].LastCellIndex; k++)
+                        foreach (ToxyRow trow in tsheet.HeaderRows)
                         {
-                            if (k < tsheet.HeaderRows[j].LastCellIndex - 1)
-                                row += tsheet.HeaderRows[j].Cells[k].Value + ",";
-                            else
-                                row += tsheet.HeaderRows[j].Cells[k].Value;
+                            if (trow.RowIndex == j)
+                            {
+                                for (int k = 0; k <= trow.LastCellIndex; k++)
+                                {
+                                    bool blankcell = true;
+                                    foreach (ToxyCell tcell in trow.Cells)
+                                    {
+                                        if (tcell.CellIndex == k)
+                                        {
+                                            if (k == trow.LastCellIndex)
+                                            {
+                                                row += "\"" + tcell.Value + "\"";
+                                            }
+                                            else
+                                            {
+                                                row += "\"" + tcell.Value + "\"" + Separatedstring;
+                                            }
+                                            blankcell = false;
+                                        }
+                                    }
+                                    if (blankcell)
+                                    {
+                                        row += Separatedstring;
+
+                                    }
+                                }
+                            }
                         }
                         sw.WriteLine(row);
                     }
-
                 }
 
-                for (int j = 0; j < tsheet.Rows.Count; j++)
+                for (int j = 0; j <= tsheet.LastRowIndex; j++)
                 {
+                    string row = string.Empty;
 
-
-                        string row = string.Empty;
-                        for (int k = 0; k < tsheet.Rows[j].LastCellIndex; k++)
+                    foreach (ToxyRow trow in tsheet.Rows)
+                    {
+                        if (trow.RowIndex == j)
                         {
-                            if (k < tsheet.Rows[j].LastCellIndex - 1)
-                                row += tsheet.Rows[j].Cells[k].Value + ",";
-                            else
-                                row += tsheet.Rows[j].Cells[k].Value;
+                            for (int k = 0; k <= trow.LastCellIndex; k++)
+                            {
+                                bool blankcell = true;
+                                foreach (ToxyCell tcell in trow.Cells)
+                                {
+                                    if (tcell.CellIndex == k)
+                                    {
+                                        if (k == trow.LastCellIndex)
+                                        {
+                                            row += "\"" + tcell.Value + "\"";
+                                        }
+                                        else
+                                        {
+                                            row += "\"" + tcell.Value + "\"" + Separatedstring;
+                                        }
+                                        blankcell = false;
+                                    }
+                                }
+                                if (blankcell)
+                                {
+                                    row += Separatedstring;
+                                }
+                            }
                         }
-                        sw.WriteLine(row);
-                   
+                    }
+                    sw.WriteLine(row);
                 }
 
 
@@ -73,9 +119,19 @@ namespace Toxy
             }
 
 
-
+            sw.Flush();
+            sw.Close();
 
             return true;
+        }
+
+
+        public bool ToTXT(string filename)
+        {
+
+            ToCSV(filename, "\t");
+            return true;
+
         }
 
         public bool ToXLS(string filename)
