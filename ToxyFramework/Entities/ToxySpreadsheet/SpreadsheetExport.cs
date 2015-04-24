@@ -139,82 +139,118 @@ namespace Toxy
             ToXLSX(filename, 2003);
             return false;
         }
-        public bool ToXLSX(string filename, int type = 2007)
+        public bool ToXLSX(string filename, int ver = 2007)
         {
 
 
             IWorkbook workbook;
-            if (type == 2007)
+            if (ver == 2007)
                 workbook = new XSSFWorkbook();
             else
                 workbook = new HSSFWorkbook();
-            ICellStyle[] cellstyle_array = new ICellStyle[6];
-            IFont[] cfont1 = new IFont[6];
-            IFontFormatting[] cfont_format = new IFontFormatting[6];
-            CellRangeAddress regon;
-            ICellStyle titlecellstyle;
 
 
-
-            titlecellstyle = workbook.CreateCellStyle();
-            titlecellstyle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
-            titlecellstyle.VerticalAlignment = NPOI.SS.UserModel.VerticalAlignment.Center;
-            titlecellstyle.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
-            titlecellstyle.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
-            titlecellstyle.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
-            titlecellstyle.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
-            titlecellstyle.WrapText = true;
-
-
+            int sheetno = 0;
             foreach (ToxyTable tsheet in Tables)
             {
-                ISheet sht = workbook.CreateSheet(tsheet.Name);
-                IDrawing patr = (HSSFPatriarch)sht.CreateDrawingPatriarch();
+                sheetno++;
+                ISheet sht;
+                if (tsheet.Name == string.Empty)
+                {
+                    sht = workbook.CreateSheet("Sheet" + sheetno);
+                }
+                else
+                {
+                    sht = workbook.CreateSheet(tsheet.Name);
+                }
 
-                int currentrowindex = 0;
+                IDrawing patr = sht.CreateDrawingPatriarch();
+
+
 
                 if (tsheet.HasHeader)
                 {
-
-                    for (int j = 0; j < tsheet.HeaderRows.Count; j++)
+                    foreach (ToxyRow trow in tsheet.HeaderRows)
                     {
+                        IRow row = sht.CreateRow(trow.RowIndex);
 
-                        for (int k = 0; k < tsheet.HeaderRows[j].LastCellIndex; k++)
+                        foreach (ToxyCell tcell in trow.Cells)
                         {
-                            ICell cell = sht.CreateRow(j + currentrowindex).CreateCell(k);
-                            cell.SetCellValue(tsheet.HeaderRows[j].Cells[k].Value);
-                            cell.SetCellFormula(tsheet.HeaderRows[j].Cells[k].Formula);
-                            IComment comment1 = patr.CreateCellComment(new HSSFClientAnchor(0, 0, 0, 0, 4, 2, 6, 5));
-                            comment1.String = (new HSSFRichTextString(tsheet.HeaderRows[j].Cells[k].Comment));
-                            cell.CellComment = comment1;
+                            ICell cell = row.CreateCell(tcell.CellIndex);
+
+                            cell.SetCellValue(tcell.Value);
+
+                            if (tcell.Formula != null)
+                            {
+                                cell.SetCellFormula(tcell.Formula);
+                            }
+                            if (tcell.Comment != null)
+                            {
+                                IComment comment1;
+                                if (ver == 2007)
+                                {
+                                    comment1 = patr.CreateCellComment(new XSSFClientAnchor(0, 0, 0, 0, 4, 2, 6, 5));
+                                    comment1.String = (new XSSFRichTextString(tcell.Comment));
+                                }
+                                else
+                                {
+                                    comment1 = patr.CreateCellComment(new HSSFClientAnchor(0, 0, 0, 0, 4, 2, 6, 5));
+                                    comment1.String = (new HSSFRichTextString(tcell.Comment));
+                                }
+
+                                cell.CellComment = comment1;
+                            }
+
 
                         }
-                        currentrowindex++;
+
                     }
+
+
 
                 }
 
-                for (int j = 0; j < tsheet.Rows.Count; j++)
+                foreach (ToxyRow trow in tsheet.Rows)
                 {
+                    IRow row = sht.CreateRow(trow.RowIndex);
 
-                    for (int k = 0; k < tsheet.Rows[j].LastCellIndex; k++)
+                    foreach (ToxyCell tcell in trow.Cells)
                     {
-                        ICell cell = sht.CreateRow(j + currentrowindex).CreateCell(k);
-                        cell.SetCellValue(tsheet.Rows[j].Cells[k].Value);
-                        cell.SetCellFormula(tsheet.Rows[j].Cells[k].Formula);
-                        IComment comment1 = patr.CreateCellComment(new HSSFClientAnchor(0, 0, 0, 0, 4, 2, 6, 5));
-                        comment1.String = (new HSSFRichTextString(tsheet.HeaderRows[j].Cells[k].Comment));
-                        cell.CellComment = comment1;
+                        ICell cell = row.CreateCell(tcell.CellIndex);
+
+                        cell.SetCellValue(tcell.Value);
+
+                        if (tcell.Formula != null)
+                        {
+                            cell.SetCellFormula(tcell.Formula);
+                        }
+                        if (tcell.Comment != null)
+                        {
+                            IComment comment1;
+                            if (ver == 2007)
+                            {
+                                comment1 = patr.CreateCellComment(new XSSFClientAnchor(0, 0, 0, 0, 4, 2, 6, 5));
+                                comment1.String = (new XSSFRichTextString(tcell.Comment));
+                            }
+                            else
+                            {
+                                comment1 = patr.CreateCellComment(new HSSFClientAnchor(0, 0, 0, 0, 4, 2, 6, 5));
+                                comment1.String = (new HSSFRichTextString(tcell.Comment));
+                            }
+
+                            cell.CellComment = comment1;
+                        }
+
 
                     }
-                    currentrowindex++;
+
                 }
 
 
-                for (int m = 0; m < tsheet.MergeCells.Count; m++)
+                foreach (MergeCellRange tmergecellrange in tsheet.MergeCells)
                 {
 
-                    regon = new CellRangeAddress(tsheet.MergeCells[m].FirstRow, tsheet.MergeCells[m].LastRow, tsheet.MergeCells[m].FirstColumn, tsheet.MergeCells[m].LastColumn);
+                    CellRangeAddress regon = new CellRangeAddress(tmergecellrange.FirstRow, tmergecellrange.LastRow, tmergecellrange.FirstColumn, tmergecellrange.LastColumn);
                     sht.AddMergedRegion(regon);
                 }
 
