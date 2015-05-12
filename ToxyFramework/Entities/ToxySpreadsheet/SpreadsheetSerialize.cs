@@ -124,7 +124,10 @@ namespace Toxy
 
         public bool Deserialize(MemoryStream ms, bool bcompress = true)
         {
-
+            if (ms == null)
+            {
+                return false;
+            }
 
             ms.Position = 0;
             MemoryStream msd = new MemoryStream();
