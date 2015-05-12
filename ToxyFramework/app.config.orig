@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
-  <appSettings>
-    <add key="testdataPath" value="..\Toxy.Test\..\..\testdata"/>
-  </appSettings>
-<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup>
+<<<<<<< HEAD
   <runtime>
     <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
       <dependentAssembly>
@@ -12,4 +9,8 @@
       </dependentAssembly>
     </assemblyBinding>
   </runtime>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup></configuration>
+=======
+
 </configuration>
+>>>>>>> a408dad5e0856b58772bd2f9feb986b8b204a63b

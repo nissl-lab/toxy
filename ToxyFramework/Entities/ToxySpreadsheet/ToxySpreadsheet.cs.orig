@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Toxy
 {
-    public partial class  ToxySpreadsheet:ICloneable
+<<<<<<< HEAD
+    public  partial class ToxySpreadsheet
+=======
+    public class ToxySpreadsheet:ICloneable
+>>>>>>> a408dad5e0856b58772bd2f9feb986b8b204a63b
     {
         public ToxySpreadsheet()
         {

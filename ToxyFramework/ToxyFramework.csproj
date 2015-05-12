@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Toxy</RootNamespace>
     <AssemblyName>Toxy</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <ProductVersion>12.0.0</ProductVersion>
@@ -39,6 +39,9 @@
     <AssemblyOriginatorKeyFile>toxy.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Clifton.Tools.Data">
+      <HintPath>..\packages\Clifton.Tools.Data.dll</HintPath>
+    </Reference>
     <Reference Include="DCSoft.RTF">
       <HintPath>..\packages\DCSoft.RTF.dll</HintPath>
     </Reference>
@@ -51,7 +54,8 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net20\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NPOI.2.1.3.1\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="LumenWorks.Framework.IO">
@@ -106,6 +110,7 @@
     <Compile Include="Entities\ToxySlide.cs" />
     <Compile Include="Entities\ToxySlideshow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\MergeCellRange.cs" />
+    <Compile Include="Entities\ToxySpreadsheet\SpreadsheetSerialize.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyRow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxySpreadsheet.cs" />
