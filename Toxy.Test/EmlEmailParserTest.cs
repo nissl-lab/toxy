@@ -13,7 +13,7 @@ namespace Toxy.Test
         [Test]
         public void ReadEmlTest()
         {
-            string path = TestDataSample.GetFilePath("test.eml",null);
+            string path = TestDataSample.GetEmailPath("test.eml");
             ParserContext context = new ParserContext(path);
             IEmailParser parser = ParserFactory.CreateEmail(context);
             ToxyEmail email = parser.Parse();

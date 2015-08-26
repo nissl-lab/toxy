@@ -63,6 +63,10 @@ namespace Toxy.Test
         {
             return GetFilePath(filename, "cnm");
         }
+        public static string GetEmailPath(string filename)
+        {
+            return GetFilePath(filename, "email");
+        }
         public static string GetFilePath(string filename, string subFolder)
         {
 			string path = ConfigurationManager.AppSettings["testdataPath"].Replace('\\',Path.DirectorySeparatorChar);
