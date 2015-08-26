@@ -16,7 +16,10 @@ namespace Toxy.Parsers
         {
             RTFDomDocument doc = new RTFDomDocument();
             doc.Load(this.Context.Path);
-            return doc.InnerText;
+            if (doc.HtmlContent == null)
+                return doc.InnerText;
+            else
+                return doc.HtmlContent;
         }
     }
 }
