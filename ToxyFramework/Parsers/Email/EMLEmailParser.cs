@@ -22,11 +22,11 @@ namespace Toxy.Parsers
             using (FileStream stream = File.OpenRead(Context.Path))
             {
                 EMLReader reader = new EMLReader(stream);
-                email.From = new List<string>(reader.From.Split(';'));
+                email.From = reader.From;
                 email.To = new List<string>(reader.To.Split(';'));
                 if(reader.CC!=null)
                     email.Cc = new List<string>(reader.CC.Split(';'));
-                email.Body = reader.Body;
+                email.TextBody = reader.Body;
                 email.HtmlBody = reader.HTMLBody;
                 email.Subject = reader.Subject;
                 email.ArrivalTime = reader.X_OriginalArrivalTime;

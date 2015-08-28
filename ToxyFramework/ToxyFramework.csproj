@@ -75,11 +75,10 @@
     <Reference Include="PdfSharp">
       <HintPath>..\packages\PdfSharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
     </Reference>
-    <Reference Include="policy.2.0.taglib-sharp">
-      <HintPath>..\packages\taglib.2.1.0.0\lib\policy.2.0.taglib-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,48 +100,52 @@
     <Compile Include="Entities\ToxyBusinessCard\ToxyContact.cs" />
     <Compile Include="Entities\ToxyDom\ToxyDom.cs" />
     <Compile Include="Entities\ToxyDom\ToxyNode.cs" />
-    <Compile Include="Entities\ToxyMetadata.cs" />
     <Compile Include="Entities\ToxyName.cs" />
+    <Compile Include="Entities\ToxyMetadata.cs" />
     <Compile Include="Entities\ToxySlide.cs" />
     <Compile Include="Entities\ToxySlideshow.cs" />
     <Compile Include="Entities\ToxySpreadsheet\MergeCellRange.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyCell.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyRow.cs" />
-    <Compile Include="Entities\ToxySpreadsheet\ToxySpreadsheet.cs" />
     <Compile Include="Entities\ToxySpreadsheet\ToxyTable.cs" />
-    <Compile Include="IDocumentParser.cs" />
-    <Compile Include="IDomParser.cs" />
-    <Compile Include="IEmailParser.cs" />
     <Compile Include="IMetadataParser.cs" />
     <Compile Include="ISlideshowParser.cs" />
-    <Compile Include="ISpreadsheetParser.cs" />
+    <Compile Include="Parsers\AudioMetadataParser.cs" />
+    <Compile Include="Parsers\Email\CnmEmailParser.cs" />
+    <Compile Include="Parsers\Email\EMLTextParser.cs" />
+    <Compile Include="Parsers\Email\MsgEmailParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parsers\Spreadsheet\ExcelTextParser.cs" />
+    <Compile Include="Parsers\HtmlDomParser.cs" />
+    <Compile Include="IDomParser.cs" />
+    <Compile Include="IEmailParser.cs" />
+    <Compile Include="IDocumentParser.cs" />
+    <Compile Include="Parsers\Email\EMLEmailParser.cs" />
+    <Compile Include="Parsers\Spreadsheet\ExcelSpreadsheetParser.cs" />
     <Compile Include="ITextParser.cs" />
     <Compile Include="ParserContext.cs" />
-    <Compile Include="Parsers\AudioMetadataParser.cs" />
-    <Compile Include="Parsers\CnmEmailParser.cs" />
-    <Compile Include="Parsers\CSVSpreadsheetParser.cs" />
-    <Compile Include="Parsers\EMLEmailParser.cs" />
-    <Compile Include="Parsers\EMLTextParser.cs" />
-    <Compile Include="Parsers\ExcelSpreadsheetParser.cs" />
-    <Compile Include="Parsers\ExcelTextParser.cs" />
-    <Compile Include="Parsers\HtmlDomParser.cs" />
+    <Compile Include="ISpreadsheetParser.cs" />
     <Compile Include="Parsers\ImageMetadataParser.cs" />
+    <Compile Include="Parsers\Email\MsgTextParser.cs" />
     <Compile Include="Parsers\OLE2MetadataParser.cs" />
     <Compile Include="Parsers\OOXMLMetadataParser.cs" />
-    <Compile Include="Parsers\PDFDocumentParser.cs" />
     <Compile Include="Parsers\PDFTextParser.cs" />
     <Compile Include="Parsers\Powerpoint2007SlideshowParser.cs" />
-    <Compile Include="Parsers\PowerPoint2007TextParser.cs" />
+    <Compile Include="Parsers\Powerpoint2007TextParser.cs" />
     <Compile Include="Parsers\RTFTextParser.cs" />
     <Compile Include="Parsers\VCardDocumentParser.cs" />
     <Compile Include="Parsers\VCardTextParser.cs" />
-    <Compile Include="Parsers\Word2003DocumentParser.cs" />
-    <Compile Include="Parsers\Word2007DocumentParser.cs" />
     <Compile Include="Entities\ToxyDocument.cs" />
     <Compile Include="Entities\ToxyEmail.cs" />
+    <Compile Include="Entities\ToxySpreadsheet\ToxySpreadsheet.cs" />
     <Compile Include="ParserFactory.cs" />
     <Compile Include="Parsers\PlainTextParser.cs" />
+    <Compile Include="Parsers\Spreadsheet\CSVSpreadsheetParser.cs" />
+    <Compile Include="Parsers\PDFDocumentParser.cs" />
+    <Compile Include="Parsers\Word2003DocumentParser.cs" />
     <Compile Include="Parsers\Word2003TextParser.cs" />
+    <Compile Include="Parsers\Word2007DocumentParser.cs" />
     <Compile Include="Parsers\Word2007TextParser.cs" />
     <Compile Include="Parsers\XMLDomParser.cs" />
     <Compile Include="Parsers\ZipTextParser.cs" />

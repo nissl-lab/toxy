@@ -97,6 +97,11 @@ namespace Toxy
             var typeCnm = new List<Type>();
             typeCnm.Add(typeof(CnmEmailParser));
             parserMapping.Add(".cnm", typeCnm);
+
+            var typeMsg = new List<Type>();
+            typeMsg.Add(typeof(MsgEmailParser));
+            typeMsg.Add(typeof(MsgTextParser));
+            parserMapping.Add(".msg", typeMsg);
             #endregion
 
             var typeVcard= new List<Type>();

@@ -21,9 +21,9 @@ namespace Toxy.Parsers
             CnmFile reader = new CnmFile(fi);
             reader.Parse();
             ToxyEmail email=new ToxyEmail();
-            email.From = new List<string>(reader.From.Split(';'));
+            email.From = reader.From;
             email.To = new List<string>(reader.To.Split(';'));
-            email.Body = reader.TextPlain;
+            email.TextBody = reader.TextPlain;
             using (var sr=new StreamReader(reader.TextHtml))
             {
                 email.HtmlBody = sr.ReadToEnd();

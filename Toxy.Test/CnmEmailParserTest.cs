@@ -17,13 +17,13 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IEmailParser parser = ParserFactory.CreateEmail(context) as IEmailParser;
             ToxyEmail email = parser.Parse();
-            Assert.AreEqual(1, email.From.Count);
+            Assert.IsNotNullOrEmpty(email.From);
             Assert.AreEqual(1, email.To.Count);
-            Assert.AreEqual("Тюльпаны <info@beepy.net>", email.From[0]);
+            Assert.AreEqual("Тюльпаны <info@beepy.net>", email.From);
             Assert.AreEqual("<maf@1gb.ru>", email.To[0]);
 
             Assert.AreEqual("Тюльпаны", email.Subject);
-            Assert.IsTrue(email.Body.StartsWith("Тел: 960-51-57;Продажа тюльпанов"));
+            Assert.IsTrue(email.TextBody.StartsWith("Тел: 960-51-57;Продажа тюльпанов"));
             Assert.IsTrue(email.HtmlBody.StartsWith("<!DOCTYPE HTML"));
 
         }

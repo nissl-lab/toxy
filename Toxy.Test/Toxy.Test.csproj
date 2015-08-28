@@ -67,6 +67,7 @@
     <Compile Include="Excel2003ParserTest.cs" />
     <Compile Include="ExcelParserBaseTest.cs" />
     <Compile Include="ImageParserTest.cs" />
+    <Compile Include="MsgEmailParserTest.cs" />
     <Compile Include="OLE2MetadataParserTest.cs" />
     <Compile Include="OOXMLParserTest.cs" />
     <Compile Include="PDFParserTest.cs" />
