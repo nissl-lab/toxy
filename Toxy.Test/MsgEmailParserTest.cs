@@ -52,6 +52,8 @@ namespace Toxy.Test
 
             Assert.AreEqual("tonyqux@hotmail.com", result.To[0]);
             Assert.AreEqual("Azure pricing and services updates", result.Subject);
+            Assert.IsNotNull(result.TextBody);
+            Assert.IsNotNull(result.HtmlBody);
         }
     }
 }
