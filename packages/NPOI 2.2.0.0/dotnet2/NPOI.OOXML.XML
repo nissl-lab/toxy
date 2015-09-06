@@ -133,6 +133,13 @@
             
              @param alreadySaved    context set Containing already visited nodes
         </member>
+        <member name="M:NPOI.POIXMLDocumentPart.PrepareForCommit">
+            Ensure that a memory based package part does not have lingering data from previous 
+            commit() calls. 
+            
+            Note: This is overwritten for some objects, as *PictureData seem to store the actual content 
+            in the part directly without keeping a copy like all others therefore we need to handle them differently.
+        </member>
         <member name="M:NPOI.POIXMLDocumentPart.CreateRelationship(NPOI.POIXMLRelation,NPOI.POIXMLFactory)">
              Create a new child POIXMLDocumentPart
             
@@ -203,6 +210,10 @@
         </member>
         <member name="M:NPOI.POIXMLDocument.GetAllEmbedds">
             Get the document's embedded files.
+        </member>
+        <member name="M:NPOI.POIXMLDocument.Close">
+            Closes the underlying {@link OPCPackage} from which this
+             document was read, if there is one
         </member>
         <member name="M:NPOI.POIXMLDocument.Write(System.IO.Stream)">
              Write out this document to an Outputstream.
@@ -281,6 +292,15 @@
             
              @param name the name to check
              @return whether a property with the given name exists in the custom properties
+        </member>
+        <member name="M:NPOI.CustomProperties.GetProperty(System.String)">
+             Retrieve the custom property with this name, or null if none exists.
+            
+             You will need to test the various isSetX methods to work out
+              what the type of the property is, before fetching the 
+              appropriate value for it.
+            
+             @param name the name of the property to fetch
         </member>
         <member name="T:NPOI.POIXMLProperties">
             Wrapper around the two different kinds of OOXML properties
@@ -523,10 +543,7 @@
             <param name="inputStream">Input Stream of .xls or .xlsx file</param>
             <returns>IWorkbook depending on the input HSSFWorkbook or XSSFWorkbook is returned.</returns>
         </member>
-        <member name="M:NPOI.SS.UserModel.WorkbookFactory.Create(System.String)">
-            Creates the appropriate HSSFWorkbook / XSSFWorkbook from
-             the given File, which must exist and be readable.
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:NPOI.SS.UserModel.WorkbookFactory.Create(System.String)" -->
         <member name="M:NPOI.SS.UserModel.WorkbookFactory.Create(System.IO.Stream,NPOI.SS.UserModel.ImportOption)">
             <summary>
             Creates the appropriate HSSFWorkbook / XSSFWorkbook from
@@ -604,9 +621,6 @@
              @param src source properties
              @param tgt target properties
         </member>
-        <member name="T:NPOI.Util.Units">
-            @author Yegor Kozlov
-        </member>
         <member name="T:NPOI.XSSF.Extractor.XSSFExcelExtractor">
             Helper class to extract text from an OOXML Excel file
         </member>
@@ -618,7 +632,7 @@
              the result it produces? Default is false
         </member>
         <member name="M:NPOI.XSSF.Extractor.XSSFExcelExtractor.SetIncludeCellComments(System.Boolean)">
-            Should cell comments be included? Default is true
+            Should cell comments be included? Default is false
         </member>
         <member name="M:NPOI.XSSF.Extractor.XSSFExcelExtractor.SetIncludeHeadersFooters(System.Boolean)">
             Should headers and footers be included? Default is true
@@ -732,10 +746,23 @@
             <param name="author">author to search</param>
             <returns>index of the author</returns>
         </member>
-        <member name="T:NPOI.XSSF.Model.IndexedUDFFinder">
-             A UDFFinder that can retrieve functions both by name and by fake index.
+        <member name="M:NPOI.XSSF.Model.CommentsTable.NewComment">
+             This method is deprecated and should not be used any more as
+             it overwrites the comment in Cell A1.
             
-             @author Yegor Kozlov
+             @return
+        </member>
+        <member name="T:NPOI.XSSF.Model.ExternalLinksTable">
+            Holds details of links to parts of other workbooks (eg named ranges),
+             along with the most recently seen values for what they point to.
+        </member>
+        <member name="P:NPOI.XSSF.Model.ExternalLinksTable.CTExternalLink">
+            Returns the underlying xmlbeans object for the external
+             link table
+        </member>
+        <member name="P:NPOI.XSSF.Model.ExternalLinksTable.LinkedFileName">
+            get or set the last recorded name of the file that this
+             is linked to
         </member>
         <member name="T:NPOI.XSSF.Model.MapInfo">
             
@@ -765,6 +792,14 @@
              Returns the parent XSSFWorkbook
             
              @return the parent XSSFWorkbook
+        </member>
+        <member name="T:NPOI.XSSF.Model.ParagraphPropertyFetcher">
+            Used internally to navigate the paragraph text style hierarchy within a shape and fetch properties
+        </member>
+        <member name="M:NPOI.XSSF.Model.ParagraphPropertyFetcher`1.Fetch(NPOI.OpenXmlFormats.Dml.Spreadsheet.CT_Shape)">
+            
+             @param shape the shape being examined
+             @return true if the desired property was fetched
         </member>
         <member name="T:NPOI.XSSF.Model.SharedStringsTable">
              Table of strings shared across all sheets in a workbook.
@@ -913,8 +948,20 @@
         <member name="T:NPOI.XSSF.Model.ThemesTable">
             Class that represents theme of XLSX document. The theme includes specific
             colors and fonts.
-            
-            @author Petr Udalau(Petr.Udalau at exigenservices.com) - theme colors
+        </member>
+        <member name="M:NPOI.XSSF.Model.ThemesTable.#ctor(NPOI.OpenXml4Net.OPC.PackagePart,NPOI.OpenXml4Net.OPC.PackageRelationship)">
+            Construct a ThemesTable.
+            @param part A PackagePart.
+            @param rel A PackageRelationship.
+        </member>
+        <member name="M:NPOI.XSSF.Model.ThemesTable.#ctor(NPOI.OpenXmlFormats.Spreadsheet.ThemeDocument)">
+            Construct a ThemesTable from an existing ThemeDocument.
+            @param theme A ThemeDocument.
+        </member>
+        <member name="M:NPOI.XSSF.Model.ThemesTable.GetThemeColor(System.Int32)">
+            Convert a theme "index" into a color.
+            @param idx A theme "index"
+            @return The mapped XSSFColor, or null if not mapped.
         </member>
         <member name="M:NPOI.XSSF.Model.ThemesTable.InheritFromThemeAsRequired(NPOI.XSSF.UserModel.XSSFColor)">
             If the colour is based on a theme, then inherit 
@@ -945,6 +992,9 @@
         <member name="M:NPOI.XSSF.UserModel.Charts.XSSFChartLegend.#ctor(NPOI.XSSF.UserModel.XSSFChart)">
             Create a new SpreadsheetML chart legend
         </member>
+        <member name="M:NPOI.XSSF.UserModel.Charts.XSSFChartLegend.SetDefaults">
+            Set sensible default styling.
+        </member>
         <member name="M:NPOI.XSSF.UserModel.Charts.XSSFChartLegend.GetCTLegend">
              Return the underlying CTLegend bean.
             
@@ -964,6 +1014,13 @@
             Builds CTNumDataSource object content from POI ChartDataSource
             @param ctNumDataSource OOXML data source to build
             @param dataSource POI data source to use
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.Charts.XSSFLineChartData`2">
+            <summary>
+            Holds data for a XSSF Line Chart
+            </summary>
+            <typeparam name="Tx"></typeparam>
+            <typeparam name="Ty"></typeparam>
         </member>
         <member name="F:NPOI.XSSF.UserModel.Charts.XSSFLineChartData`2.series">
             List of all data series.
@@ -996,18 +1053,18 @@
         <member name="F:NPOI.XSSF.UserModel.Charts.XSSFScatterChartData`2.series">
             List of all data series.
         </member>
-        <member name="T:NPOI.XSSF.UserModel.Charts.XSSFScatterChartData`2.Serie">
+        <member name="T:NPOI.XSSF.UserModel.Charts.XSSFScatterChartData`2.Series">
             Package private ScatterChartSerie implementation.
         </member>
-        <member name="M:NPOI.XSSF.UserModel.Charts.XSSFScatterChartData`2.Serie.GetXValues">
+        <member name="M:NPOI.XSSF.UserModel.Charts.XSSFScatterChartData`2.Series.GetXValues">
             Returns data source used for X axis values.
             @return data source used for X axis values
         </member>
-        <member name="M:NPOI.XSSF.UserModel.Charts.XSSFScatterChartData`2.Serie.GetYValues">
+        <member name="M:NPOI.XSSF.UserModel.Charts.XSSFScatterChartData`2.Series.GetYValues">
             Returns data source used for Y axis values.
             @return data source used for Y axis values
         </member>
-        <member name="M:NPOI.XSSF.UserModel.Charts.XSSFScatterChartData`2.Serie.SetUseCache(System.Boolean)">
+        <member name="M:NPOI.XSSF.UserModel.Charts.XSSFScatterChartData`2.Series.SetUseCache(System.Boolean)">
             @param useCache if true, cached results will be Added on plot
         </member>
         <member name="T:NPOI.XSSF.UserModel.Charts.XSSFValueAxis">
@@ -1043,7 +1100,7 @@
             
              @return indent - number of spaces
         </member>
-        <!-- 对于成员“P:NPOI.XSSF.UserModel.Extensions.XSSFCellAlignment.TextRotation”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:NPOI.XSSF.UserModel.Extensions.XSSFCellAlignment.TextRotation" -->
         <member name="P:NPOI.XSSF.UserModel.Extensions.XSSFCellAlignment.WrapText">
              Whether the text should be wrapped
             
@@ -1213,6 +1270,9 @@
             POI default is 0 based, but the file stores
              as 1 based.
         </member>
+        <member name="M:NPOI.XSSF.UserModel.Helpers.ColumnHelper.SweepCleanColumns(NPOI.OpenXmlFormats.Spreadsheet.CT_Cols,NPOI.OpenXmlFormats.Spreadsheet.CT_Col[],NPOI.OpenXmlFormats.Spreadsheet.CT_Col)">
+            @see <a href="http://en.wikipedia.org/wiki/Sweep_line_algorithm">Sweep line algorithm</a>
+        </member>
         <member name="M:NPOI.XSSF.UserModel.Helpers.ColumnHelper.columnExists(NPOI.OpenXmlFormats.Spreadsheet.CT_Cols,System.Int64)">
             Does the column at the given 0 based index exist
              in the supplied list of column defInitions?
@@ -1229,28 +1289,27 @@
             
              @author Yegor Kozlov
         </member>
-        <member name="M:NPOI.XSSF.UserModel.Helpers.XSSFFormulaUtils.UpdateSheetName(System.Int32,System.String)">
+        <member name="M:NPOI.XSSF.UserModel.Helpers.XSSFFormulaUtils.UpdateSheetName(System.Int32,System.String,System.String)">
              Update sheet name in all formulas and named ranges.
-             Called from {@link XSSFWorkbook#SetSheetName(int, String)}
+             Called from {@link XSSFWorkbook#setSheetName(int, String)}
              <p/>
              <p>
              The idea is to parse every formula and render it back to string
-             with the updated sheet name. The IFormulaParsingWorkbook passed to the formula Parser
-             is constructed from the old workbook (sheet name is not yet updated) and
-             the FormulaRenderingWorkbook passed to FormulaRenderer#toFormulaString is a custom implementation that
-             returns the new sheet name.
+             with the updated sheet name. This is done by parsing into Ptgs,
+             looking for ones with sheet references in them, and changing those
              </p>
             
-             @param sheetIndex the 0-based index of the sheet being Changed
-             @param name       the new sheet name
+             @param sheetIndex the 0-based index of the sheet being changed
+             @param oldName    the old sheet name
+             @param newName    the new sheet name
         </member>
-        <member name="M:NPOI.XSSF.UserModel.Helpers.XSSFFormulaUtils.UpdateFormula(NPOI.XSSF.UserModel.XSSFCell,NPOI.SS.Formula.IFormulaRenderingWorkbook)">
+        <member name="M:NPOI.XSSF.UserModel.Helpers.XSSFFormulaUtils.UpdateFormula(NPOI.XSSF.UserModel.XSSFCell,System.String,System.String)">
              Parse cell formula and re-assemble it back using the specified FormulaRenderingWorkbook.
             
              @param cell the cell to update
              @param frwb the formula rendering workbbok that returns new sheet name
         </member>
-        <member name="M:NPOI.XSSF.UserModel.Helpers.XSSFFormulaUtils.UpdateName(NPOI.SS.UserModel.IName,NPOI.SS.Formula.IFormulaRenderingWorkbook)">
+        <member name="M:NPOI.XSSF.UserModel.Helpers.XSSFFormulaUtils.UpdateName(NPOI.SS.UserModel.IName,System.String,System.String)">
              Parse formula in the named range and re-assemble it  back using the specified FormulaRenderingWorkbook.
             
              @param name the name to update
@@ -1320,6 +1379,184 @@
             If the XPath is, for example, /Node1/Node2/Node3 and /Node1/Node2 is the common XPath for the table, the local XPath is /Node3
             	
             @return the local XPath 
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.ListAutoNumber">
+            Specifies type of automatic numbered bullet points that should be applied to a paragraph.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ALPHA_LC_PARENT_BOTH">
+            (a), (b), (c), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ALPHA_UC_PARENT_BOTH">
+            (A), (B), (C), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ALPHA_LC_PARENT_R">
+            a), b), c), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ALPHA_UC_PARENT_R">
+            A), B), C), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ALPHA_LC_PERIOD">
+            a., b., c., ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ALPHA_UC_PERIOD">
+            A., B., C., ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ARABIC_PARENT_BOTH">
+            (1), (2), (3), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ARABIC_PARENT_R">
+            1), 2), 3), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ARABIC_PERIOD">
+            1., 2., 3., ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ARABIC_PLAIN">
+            1, 2, 3, ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ROMAN_LC_PARENT_BOTH">
+            (i), (ii), (iii), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ROMAN_UC_PARENT_BOTH">
+            (I), (II), (III), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ROMAN_LC_PARENT_R">
+            i), ii), iii), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ROMAN_UC_PARENT_R">
+            I), II), III), ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ROMAN_LC_PERIOD">
+            i., ii., iii., ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.ROMAN_UC_PERIOD">
+            I., II., III., ...
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.CIRCLE_NUM_DB_PLAIN">
+            Dbl-byte circle numbers
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.CIRCLE_NUM_WD_BLACK_PLAIN">
+            Wingdings black circle numbers
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.ListAutoNumber.CIRCLE_NUM_WD_WHITE_PLAIN">
+            Wingdings white circle numbers
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.TextAlign">
+            Specified a list of text alignment types
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextAlign.LEFT">
+            Align text to the left margin.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextAlign.CENTER">
+            Align text in the center.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextAlign.RIGHT">
+            Align text to the right margin.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextAlign.JUSTIFY">
+            Align text so that it is justified across the whole line. It
+            is smart in the sense that it will not justify sentences
+            which are short
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.TextAutofit">
+            Specifies a list of auto-fit types.
+            <p>
+            Autofit specifies that a shape should be auto-fit to fully contain the text described within it.
+            Auto-fitting is when text within a shape is scaled in order to contain all the text inside
+            </p>
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextAutofit.NONE">
+            Specifies that text within the text body should not be auto-fit to the bounding box.
+            Auto-fitting is when text within a text box is scaled in order to remain inside
+            the text box.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextAutofit.NORMAL">
+             Specifies that text within the text body should be normally auto-fit to the bounding box.
+             Autofitting is when text within a text box is scaled in order to remain inside the text box.
+            
+             <p>
+             <em>Example:</em> Consider the situation where a user is building a diagram and needs
+             to have the text for each shape that they are using stay within the bounds of the shape.
+             An easy way this might be done is by using NORMAL autofit
+             </p>
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextAutofit.SHAPE">
+             Specifies that a shape should be auto-fit to fully contain the text described within it.
+             Auto-fitting is when text within a shape is scaled in order to contain all the text inside.
+            
+             <p>
+             <em>Example:</em> Consider the situation where a user is building a diagram and needs to have
+             the text for each shape that they are using stay within the bounds of the shape.
+             An easy way this might be done is by using SHAPE autofit
+             </p>
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.TextCap">
+            Text Capitalization that is to be applied to the text Run. This is a render-only
+            modification and does not affect the actual characters stored in the text Run.
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.TextDirection">
+            Vertical Text Types
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextDirection.HORIZONTAL">
+            Horizontal text. This should be default.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextDirection.VERTICAL">
+            Vertical orientation.
+            (each line is 90 degrees rotated clockwise, so it goes
+            from top to bottom; each next line is to the left from
+            the previous one).
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextDirection.VERTICAL_270">
+            Vertical orientation.
+            (each line is 270 degrees rotated clockwise, so it goes
+            from bottom to top; each next line is to the right from
+            the previous one).
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextDirection.STACKED">
+            Determines if all of the text is vertical
+            ("one letter on top of another").
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.TextFontAlign">
+            Specified a list of text font alignment types
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextFontAlign.AUTO">
+            Automatic alignment
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextFontAlign.TOP">
+            Align text to the top.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextFontAlign.CENTER">
+            Align text in the center.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextFontAlign.BASELINE">
+            Align text to the baseline.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextFontAlign.BOTTOM">
+            Align text to the bottom.
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.TextHorizontalOverflow">
+            Text Horizontal Overflow
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextHorizontalOverflow.OVERFLOW">
+            When a big character does not fit into a line, allow a
+            horizontal overflow.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextHorizontalOverflow.CLIP">
+            When a big character does not fit into a line, clip it at
+            the proper horizontal overflow.
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.TextVerticalOverflow">
+            Text Vertical Overflow
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextVerticalOverflow.OVERFLOW">
+            Overflow the text and pay no attention to top and bottom barriers.
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextVerticalOverflow.ELLIPSIS">
+            Pay attention to top and bottom barriers. Use an
+            ellipsis to denote that there is text which is not visible.     
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.TextVerticalOverflow.CLIP">
+            Pay attention to top and bottom barriers. Provide no
+            indication that there is text which is not visible.
         </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFAnchor">
              An anchor is what specifics the position of a shape within a client object
@@ -1519,6 +1756,9 @@
             Removes the comment for this cell, if there is one.
             </summary>
         </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFCell.RemoveHyperlink">
+            Removes the hyperlink for this cell, if there is one.
+        </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFCell.GetCTCell">
              Returns the xml bean containing information about the cell's location (reference), value,
              data type, formatting, and formula
@@ -1644,7 +1884,8 @@
         </member>
         <member name="P:NPOI.XSSF.UserModel.XSSFCell.Hyperlink">
             <summary>
-            Returns hyperlink associated with this cell
+            Get or set hyperlink associated with this cell
+            If the supplied hyperlink is null on setting, the hyperlink for this cell will be removed.
             </summary>
         </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFCellStyle">
@@ -1701,6 +1942,11 @@
             </summary>
             <returns>the type of alignment</returns>
         </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFCellStyle.SetDataFormat(System.Int32)">
+             Set the index of a data format
+            
+             @param fmt the index of a data format
+        </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFCellStyle.GetDataFormatString">
              Get the contents of the format string, by looking up
              the StylesSource
@@ -1722,7 +1968,7 @@
             
              @param color the color to use, null means no color
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFCellStyle.SetFillBackgroundColor(NPOI.XSSF.UserModel.XSSFColor)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFCellStyle.SetFillBackgroundColor(NPOI.XSSF.UserModel.XSSFColor)" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFCellStyle.SetFillForegroundColor(NPOI.XSSF.UserModel.XSSFColor)">
                     * Set the foreground fill color represented as a {@link XSSFColor} value.
                      * <br/>
@@ -2083,10 +2329,17 @@
              @param column the column index
              @param useMergedCells whether to use the contents of merged cells when calculating the width of the column
         </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.CreateDrawingPatriarch">
-             Create a new SpreadsheetML drawing. If this sheet already Contains a drawing - return that.
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.GetDrawingPatriarch">
+             Return the sheet's existing Drawing, or null if there isn't yet one.
+             
+             Use {@link #CreateDrawingPatriarch()} to Get or create
             
-             @return a SpreadsheetML drawing
+             @return a SpreadsheetML Drawing
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.CreateDrawingPatriarch">
+             Create a new SpreadsheetML Drawing. If this sheet already Contains a Drawing - return that.
+            
+             @return a SpreadsheetML Drawing
         </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFSheet.GetVMLDrawing(System.Boolean)">
              Get VML drawing for this sheet (aka 'legacy' drawig)
@@ -2153,6 +2406,14 @@
              @param columnIndex - the column to set (0-based)
              @return width - the width in units of 1/256th of a character width
         </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.GetColumnWidthInPixels(System.Int32)">
+            Get the actual column width in pixels
+            
+            <p>
+            Please note, that this method works correctly only for workbooks
+            with the default font size (Calibri 11pt for .xlsx).
+            </p>
+        </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFSheet.GetColumnStyle(System.Int32)">
             Returns the CellStyle that applies to the given
              (0 based) column, or null if no style has been
@@ -2213,6 +2474,9 @@
         <member name="M:NPOI.XSSF.UserModel.XSSFSheet.GroupColumn(System.Int32,System.Int32)">
             Group between (0 based) columns
         </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.SetColWidthAttribute(NPOI.OpenXmlFormats.Spreadsheet.CT_Cols)">
+            Do not leave the width attribute undefined (see #52186).
+        </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFSheet.GroupRow(System.Int32,System.Int32)">
              Tie a range of cell toGether so that they can be collapsed or expanded
             
@@ -2252,6 +2516,15 @@
              Removes a merged region of cells (hence letting them free)
             
              @param index of the region to unmerge
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.RemoveMergedRegions(NPOI.Util.Collections.HashSet{System.Int32})">
+             Removes a number of merged regions of cells (hence letting them free)
+             
+             This method can be used to bulk-remove merged regions in a way
+             much faster than calling RemoveMergedRegion() for every single 
+             merged region.
+            
+             @param indices A Set of the regions to unmerge
         </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFSheet.RemoveRow(NPOI.SS.UserModel.IRow)">
              Remove a row from this sheet.  All cells Contained in the row are Removed as well
@@ -2293,7 +2566,7 @@
              @param columnIndex - the column to get (0-based)
              @param hidden - the visiblity state of the column
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFSheet.SetColumnWidth(System.Int32,System.Int32)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFSheet.SetColumnWidth(System.Int32,System.Int32)" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFSheet.SetRowGroupCollapsed(System.Int32,System.Boolean)">
              group the row It is possible for collapsed to be false and yet still have
              the rows in question hidden. This can be achieved by having a lower
@@ -2333,9 +2606,9 @@
              @param denominator   The denominator for the zoom magnification.
              @see #SetZoom(int)
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFSheet.SetZoom(System.Int32)”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFSheet.ShiftRows(System.Int32,System.Int32,System.Int32)”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFSheet.ShiftRows(System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFSheet.SetZoom(System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFSheet.ShiftRows(System.Int32,System.Int32,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFSheet.ShiftRows(System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFSheet.ShowInPane(System.Int16,System.Int16)">
              Location of the top left visible cell Location of the top left visible cell in the bottom right
              pane (when in Left-to-Right mode).
@@ -2360,6 +2633,12 @@
              Register a hyperlink in the collection of hyperlinks on this sheet
             
              @param hyperlink the link to add
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.RemoveHyperlink(System.Int32,System.Int32)">
+             Removes a hyperlink in the collection of hyperlinks on this sheet
+            
+             @param row row index
+             @param column column index
         </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFSheet.GetDefaultSheetView">
             Return the default sheet view. This is the last one if the sheet's views, according to sec. 3.3.1.83
@@ -2766,9 +3045,6 @@
             
              @return the CTChartsheet bean holding this sheet's data
         </member>
-        <member name="T:NPOI.XSSF.UserModel.XSSFChildAnchor">
-            @author Yegor Kozlov
-        </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFClientAnchor">
              A client anchor is attached to an excel worksheet.  It anchors against
              top-left and bottom-right cells.
@@ -2822,10 +3098,6 @@
         <member name="M:NPOI.XSSF.UserModel.XSSFColor.#ctor">
             Create an new instance of XSSFColor
         </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFColor.CorrectRGB(System.Byte[])">
-            For RGB colours, but not ARGB (we think...)
-            Excel Gets black and white the wrong way around, so switch them 
-        </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFColor.GetARgb">
             Standard Alpha Red Green Blue ctColor value (ARGB).
         </member>
@@ -2857,7 +3129,7 @@
             Standard Red Green Blue ctColor value (RGB).
             If there was an A (Alpha) value, it will be stripped.
         </member>
-        <!-- 对于成员“P:NPOI.XSSF.UserModel.XSSFColor.Theme”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:NPOI.XSSF.UserModel.XSSFColor.Theme" -->
         <member name="P:NPOI.XSSF.UserModel.XSSFColor.Tint">
              Specifies the tint value applied to the ctColor.
             
@@ -3117,6 +3389,11 @@
         </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFDataFormat.GetFormat(System.Int16)">
             Get the format string that matches the given format index
+            @param index of a format
+            @return string represented at index of format or null if there is not a  format at that index
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFDataFormat.GetFormat(System.Int32)">
+            get the format string that matches the given format index
             @param index of a format
             @return string represented at index of format or null if there is not a  format at that index
         </member>
@@ -3680,7 +3957,7 @@
         <member name="M:NPOI.XSSF.UserModel.XSSFGraphicFrame.SetChart(NPOI.XSSF.UserModel.XSSFChart,System.String)">
             Assign a DrawingML chart to the graphic frame.
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFGraphicFrame.AppendChartElement(NPOI.OpenXmlFormats.Dml.CT_GraphicalObjectData,System.String)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFGraphicFrame.AppendChartElement(NPOI.OpenXmlFormats.Dml.CT_GraphicalObjectData,System.String)" -->
         <member name="P:NPOI.XSSF.UserModel.XSSFGraphicFrame.Name">
             Returns the frame name.
             @return name of the frame
@@ -3691,6 +3968,62 @@
         </member>
         <member name="P:NPOI.XSSF.UserModel.XSSFGraphicFrame.Id">
             Gets the frame id.
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.XSSFTextRun">
+            Represents a run of text within the Containing text body. The run element is the
+            lowest level text separation mechanism within a text body.
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFTextRun.SetFont(System.String)">
+             Specifies the typeface, or name of the font that is to be used for this text Run.
+            
+             @param typeface  the font to apply to this text Run.
+             The value of <code>null</code> unsets the Typeface attribute from the underlying xml.
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFTextRun.SetBaselineOffset(System.Double)">
+              Set the baseline for both the superscript and subscript fonts.
+              <p>
+                 The size is specified using a percentage.
+                 Positive values indicate superscript, negative values indicate subscript.
+              </p>
+            
+             @param baselineOffset
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.FontSize">
+            @return font size in points or -1 if font size is not Set.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.CharacterSpacing">
+            
+             @return the spacing between characters within a text Run,
+             If this attribute is omitted then a value of 0 or no adjustment is assumed.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.FontFamily">
+            @return  font family or null if not Set
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.IsStrikethrough">
+            get or set whether a run of text will be formatted as strikethrough text. Default is false.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.IsSuperscript">
+            get or set whether a run of text will be formatted as a superscript text. Default is false.
+            Default base line offset is 30%
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.IsSubscript">
+            get or set whether a run of text will be formatted as a superscript text. Default is false.
+            Default base line offset is -25%.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.TextCap">
+            @return whether a run of text will be formatted as a superscript text. Default is false.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.IsBold">
+            get or set whether this run of text is formatted as bold text
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.IsItalic">
+            get or set whether this run of text is formatted as italic text
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextRun.IsUnderline">
+            get or set whether this run of text is formatted as underlined text
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFLineBreak.SetText(System.String)">
+            Always . You cannot change text of a line break.
         </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFMap">
              This class : the Map element (Open Office XML Part 4:
@@ -3751,7 +4084,7 @@
             output values resulting from Applying an advanced filter criteria to a source
             range
         </member>
-        <!-- 对于成员“F:NPOI.XSSF.UserModel.XSSFName.BUILTIN_FILTER_DB”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:NPOI.XSSF.UserModel.XSSFName.BUILTIN_FILTER_DB" -->
         <member name="F:NPOI.XSSF.UserModel.XSSFName.BUILTIN_CONSOLIDATE_AREA">
             A built-in defined name that refers to a consolidation area
         </member>
@@ -3879,9 +4212,10 @@
              @return the 0-based column of the first cell that Contains the hyperlink
         </member>
         <member name="P:NPOI.XSSF.UserModel.XSSFHyperlink.LastColumn">
-             Return the column of the last cell that Contains the hyperlink
+            Return the column of the last cell that Contains the hyperlink
+            For XSSF, a Hyperlink may only reference one cell
             
-             @return the 0-based column of the last cell that Contains the hyperlink
+            @return the 0-based column of the last cell that Contains the hyperlink
         </member>
         <member name="P:NPOI.XSSF.UserModel.XSSFHyperlink.FirstRow">
              Return the row of the first cell that Contains the hyperlink
@@ -3890,6 +4224,7 @@
         </member>
         <member name="P:NPOI.XSSF.UserModel.XSSFHyperlink.LastRow">
              Return the row of the last cell that Contains the hyperlink
+             For XSSF, a Hyperlink may only reference one cell
             
              @return the 0-based row of the last cell that Contains the hyperlink
         </member>
@@ -3936,13 +4271,6 @@
             
              @author Yegor Kozlov
         </member>
-        <member name="F:NPOI.XSSF.UserModel.XSSFPicture.DEFAULT_COLUMN_WIDTH">
-             Column width measured as the number of characters of the maximum digit width of the
-             numbers 0, 1, 2, ..., 9 as rendered in the normal style's font. There are 4 pixels of margin
-             pAdding (two on each side), plus 1 pixel pAdding for the gridlines.
-            
-             This value is the same for default font in Office 2007 (Calibry) and Office 2003 and earlier (Arial)
-        </member>
         <member name="F:NPOI.XSSF.UserModel.XSSFPicture.prototype">
             A default instance of CTShape used for creating new shapes.
         </member>
@@ -3980,16 +4308,28 @@
              </p>
         </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFPicture.Resize(System.Double)">
-             Reset the image to the original size.
+             Resize the image proportionally.
+            
+             @see #resize(double, double)
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPicture.Resize(System.Double,System.Double)">
+             Resize the image relatively to its current size.
              <p>
              Please note, that this method works correctly only for workbooks
              with the default font size (Calibri 11pt for .xlsx).
-             If the default font is Changed the resized image can be streched vertically or horizontally.
+             If the default font is changed the resized image can be streched vertically or horizontally.
+             </p>
+             <p>
+             <code>resize(1.0,1.0)</code> keeps the original size,<br/>
+             <code>resize(0.5,0.5)</code> resize to 50% of the original,<br/>
+             <code>resize(2.0,2.0)</code> resizes to 200% of the original.<br/>
+             <code>resize({@link Double#MAX_VALUE},{@link Double#MAX_VALUE})</code> resizes to the dimension of the embedded image. 
              </p>
             
-             @param scale the amount by which image dimensions are multiplied relative to the original size.
-             <code>resize(1.0)</code> Sets the original size, <code>resize(0.5)</code> resize to 50% of the original,
-             <code>resize(2.0)</code> resizes to 200% of the original.
+             @param scaleX the amount by which the image width is multiplied relative to the original width,
+              when set to {@link java.lang.Double#MAX_VALUE} the width of the embedded image is used
+             @param scaleY the amount by which the image height is multiplied relative to the original height,
+              when set to {@link java.lang.Double#MAX_VALUE} the height of the embedded image is used
         </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFPicture.GetPreferredSize">
              Calculate the preferred size for this picture.
@@ -4002,7 +4342,14 @@
              @param scale the amount by which image dimensions are multiplied relative to the original size.
              @return XSSFClientAnchor with the preferred size for this image
         </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFPicture.GetImageDimension(NPOI.OpenXml4Net.OPC.PackagePart,System.Int32)">
+        <member name="M:NPOI.XSSF.UserModel.XSSFPicture.GetPreferredSize(System.Double,System.Double)">
+             Calculate the preferred size for this picture.
+            
+             @param scaleX the amount by which image width is multiplied relative to the original width.
+             @param scaleY the amount by which image height is multiplied relative to the original height.
+             @return XSSFClientAnchor with the preferred size for this image
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPicture.GetImageDimension(NPOI.OpenXml4Net.OPC.PackagePart,NPOI.SS.UserModel.PictureType)">
              Return the dimension of this image
             
              @param part the namespace part holding raw picture data
@@ -4010,6 +4357,17 @@
              {@link Workbook#PICTURE_TYPE_PNG} or {@link Workbook#PICTURE_TYPE_DIB}
             
              @return image dimension in pixels
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPicture.GetImageDimension">
+             Return the dimension of the embedded image in pixel
+            
+             @return image dimension in pixels
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFPicture.ClientAnchor">
+            @return the anchor that is used by this shape.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFPicture.Sheet">
+            @return the sheet which contains the picture shape
         </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFPictureData">
             Raw picture data, normally attached to a SpreadsheetML Drawing.
@@ -4035,7 +4393,11 @@
             
              @return the file extension.
         </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFPictureData.GetPictureType">
+        <member name="M:NPOI.XSSF.UserModel.XSSFPictureData.PrepareForCommit">
+            *PictureData objects store the actual content in the part directly without keeping a 
+            copy like all others therefore we need to handle them differently.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFPictureData.PictureType">
              Return an integer constant that specifies type of this picture
             
              @return an integer constant that specifies type of this picture 
@@ -4368,7 +4730,7 @@
              @param row the xml bean Containing all cell defInitions for this row.
              @param sheet the parent sheet.
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFRow.CellIterator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFRow.CellIterator" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFRow.GetEnumerator">
              Alias for {@link #cellIterator()} to allow  foreach loops:
              <blockquote><pre>
@@ -4392,8 +4754,8 @@
              		 greater than the row number of the argument <code>XSSFRow</code>.
              @throws ArgumentException if the argument row belongs to a different worksheet
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFRow.CreateCell(System.Int32)”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFRow.CreateCell(System.Int32,NPOI.SS.UserModel.CellType)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFRow.CreateCell(System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFRow.CreateCell(System.Int32,NPOI.SS.UserModel.CellType)" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFRow.GetCell(System.Int32)">
              Returns the cell at the given (0 based) index,
               with the {@link NPOI.SS.usermodel.Row.MissingCellPolicy} from the parent Workbook.
@@ -4410,7 +4772,7 @@
             <param name="cellnum">0 based column number</param>
             <returns>Cell representing that column or null if Undefined.</returns>
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFRow.GetCell(System.Int32,NPOI.SS.UserModel.MissingCellPolicy)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFRow.GetCell(System.Int32,NPOI.SS.UserModel.MissingCellPolicy)" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFRow.SetRowStyle(NPOI.SS.UserModel.ICellStyle)">
             Applies a whole-row cell styling to the row.
             If the value is null then the style information is Removed,
@@ -4586,8 +4948,8 @@
              {@link NPOI.ss.usermodel.ComparisonOperator#BETWEEN}) and
              {@link NPOI.ss.usermodel.ComparisonOperator#NOT_BETWEEN} operations)
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFSheetConditionalFormatting.CreateConditionalFormattingRule(System.String)”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFSheetConditionalFormatting.AddConditionalFormatting(NPOI.SS.UserModel.IConditionalFormatting)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFSheetConditionalFormatting.CreateConditionalFormattingRule(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFSheetConditionalFormatting.AddConditionalFormatting(NPOI.SS.UserModel.IConditionalFormatting)" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFSheetConditionalFormatting.GetConditionalFormattingAt(System.Int32)">
              Gets Conditional Formatting object at a particular index
             
@@ -4603,30 +4965,138 @@
             @return number of Conditional Formatting objects of the sheet
         </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFSimpleShape">
-             Represents a shape with a predefined geometry in a SpreadsheetML Drawing.
-             Possible shape types are defined in {@link NPOI.ss.usermodel.ShapeTypes}
-            
-             @author Yegor Kozlov
+            Represents a shape with a predefined geometry in a SpreadsheetML Drawing.
+            Possible shape types are defined in {@link NPOI.SS.UserModel.ShapeTypes}
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.XSSFSimpleShape._paragraphs">
+            List of the paragraphs that make up the text in this shape
         </member>
         <member name="F:NPOI.XSSF.UserModel.XSSFSimpleShape.prototype">
-            A default instance of CT_Shape used for creating new shapes.
+            A default instance of CTShape used for creating new shapes.
         </member>
         <member name="F:NPOI.XSSF.UserModel.XSSFSimpleShape.ctShape">
             Xml bean that stores properties of this shape
         </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.Prototype">
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.GetPrototype">
             Prototype with the default structure of a new auto-shape.
         </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.ApplyAttributes(NPOI.OpenXmlFormats.Spreadsheet.CT_RPrElt,NPOI.OpenXmlFormats.Dml.CT_TextCharacterProperties)">
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.ProcessAutoNumGroup(System.Int32,System.Int32,System.Collections.Generic.List{System.Int32},System.Text.StringBuilder)">
             
-             org.openxmlformats.schemas.spreadsheetml.x2006.main.CTRPrElt to
-             org.openxmlformats.schemas.drawingml.x2006.main.CTFont adapter
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.GetBulletPrefix(NPOI.XSSF.UserModel.ListAutoNumber,System.Int32)">
+            Returns a string Containing an appropriate prefix for an auto-numbering bullet
+            @param scheme the auto-numbering scheme used by the bullet
+            @param value the value of the bullet
+            @return appropriate prefix for an auto-numbering bullet
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.valueToAlpha(System.Int32)">
+            Convert an integer to its alpha equivalent e.g. 1 = A, 2 = B, 27 = AA etc
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.valueToRoman(System.Int32)">
+            Convert an integer to its roman equivalent e.g. 1 = I, 9 = IX etc
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.ClearText">
+            Clear all text from this shape
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.SetText(System.String)">
+            Set a single paragraph of text on the shape. Note this will replace all existing paragraphs Created on the shape.
+            @param text	string representing the paragraph text
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.SetText(NPOI.XSSF.UserModel.XSSFRichTextString)">
+            Set a single paragraph of text on the shape. Note this will replace all existing paragraphs Created on the shape.
+            @param str	rich text string representing the paragraph text
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.AddNewTextParagraph">
+             Add a new paragraph run to this shape
+            
+             @return Created paragraph run
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.AddNewTextParagraph(System.String)">
+             Add a new paragraph run to this shape, Set to the provided string
+            
+             @return Created paragraph run
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.AddNewTextParagraph(NPOI.XSSF.UserModel.XSSFRichTextString)">
+             Add a new paragraph run to this shape, Set to the provided rich text string 
+            
+             @return Created paragraph run
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSimpleShape.ApplyAttributes(NPOI.OpenXmlFormats.Spreadsheet.CT_RPrElt,NPOI.OpenXmlFormats.Dml.CT_TextCharacterProperties)">
+            org.Openxmlformats.schemas.spreadsheetml.x2006.main.CTRPrElt to
+            org.Openxmlformats.schemas.Drawingml.x2006.main.CTFont adapter
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.Text">
+            Returns the text from all paragraphs in the shape. Paragraphs are Separated by new lines.
+            
+            @return  text Contained within this shape or empty string
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.TextParagraphs">
+            Returns a collection of the XSSFTextParagraphs that are attached to this shape
+            
+            @return text paragraphs in this shape
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.TextHorizontalOverflow">
+             Returns the type of horizontal overflow for the text.
+            
+             @return the type of horizontal overflow
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.TextVerticalOverflow">
+             Returns the type of vertical overflow for the text.
+            
+             @return the type of vertical overflow
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.VerticalAlignment">
+             Returns the type of vertical alignment for the text within the shape.
+            
+             @return the type of vertical alignment
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.TextDirection">
+            Gets the vertical orientation of the text
+            
+            @return vertical orientation of the text
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.BottomInset">
+             Returns the distance (in points) between the bottom of the text frame
+             and the bottom of the inscribed rectangle of the shape that Contains the text.
+            
+             @return the bottom inset in points
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.LeftInset">
+              Returns the distance (in points) between the left edge of the text frame
+              and the left edge of the inscribed rectangle of the shape that Contains
+              the text.
+            
+             @return the left inset in points
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.RightInset">
+              Returns the distance (in points) between the right edge of the
+              text frame and the right edge of the inscribed rectangle of the shape
+              that Contains the text.
+            
+             @return the right inset in points
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.TopInset">
+              Returns the distance (in points) between the top of the text frame
+              and the top of the inscribed rectangle of the shape that Contains the text.
+            
+             @return the top inset in points
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.WordWrap">
+            @return whether to wrap words within the bounding rectangle
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.TextAutofit">
+            
+             Specifies that a shape should be auto-fit to fully contain the text described within it.
+             Auto-fitting is when text within a shape is scaled in order to contain all the text inside
+            
+             @param value type of autofit
+             @return type of autofit
         </member>
         <member name="P:NPOI.XSSF.UserModel.XSSFSimpleShape.ShapeType">
-             Gets the shape type, one of the constants defined in {@link NPOI.ss.usermodel.ShapeTypes}.
+             Gets the shape type, one of the constants defined in {@link NPOI.SS.UserModel.ShapeTypes}.
             
              @return the shape type
-             @see NPOI.ss.usermodel.ShapeTypes
+             @see NPOI.SS.UserModel.ShapeTypes
         </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFTable">
              
@@ -4684,6 +5154,120 @@
              Represents a text box in a SpreadsheetML Drawing.
             
              @author Yegor Kozlov
+        </member>
+        <member name="T:NPOI.XSSF.UserModel.XSSFTextParagraph">
+            Represents a paragraph of text within the Containing text body.
+            The paragraph is the highest level text separation mechanism.
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.AddNewTextRun">
+             Add a new run of text
+            
+             @return a new run of text
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.AddLineBreak">
+             Insert a line break
+            
+             @return text run representing this line break ('\n')
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.AddTabStop(System.Double)">
+            Add a single tab stop to be used on a line of text when there are one or more tab characters
+            present within the text. 
+            
+            @param value the position of the tab stop relative to the left margin
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.IsBullet">
+            Returns whether this paragraph has bullets
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.SetBullet(System.Boolean)">
+            Set or unset this paragraph as a bullet point
+            
+            @param flag whether text in this paragraph has bullets
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.SetBullet(NPOI.XSSF.UserModel.ListAutoNumber,System.Int32)">
+             Set this paragraph as an automatic numbered bullet point
+            
+             @param scheme type of auto-numbering
+             @param startAt the number that will start number for a given sequence of automatically
+                    numbered bullets (1-based).
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.SetBullet(NPOI.XSSF.UserModel.ListAutoNumber)">
+             Set this paragraph as an automatic numbered bullet point
+            
+             @param scheme type of auto-numbering
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.TextAlign">
+            get or set the alignment that is to be applied to the paragraph.
+            Possible values for this include left, right, centered, justified and distributed,
+            If this attribute is omitted, then a value of left is implied.
+            @return alignment that is applied to the paragraph
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.TextFontAlign">
+            Determines where vertically on a line of text the actual words are positioned. This deals
+            with vertical placement of the characters with respect to the baselines. For instance
+            having text anchored to the top baseline, anchored to the bottom baseline, centered in
+            between, etc.
+            If this attribute is omitted, then a value of baseline is implied.
+            @return alignment that is applied to the paragraph
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.BulletFont">
+            @return the font to be used on bullet characters within a given paragraph
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.BulletCharacter">
+            @return the character to be used in place of the standard bullet point
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.BulletFontColor">
+            
+             @return the color of bullet characters within a given paragraph.
+             A <code>null</code> value means to use the text font color.
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:NPOI.XSSF.UserModel.XSSFTextParagraph.BulletFontSize" -->
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.Indent">
+            
+             @return the indent applied to the first line of text in the paragraph.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.LeftMargin">
+             Specifies the left margin of the paragraph. This is specified in Addition to the text body
+             inset and applies only to this text paragraph. That is the text body inset and the LeftMargin
+             attributes are Additive with respect to the text position.
+            
+             @param value the left margin of the paragraph, -1 to clear the margin and use the default of 0.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.RightMargin">
+             Specifies the right margin of the paragraph. This is specified in Addition to the text body
+             inset and applies only to this text paragraph. That is the text body inset and the marR
+             attributes are Additive with respect to the text position.
+            
+             @param value the right margin of the paragraph, -1 to clear the margin and use the default of 0.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.DefaultTabSize">
+            
+             @return the default size for a tab character within this paragraph in points
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:NPOI.XSSF.UserModel.XSSFTextParagraph.LineSpacing" -->
+        <!-- Badly formed XML comment ignored for member "P:NPOI.XSSF.UserModel.XSSFTextParagraph.SpaceBefore" -->
+        <!-- Badly formed XML comment ignored for member "P:NPOI.XSSF.UserModel.XSSFTextParagraph.SpaceAfter" -->
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.Level">
+            Specifies the particular level text properties that this paragraph will follow.
+            The value for this attribute formats the text according to the corresponding level
+            paragraph properties defined in the list of styles associated with the body of text
+            that this paragraph belongs to (therefore in the parent shape).
+            <p>
+            Note that the closest properties object to the text is used, therefore if there is
+            a conflict between the text paragraph properties and the list style properties for 
+            this level then the text paragraph properties will take precedence.
+            </p>
+            Returns the level of text properties that this paragraph will follow.
+            
+            @return the text level of this paragraph (0-based). Default is 0.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.IsBulletAutoNumber">
+            Returns whether this paragraph has automatic numbered bullets
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.BulletAutoNumberStart">
+            Returns the starting number if this paragraph has automatic numbered bullets, otherwise returns 0
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.BulletAutoNumberScheme">
+            Returns the auto number scheme if this paragraph has automatic numbered bullets, otherwise returns ListAutoNumber.ARABIC_PLAIN
         </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFVMLDrawing">
              Represents a SpreadsheetML VML Drawing.
@@ -4789,6 +5373,9 @@
         <member name="F:NPOI.XSSF.UserModel.XSSFWorkbook.calcChain">
             TODO
         </member>
+        <member name="F:NPOI.XSSF.UserModel.XSSFWorkbook.externalLinks">
+            External Links, for referencing names or cells in other workbooks.
+        </member>
         <member name="F:NPOI.XSSF.UserModel.XSSFWorkbook.mapInfo">
             A collection of custom XML mappings
         </member>
@@ -4839,7 +5426,8 @@
                   pkg.close(); // gracefully closes the underlying zip file
               </code></pre>     
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFWorkbook.#ctor(System.String)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFWorkbook.#ctor(System.IO.FileInfo)" -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFWorkbook.#ctor(System.String)" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFWorkbook.OnWorkbookCreate">
             Create a new CT_Workbook with all values Set to default
         </member>
@@ -4973,6 +5561,12 @@
              @param idx  index within the Set of styles
              @return XSSFCellStyle object at the index
         </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFWorkbook.GetCellStyleAt(System.Int32)">
+             Get the cell style object at the given index
+            
+             @param idx  index within the set of styles
+             @return XSSFCellStyle object at the index
+        </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFWorkbook.GetFontAt(System.Int16)">
              Get the font at the given index number
             
@@ -4998,7 +5592,7 @@
              @param name of the sheet
              @return XSSFSheet with the name provided or <code>null</code> if it does not exist
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetAt(System.Int32)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetAt(System.Int32)" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFWorkbook.GetSheetIndex(System.String)">
             <summary>
             Returns the index of the sheet by his name (case insensitive match)
@@ -5068,7 +5662,7 @@
              @throws ArgumentException if the index is out of range (index
                         &lt; 0 || index &gt;= NumberOfSheets).
         </member>
-        <!-- 对于成员“M:NPOI.XSSF.UserModel.XSSFWorkbook.SetPrintArea(System.Int32,System.String)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.XSSF.UserModel.XSSFWorkbook.SetPrintArea(System.Int32,System.String)" -->
         <member name="M:NPOI.XSSF.UserModel.XSSFWorkbook.SetPrintArea(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             For the Convenience of Java Programmers maintaining pointers.
             @see #setPrintArea(int, String)
@@ -5241,6 +5835,15 @@
             
              @return the helper class used to query the custom XML mapping defined in this workbook
         </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFWorkbook.LinkExternalWorkbook(System.String,NPOI.SS.UserModel.IWorkbook)">
+             Adds the External Link Table part and relations required to allow formulas 
+              referencing the specified external workbook to be added to this one. Allows
+              formulas such as "[MyOtherWorkbook.xlsx]Sheet3!$A$5" to be added to the 
+              file, for workbooks not already linked / referenced.
+            
+             @param name The name the workbook will be referenced as in formulas
+             @param workbook The open workbook to fetch the link required information from
+        </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFWorkbook.IsStructureLocked">
             Specifies a bool value that indicates whether structure of workbook is locked. <br/>
             A value true indicates the structure of the workbook is locked. Worksheets in the workbook can't be Moved,
@@ -5355,6 +5958,19 @@
             
              @return integer that Contains the index to the active sheet in this book view.
         </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFWorkbook.ExternalLinksTable">
+                     * Returns the list of {@link ExternalLinksTable} object for this workbook
+                     * 
+                     * <p>The external links table specifies details of named ranges etc
+                     *  that are referenced from other workbooks, along with the last seen
+                     *  values of what they point to.</p>
+                     *
+                     * <p>Note that Excel uses index 0 for the current workbook, so the first
+                     *  External Links in a formula would be '[1]Foo' which corresponds to
+                     *  entry 0 in this list.</p>
+            
+                     * @return the <code>ExternalLinksTable</code> list, which may be empty
+        </member>
         <member name="T:NPOI.XSSF.Util.EvilUnclosedBRFixingInputStream">
             This is a seriously sick fix for the fact that some .xlsx
              files contain raw bits of HTML, without being escaped
@@ -5372,6 +5988,9 @@
         </member>
         <member name="M:NPOI.XSSF.Util.EvilUnclosedBRFixingInputStream.ReadFromSpare(System.Byte[],System.Int32,System.Int32)">
             Reads into the buffer from the spare bytes
+        </member>
+        <member name="T:NPOI.XSSF.XLSBUnsupportedException">
+            We don't support .xlsb files, sorry
         </member>
         <member name="T:NPOI.XWPF.Extractor.XWPFWordExtractor">
             Helper class to extract text from an OOXML Word file
@@ -5460,6 +6079,39 @@
             @param prgrph The paragraph of text to work on
             @param outputHyperlinkUrls Should we output the links too, or just the link text?
         </member>
+        <member name="T:NPOI.XWPF.UserModel.AbstractXWPFSDT">
+            Experimental abstract class that is a base for XWPFSDT and XWPFSDTCell
+            <p/>
+            WARNING - APIs expected to change rapidly.
+            <p/>
+            These classes have so far been built only for Read-only Processing.
+        </member>
+        <member name="T:NPOI.XWPF.UserModel.ISDTContents">
+            Interface for anything that can be within an STD:
+             {@link XWPFRun}, {@link XWPFTable}, {@link XWPFParagraph},
+             {@link XWPFSDT} etc
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.AbstractXWPFSDT.GetTitle">
+            @return first SDT Title
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.AbstractXWPFSDT.GetTag">
+            @return first SDT Tag
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.AbstractXWPFSDT.GetBody">
+            @return null
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.AbstractXWPFSDT.GetPart">
+            @return document part
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.AbstractXWPFSDT.GetPartType">
+            @return partType
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.AbstractXWPFSDT.GetElementType">
+            @return element type
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.AbstractXWPFSDT.Content">
+            @return the content object
+        </member>
         <member name="T:NPOI.XWPF.UserModel.BodyElementType">
              <p>
              9 Jan 2010
@@ -5471,14 +6123,7 @@
             
         </member>
         <member name="T:NPOI.XWPF.UserModel.BodyType">
-             <p>
-             9 Jan 2010
-             </p>
-             <p>
-             // TODO insert Javadoc here!
-             </p>
-             @author epp
-            
+            The different kinds of {@link IBody} that exist
         </member>
         <member name="T:NPOI.XWPF.UserModel.Borders">
              Specifies all types of borders which can be specified for WordProcessingML
@@ -5496,184 +6141,184 @@
              </ul>
              @author Gisella Bronzetti
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.SINGLE">
+        <member name="F:NPOI.XWPF.UserModel.Borders.Single">
             Specifies a line border consisting of a single line around the parent
             object.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.APPLES">
-            Specifies an art border consisting of a repeated image of an apple
+        <member name="F:NPOI.XWPF.UserModel.Borders.Apples">
+            specifies an art border consisting of a repeated image of an apple
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.ARCHED_SCALLOPS">
-            Specifies an art border consisting of a repeated image of a shell pattern
+        <member name="F:NPOI.XWPF.UserModel.Borders.ArchedScallops">
+            specifies an art border consisting of a repeated image of a shell pattern
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BABY_PACIFIER">
-            Specifies an art border consisting of a repeated image of a baby pacifier
+        <member name="F:NPOI.XWPF.UserModel.Borders.BabyPacifier">
+            specifies an art border consisting of a repeated image of a baby pacifier
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BABY_RATTLE">
-            Specifies an art border consisting of a repeated image of a baby rattle
+        <member name="F:NPOI.XWPF.UserModel.Borders.BabyRattle">
+            specifies an art border consisting of a repeated image of a baby rattle
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BALLOONS_3_COLORS">
-            Specifies an art border consisting of a repeated image of a Set of
+        <member name="F:NPOI.XWPF.UserModel.Borders.Balloons3Colors">
+            specifies an art border consisting of a repeated image of a set of
             balloons
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BALLOONS_HOT_AIR">
-            Specifies an art border consisting of a repeated image of a hot air
+        <member name="F:NPOI.XWPF.UserModel.Borders.BalloonsHotAir">
+            specifies an art border consisting of a repeated image of a hot air
             balloon
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_BLACK_DASHES">
-            Specifies an art border consisting of a repeating image of a black and
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicBlackDashes">
+            specifies an art border consisting of a repeating image of a black and
             white background.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_BLACK_DOTS">
-            Specifies an art border consisting of a repeating image of a black dot on
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicBlackDots">
+            specifies an art border consisting of a repeating image of a black dot on
             a white background.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_BLACK_SQUARES">
-            Specifies an art border consisting of a repeating image of a black and
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicBlackSquares">
+            specifies an art border consisting of a repeating image of a black and
             white background
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_THIN_LINES">
-            Specifies an art border consisting of a repeating image of a black and
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicThinLines">
+            specifies an art border consisting of a repeating image of a black and
             white background.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_WHITE_DASHES">
-            Specifies an art border consisting of a repeating image of a black and
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicWhiteDashes">
+            specifies an art border consisting of a repeating image of a black and
             white background.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_WHITE_DOTS">
-            Specifies an art border consisting of a repeating image of a white dot on
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicWhiteDots">
+            specifies an art border consisting of a repeating image of a white dot on
             a black background.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_WHITE_SQUARES">
-            Specifies an art border consisting of a repeating image of a black and
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicWhiteSquares">
+            specifies an art border consisting of a repeating image of a black and
             white background.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_WIDE_INLINE">
-            Specifies an art border consisting of a repeating image of a black and
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicWideInline">
+            specifies an art border consisting of a repeating image of a black and
             white background.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_WIDE_MIDLINE">
-            Specifies an art border consisting of a repeating image of a black and
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicWideMidline">
+            specifies an art border consisting of a repeating image of a black and
             white background
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BASIC_WIDE_OUTLINE">
-            Specifies an art border consisting of a repeating image of a black and
+        <member name="F:NPOI.XWPF.UserModel.Borders.BasicWideOutline">
+            specifies an art border consisting of a repeating image of a black and
             white background
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BATS">
-            Specifies an art border consisting of a repeated image of bats
+        <member name="F:NPOI.XWPF.UserModel.Borders.Bats">
+            specifies an art border consisting of a repeated image of bats
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BIRDS">
-            Specifies an art border consisting of repeating images of birds
+        <member name="F:NPOI.XWPF.UserModel.Borders.Birds">
+            specifies an art border consisting of repeating images of birds
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.BIRDS_FLIGHT">
-            Specifies an art border consisting of a repeated image of birds flying
+        <member name="F:NPOI.XWPF.UserModel.Borders.BirdsFlight">
+            specifies an art border consisting of a repeated image of birds flying
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CABINS">
-            Specifies an art border consisting of a repeated image of a cabin
+        <member name="F:NPOI.XWPF.UserModel.Borders.Cabins">
+            specifies an art border consisting of a repeated image of a cabin
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CAKE_SLICE">
-            Specifies an art border consisting of a repeated image of a piece of cake
+        <member name="F:NPOI.XWPF.UserModel.Borders.CakeSlice">
+            specifies an art border consisting of a repeated image of a piece of cake
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CANDY_CORN">
-            Specifies an art border consisting of a repeated image of candy corn
+        <member name="F:NPOI.XWPF.UserModel.Borders.CandyCorn">
+            specifies an art border consisting of a repeated image of candy corn
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CELTIC_KNOTWORK">
-            Specifies an art border consisting of a repeated image of a knot work
+        <member name="F:NPOI.XWPF.UserModel.Borders.CelticKnotwork">
+            specifies an art border consisting of a repeated image of a knot work
             pattern
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CERTIFICATE_BANNER">
-            Specifies an art border consisting of a banner.
+        <member name="F:NPOI.XWPF.UserModel.Borders.CertificateBanner">
+            specifies an art border consisting of a banner.
             <p>
-            If the border is on the left or right, no border is displayed.
+            if the border is on the left or right, no border is displayed.
             </p>
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CHAIN_LINK">
-            Specifies an art border consisting of a repeating image of a chain link
+        <member name="F:NPOI.XWPF.UserModel.Borders.ChainLink">
+            specifies an art border consisting of a repeating image of a chain link
             pattern.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CHAMPAGNE_BOTTLE">
-            Specifies an art border consisting of a repeated image of a champagne
+        <member name="F:NPOI.XWPF.UserModel.Borders.ChampagneBottle">
+            specifies an art border consisting of a repeated image of a champagne
             bottle
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CHECKED_BAR_BLACK">
-            Specifies an art border consisting of repeating images of a compass
+        <member name="F:NPOI.XWPF.UserModel.Borders.CheckedBarBlack">
+            specifies an art border consisting of repeating images of a compass
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CHECKED_BAR_COLOR">
-            Specifies an art border consisting of a repeating image of a colored
+        <member name="F:NPOI.XWPF.UserModel.Borders.CheckedBarColor">
+            specifies an art border consisting of a repeating image of a colored
             pattern.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CHECKERED">
-            Specifies an art border consisting of a repeated image of a Checkerboard
+        <member name="F:NPOI.XWPF.UserModel.Borders.Checkered">
+            specifies an art border consisting of a repeated image of a checkerboard
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CHRISTMAS_TREE">
-            Specifies an art border consisting of a repeated image of a Christmas
+        <member name="F:NPOI.XWPF.UserModel.Borders.ChristmasTree">
+            specifies an art border consisting of a repeated image of a christmas
             tree
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CIRCLES_LINES">
-            Specifies an art border consisting of repeating images of lines and
+        <member name="F:NPOI.XWPF.UserModel.Borders.CirclesLines">
+            specifies an art border consisting of repeating images of lines and
             circles
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CIRCLES_RECTANGLES">
-            Specifies an art border consisting of a repeated image of a rectangular
+        <member name="F:NPOI.XWPF.UserModel.Borders.CirclesRectangles">
+            specifies an art border consisting of a repeated image of a rectangular
             pattern
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CLASSICAL_WAVE">
-            Specifies an art border consisting of a repeated image of a wave
+        <member name="F:NPOI.XWPF.UserModel.Borders.ClassicalWave">
+            specifies an art border consisting of a repeated image of a wave
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CLOCKS">
-            Specifies an art border consisting of a repeated image of a clock
+        <member name="F:NPOI.XWPF.UserModel.Borders.Clocks">
+            specifies an art border consisting of a repeated image of a clock
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.COMPASS">
-            Specifies an art border consisting of repeating images of a compass
+        <member name="F:NPOI.XWPF.UserModel.Borders.Compass">
+            specifies an art border consisting of repeating images of a compass
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CONFETTI">
-            Specifies an art border consisting of a repeated image of confetti
+        <member name="F:NPOI.XWPF.UserModel.Borders.Confetti">
+            specifies an art border consisting of a repeated image of confetti
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CONFETTI_GRAYS">
-            Specifies an art border consisting of a repeated image of confetti
+        <member name="F:NPOI.XWPF.UserModel.Borders.ConfettiGrays">
+            specifies an art border consisting of a repeated image of confetti
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CONFETTI_OUTLINE">
-            Specifies an art border consisting of a repeated image of confetti
+        <member name="F:NPOI.XWPF.UserModel.Borders.ConfettiOutline">
+            specifies an art border consisting of a repeated image of confetti
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CONFETTI_STREAMERS">
-            Specifies an art border consisting of a repeated image of confetti
+        <member name="F:NPOI.XWPF.UserModel.Borders.ConfettiStreamers">
+            specifies an art border consisting of a repeated image of confetti
             streamers
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CONFETTI_WHITE">
-            Specifies an art border consisting of a repeated image of confetti
+        <member name="F:NPOI.XWPF.UserModel.Borders.ConfettiWhite">
+            specifies an art border consisting of a repeated image of confetti
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CORNER_TRIANGLES">
-            Specifies an art border consisting of a repeated image
+        <member name="F:NPOI.XWPF.UserModel.Borders.CornerTriangles">
+            specifies an art border consisting of a repeated image
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.COUPON_CUTOUT_DASHES">
-            Specifies an art border consisting of a dashed line
+        <member name="F:NPOI.XWPF.UserModel.Borders.CouponCutoutDashes">
+            specifies an art border consisting of a dashed line
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.COUPON_CUTOUT_DOTS">
-            Specifies an art border consisting of a dotted line
+        <member name="F:NPOI.XWPF.UserModel.Borders.CouponCutoutDots">
+            specifies an art border consisting of a dotted line
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CRAZY_MAZE">
-            Specifies an art border consisting of a repeated image of a maze-like
+        <member name="F:NPOI.XWPF.UserModel.Borders.CrazyMaze">
+            specifies an art border consisting of a repeated image of a maze-like
             pattern
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CREATURES_BUTTERFLY">
-            Specifies an art border consisting of a repeated image of a butterfly
+        <member name="F:NPOI.XWPF.UserModel.Borders.CreaturesButterfly">
+            specifies an art border consisting of a repeated image of a butterfly
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CREATURES_FISH">
-            Specifies an art border consisting of a repeated image of a fish
+        <member name="F:NPOI.XWPF.UserModel.Borders.CreaturesFish">
+            specifies an art border consisting of a repeated image of a fish
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CREATURES_INSECTS">
-            Specifies an art border consisting of repeating images of insects.
+        <member name="F:NPOI.XWPF.UserModel.Borders.CreaturesInsects">
+            specifies an art border consisting of repeating images of insects.
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CREATURES_LADY_BUG">
-            Specifies an art border consisting of a repeated image of a ladybug
+        <member name="F:NPOI.XWPF.UserModel.Borders.CreaturesLadyBug">
+            specifies an art border consisting of a repeated image of a ladybug
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CROSS_STITCH">
-            Specifies an art border consisting of repeating images of a cross-stitch
+        <member name="F:NPOI.XWPF.UserModel.Borders.CrossStitch">
+            specifies an art border consisting of repeating images of a cross-stitch
             pattern
         </member>
-        <member name="F:NPOI.XWPF.UserModel.Borders.CUP">
-            Specifies an art border consisting of a repeated image of Cupid
+        <member name="F:NPOI.XWPF.UserModel.Borders.Cup">
+            specifies an art border consisting of a repeated image of cupid
         </member>
         <member name="T:NPOI.XWPF.UserModel.BreakClear">
             Specifies the Set of possible restart locations which may be used as to
@@ -5707,7 +6352,7 @@
             <li> If the parent paragraph is right to left, then these behaviors are
             also reversed. </li>
         </member>
-        <!-- 对于成员“F:NPOI.XWPF.UserModel.BreakClear.RIGHT”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:NPOI.XWPF.UserModel.BreakClear.RIGHT" -->
         <member name="F:NPOI.XWPF.UserModel.BreakClear.ALL">
             Specifies that the text wrapping break shall advance the text to the next
             line in the WordProcessingML document which spans the full width of the
@@ -5775,21 +6420,12 @@
             WordPerfect graphics (.wpg)
         </member>
         <member name="T:NPOI.XWPF.UserModel.IBody">
-             <p>
-             8 Jan 2010
-             </p>
-             <p>
-             // This Interface represents an object, which is able to have a collection of paragraphs and tables
-            	this can be XWFPDocument, XWPFHeader, XWPFFooter, XWPFTableCell
-             </p>
-             @author Philipp Epp
+             An IBody represents the different parts of the document which
+             can contain collections of Paragraphs and Tables. It provides a
+             common way to work with these and their contents.
+             Typically, this is something like a XWPFDocument, or one of
+              the parts in it like XWPFHeader, XWPFFooter, XWPFTableCell
             
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.IBody.GetPart">
-            returns the Part, to which the body belongs, which you need for Adding relationship to other parts
-            Actually it is needed of the class XWPFTableCell. Because you have to know to which part the tableCell
-            belongs.
-            @return the Part, to which the body belongs
         </member>
         <member name="M:NPOI.XWPF.UserModel.IBody.GetParagraph(NPOI.OpenXmlFormats.Wordprocessing.CT_P)">
             if there is a corresponding {@link XWPFParagraph} of the parameter ctTable in the paragraphList of this header or footer
@@ -5831,6 +6467,12 @@
         <member name="M:NPOI.XWPF.UserModel.IBody.GetXWPFDocument">
             Return XWPFDocument
         </member>
+        <member name="P:NPOI.XWPF.UserModel.IBody.Part">
+            returns the Part, to which the body belongs, which you need for Adding relationship to other parts
+            Actually it is needed of the class XWPFTableCell. Because you have to know to which part the tableCell
+            belongs.
+            @return the Part, to which the body belongs
+        </member>
         <member name="P:NPOI.XWPF.UserModel.IBody.PartType">
             Get the PartType of the body, for example
             DOCUMENT, HEADER, FOOTER,	FOOTNOTE, 
@@ -5853,6 +6495,25 @@
              9 Jan 2010
              @author Philipp Epp
             
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:NPOI.XWPF.UserModel.ICell" -->
+        <member name="T:NPOI.XWPF.UserModel.IRunBody">
+            Simple interface describing both {@link XWPFParagraph}
+            and {@link XWPFSDT}
+        </member>
+        <member name="T:NPOI.XWPF.UserModel.IRunElement">
+            Common interface for things that can occur
+             where a run (text with common stylings) can,
+             eg {@link XWPFRun} or {@link XWPFSDT}.
+            More methods to follow shortly!
+        </member>
+        <member name="T:NPOI.XWPF.UserModel.ISDTContent">
+            Experimental interface to offer rudimentary Read-only Processing of
+            of the contentblock of an SDT/ContentControl.
+            <p/>
+            <p/>
+            <p/>
+            WARNING - APIs expected to change rapidly
         </member>
         <member name="T:NPOI.XWPF.UserModel.LineSpacingRule">
             Specifies the logic which shall be used to calculate the line spacing of the
@@ -6382,16 +7043,25 @@
                 * @author Yury Batrakov (batrakov at gmail.com)
                  * 
         </member>
+        <member name="T:NPOI.XWPF.UserModel.XWPFDefaultParagraphStyle">
+            Default Paragraph style, from which other styles will override
+            TODO Share logic with {@link XWPFParagraph} which also uses CTPPr
+        </member>
+        <member name="T:NPOI.XWPF.UserModel.XWPFDefaultRunStyle">
+            Default Character Run style, from which other styles will override
+            TODO Share logic with {@link XWPFRun} which also uses CTRPr
+        </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFDocument">
-             Experimental class to do low level Processing
-              of docx files.
+            <p>High(ish) level class for working with .docx files.</p>
             
-             If you're using these low level classes, then you
-              will almost certainly need to refer to the OOXML
-              specifications from
-              http://www.ecma-international.org/publications/standards/Ecma-376.htm
-            
-             WARNING - APIs expected to change rapidly
+            <p>This class tries to hide some of the complexity
+             of the underlying file format, but as it's not a 
+             mature and stable API yet, certain parts of the
+             XML structure come through. You'll therefore almost
+             certainly need to refer to the OOXML specifications
+             from
+             http://www.ecma-international.org/publications/standards/Ecma-376.htm
+             at some point in your use.</p>
         </member>
         <member name="F:NPOI.XWPF.UserModel.XWPFDocument.drawingIdManager">
             Keeps track on all id-values used in this document and included parts, like headers, footers, etc.
@@ -6683,12 +7353,6 @@
             Returns the paragraph that of position pos
             @see NPOI.XWPF.UserModel.IBody#getParagraphArray(int)
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFDocument.GetPart">
-            returns the Part, to which the body belongs, which you need for Adding relationship to other parts
-            Actually it is needed of the class XWPFTableCell. Because you have to know to which part the tableCell
-            belongs.
-            @see NPOI.XWPF.UserModel.IBody#getPart()
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFDocument.GetTableCell(NPOI.OpenXmlFormats.Wordprocessing.CT_Tc)">
             Get the TableCell which belongs to the TableCell
             @param cell
@@ -6714,12 +7378,23 @@
             
             @return  the list of headers
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFDocument.IsTrackRevisions">
+            Check if revision tracking is turned on.
+            
+            @return <code>true</code> if revision tracking is turned on
+        </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFDocument.AllPictures">
             Returns all Pictures, which are referenced from the document itself.
             @return a {@link List} of {@link XWPFPictureData}. The returned {@link List} is unmodifiable. Use #a
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFDocument.AllPackagePictures">
             @return all Pictures in this package
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFDocument.Part">
+            returns the Part, to which the body belongs, which you need for Adding relationship to other parts
+            Actually it is needed of the class XWPFTableCell. Because you have to know to which part the tableCell
+            belongs.
+            @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFDocument.PartType">
              Get the PartType of the body, for example
@@ -6799,10 +7474,6 @@
             Get the TableCell which belongs to the TableCell
             @param cell
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFHeaderFooter.GetPart">
-            returns the Part, to which the body belongs, which you need for Adding relationship to other parts
-            @see NPOI.XWPF.UserModel.IBody#getPart()
-        </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFHeaderFooter.Paragraphs">
             Returns the paragraph(s) that holds
              the text of the header or footer.
@@ -6829,6 +7500,10 @@
         <member name="P:NPOI.XWPF.UserModel.XWPFHeaderFooter.Owner">
             verifies that cursor is on the right position
             @param cursor
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFHeaderFooter.Part">
+            returns the Part, to which the body belongs, which you need for Adding relationship to other parts
+            @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFFooter.Commit">
             save and Commit footer
@@ -6910,7 +7585,7 @@
         <member name="M:NPOI.XWPF.UserModel.XWPFFootnote.GetXWPFDocument">
             @see NPOI.XWPF.UserModel.IBody#getXWPFDocument()
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFFootnote.GetPart">
+        <member name="P:NPOI.XWPF.UserModel.XWPFFootnote.Part">
             returns the Part, to which the body belongs, which you need for Adding relationship to other parts
             @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
@@ -6986,9 +7661,12 @@
              @author Yegor Kozlov
              @author Gregg Morris (gregg dot morris at gmail dot com) - added getColor(), setColor()
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFRun.#ctor(NPOI.OpenXmlFormats.Wordprocessing.CT_R,NPOI.XWPF.UserModel.XWPFParagraph)">
+        <member name="M:NPOI.XWPF.UserModel.XWPFRun.#ctor(NPOI.OpenXmlFormats.Wordprocessing.CT_R,NPOI.XWPF.UserModel.IRunBody)">
             @param r the CT_R bean which holds the run.attributes
             @param p the parent paragraph
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFRun.#ctor(NPOI.OpenXmlFormats.Wordprocessing.CT_R,NPOI.XWPF.UserModel.XWPFParagraph)">
+            @deprecated Use {@link XWPFRun#XWPFRun(CTR, IRunBody)}
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFRun.GetCTR">
             Get the currently used CT_R object
@@ -6996,30 +7674,6 @@
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFRun.IsCTOnOff(NPOI.OpenXmlFormats.Wordprocessing.CT_OnOff)">
             For isBold, isItalic etc
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFRun.SetBold(System.Boolean)">
-             Whether the bold property shall be applied to all non-complex script
-             characters in the contents of this run.when displayed in a document. 
-             <p>
-             This formatting property is a toggle property, which specifies that its
-             behavior differs between its use within a style defInition and its use as
-             direct formatting. When used as part of a style defInition, Setting this
-             property shall toggle the current state of that property as specified up
-             to this point in the hierarchy (i.e. applied to not applied, and vice
-             versa). Setting it to <code>false</code> (or an equivalent) shall
-             result in the current Setting remaining unChanged. However, when used as
-             direct formatting, Setting this property to true or false shall Set the
-             absolute state of the resulting property.
-             </p>
-             <p>
-             If this element is not present, the default value is to leave the
-             formatting applied at previous level in the style hierarchy. If this
-             element is never applied in the style hierarchy, then bold shall not be
-             applied to non-complex script characters.
-             </p>
-            
-             @param value <code>true</code> if the bold property is applied to
-                          this run
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFRun.GetColor">
             Get text color. The returned value is a string in the hex form "RRGGBB".
@@ -7063,7 +7717,22 @@
                           underline type
              @see UnderlinePatterns : all possible patterns that could be applied
         </member>
-        <!-- 对于成员“M:NPOI.XWPF.UserModel.XWPFRun.SetStrike(System.Boolean)”忽略有格式错误的 XML 注释 -->
+        <member name="M:NPOI.XWPF.UserModel.XWPFRun.GetFontFamily(NPOI.XWPF.UserModel.FontCharRange)">
+             Gets the font family for the specified font char range.
+             If fcr is null, the font char range "ascii" is used
+            
+             @param fcr the font char range, defaults to "ansi"
+             @return  a string representing the font famil
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFRun.SetFontFamily(System.String,NPOI.XWPF.UserModel.FontCharRange)">
+             Specifies the fonts which shall be used to display the text contents of
+             this run. The default handling for fcr == null is to overwrite the
+             ascii font char range with the given font family and also set all not
+             specified font ranges
+            
+             @param fontFamily
+             @param fcr FontCharRange or null for default handling
+        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFRun.GetTextPosition">
              This element specifies the amount by which text shall be raised or
              lowered for this run.in relation to the default baseline of the
@@ -7126,6 +7795,10 @@
             </p>
             @see BreakClear
         </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFRun.AddTab">
+            Specifies that a tab shall be placed at the current location in 
+             the run content.
+        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFRun.AddCarriageReturn">
             Specifies that a carriage return shall be placed at the
             current location in the run.content.
@@ -7170,9 +7843,13 @@
             Returns the string version of the text, with tabs and
              carriage returns in place of their xml equivalents.
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFRun.Parent">
+            Get the currently referenced paragraph/SDT object
+            @return current parent
+        </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFRun.Paragraph">
-            Get the currenty referenced paragraph object
-            @return current paragraph
+            Get the currently referenced paragraph, or null if a SDT object
+            @deprecated use {@link XWPFRun#getParent()} instead
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFRun.Document">
             @return The {@link XWPFDocument} instance, this run.belongs to, or
@@ -7180,9 +7857,27 @@
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFRun.IsBold">
              Whether the bold property shall be applied to all non-complex script
-             characters in the contents of this run.when displayed in a document
+             characters in the contents of this run.when displayed in a document. 
+             <p>
+             This formatting property is a toggle property, which specifies that its
+             behavior differs between its use within a style defInition and its use as
+             direct formatting. When used as part of a style defInition, Setting this
+             property shall toggle the current state of that property as specified up
+             to this point in the hierarchy (i.e. applied to not applied, and vice
+             versa). Setting it to <code>false</code> (or an equivalent) shall
+             result in the current Setting remaining unChanged. However, when used as
+             direct formatting, Setting this property to true or false shall Set the
+             absolute state of the resulting property.
+             </p>
+             <p>
+             If this element is not present, the default value is to leave the
+             formatting applied at previous level in the style hierarchy. If this
+             element is never applied in the style hierarchy, then bold shall not be
+             applied to non-complex script characters.
+             </p>
             
-             @return <code>true</code> if the bold property is applied
+             @param value <code>true</code> if the bold property is applied to
+                          this run
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFRun.PictureText">
             Returns text embedded in pictures
@@ -7200,11 +7895,18 @@
              @return the Underline pattern Applyed to this run
              @see UnderlinePatterns
         </member>
-        <member name="P:NPOI.XWPF.UserModel.XWPFRun.IsStrike">
+        <member name="P:NPOI.XWPF.UserModel.XWPFRun.IsStrikeThrough">
              Specifies that the contents of this run.shall be displayed with a single
              horizontal line through the center of the line.
             
              @return <code>true</code> if the strike property is applied
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:NPOI.XWPF.UserModel.XWPFRun.IsStrike" -->
+        <member name="P:NPOI.XWPF.UserModel.XWPFRun.IsDoubleStrikeThrough">
+             Specifies that the contents of this run shall be displayed with a double
+             horizontal line through the center of the line.
+            
+             @return <code>true</code> if the double strike property is applied
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFRun.Subscript">
              Specifies the alignment which shall be applied to the contents of this
@@ -7236,7 +7938,7 @@
              return the object for it.
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFLatentStyles.IsLatentStyle(System.String)">
-            Checks wheter specific LatentStyleID is a latentStyle
+            checks whether specific LatentStyleID is a latentStyle
         </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFNum">
              @author Philipp Epp
@@ -7326,7 +8028,11 @@
              @return 		abstractNumID
         </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFParagraph">
-            Sketch of XWPF paragraph class
+            <p>A Paragraph within a Document, Table, Header etc.</p> 
+            
+            <p>A paragraph has a lot of styling information, but the
+             actual text (possibly along with more styling) is held on
+             the child {@link XWPFRun}s.</p>
         </member>
         <member name="F:NPOI.XWPF.UserModel.XWPFParagraph.document">
             For access to the document's hyperlink, comments, tables etc 
@@ -7342,6 +8048,20 @@
             If style not exist null will be returned     
             @return	NumID as Bigint
         </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetNumIlvl">
+            Returns Ilvl of the numeric style for this paragraph.
+            Returns null if this paragraph does not have numeric style.
+            @return Ilvl as BigInteger
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetNumFmt">
+            Returns numbering format for this paragraph, eg bullet or
+             lowerLetter.
+            Returns null if this paragraph does not have numeric style.
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetNumStartOverride">
+            Gets the numstartOverride for the paragraph numbering for this paragraph.
+            @return returns the overridden start number or null if there is no override for this paragraph.
+        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.SetNumID(System.String)">
             SetNumID of Paragraph
             @param numPos
@@ -7352,12 +8072,6 @@
             </summary>
             <param name="numId"></param>
             <param name="ilvl"></param>
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.CreateRun">
-            <summary>
-            Appends a new run to this paragraph
-            </summary>
-            <returns>a new text run</returns>
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetCTPBrd(System.Boolean)">
             Get a <b>copy</b> of the currently used CTPBrd, if none is used, return
@@ -7396,12 +8110,15 @@
             <param name="startPos"></param>
             <returns></returns>
         </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.CreateRun">
+             Appends a new run to this paragraph
+            
+             @return a new text run
+        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.InsertNewRun(System.Int32)">
-            <summary>
             insert a new Run in RunArray
-            </summary>
-            <param name="pos"></param>
-            <returns>the inserted run</returns>
+            @param pos
+            @return  the inserted run
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetText(NPOI.XWPF.UserModel.TextSegement)">
             Get a Text
@@ -7411,10 +8128,6 @@
             Removes a Run at the position pos in the paragraph
             @param pos
             @return true if the run was Removed
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetPart">
-            returns the part of the bodyElement
-            @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.AddRun(NPOI.XWPF.UserModel.XWPFRun)">
             Adds a new Run to the Paragraph
@@ -7426,14 +8139,20 @@
             
             @param r
         </member>
+        <!-- Badly formed XML comment ignored for member "P:NPOI.XWPF.UserModel.XWPFParagraph.IRuns" -->
         <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.Text">
             Return the textual content of the paragraph, including text from pictures
-            in it.
+            and std element in it.
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.StyleID">
             Return styleID of the paragraph if style exist for this paragraph
             if not, null will be returned     
             @return		styleID as String
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.NumLevelText">
+             Returns the text that should be used around the paragraph level numbers.
+            
+             @return a string (e.g. "%1.") or null if the value is not found.
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.ParagraphText">
             Returns the text of the paragraph, but not of any objects in the
@@ -7459,6 +8178,9 @@
              </p>
             
              @return the paragraph alignment of this paragraph.
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.FontAlignment">
+            @return The raw alignment value, {@link #getAlignment()} is suggested
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.VerticalAlignment">
              Returns the text vertical alignment which shall be applied to text in
@@ -7619,7 +8341,7 @@
             
              @return indentation or null if indentation is not Set
         </member>
-        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.IsWordWrap">
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.IsWordWrapped">
              This element specifies whether a consumer shall break Latin text which
              exceeds the text extents of a line by breaking the word across two lines
              (breaking on the character level) or by moving the word to the following
@@ -7633,6 +8355,10 @@
         <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.ElementType">
             returns the type of the BodyElement Paragraph
             @see NPOI.XWPF.UserModel.IBodyElement#getElementType()
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.Part">
+            returns the part of the bodyElement
+            @see NPOI.XWPF.UserModel.IBody#getPart()
         </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFParagraph.PartType">
             returns the partType of the bodyPart which owns the bodyElement
@@ -7692,6 +8418,10 @@
             @see NPOI.XWPF.UserModel.PictureTypePNG
             @see NPOI.XWPF.UserModel.PictureTypeDIB
         </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFPictureData.PrepareForCommit">
+            *PictureData objects store the actual content in the part directly without keeping a 
+            copy like all others therefore we need to handle them differently.
+        </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFPictureData.Data">
             Gets the picture data as a byte array.
             <p>
@@ -7724,6 +8454,42 @@
              @param rel relation type, for example,
                         <code>http://schemas.openxmlformats.org/officeDocument/2006/relationships/image</code>
              @return registered POIXMLRelation or null if not found
+        </member>
+        <member name="T:NPOI.XWPF.UserModel.FontCharRange">
+            @see <a href="http://msdn.microsoft.com/en-us/library/ff533743(v=office.12).aspx">[MS-OI29500] Run Fonts</a> 
+        </member>
+        <member name="T:NPOI.XWPF.UserModel.XWPFSDT">
+             Experimental class to offer rudimentary Read-only Processing of 
+              of StructuredDocumentTags/ContentControl
+              
+            
+            
+             WARNING - APIs expected to change rapidly
+             
+        </member>
+        <member name="T:NPOI.XWPF.UserModel.XWPFSDTCell">
+            Experimental class to offer rudimentary Read-only Processing of
+            of StructuredDocumentTags/ContentControl that can appear
+            in a table row as if a table cell.
+            <p/>
+            These can contain one or more cells or other SDTs within them.
+            <p/>
+            WARNING - APIs expected to change rapidly
+        </member>
+        <member name="T:NPOI.XWPF.UserModel.XWPFSDTContent">
+             Experimental class to offer rudimentary Read-only Processing of 
+              of the contentblock of an SDT/ContentControl.
+              
+            
+            
+             WARNING - APIs expected to change rapidly
+             
+        </member>
+        <member name="T:NPOI.XWPF.UserModel.XWPFSDTContentCell">
+            Experimental class to offer rudimentary Read-only Processing of
+            of the XWPFSDTCellContent.
+            <p/>
+            WARNING - APIs expected to change rapidly
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFSettings.GetZoomPercent">
             In the zoom tag inside Settings.xml file <br/>
@@ -7785,6 +8551,9 @@
              	<li>Flag is removed after saving with changes in Word </li>
              </ul> 
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFSettings.IsTrackRevisions">
+            get or set revision tracking
+        </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFStyle">
              @author Philipp Epp
             
@@ -7829,8 +8598,10 @@
             Get StyleID of the next style
         </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFStyles">
-             @author Philipp Epp
-            
+            Holds details of built-in, default and user styles, which
+             apply to tables / paragraphs / lists etc.
+            Text within one of those with custom stylings has the style
+             information stored in the {@link XWPFRun}
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFStyles.#ctor(NPOI.OpenXml4Net.OPC.PackagePart,NPOI.OpenXml4Net.OPC.PackageRelationship)">
              Construct XWPFStyles from a package part
@@ -7884,31 +8655,26 @@
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFStyles.SetDefaultFonts(NPOI.OpenXmlFormats.Wordprocessing.CT_Fonts)">
             Sets the default font on ctStyles DocDefaults parameter
-            @param fonts
-        </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFStyles.GetLatentStyles">
-            Get latentstyles
+            TODO Replace this with specific Setters for each type, possibly
+             on XWPFDefaultRunStyle
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFStyles.GetStyleWithSameName(NPOI.XWPF.UserModel.XWPFStyle)">
             Get the style with the same name
             if this style is not existing, return null
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFStyles.DefaultRunStyle">
+            Get the default style which applies text runs in the document
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFStyles.DefaultParagraphStyle">
+            Get the default paragraph style which applies to the document
+        </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFStyles.LatentStyles">
+            Get the definition of all the Latent Styles
+        </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFTable">
-             Sketch of XWPFTable class. Only table's text is being hold.
-             <p/>
-             Specifies the contents of a table present in the document. A table is a Set
-             of paragraphs (and other block-level content) arranged in rows and columns.
-            
-             @author Yury Batrakov (batrakov at gmail.com)
-             @author Gregg Morris (gregg dot morris at gmail dot com) - added 
-                     setStyleID()
-                     getRowBandSize(), setRowBandSize()
-                     getColBandSize(), setColBandSize()
-                     getInsideHBorderType(), getInsideHBorderSize(), getInsideHBorderSpace(), getInsideHBorderColor()
-                     getInsideVBorderType(), getInsideVBorderSize(), getInsideVBorderSpace(), getInsideVBorderColor()
-                     setInsideHBorder(), setInsideVBorder()
-                     getCellMarginTop(), getCellMarginLeft(), getCellMarginBottom(), getCellMarginRight()
-                     setCellMargins()
+            <p>Sketch of XWPFTable class. Only table's text is being hold.</p>
+            <p>Specifies the contents of a table present in the document. A table is a set
+            of paragraphs (and other block-level content) arranged in rows and columns.</p>
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTable.GetCTTbl">
             @return ctTbl object
@@ -7944,17 +8710,11 @@
             Remove a row at position pos from the table
             @param pos	position the Row in the Table
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFTable.GetPart">
-            returns the part of the bodyElement
-            @see NPOI.XWPF.UserModel.IBody#getPart()
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTable.GetRow(NPOI.OpenXmlFormats.Wordprocessing.CT_Row)">
             returns the XWPFRow which belongs to the CTRow row
             if this row is not existing in the table null will be returned
         </member>
-        <member name="P:NPOI.XWPF.UserModel.XWPFTable.Text">
-            @return text
-        </member>
+        <!-- Badly formed XML comment ignored for member "P:NPOI.XWPF.UserModel.XWPFTable.Text" -->
         <member name="P:NPOI.XWPF.UserModel.XWPFTable.Width">
             @return width value
         </member>
@@ -7969,16 +8729,17 @@
             returns the type of the BodyElement Table
             @see NPOI.XWPF.UserModel.IBodyElement#getElementType()
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFTable.Part">
+            returns the part of the bodyElement
+            @see NPOI.XWPF.UserModel.IBody#getPart()
+        </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFTable.PartType">
             returns the partType of the bodyPart which owns the bodyElement
             @see NPOI.XWPF.UserModel.IBody#getPartType()
         </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFTableCell">
-             XWPFTableCell class.
-            
-             @author Gregg Morris (gregg dot morris at gmail dot com) - added XWPFVertAlign enum,
-                     setColor(),
-                     setVerticalAlignment()
+            Represents a Cell within a {@link XWPFTable}. The
+             Cell is the thing that holds the actual content (paragraphs etc)
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTableCell.#ctor(NPOI.OpenXmlFormats.Wordprocessing.CT_Tc,NPOI.XWPF.UserModel.XWPFTableRow,NPOI.XWPF.UserModel.IBody)">
             If a table cell does not include at least one block-level element, then this document shall be considered corrupt
@@ -8031,11 +8792,6 @@
         <member name="M:NPOI.XWPF.UserModel.XWPFTableCell.GetParagraphArray(System.Int32)">
             @see NPOI.XWPF.UserModel.IBody#getParagraphArray(int)
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFTableCell.GetPart">
-            Get the to which the TableCell belongs
-            
-            @see NPOI.XWPF.UserModel.IBody#getPart()
-        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTableCell.GetTable(NPOI.OpenXmlFormats.Wordprocessing.CT_Tbl)">
             Get a table by its CTTbl-Object
             @see NPOI.XWPF.UserModel.IBody#getTable(org.Openxmlformats.schemas.wordProcessingml.x2006.main.CTTbl)
@@ -8047,6 +8803,9 @@
             inserts an existing XWPFTable to the arrays bodyElements and tables
             @see NPOI.XWPF.UserModel.IBody#insertTable(int, NPOI.XWPF.UserModel.XWPFTable)
         </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFTableCell.GetTextRecursively">
+            extracts all text recursively through embedded tables and embedded SDTs
+        </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTableCell.GetTableCell(NPOI.OpenXmlFormats.Wordprocessing.CT_Tc)">
             Get the TableCell which belongs to the TableCell
         </member>
@@ -8057,6 +8816,11 @@
         <member name="P:NPOI.XWPF.UserModel.XWPFTableCell.Paragraphs">
             returns a list of paragraphs
         </member>
+        <member name="P:NPOI.XWPF.UserModel.XWPFTableCell.Part">
+            Get the to which the TableCell belongs
+            
+            @see NPOI.XWPF.UserModel.IBody#getPart()
+        </member>
         <member name="P:NPOI.XWPF.UserModel.XWPFTableCell.PartType">
             @see NPOI.XWPF.UserModel.IBody#getPartType()
         </member>
@@ -8064,8 +8828,9 @@
             @see NPOI.XWPF.UserModel.IBody#getTables()
         </member>
         <member name="T:NPOI.XWPF.UserModel.XWPFTableRow">
-            @author gisellabronzetti
-            @author gregg morris - added removeCell(), setCantSplitRow(), setRepeatHeader()
+            A row within an {@link XWPFTable}. Rows mostly just have
+             sizings and stylings, the interesting content lives inside
+             the child {@link XWPFTableCell}s
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTableRow.CreateCell">
             create a new XWPFTableCell and add it to the tableCell-list of this tableRow
@@ -8073,6 +8838,11 @@
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTableRow.AddNewTableCell">
             Adds a new TableCell at the end of this tableRow
+        </member>
+        <member name="M:NPOI.XWPF.UserModel.XWPFTableRow.GetTableICells">
+            create and return a list of all XWPFTableCell
+            who belongs to this row
+            @return a list of {@link XWPFTableCell} 
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFTableRow.GetTableCells">
             create and return a list of all XWPFTableCell

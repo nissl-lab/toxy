@@ -76,18 +76,25 @@
         <member name="F:NPOI.OpenXml4Net.OPC.EncryptionOption.NONE">
             No encryption. 
         </member>
-        <!-- 对于成员“T:NPOI.OpenXml4Net.OPC.Internal.ContentType”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "T:NPOI.OpenXml4Net.OPC.Internal.ContentType" -->
         <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentType.type">
             Type in Type/Subtype.
         </member>
         <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentType.subType">
             Subtype
         </member>
-        <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentType.parameters">
+        <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentType.p">
             Parameters
         </member>
-        <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentType.patternMediaType">
+        <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentType.patternTypeSubType">
             Media type compiled pattern for parameters.
+        </member>
+        <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentType.patternTypeSubTypeParams">
+            Media type compiled pattern, with parameters.
+        </member>
+        <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentType.patternParams">
+            Pattern to match on just the parameters part, to work
+            around the Java Regexp group capture behaviour
         </member>
         <member name="M:NPOI.OpenXml4Net.OPC.Internal.ContentType.#ctor(System.String)">
              Constructor. Check the input with the RFC 2616 grammar.
@@ -97,12 +104,21 @@
              @throws InvalidFormatException
                          If the specified content type is not valid with RFC 2616.
         </member>
-        <member name="M:NPOI.OpenXml4Net.OPC.Internal.ContentType.GetParameters(System.String)">
+        <member name="M:NPOI.OpenXml4Net.OPC.Internal.ContentType.HasParameters">
+            Does this content type have any parameters associated with it?
+        </member>
+        <member name="M:NPOI.OpenXml4Net.OPC.Internal.ContentType.GetParameterKeys">
+            Return the parameter keys
+        </member>
+        <member name="M:NPOI.OpenXml4Net.OPC.Internal.ContentType.GetParameter(System.String)">
              Gets the value associated to the specified key.
             
              @param key
                         The key of the key/value pair.
              @return The value associated to the specified key.
+        </member>
+        <member name="M:NPOI.OpenXml4Net.OPC.Internal.ContentType.GetParameters(System.String)">
+            @deprecated Use {@link #getParameter(String)} instead
         </member>
         <member name="P:NPOI.OpenXml4Net.OPC.Internal.ContentType.SubType">
              Get the subtype.
@@ -129,7 +145,7 @@
         <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentTypeManager.container">
             Reference to the package using this content type manager.
         </member>
-        <!-- 对于成员“F:NPOI.OpenXml4Net.OPC.Internal.ContentTypeManager.defaultContentType”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:NPOI.OpenXml4Net.OPC.Internal.ContentTypeManager.defaultContentType" -->
         <member name="F:NPOI.OpenXml4Net.OPC.Internal.ContentTypeManager.overrideContentType">
             Override content type tree.
         </member>
@@ -566,22 +582,22 @@
             @return <b>true</b> if the part have at least one relationship else
                     <b>false</b>.
         </member>
-        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart.container">
+        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart._container">
             This part's container.
         </member>
-        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart.partName">
+        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart._partName">
             The part name. (required by the specification [M1.1])
         </member>
-        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart.contentType">
+        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart._contentType">
             The type of content of this part. (required by the specification [M1.2])
         </member>
-        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart.isRelationshipPart">
+        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart._isRelationshipPart">
             Flag to know if this part is a relationship.
         </member>
-        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart.isDeleted">
+        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart._isDeleted">
             Flag to know if this part has been logically deleted.
         </member>
-        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart.relationships">
+        <member name="F:NPOI.OpenXml4Net.OPC.PackagePart._relationships">
             This part's relationships.
         </member>
         <member name="M:NPOI.OpenXml4Net.OPC.PackagePart.#ctor(NPOI.OpenXml4Net.OPC.OPCPackage,NPOI.OpenXml4Net.OPC.PackagePartName,NPOI.OpenXml4Net.OPC.Internal.ContentType)">
@@ -815,6 +831,9 @@
             @throws InvalidFormatException
                         Throws if
         </member>
+        <member name="M:NPOI.OpenXml4Net.OPC.PackagePart.CompareTo(NPOI.OpenXml4Net.OPC.PackagePart)">
+            Compare based on the package part name, using a natural sort order
+        </member>
         <member name="M:NPOI.OpenXml4Net.OPC.PackagePart.GetInputStreamImpl">
             Abtract method that get the input stream of this part.
             
@@ -854,6 +873,9 @@
             as in a waiting state to read or write, the must to empty their
             respective buffer.
         </member>
+        <member name="M:NPOI.OpenXml4Net.OPC.PackagePart.Clear">
+            Allows sub-classes to clean up before new data is added.
+        </member>
         <member name="P:NPOI.OpenXml4Net.OPC.PackagePart.Relationships">
             Retrieve all the relationships attached to this part.
             
@@ -874,11 +896,17 @@
         <member name="P:NPOI.OpenXml4Net.OPC.PackagePart.ContentType">
             @return the contentType
         </member>
+        <member name="P:NPOI.OpenXml4Net.OPC.PackagePart.ContentTypeDetails">
+            @return The Content Type, including parameters, of the part
+        </member>
         <member name="P:NPOI.OpenXml4Net.OPC.PackagePart.IsRelationshipPart">
             @return true if this part is a relationship
         </member>
         <member name="P:NPOI.OpenXml4Net.OPC.PackagePart.IsDeleted">
             @return true if this part has been logically deleted
+        </member>
+        <member name="P:NPOI.OpenXml4Net.OPC.PackagePart.Size">
+            @return The length of the part in bytes, or -1 if not known
         </member>
         <member name="F:NPOI.OpenXml4Net.OPC.Internal.MemoryPackagePart.data">
             Storage for the part data.
@@ -1324,8 +1352,8 @@
         <member name="M:NPOI.OpenXml4Net.OPC.Internal.PackagePropertiesPart.SetStringValue(System.String)">
             Convert a strig value into a String
         </member>
-        <!-- 对于成员“M:NPOI.OpenXml4Net.OPC.Internal.PackagePropertiesPart.SetDateValue(System.String)”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“M:NPOI.OpenXml4Net.OPC.Internal.PackagePropertiesPart.GetDateValue(System.Nullable{System.DateTime})”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.OpenXml4Net.OPC.Internal.PackagePropertiesPart.SetDateValue(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.OpenXml4Net.OPC.Internal.PackagePropertiesPart.GetDateValue(System.Nullable{System.DateTime})" -->
         <member name="T:NPOI.OpenXml4Net.OPC.Internal.PartUnmarshaller">
              Object implemented this interface are considered as part unmarshaller. A part
              unmarshaller is responsible to unmarshall a part in order to load it from a
@@ -1350,7 +1378,7 @@
              @author Julien Chable
              @version 1.0
         </member>
-        <!-- 对于成员“M:NPOI.OpenXml4Net.OPC.Internal.Unmarshallers.PackagePropertiesUnmarshaller.CheckElementForOPCCompliance(System.Xml.XmlElement)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.OpenXml4Net.OPC.Internal.Unmarshallers.PackagePropertiesUnmarshaller.CheckElementForOPCCompliance(System.Xml.XmlElement)" -->
         <member name="T:NPOI.OpenXml4Net.OPC.Internal.Unmarshallers.UnmarshallContext">
             Context needed for the unmarshall process of a part. This class is immutable.
             
@@ -1647,6 +1675,14 @@
             @return All parts which are the target of a relationship with the
                     specified type, if the method can't retrieve relationships from
                     the package, then return <code>null</code>.
+        </member>
+        <member name="M:NPOI.OpenXml4Net.OPC.OPCPackage.GetPartsByName(System.Text.RegularExpressions.Regex)">
+             Retrieve parts by name
+            
+             @param namePattern
+                        The pattern for matching the names
+             @return All parts associated to the specified content type, sorted
+             in alphanumerically by the part-name
         </member>
         <member name="M:NPOI.OpenXml4Net.OPC.OPCPackage.GetPart(NPOI.OpenXml4Net.OPC.PackageRelationship)">
             Get the target part from the specified relationship.
@@ -2088,7 +2124,7 @@
         <member name="F:NPOI.OpenXml4Net.OPC.PackagePartName.RFC3986_PCHAR_SUB_DELIMS">
             Reserved characters for sub delimitations.
         </member>
-        <!-- 对于成员“F:NPOI.OpenXml4Net.OPC.PackagePartName.RFC3986_PCHAR_UNRESERVED_SUP”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:NPOI.OpenXml4Net.OPC.PackagePartName.RFC3986_PCHAR_UNRESERVED_SUP" -->
         <member name="F:NPOI.OpenXml4Net.OPC.PackagePartName.RFC3986_PCHAR_AUTHORIZED_SUP">
             Authorized reserved characters for pChar.
         </member>
@@ -2221,7 +2257,7 @@
              @throws InvalidFormatException
                          Throws if the specified URI is absolute.
         </member>
-        <member name="M:NPOI.OpenXml4Net.OPC.PackagePartName.Compare(NPOI.OpenXml4Net.OPC.PackagePartName,NPOI.OpenXml4Net.OPC.PackagePartName)">
+        <member name="M:NPOI.OpenXml4Net.OPC.PackagePartName.CompareTo(NPOI.OpenXml4Net.OPC.PackagePartName)">
              Compare two part name following the rule M1.12 :
             
              Part name equivalence is determined by comparing part names as
@@ -2235,6 +2271,8 @@
             part names and package implementers shall neither create nor recognize
             packages with equivalent part names. [M1.12]
         </member>
+        <!-- Badly formed XML comment ignored for member "M:NPOI.OpenXml4Net.OPC.PackagePartName.Compare(NPOI.OpenXml4Net.OPC.PackagePartName,NPOI.OpenXml4Net.OPC.PackagePartName)" -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.OpenXml4Net.OPC.PackagePartName.Compare(System.String,System.String)" -->
         <member name="P:NPOI.OpenXml4Net.OPC.PackagePartName.Extension">
              Retrieves the extension of the part name if any. If there is no extension
              returns an empty String. Example : '/document/content.xml' => 'xml'
@@ -2333,6 +2371,10 @@
         </member>
         <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipCollection.container">
             Reference to the package.
+        </member>
+        <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipCollection.nextRelationshipId">
+            The ID number of the next rID# to generate, or -1
+             if that is still to be determined.
         </member>
         <member name="M:NPOI.OpenXml4Net.OPC.PackageRelationshipCollection.#ctor">
             Constructor.
@@ -2470,7 +2512,20 @@
              @version 0.2
         </member>
         <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.CORE_PROPERTIES">
-            Core properties relationship type.
+             Core properties relationship type.
+            
+              <p>
+              The standard specifies a source relations ship for the Core File Properties part as follows:
+              <code>http://schemas.openxmlformats.org/officedocument/2006/relationships/metadata/core-properties.</code>
+              </p>
+              <p>
+               Office uses the following source relationship for the Core File Properties part:
+               <code>http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties.</code>
+             </p>
+             See 2.1.33 Part 1 Section 15.2.11.1, Core File Properties Part in [MS-OE376].pdf
+        </member>
+        <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.CORE_PROPERTIES_ECMA376">
+            Core properties relationship type as defiend in ECMA 376.
         </member>
         <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.DIGITAL_SIGNATURE">
             Digital signature relationship type.
@@ -2487,11 +2542,17 @@
         <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.EXTENDED_PROPERTIES">
             Extended properties relationship type.
         </member>
+        <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.STRICT_EXTENDED_PROPERTIES">
+            Extended properties relationship type for strict ooxml.
+        </member>
         <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.CUSTOM_PROPERTIES">
             Custom properties relationship type.
         </member>
         <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.CORE_DOCUMENT">
-            Core properties relationship type.
+            Core document relationship type.
+        </member>
+        <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.STRICT_CORE_DOCUMENT">
+            Core document relationship type for strict ooxml.
         </member>
         <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.CUSTOM_XML">
             Custom XML relationship type.
@@ -2499,8 +2560,17 @@
         <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.IMAGE_PART">
             Image type.
         </member>
+        <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.HYPERLINK_PART">
+            Hyperlink type.
+        </member>
         <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.STYLE_PART">
             Style type.
+        </member>
+        <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.EXTERNAL_LINK_PATH">
+            External Link to another Document
+        </member>
+        <member name="F:NPOI.OpenXml4Net.OPC.PackageRelationshipTypes.VISIO_CORE_DOCUMENT">
+            Visio 2010 VSDX equivalent of package {@link #CORE_DOCUMENT}
         </member>
         <member name="T:NPOI.OpenXml4Net.OPC.PackagingUriHelper">
              Helper for part and pack Uri.
@@ -2692,8 +2762,8 @@
              @return The specified Uri in a String with converted percent encoded
                      characters.
         </member>
-        <!-- 对于成员“M:NPOI.OpenXml4Net.OPC.PackagingUriHelper.ToUri(System.String)”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“M:NPOI.OpenXml4Net.OPC.PackagingUriHelper.Encode(System.String)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.OpenXml4Net.OPC.PackagingUriHelper.ToUri(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:NPOI.OpenXml4Net.OPC.PackagingUriHelper.Encode(System.String)" -->
         <member name="M:NPOI.OpenXml4Net.OPC.PackagingUriHelper.GetRelationshipPartName(NPOI.OpenXml4Net.OPC.PackagePartName)">
              Build a part name where the relationship should be stored ((ex
              /word/document.xml -> /word/_rels/document.xml.rels)
