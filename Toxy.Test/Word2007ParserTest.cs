@@ -44,5 +44,22 @@ namespace Toxy.Test
             Assert.AreEqual("It’s Arial Black in 16 point", doc.Paragraphs[5].Text);
             Assert.AreEqual("It’s also in blue", doc.Paragraphs[6].Text);
         }
+        [Test]
+        public void TestParseDocumentWithTable()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetWordPath("simple-table.docx"));
+            IDocumentParser parser = ParserFactory.CreateDocument(context);
+            ToxyDocument doc = parser.Parse();
+            Assert.AreEqual(8, doc.Paragraphs.Count);
+            Assert.AreEqual("This is a Word document that was created using Word 97 – SR2.  It contains a paragraph, a table consisting of 2 rows and 3 columns and a final paragraph.", 
+                doc.Paragraphs[0].Text);
+            Assert.AreEqual("This text is below the table.", doc.Paragraphs[1].Text);
+            Assert.AreEqual("Cell 1,1", doc.Paragraphs[2].Text);
+            Assert.AreEqual("Cell 1,2", doc.Paragraphs[3].Text);
+            Assert.AreEqual("Cell 1,3", doc.Paragraphs[4].Text);
+            Assert.AreEqual("Cell 2,1", doc.Paragraphs[5].Text);
+            Assert.AreEqual("Cell 2,2", doc.Paragraphs[6].Text);
+            Assert.AreEqual("Cell 2,3", doc.Paragraphs[7].Text);
+        }
     }
 }
