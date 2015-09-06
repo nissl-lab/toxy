@@ -41,14 +41,20 @@ namespace Toxy.Test
             Assert.AreEqual("du 18-22 Mars 2003", results[3]);
         }
         [Test]
-        public void TestParsePlainTextFromPDF2()
+        public void TestParsePlainTextFromSample5()
         {
             string path = TestDataSample.GetPdfPath("Sample5.PDF");
             var parser = new PDFTextParser(new ParserContext(path));
             string result = parser.Parse();
             Assert.IsTrue(result.StartsWith("Philadelphia, Atlanta, Dallas, San Diego, and New Orleans."));
-
-
+        }
+        [Test]
+        public void TestReadBigPDFFile()
+        {
+            string path = TestDataSample.GetPdfPath("Word97-2007BinaryFileFormat(doc)Specification.pdf");
+            var parser = new PDFTextParser(new ParserContext(path));
+            string result = parser.Parse();
+            Assert.IsTrue(true);
         }
     }
 }

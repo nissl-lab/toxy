@@ -1,6 +1,5 @@
-﻿using PdfSharp.Pdf;
-using PdfSharp.Pdf.Content;
-using PdfSharp.Pdf.IO;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +7,7 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class PDFDocumentParser: IDocumentParser
+    public class PDFDocumentParser : IDocumentParser
     {
         public PDFDocumentParser(ParserContext context)
         {
@@ -21,22 +20,23 @@ namespace Toxy.Parsers
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
 
             ToxyDocument rdoc = new ToxyDocument();
-            using (Stream stream = File.OpenRead(Context.Path))
+            ITextExtractionStrategy its = new iTextSharp.text.pdf.parser.LocationTextExtractionStrategy();
 
-            using (PdfDocument doc = PdfReader.Open(stream, PdfDocumentOpenMode.ReadOnly))
+            using (PdfReader reader = new PdfReader(this.Context.Path))
             {
-                for (int i = 0; i < doc.PageCount; i++)
+
+                for (int i = 1; i <= reader.NumberOfPages; i++)
                 {
-                    var texts = doc.Pages[i].ExtractText();
-                    foreach (var text in texts)
+                    string thePage = PdfTextExtractor.GetTextFromPage(reader, i, its);
+                    string[] theLines = thePage.Split('\n');
+                    foreach (var theLine in theLines)
                     {
                         ToxyParagraph para = new ToxyParagraph();
-                        para.Text = text;
+                        para.Text = theLine;
                         rdoc.Paragraphs.Add(para);
                     }
                 }
             }
-
             return rdoc;
         }
         public ParserContext Context
