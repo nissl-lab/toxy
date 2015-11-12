@@ -33,12 +33,12 @@ namespace Toxy.Test
             string path = TestDataSample.GetPdfPath("Sample1.PDF");
             var parser = new PDFDocumentParser(new ParserContext(path));
             var result = parser.Parse();
-            Assert.AreEqual(88, result.Paragraphs.Count);
-            string[] results=result.Paragraphs[0].Text.Split('\n');
-            Assert.AreEqual("LA MARCHE MONDIALE DES FEMMES : UN MOUVEMENT IRRÉVERSIBLE", results[0]);
-            Assert.AreEqual("DOCUMENT PRÉPARATOIRE", results[1]);
-            Assert.AreEqual("4eRencontre internationale de la Marche mondiale des femmes", results[2]);
-            Assert.AreEqual("du 18-22 Mars 2003", results[3]);
+            Assert.AreEqual(1474, result.Paragraphs.Count);
+            Assert.AreEqual("LA MARCHE MONDIALE DES FEMMES : UN MOUVEMENT IRRÉVERSIBLE", result.Paragraphs[0].Text);
+            Assert.AreEqual("DOCUMENT PRÉPARATOIRE", result.Paragraphs[1].Text);
+            Assert.AreEqual("e", result.Paragraphs[2].Text);    //this is the superscript 'e'
+            Assert.AreEqual("4 Rencontre internationale de la Marche mondiale des femmes", result.Paragraphs[3].Text);
+            Assert.AreEqual("du 18-22 Mars 2003", result.Paragraphs[4].Text);
         }
         [Test]
         public void TestParsePlainTextFromSample5()
@@ -46,7 +46,9 @@ namespace Toxy.Test
             string path = TestDataSample.GetPdfPath("Sample5.PDF");
             var parser = new PDFTextParser(new ParserContext(path));
             string result = parser.Parse();
-            Assert.IsTrue(result.StartsWith("Philadelphia, Atlanta, Dallas, San Diego, and New Orleans."));
+            string[] results = result.Split('\n');
+            Assert.AreEqual("License income by market (%)", results[0]);
+            Assert.AreEqual("Philadelphia, Atlanta, Dallas, San Diego, and New",results[1]);
         }
         [Test]
         public void TestReadBigPDFFile()
