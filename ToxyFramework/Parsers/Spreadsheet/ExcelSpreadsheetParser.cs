@@ -57,7 +57,6 @@ namespace Toxy.Parsers
             for (int i = 0; i < workbook.NumberOfSheets; i++)
             {
                 ToxyTable table = Parse(workbook, i, extractHeader, extractFooter, hasHeader, fillBlankCells, includeComment, formatter);
-
                 ss.Tables.Add(table);
             }
             return ss;
@@ -97,11 +96,14 @@ namespace Toxy.Parsers
                 {
                     tr = new ToxyRow(row.RowNum);
                 }
+                else if (hasHeader && firstRow)
+                {
+                    table.HeaderRows.Add(new ToxyRow(row.RowNum));
+                }
                 foreach (ICell cell in row)
                 {
                     if (hasHeader && firstRow)
                     {
-                        table.HeaderRows.Add(new ToxyRow(row.RowNum));
                         table.HeaderRows[0].Cells.Add(new ToxyCell(cell.ColumnIndex, cell.ToString()));
                     }
                     else
@@ -129,13 +131,14 @@ namespace Toxy.Parsers
                 {
                     tr.RowIndex = row.RowNum;
                     table.Rows.Add(tr);
+
+                    if (table.LastColumnIndex < tr.LastCellIndex)
+                        table.LastColumnIndex = tr.LastCellIndex;
                 }
                 if (firstRow)
                 {
                     firstRow = false;
                 }
-                if (table.LastColumnIndex < tr.LastCellIndex)
-                    table.LastColumnIndex = tr.LastCellIndex;
             }
             for (int j = 0; j < sheet.NumMergedRegions; j++)
             {

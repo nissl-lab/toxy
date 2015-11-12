@@ -22,12 +22,17 @@ namespace Toxy.Test
         [Test]
         public void TestExtractFooter()
         {
-            BaseTestFooter("45540_classic_Footer.xlsx");
+            BaseTestExtractSheetFooter("45540_classic_Footer.xlsx");
         }
         [Test]
         public void TestExtractHeader()
         {
-            BaseTestHeader("45540_classic_Header.xlsx");
+            BaseTestExtractSheetHeader("45540_classic_Header.xlsx");
+        }
+        [Test]
+        public void TestSheetWithHeaderRow()
+        {
+            BaseTestWithHeaderRow("SheetWithColumnHeader.xlsx");
         }
         [Test]
         public void TestExtractWithoutHeader()

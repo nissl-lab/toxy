@@ -16,6 +16,9 @@ namespace Toxy
             this.LastColumnIndex = -1;
             this.MergeCells = new List<MergeCellRange>();
         }
+        /// <summary>
+        /// The sheet has column header (row)
+        /// </summary>
         public bool HasHeader
         {
             get { return this.HeaderRows.Count> 0; }

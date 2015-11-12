@@ -12,7 +12,7 @@ namespace Toxy.Test
         { 
             
         }
-        public void BaseTestFooter(string filename)
+        public void BaseTestExtractSheetFooter(string filename)
         {
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
@@ -31,11 +31,38 @@ namespace Toxy.Test
             ToxySpreadsheet ss = parser.Parse();
             Assert.IsNull(ss.Tables[0].PageHeader);
 
-            ToxySpreadsheet ss2 = parser.Parse();
-            Assert.AreEqual(0, ss2.Tables[0].HeaderRows.Count);
-            Assert.AreEqual(9, ss2.Tables[0].Rows.Count);
+            Assert.AreEqual(0, ss.Tables[0].HeaderRows.Count);
+            Assert.AreEqual(9, ss.Tables[0].Rows.Count);
         }
-        public void BaseTestHeader(string filename)
+        public void BaseTestWithHeaderRow(string filename)
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
+            ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
+            parser.Context.Properties.Add("HasHeader", "1");
+            ToxySpreadsheet ss = parser.Parse();
+
+            Assert.AreEqual(1, ss.Tables[0].HeaderRows.Count);
+            Assert.AreEqual("A", ss.Tables[0].HeaderRows[0].Cells[0].Value);
+            Assert.AreEqual("B", ss.Tables[0].HeaderRows[0].Cells[1].Value);
+            Assert.AreEqual("C", ss.Tables[0].HeaderRows[0].Cells[2].Value);
+            Assert.AreEqual("D", ss.Tables[0].HeaderRows[0].Cells[3].Value);
+            Assert.AreEqual(3, ss.Tables[0].Rows.Count);
+            Assert.AreEqual("1", ss.Tables[0].Rows[0].Cells[0].Value);
+            Assert.AreEqual("2", ss.Tables[0].Rows[0].Cells[1].Value);
+            Assert.AreEqual("3", ss.Tables[0].Rows[0].Cells[2].Value);
+            Assert.AreEqual("4", ss.Tables[0].Rows[0].Cells[3].Value);
+
+            Assert.AreEqual("A1", ss.Tables[0].Rows[1].Cells[0].Value);
+            Assert.AreEqual("A2", ss.Tables[0].Rows[1].Cells[1].Value);
+            Assert.AreEqual("A3", ss.Tables[0].Rows[1].Cells[2].Value);
+            Assert.AreEqual("A4", ss.Tables[0].Rows[1].Cells[3].Value);
+
+            Assert.AreEqual("B1", ss.Tables[0].Rows[2].Cells[0].Value);
+            Assert.AreEqual("B2", ss.Tables[0].Rows[2].Cells[1].Value);
+            Assert.AreEqual("B3", ss.Tables[0].Rows[2].Cells[2].Value);
+            Assert.AreEqual("B4", ss.Tables[0].Rows[2].Cells[3].Value);
+        }
+        public void BaseTestExtractSheetHeader(string filename)
         {
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);

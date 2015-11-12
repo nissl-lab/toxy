@@ -21,12 +21,12 @@ namespace Toxy.Test
         [Test]
         public void TestExtractFooter()
         {
-            BaseTestFooter("45538_classic_Footer.xls");
+            BaseTestExtractSheetFooter("45538_classic_Footer.xls");
         }
         [Test]
         public void TestExtractHeader()
         {
-            BaseTestHeader("45538_classic_Header.xls");
+            BaseTestExtractSheetHeader("45538_classic_Header.xls");
         }
         [Test]
         public void TestFillBlankCells()
