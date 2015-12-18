@@ -2756,6 +2756,27 @@
             
              @param colorIndex  the indexed color to set, must be a constant from {@link IndexedColors}
         </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.CreatePivotTable">
+            Creates an empty XSSFPivotTable and Sets up all its relationships
+            including: pivotCacheDefInition, pivotCacheRecords
+            @return returns a pivotTable
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.CreatePivotTable(NPOI.SS.Util.AreaReference,NPOI.SS.Util.CellReference,NPOI.SS.UserModel.ISheet)">
+            Create a pivot table and Set area of source, source sheet and a position for pivot table
+            @param source Area from where data will be collected
+            @param position A reference to the cell where the table will start
+            @param sourceSheet The sheet where source will be collected from
+            @return The pivot table
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.CreatePivotTable(NPOI.SS.Util.AreaReference,NPOI.SS.Util.CellReference)">
+            Create a pivot table and Set area of source and a position for pivot table
+            @param source Area from where data will be collected
+            @param position A reference to the cell where the table will start
+            @return The pivot table
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFSheet.GetPivotTables">
+            Returns all the pivot tables for this Sheet
+        </member>
         <member name="P:NPOI.XSSF.UserModel.XSSFSheet.Workbook">
              Returns the parent XSSFWorkbook
             
@@ -4413,6 +4434,83 @@
             Gets the picture data as a byte array.
             </summary>
         </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotCache.#ctor(NPOI.OpenXml4Net.OPC.PackagePart,NPOI.OpenXml4Net.OPC.PackageRelationship)">
+             Creates n XSSFPivotCache representing the given package part and relationship.
+             Should only be called when Reading in an existing file.
+            
+             @param part - The package part that holds xml data representing this pivot cache defInition.
+             @param rel - the relationship of the given package part in the underlying OPC package
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotCacheDefinition.#ctor(NPOI.OpenXml4Net.OPC.PackagePart,NPOI.OpenXml4Net.OPC.PackageRelationship)">
+             Creates an XSSFPivotCacheDefintion representing the given package part and relationship.
+             Should only be called when Reading in an existing file.
+            
+             @param part - The package part that holds xml data representing this pivot cache defInition.
+             @param rel - the relationship of the given package part in the underlying OPC package
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotCacheDefinition.CreateCacheFields(NPOI.SS.UserModel.ISheet)">
+            Generates a cache field for each column in the reference area for the pivot table.
+            @param sheet The sheet where the data i collected from
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotCacheRecords.#ctor(NPOI.OpenXml4Net.OPC.PackagePart,NPOI.OpenXml4Net.OPC.PackageRelationship)">
+             Creates an XSSFPivotCacheRecords representing the given package part and relationship.
+             Should only be called when Reading in an existing file.
+            
+             @param part - The package part that holds xml data representing this pivot cache records.
+             @param rel - the relationship of the given package part in the underlying OPC package
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotTable.#ctor(NPOI.OpenXml4Net.OPC.PackagePart,NPOI.OpenXml4Net.OPC.PackageRelationship)">
+             Creates an XSSFPivotTable representing the given package part and relationship.
+             Should only be called when Reading in an existing file.
+            
+             @param part - The package part that holds xml data representing this pivot table.
+             @param rel - the relationship of the given package part in the underlying OPC package
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotTable.SetDefaultPivotTableDefinition">
+            Set default values for the table defInition.
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotTable.AddRowLabel(System.Int32)">
+            Add a row label using data from the given column.
+            @param columnIndex the index of the column to be used as row label.
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotTable.AddColumnLabel(NPOI.SS.UserModel.DataConsolidateFunction,System.Int32,System.String)">
+            Add a column label using data from the given column and specified function
+            @param columnIndex the index of the column to be used as column label.
+            @param function the function to be used on the data
+            The following functions exists:
+            Sum, Count, Average, Max, Min, Product, Count numbers, StdDev, StdDevp, Var, Varp
+            @param valueFieldName the name of pivot table value field
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotTable.AddColumnLabel(NPOI.SS.UserModel.DataConsolidateFunction,System.Int32)">
+            Add a column label using data from the given column and specified function
+            @param columnIndex the index of the column to be used as column label.
+            @param function the function to be used on the data
+            The following functions exists:
+            Sum, Count, Average, Max, Min, Product, Count numbers, StdDev, StdDevp, Var, Varp
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotTable.AddDataField(NPOI.SS.UserModel.DataConsolidateFunction,System.Int32,System.String)">
+            Add data field with data from the given column and specified function.
+            @param function the function to be used on the data
+            @param index the index of the column to be used as column label.
+            The following functions exists:
+            Sum, Count, Average, Max, Min, Product, Count numbers, StdDev, StdDevp, Var, Varp
+            @param valueFieldName the name of pivot table value field
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotTable.AddDataColumn(System.Int32,System.Boolean)">
+            Add column Containing data from the referenced area.
+            @param columnIndex the index of the column Containing the data
+            @param isDataField true if the data should be displayed in the pivot table.
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotTable.AddReportFilter(System.Int32)">
+            Add filter for the column with the corresponding index and cell value
+            @param columnIndex index of column to filter on
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFPivotTable.CreateSourceReferences(NPOI.SS.Util.AreaReference,NPOI.SS.Util.CellReference,NPOI.SS.UserModel.ISheet)">
+            Creates cacheSource and workSheetSource for pivot table and Sets the source reference as well assets the location of the pivot table
+            @param source Source for data for pivot table
+            @param position Position for pivot table in sheet
+            @param sourceSheet Sheet where the source will be collected from
+        </member>
         <member name="T:NPOI.XSSF.UserModel.XSSFPrintSetup">
             Page Setup and page margins Settings for the worksheet.
         </member>
@@ -5175,14 +5273,6 @@
             
             @param value the position of the tab stop relative to the left margin
         </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.IsBullet">
-            Returns whether this paragraph has bullets
-        </member>
-        <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.SetBullet(System.Boolean)">
-            Set or unset this paragraph as a bullet point
-            
-            @param flag whether text in this paragraph has bullets
-        </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFTextParagraph.SetBullet(NPOI.XSSF.UserModel.ListAutoNumber,System.Int32)">
              Set this paragraph as an automatic numbered bullet point
             
@@ -5259,6 +5349,9 @@
             Returns the level of text properties that this paragraph will follow.
             
             @return the text level of this paragraph (0-based). Default is 0.
+        </member>
+        <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.IsBullet">
+            Returns whether this paragraph has bullets
         </member>
         <member name="P:NPOI.XSSF.UserModel.XSSFTextParagraph.IsBulletAutoNumber">
             Returns whether this paragraph has automatic numbered bullets
@@ -5396,6 +5489,9 @@
         <member name="F:NPOI.XSSF.UserModel.XSSFWorkbook._creationHelper">
             cached instance of XSSFCreationHelper for this workbook
             @see {@link #getCreationHelper()}
+        </member>
+        <member name="F:NPOI.XSSF.UserModel.XSSFWorkbook.pivotTables">
+            List of all pivot tables in workbook
         </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFWorkbook.#ctor">
             Create a new SpreadsheetML workbook.
@@ -5921,6 +6017,9 @@
              Whether Excel will be asked to recalculate all formulas when the  workbook is opened.
             
              @since 3.8
+        </member>
+        <member name="M:NPOI.XSSF.UserModel.XSSFWorkbook.AddPivotCache(System.String)">
+            Add pivotCache to the workbook
         </member>
         <member name="P:NPOI.XSSF.UserModel.XSSFWorkbook.ActiveSheetIndex">
             Convenience method to Get the active sheet.  The active sheet is is the sheet
@@ -6575,30 +6674,30 @@
             Specifies that all text in the parent object shall be 
             aligned automatically when displayed.
         </member>
-        <member name="T:NPOI.XWPF.UserModel.TextSegement">
+        <member name="T:NPOI.XWPF.UserModel.TextSegment">
             saves the begin and end position  of a text in a Paragraph
         </member>
-        <member name="P:NPOI.XWPF.UserModel.TextSegement.BeginRun">
+        <member name="P:NPOI.XWPF.UserModel.TextSegment.BeginRun">
             <summary>
             The index of the start run
             </summary>
         </member>
-        <member name="P:NPOI.XWPF.UserModel.TextSegement.BeginText">
+        <member name="P:NPOI.XWPF.UserModel.TextSegment.BeginText">
             <summary>
             The index of the start CT_Text
             </summary>
         </member>
-        <member name="P:NPOI.XWPF.UserModel.TextSegement.BeginChar">
+        <member name="P:NPOI.XWPF.UserModel.TextSegment.BeginChar">
             <summary>
             The index of the start text character
             </summary>
         </member>
-        <member name="P:NPOI.XWPF.UserModel.TextSegement.EndText">
+        <member name="P:NPOI.XWPF.UserModel.TextSegment.EndText">
             <summary>
             the index of the end CT_Text 
             </summary>
         </member>
-        <member name="P:NPOI.XWPF.UserModel.TextSegement.EndChar">
+        <member name="P:NPOI.XWPF.UserModel.TextSegment.EndChar">
             <summary>
             the index of the end text character
             </summary>
@@ -7688,9 +7787,10 @@
              @return the text of this text run.or <code>null</code> if not Set
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFRun.SetText(System.String)">
-             Sets the text of this text run
-            
-             @param value the literal text which shall be displayed in the document
+             <summary>
+            Sets the text of this text run
+             </summary>
+             <param name="value">the literal text which shall be displayed in the document</param>
         </member>
         <member name="M:NPOI.XWPF.UserModel.XWPFRun.SetText(System.String,System.Int32)">
              Sets the text of this text run.in the 
@@ -8120,7 +8220,7 @@
             @param pos
             @return  the inserted run
         </member>
-        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetText(NPOI.XWPF.UserModel.TextSegement)">
+        <member name="M:NPOI.XWPF.UserModel.XWPFParagraph.GetText(NPOI.XWPF.UserModel.TextSegment)">
             Get a Text
             @param segment
         </member>

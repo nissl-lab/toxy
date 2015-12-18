@@ -228,115 +228,14 @@
         <member name="P:NPOI.DDF.AbstractEscherOptRecord.EscherProperties">
             The list of properties stored by this record.
         </member>
-        <member name="F:NPOI.DDF.SysIndexSource.FILL_COLOR">
-            Use the fill color of the shape. 
-        </member>
-        <member name="F:NPOI.DDF.SysIndexSource.LINE_OR_FILL_COLOR">
-            Use the fill color of the shape. 
-        </member>
-        <member name="F:NPOI.DDF.SysIndexSource.LINE_COLOR">
-            Use the fill color of the shape. 
-        </member>
-        <member name="F:NPOI.DDF.SysIndexSource.SHADOW_COLOR">
-            Use the fill color of the shape. 
-        </member>
-        <member name="F:NPOI.DDF.SysIndexSource.CURRENT_OR_LAST_COLOR">
-            Use the fill color of the shape. 
-        </member>
-        <member name="F:NPOI.DDF.SysIndexSource.FILL_BACKGROUND_COLOR">
-            Use the fill color of the shape. 
-        </member>
-        <member name="F:NPOI.DDF.SysIndexSource.LINE_BACKGROUND_COLOR">
-            Use the fill color of the shape. 
-        </member>
-        <member name="F:NPOI.DDF.SysIndexSource.FILL_OR_LINE_COLOR">
-            Use the fill color of the shape. 
-        </member>
         <member name="T:NPOI.DDF.SysIndexProcedure">
             The following enum specifies values that indicate special procedural properties that
             are used to modify the color components of another color. These values are combined with
             those of the {@link SysIndexSource} enum or with a user-specified color.
             The first six values are mutually exclusive.
         </member>
-        <member name="F:NPOI.DDF.SysIndexProcedure.DARKEN_COLOR">
-            Darken the color by the value that is specified in the blue field.
-            A blue value of 0xFF specifies that the color is to be left unChanged,
-            whereas a blue value of 0x00 specifies that the color is to be completely darkened.
-        </member>
-        <member name="F:NPOI.DDF.SysIndexProcedure.LIGHTEN_COLOR">
-            Darken the color by the value that is specified in the blue field.
-            A blue value of 0xFF specifies that the color is to be left unChanged,
-            whereas a blue value of 0x00 specifies that the color is to be completely darkened.
-        </member>
-        <member name="F:NPOI.DDF.SysIndexProcedure.ADD_GRAY_LEVEL">
-            Darken the color by the value that is specified in the blue field.
-            A blue value of 0xFF specifies that the color is to be left unChanged,
-            whereas a blue value of 0x00 specifies that the color is to be completely darkened.
-        </member>
-        <member name="F:NPOI.DDF.SysIndexProcedure.SUB_GRAY_LEVEL">
-            Darken the color by the value that is specified in the blue field.
-            A blue value of 0xFF specifies that the color is to be left unChanged,
-            whereas a blue value of 0x00 specifies that the color is to be completely darkened.
-        </member>
-        <member name="F:NPOI.DDF.SysIndexProcedure.REVERSE_GRAY_LEVEL">
-            Darken the color by the value that is specified in the blue field.
-            A blue value of 0xFF specifies that the color is to be left unChanged,
-            whereas a blue value of 0x00 specifies that the color is to be completely darkened.
-        </member>
-        <member name="F:NPOI.DDF.SysIndexProcedure.THRESHOLD">
-            Darken the color by the value that is specified in the blue field.
-            A blue value of 0xFF specifies that the color is to be left unChanged,
-            whereas a blue value of 0x00 specifies that the color is to be completely darkened.
-        </member>
-        <member name="F:NPOI.DDF.SysIndexProcedure.INVERT_AFTER">
-            Darken the color by the value that is specified in the blue field.
-            A blue value of 0xFF specifies that the color is to be left unChanged,
-            whereas a blue value of 0x00 specifies that the color is to be completely darkened.
-        </member>
-        <member name="F:NPOI.DDF.SysIndexProcedure.INVERT_HIGHBIT_AFTER">
-            Darken the color by the value that is specified in the blue field.
-            A blue value of 0xFF specifies that the color is to be left unChanged,
-            whereas a blue value of 0x00 specifies that the color is to be completely darkened.
-        </member>
         <member name="T:NPOI.DDF.EscherColorRef">
             An OfficeArtCOLORREF structure entry which also handles color extension opid data
-        </member>
-        <member name="F:NPOI.DDF.EscherColorRef.FLAG_SYS_INDEX">
-            A bit that specifies whether the system color scheme will be used to determine the color. 
-            A value of 0x1 specifies that green and red will be treated as an unsigned 16-bit index
-            into the system color table. Values less than 0x00F0 map directly to system colors.
-        </member>
-        <member name="F:NPOI.DDF.EscherColorRef.FLAG_SCHEME_INDEX">
-            A bit that specifies whether the current application-defined color scheme will be used
-            to determine the color. A value of 0x1 specifies that red will be treated as an index
-            into the current color scheme table. If this value is 0x1, green and blue MUST be 0x00.
-        </member>
-        <member name="F:NPOI.DDF.EscherColorRef.FLAG_SYSTEM_RGB">
-            A bit that specifies whether the color is a standard RGB color.
-            0x0 : The RGB color MAY use halftone dithering to display.
-            0x1 : The color MUST be a solid color.
-        </member>
-        <member name="F:NPOI.DDF.EscherColorRef.FLAG_PALETTE_RGB">
-            A bit that specifies whether the current palette will be used to determine the color.
-            A value of 0x1 specifies that red, green, and blue contain an RGB value that will be
-            matched in the current color palette. This color MUST be solid.
-        </member>
-        <member name="F:NPOI.DDF.EscherColorRef.FLAG_PALETTE_INDEX">
-            A bit that specifies whether the current palette will be used to determine the color.
-            A value of 0x1 specifies that green and red will be treated as an unsigned 16-bit index into 
-            the current color palette. This color MAY be dithered. If this value is 0x1, blue MUST be 0x00.
-        </member>
-        <member name="F:NPOI.DDF.EscherColorRef.FLAG_BLUE">
-            An unsigned integer that specifies the intensity of the blue color channel. A value
-            of 0x00 has the minimum blue intensity. A value of 0xFF has the maximum blue intensity.
-        </member>
-        <member name="F:NPOI.DDF.EscherColorRef.FLAG_GREEN">
-            An unsigned integer that specifies the intensity of the green color channel. A value
-            of 0x00 has the minimum green intensity. A value of 0xFF has the maximum green intensity.
-        </member>
-        <member name="F:NPOI.DDF.EscherColorRef.FLAG_RED">
-            An unsigned integer that specifies the intensity of the red color channel. A value
-            of 0x00 has the minimum red intensity. A value of 0xFF has the maximum red intensity.
         </member>
         <member name="M:NPOI.DDF.EscherColorRef.GetSysIndexSource">
             @return {@link SysIndexSource} if {@link #hasSysIndexFlag()} is {@code true}, otherwise null
@@ -1753,7 +1652,12 @@
         <member name="P:NPOI.HSSF.Record.OldLabelRecord.Value">
             Get the String of the cell
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.HSSF.Record.OldSheetRecord" -->
+        <member name="T:NPOI.HSSF.Record.OldSheetRecord">
+            Title:        Bound Sheet Record (aka BundleSheet) (0x0085) for BIFF 5<br/>
+            Description:  Defines a sheet within a workbook.  Basically stores the sheet name
+                          and tells where the Beginning of file record is within the HSSF
+                          file.
+        </member>
         <member name="P:NPOI.HSSF.Record.OldSheetRecord.PositionOfBof">
              Get the offset in bytes of the Beginning of File Marker within the HSSF Stream part of the POIFS file
             
@@ -2374,7 +2278,11 @@
             
             @return {@link ValueEval} with date as its value.
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.Functions.BaseNumberUtils" -->
+        <member name="T:NPOI.SS.Formula.Functions.BaseNumberUtils">
+             <p>Some utils for Converting from and to any base</p>
+            
+             @author cedric dot walter @ gmail dot com
+        </member>
         <member name="T:NPOI.SS.Formula.Functions.Bin2Dec">
              Implementation for Excel Bin2Dec() function.<p/>
              <p/>
@@ -2487,14 +2395,69 @@
             Syntax: COUNTIFS(criteria_range1, criteria1, [criteria_range2, criteria2])
             </p>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.Functions.Dec2Bin" -->
+        <member name="T:NPOI.SS.Formula.Functions.Dec2Bin">
+             Implementation for Excel Bin2Dec() function.<p/>
+             <p/>
+             <b>Syntax</b>:<br/> <b>Bin2Dec  </b>(<b>number</b>,<b>[places]</b> )<br/>
+             <p/>
+             Converts a decimal number to binary.
+             <p/>
+             The DEC2BIN function syntax has the following arguments:
+             <ul>
+             <li>Number    Required. The decimal integer you want to Convert. If number is negative, valid place values are ignored and DEC2BIN returns a 10-character (10-bit) binary number in which the most significant bit is the sign bit. The remaining 9 bits are magnitude bits. Negative numbers are represented using two's-complement notation.</li>
+             <li>Places    Optional. The number of characters to use. If places is omitted, DEC2BIN uses the minimum number of characters necessary. Places is useful for pAdding the return value with leading 0s (zeros).</li>
+             </ul>
+             <p/>
+             Remarks
+             <ul>
+             <li>If number &lt; -512 or if number &gt; 511, DEC2BIN returns the #NUM! error value.</li>
+             <li>If number is nonnumeric, DEC2BIN returns the #VALUE! error value.</li>
+             <li>If DEC2BIN requires more than places characters, it returns the #NUM! error value.</li>
+             <li>If places is not an integer, it is tRuncated.</li>
+             <li>If places is nonnumeric, DEC2BIN returns the #VALUE! error value.</li>
+             <li>If places is zero or negative, DEC2BIN returns the #NUM! error value.</li>
+             </ul>
+            
+             @author cedric dot walter @ gmail dot com
+        </member>
         <member name="T:NPOI.SS.Formula.Functions.Var1or2ArgFunction">
              Convenience base class for any function which must take two or three
              arguments
             
              @author Josh Micich
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.Functions.Dec2Hex" -->
+        <member name="T:NPOI.SS.Formula.Functions.Dec2Hex">
+             Implementation for Excel DELTA() function.<p/>
+             <p/>
+             <b>Syntax</b>:<br/> <b>DEC2HEX  </b>(<b>number</b>,<b>places</b> )<br/>
+             <p/>
+             Converts a decimal number to hexadecimal.
+            
+             The decimal integer you want to Convert. If number is negative, places is ignored
+             and this function returns a 10-character (40-bit) hexadecimal number in which the
+             most significant bit is the sign bit. The remaining 39 bits are magnitude bits.
+             Negative numbers are represented using two's-complement notation.
+            
+             <ul>
+             <li>If number &lt; -549,755,813,888 or if number &gt; 549,755,813,887, this function returns the #NUM! error value.</li>
+             <li>If number is nonnumeric, this function returns the #VALUE! error value.</li>
+             </ul>
+            
+             <h2>places</h2>
+            
+             The number of characters to use. The places argument is useful for pAdding the
+             return value with leading 0s (zeros).
+            
+             <ul>
+             <li>If this argument is omitted, this function uses the minimum number of characters necessary.</li>
+             <li>If this function requires more than places characters, it returns the #NUM! error value.</li>
+             <li>If this argument is nonnumeric, this function returns the #VALUE! error value.</li>
+             <li>If this argument is negative, this function returns the #NUM! error value.</li>
+             <li>If this argument Contains a decimal value, this function ignores the numbers to the right side of the decimal point.</li>
+             </ul>
+            
+             @author cedric dot walter @ gmail dot com
+        </member>
         <member name="T:NPOI.SS.Formula.Functions.Delta">
              Implementation for Excel DELTA() function.<p/>
              <p/>
@@ -2589,7 +2552,14 @@
              @If references could not be Resolved or comparison
              operators and operands didn't match.
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.SS.Formula.Functions.DStarRunner.testNormalCondition(NPOI.SS.Formula.Eval.ValueEval,System.String)" -->
+        <member name="M:NPOI.SS.Formula.Functions.DStarRunner.testNormalCondition(NPOI.SS.Formula.Eval.ValueEval,System.String)">
+             Test a value against a simple (&lt; &gt; &lt;= &gt;= = starts-with) condition string.
+            
+             @param value The value to Check.
+             @param condition The condition to check for.
+             @return Whether the condition holds.
+             @If comparison operator and operands don't match.
+        </member>
         <member name="M:NPOI.SS.Formula.Functions.DStarRunner.testNumericCondition(NPOI.SS.Formula.Eval.ValueEval,NPOI.SS.Formula.Functions.DStarRunner.Operator,System.String)">
             Test whether a value matches a numeric condition.
             @param valueEval Value to Check.
@@ -2906,13 +2876,45 @@
         <member name="P:NPOI.SS.Formula.Functions.MultiOperandNumericFunction.IsSubtotalCounted">
             Whether to count nested subtotals.
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.Functions.Oct2Dec" -->
+        <member name="T:NPOI.SS.Formula.Functions.Oct2Dec">
+             <p>Implementation for Excel Oct2Dec() function.</p>
+             <p>
+             Converts an octal number to decimal.
+             </p>
+             <p>
+             <b>Syntax</b>:<br/> <b>Oct2Dec  </b>(<b>number</b> )
+             </p>
+             <p/>
+             Number     is the octal number you want to Convert. Number may not contain more than 10 octal characters (30 bits).
+             The most significant bit of number is the sign bit. The remaining 29 bits are magnitude bits.
+             Negative numbers are represented using two's-complement notation..
+             <p/>
+             If number is not a valid octal number, OCT2DEC returns the #NUM! error value.
+            
+             @author cedric dot walter @ gmail dot com
+        </member>
         <member name="T:NPOI.SS.Formula.Functions.PPMT">
             Compute the interest portion of a payment.
             
             @author Mike Argyriou micharg@gmail.com
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.Functions.Quotient" -->
+        <member name="T:NPOI.SS.Formula.Functions.Quotient">
+             <p>Implementation for Excel QUOTIENT () function.</p>
+             <p>
+             <b>Syntax</b>:<br/> <b>QUOTIENT</b>(<b>Numerator</b>,<b>Denominator</b>)<br/>
+             </p>
+             <p>
+             Numerator     is the dividend.
+             Denominator     is the divisor.
+            
+             Returns the integer portion of a division. Use this function when you want to discard the remainder of a division.
+             </p>
+            
+             If either enumerator/denominator is non numeric, QUOTIENT returns the #VALUE! error value.
+             If denominator is Equals to zero, QUOTIENT returns the #DIV/0! error value.
+            
+             @author cedric dot walter @ gmail dot com
+        </member>
         <member name="T:NPOI.SS.Formula.Functions.Rank">
                  * Returns the rank of a number in a list of numbers. The rank of a number is its size relative to other values in a list.
             
@@ -3122,7 +3124,14 @@
             
              @author cedric dot walter @ gmail dot com
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.PTG.Area3DPxg" -->
+        <member name="T:NPOI.SS.Formula.PTG.Area3DPxg">
+            <p>Title:        XSSF Area 3D Reference (Sheet + Area)</p>
+            <p>Description:  Defined an area in an external or different sheet. </p>
+            <p>REFERENCE:  </p>
+            
+            <p>This is XSSF only, as it stores the sheet / book references
+             in String form. The HSSF equivalent using indexes is {@link Area3DPtg}</p>
+        </member>
         <member name="T:NPOI.SS.Formula.PTG.AreaPtgBase">
             Specifies a rectangular area of cells A1:A4 for instance.
             @author  andy
@@ -3392,7 +3401,12 @@
             </summary>
             <param name="toolPack"></param>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.IWorkbookEvaluatorProvider" -->
+        <member name="T:NPOI.SS.Formula.IWorkbookEvaluatorProvider">
+            Provides access to a {@link WorkbookEvaluator}, eg for use with
+             {@link CollaboratingWorkbooksEnvironment}
+            
+            For POI internal use only
+        </member>
         <member name="M:NPOI.SS.Formula.IWorkbookEvaluatorProvider.GetWorkbookEvaluator">
             Provide the underlying WorkbookEvaluator
         </member>
@@ -4708,6 +4722,7 @@
             </summary>
             <param name="date">The Excel date.</param>
             <param name="use1904windowing">true if date uses 1904 windowing, or false if using 1900 date windowing.</param>
+            <param name="roundSeconds"></param>
             <returns>null if date is not a valid Excel date</returns>
         </member>
         <member name="M:NPOI.SS.UserModel.DateUtil.ConvertTime(System.String)">
@@ -10905,7 +10920,21 @@
             </summary>
             <param name="name">the name of the defined name</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.SS.UserModel.IWorkbook.LinkExternalWorkbook(System.String,NPOI.SS.UserModel.IWorkbook)" -->
+        <member name="M:NPOI.SS.UserModel.IWorkbook.LinkExternalWorkbook(System.String,NPOI.SS.UserModel.IWorkbook)">
+            <summary>
+            Adds the linking required to allow formulas referencing the specified 
+            external workbook to be added to this one. In order for formulas 
+            such as "[MyOtherWorkbook]Sheet3!$A$5" to be added to the file, 
+            some linking information must first be recorded. Once a given external 
+            workbook has been linked, then formulas using it can added. Each workbook 
+            needs linking only once. <br/>
+            This linking only applies for writing formulas. 
+            To link things for evaluation, see {@link FormulaEvaluator#setupReferencedWorkbooks(java.util.Map)}
+            </summary>
+            <param name="name">The name the workbook will be referenced as in formulas</param>
+            <param name="workbook">The open workbook to fetch the link required information from</param>
+            <returns></returns>
+        </member>
         <member name="M:NPOI.SS.UserModel.IWorkbook.SetPrintArea(System.Int32,System.String)">
             <summary>
             Sets the printarea for the sheet provided
@@ -11093,7 +11122,17 @@
             Creates new HSSFWorkbook from scratch (start here!)
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(NPOI.POIFS.FileSystem.POIFSFileSystem)" -->
+        <member name="M:NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(NPOI.POIFS.FileSystem.POIFSFileSystem)">
+             Companion to HSSFWorkbook(POIFSFileSystem), this constructs the 
+              POI filesystem around your inputstream, including all nodes.
+             This calls {@link #HSSFWorkbook(InputStream, boolean)} with
+              preserve nodes set to true. 
+            
+             @see #HSSFWorkbook(InputStream, boolean)
+             @see #HSSFWorkbook(POIFSFileSystem)
+             @see org.apache.poi.poifs.filesystem.POIFSFileSystem
+             @exception IOException if the stream cannot be read
+        </member>
         <member name="M:NPOI.HSSF.UserModel.HSSFWorkbook.#ctor(NPOI.POIFS.FileSystem.POIFSFileSystem,System.Boolean)">
             <summary>
             given a POI POIFSFileSystem object, Read in its Workbook and populate the high and
@@ -11378,7 +11417,7 @@
             <param name="italic">if set to <c>true</c> [italic].</param>
             <param name="strikeout">if set to <c>true</c> [strikeout].</param>
             <param name="typeOffset">The type offset.</param>
-            <param name="Underline">The underline.</param>
+            <param name="underline">The underline.</param>
             <returns></returns>
         </member>
         <member name="M:NPOI.HSSF.UserModel.HSSFWorkbook.GetFontAt(System.Int16)">
@@ -11603,7 +11642,7 @@
             <summary>
             Gets all embedded OLE2 objects from the Workbook.
             </summary>
-            <param name="records">the list of records to search.</param>
+            <param name="sheet">the list of records to search.</param>
             <param name="objects">the list of embedded objects to populate.</param>
         </member>
         <member name="M:NPOI.HSSF.UserModel.HSSFWorkbook.GetAllEmbeddedObjects(NPOI.HSSF.UserModel.HSSFShapeContainer,System.Collections.Generic.List{NPOI.HSSF.UserModel.HSSFObjectData})">
@@ -12229,6 +12268,9 @@
             
              @param hssfShape The highlevel shape.
              @param shapeId   The shape id to use for this shape.
+        </member>
+        <member name="M:NPOI.HSSF.Model.ComboboxShape.CreateObjRecord(NPOI.HSSF.UserModel.HSSFSimpleShape,System.Int32)">
+            Creates the low level OBJ record for this shape.
         </member>
         <member name="M:NPOI.HSSF.Model.ComboboxShape.CreateSpContainer(NPOI.HSSF.UserModel.HSSFSimpleShape,System.Int32)">
             Generates the escher shape records for this shape.
@@ -19194,7 +19236,15 @@
             @param sid - record sid we want to check if it belongs to drawing layer
             @return true if record is instance of DrawingRecord or ContinueRecord or ObjRecord or TextObjRecord
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.HSSF.Record.EscherAggregate.CreateAggregate(System.Collections.Generic.List{NPOI.HSSF.Record.RecordBase},System.Int32)" -->
+        <member name="M:NPOI.HSSF.Record.EscherAggregate.CreateAggregate(System.Collections.Generic.List{NPOI.HSSF.Record.RecordBase},System.Int32)">
+             Collapses the drawing records into an aggregate.
+             read Drawing, Obj, TxtObj, Note and Continue records into single byte array,
+             create Escher tree from byte array, create map &lt;EscherRecord, Record&gt;
+            
+             @param records - list of all records inside sheet
+             @param locFirstDrawingRecord - location of the first DrawingRecord inside sheet
+             @return new EscherAggregate create from all aggregated records which belong to drawing layer
+        </member>
         <member name="M:NPOI.HSSF.Record.EscherAggregate.Serialize(System.Int32,System.Byte[])">
              Serializes this aggregate to a byte array.  Since this Is an aggregate
              record it will effectively Serialize the aggregated records.
@@ -19596,7 +19646,36 @@
             Constructs a Extern Sheet record and Sets its fields appropriately.
             @param in the RecordInputstream to Read the record from
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.HSSF.Record.ExternSheetRecord.AddRef(System.Int32,System.Int32,System.Int32)" -->
+        <member name="M:NPOI.HSSF.Record.ExternSheetRecord.AddRef(System.Int32,System.Int32,System.Int32)">
+             Add a zero-based reference to a {@link org.apache.poi.hssf.record.SupBookRecord}.
+             <p>
+              If the type of the SupBook record is same-sheet referencing, Add-In referencing,
+              DDE data source referencing, or OLE data source referencing,
+              then no scope is specified and this value <em>MUST</em> be -2. Otherwise,
+              the scope must be set as follows:
+               <ol>
+                <li><code>-2</code> Workbook-level reference that applies to the entire workbook.</li>
+                <li><code>-1</code> Sheet-level reference. </li>
+                <li><code>&gt;=0</code> Sheet-level reference. This specifies the first sheet in the reference.
+                <p>
+                If the SupBook type is unused or external workbook referencing,
+                then this value specifies the zero-based index of an external sheet name,
+                see {@link org.apache.poi.hssf.record.SupBookRecord#getSheetNames()}.
+                This referenced string specifies the name of the first sheet within the external workbook that is in scope.
+                This sheet MUST be a worksheet or macro sheet.
+                </p>
+                <p>
+                If the supporting link type is self-referencing, then this value specifies the zero-based index of a
+                {@link org.apache.poi.hssf.record.BoundSheetRecord} record in the workbook stream that specifies
+                the first sheet within the scope of this reference. This sheet MUST be a worksheet or a macro sheet.
+                </p>
+                </li>
+              </ol></p>
+            
+             @param firstSheetIndex  the scope, must be -2 for add-in references
+             @param lastSheetIndex   the scope, must be -2 for add-in references
+             @return index of newly added ref
+        </member>
         <member name="M:NPOI.HSSF.Record.ExternSheetRecord.AddREFRecord(NPOI.HSSF.Record.RefSubRecord)">
             Adds REF struct (ExternSheetSubRecord)
             @param rec REF struct
@@ -23152,6 +23231,9 @@
         </member>
         <member name="M:NPOI.SS.UserModel.Charts.ILineChartSeries`2.GetValues">
             @return data source used for value axis.
+        </member>
+        <member name="T:NPOI.SS.UserModel.DataConsolidateFunction">
+            Enum mapping the values of STDataConsolidateFunction
         </member>
         <member name="T:NPOI.SS.UserModel.FontUnderline">
              the different types of possible underline formatting
@@ -28415,6 +28497,7 @@
             Gets the name XPTG.
             </summary>
             <param name="name">The name.</param>
+            <param name="sheet"></param>
             <returns></returns>
         </member>
         <member name="M:NPOI.SS.Formula.IFormulaParsingWorkbook.Get3DReferencePtg(NPOI.SS.Util.CellReference,NPOI.SS.Formula.SheetIdentifier)">
@@ -28886,8 +28969,30 @@
              value comPuted for you, use {@link #EvaluateFormulaCell(Cell)}
             @param cell
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.SS.UserModel.IFormulaEvaluator.SetupReferencedWorkbooks(System.Collections.Generic.Dictionary{System.String,NPOI.SS.UserModel.IFormulaEvaluator})" -->
-        <!-- Badly formed XML comment ignored for member "P:NPOI.SS.UserModel.IFormulaEvaluator.IgnoreMissingWorkbooks" -->
+        <member name="M:NPOI.SS.UserModel.IFormulaEvaluator.SetupReferencedWorkbooks(System.Collections.Generic.Dictionary{System.String,NPOI.SS.UserModel.IFormulaEvaluator})">
+            Sets up the Formula Evaluator to be able to reference and resolve
+             links to other workbooks, eg [Test.xls]Sheet1!A1.
+            For a workbook referenced as [Test.xls]Sheet1!A1, you should
+             supply a map containing the key Test.xls (no square brackets),
+             and an open FormulaEvaluator onto that Workbook.
+            @param otherWorkbooks Map of workbook names (no square brackets) to an evaluator on that workbook
+        </member>
+        <member name="P:NPOI.SS.UserModel.IFormulaEvaluator.IgnoreMissingWorkbooks">
+             Whether to ignore missing references to external workbooks and
+             use cached formula results in the main workbook instead.
+             <br/>
+             In some cases external workbooks referenced by formulas in the main workbook are not available.
+             With this method you can control how POI handles such missing references:
+             <ul>
+                 <li>by default ignoreMissingWorkbooks=false and POI throws 
+                 {@link org.apache.poi.ss.formula.CollaboratingWorkbooksEnvironment.WorkbookNotFoundException}
+                 if an external reference cannot be resolved</li>
+                 <li>if ignoreMissingWorkbooks=true then POI uses cached formula result
+                 that already exists in the main workbook</li>
+             </ul>
+            
+             @param ignore whether to ignore missing references to external workbooks
+        </member>
         <member name="P:NPOI.SS.UserModel.IFormulaEvaluator.DebugEvaluationOutputForNextEval">
                      * Perform detailed output of formula evaluation for next evaluation only?
                      * Is for developer use only (also developers using POI for their XLS files).
@@ -31663,7 +31768,7 @@
             <summary>
             Sets whether sheet is selected.
             </summary>
-            <param name="sel">Whether to select the sheet or deselect the sheet.</param> 
+            <param name="value">Whether to select the sheet or deselect the sheet.</param> 
         </member>
         <member name="M:NPOI.SS.UserModel.ISheet.SetArrayFormula(System.String,NPOI.SS.Util.CellRangeAddress)">
             <summary>
@@ -32616,7 +32721,6 @@
             <param name="columnIndex"></param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.HSSF.UserModel.HSSFSheet.CopySheet" -->
         <member name="P:NPOI.HSSF.UserModel.HSSFSheet.DisplayZeros">
             Gets the flag indicating whether the window should show 0 (zero) in cells containing zero value.
             When false, cells with zero value appear blank instead of showing the number zero.
@@ -34442,7 +34546,22 @@
         <member name="P:NPOI.SS.Formula.Functions.SubtotalInstance.IsSubtotalCounted">
             ignore nested subtotals.
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.Functions.Percentile" -->
+        <member name="T:NPOI.SS.Formula.Functions.Percentile">
+              Returns the k-th percentile of values in a range. You can use this function to establish a threshold of
+              acceptance. For example, you can decide to examine candidates who score above the 90th percentile.
+            
+              PERCENTILE(array,k)
+              Array     is the array or range of data that defines relative standing.
+              K     is the percentile value in the range 0..1, inclusive.
+            
+             <strong>Remarks</strong>
+             <ul>
+                 <li>if array is empty or Contains more than 8,191 data points, PERCENTILE returns the #NUM! error value.</li>
+                 <li>If k is nonnumeric, PERCENTILE returns the #VALUE! error value.</li>
+                 <li>If k is &lt; 0 or if k &gt; 1, PERCENTILE returns the #NUM! error value.</li>
+                 <li>If k is not a multiple of 1/(n - 1), PERCENTILE interpolates to determine the value at the k-th percentile.</li>
+             </ul>
+        </member>
         <member name="T:NPOI.SS.Formula.Functions.BooleanFunction">
              Here are the general rules concerning Boolean functions:
              <ol>
@@ -35940,7 +36059,15 @@
         <member name="T:NPOI.SS.Formula.PTG.Area2DPtgBase">
             Common superclass of 2-D area refs 
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.PTG.Area3DPtg" -->
+        <member name="T:NPOI.SS.Formula.PTG.Area3DPtg">
+            <p>Title:        Area 3D Ptg - 3D reference (Sheet + Area)</p>
+            <p>Description:  Defined an area in Extern Sheet. </p>
+            <p>REFERENCE:  </p>
+            
+            This is HSSF only, as it matches the HSSF file format way of
+             referring to the sheet by an extern index. The XSSF equivalent
+             is {@link Area3DPxg}
+        </member>
         <member name="T:NPOI.SS.Formula.WorkbookDependentFormula">
             Should be implemented by any {@link Ptg} subclass that needs a workbook To render its formula.
             <br/>
@@ -36301,7 +36428,14 @@
         <member name="P:NPOI.SS.Formula.PTG.NamePtg.Index">
             @return zero based index to a defined name record in the LinkTable
         </member>
-        <!-- Badly formed XML comment ignored for member "T:NPOI.SS.Formula.PTG.NameXPtg" -->
+        <member name="T:NPOI.SS.Formula.PTG.NameXPtg">
+            A Name, be that a Named Range or a Function / User Defined
+             Function, addressed in the HSSF External Sheet style.
+             
+            This is HSSF only, as it matches the HSSF file format way of
+             referring to the sheet by an extern index. The XSSF equivalent
+             is {@link NameXPxg}
+        </member>
         <member name="F:NPOI.SS.Formula.PTG.NameXPtg._sheetRefIndex">
             index to REF entry in externsheet record 
         </member>
@@ -38854,7 +38988,17 @@
              @param srcName the original sheet name to
              @return clone sheet name
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.SS.Util.SheetUtil.GetCellWithMerges(NPOI.SS.UserModel.ISheet,System.Int32,System.Int32)" -->
+        <member name="M:NPOI.SS.Util.SheetUtil.GetCellWithMerges(NPOI.SS.UserModel.ISheet,System.Int32,System.Int32)">
+            Return the cell, taking account of merged regions. Allows you to find the
+             cell who's contents are Shown in a given position in the sheet.
+            
+            <p>If the cell at the given co-ordinates is a merged cell, this will
+             return the primary (top-left) most cell of the merged region.</p>
+            <p>If the cell at the given co-ordinates is not in a merged region,
+             then will return the cell itself.</p>
+            <p>If there is no cell defined at the given co-ordinates, will return
+             null.</p>
+        </member>
         <member name="T:NPOI.SS.Util.SSCellRange`1">
              For POI internal use only
             
@@ -39009,17 +39153,219 @@
             <param name="newLength">the length of the copy to be returned</param>
             <returns>a copy of the original array, truncated or padded with zeros to obtain the specified length</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.HashCode(System.Int64[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.HashCode(System.Int32[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.HashCode(System.Int16[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.HashCode(System.Char[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.HashCode(System.Byte[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.HashCode(System.Boolean[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.HashCode(System.Single[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.HashCode(System.Double[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.HashCode(System.Object[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.DeepHashCode(System.Object[])" -->
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.DeepEquals(System.Object[],System.Object[])" -->
+        <member name="M:NPOI.Util.Arrays.HashCode(System.Int64[])">
+             Returns a hash code based on the contents of the specified array.
+             For any two <tt>long</tt> arrays <tt>a</tt> and <tt>b</tt>
+             such that <tt>Arrays.Equals(a, b)</tt>, it is also the case that
+             <tt>Arrays.HashCode(a) == Arrays.HashCode(b)</tt>.
+            
+             The value returned by this method is the same value that would be
+             obtained by invoking the {@link List#hashCode() <tt>hashCode</tt>}
+             method on a {@link List} Containing a sequence of {@link Long}
+             instances representing the elements of <tt>a</tt> in the same order.
+             If <tt>a</tt> is <tt>null</tt>, this method returns 0.
+            
+             @param a the array whose hash value to compute
+             @return a content-based hash code for <tt>a</tt>
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.HashCode(System.Int32[])">
+             Returns a hash code based on the contents of the specified array.
+             For any two non-null <tt>int</tt> arrays <tt>a</tt> and <tt>b</tt>
+             such that <tt>Arrays.Equals(a, b)</tt>, it is also the case that
+             <tt>Arrays.HashCode(a) == Arrays.HashCode(b)</tt>.
+            
+             The value returned by this method is the same value that would be
+             obtained by invoking the {@link List#hashCode() <tt>hashCode</tt>}
+             method on a {@link List} Containing a sequence of {@link int}
+             instances representing the elements of <tt>a</tt> in the same order.
+             If <tt>a</tt> is <tt>null</tt>, this method returns 0.
+            
+             @param a the array whose hash value to compute
+             @return a content-based hash code for <tt>a</tt>
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.HashCode(System.Int16[])">
+             Returns a hash code based on the contents of the specified array.
+             For any two <tt>short</tt> arrays <tt>a</tt> and <tt>b</tt>
+             such that <tt>Arrays.Equals(a, b)</tt>, it is also the case that
+             <tt>Arrays.HashCode(a) == Arrays.HashCode(b)</tt>.
+            
+             The value returned by this method is the same value that would be
+             obtained by invoking the {@link List#hashCode() <tt>hashCode</tt>}
+             method on a {@link List} Containing a sequence of {@link short}
+             instances representing the elements of <tt>a</tt> in the same order.
+             If <tt>a</tt> is <tt>null</tt>, this method returns 0.
+            
+             @param a the array whose hash value to compute
+             @return a content-based hash code for <tt>a</tt>
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.HashCode(System.Char[])">
+             Returns a hash code based on the contents of the specified array.
+             For any two <tt>char</tt> arrays <tt>a</tt> and <tt>b</tt>
+             such that <tt>Arrays.Equals(a, b)</tt>, it is also the case that
+             <tt>Arrays.HashCode(a) == Arrays.HashCode(b)</tt>.
+            
+             The value returned by this method is the same value that would be
+             obtained by invoking the {@link List#hashCode() <tt>hashCode</tt>}
+             method on a {@link List} Containing a sequence of {@link Character}
+             instances representing the elements of <tt>a</tt> in the same order.
+             If <tt>a</tt> is <tt>null</tt>, this method returns 0.
+            
+             @param a the array whose hash value to compute
+             @return a content-based hash code for <tt>a</tt>
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.HashCode(System.Byte[])">
+             Returns a hash code based on the contents of the specified array.
+             For any two <tt>byte</tt> arrays <tt>a</tt> and <tt>b</tt>
+             such that <tt>Arrays.Equals(a, b)</tt>, it is also the case that
+             <tt>Arrays.HashCode(a) == Arrays.HashCode(b)</tt>.
+            
+             The value returned by this method is the same value that would be
+             obtained by invoking the {@link List#hashCode() <tt>hashCode</tt>}
+             method on a {@link List} Containing a sequence of {@link Byte}
+             instances representing the elements of <tt>a</tt> in the same order.
+             If <tt>a</tt> is <tt>null</tt>, this method returns 0.
+            
+             @param a the array whose hash value to compute
+             @return a content-based hash code for <tt>a</tt>
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.HashCode(System.Boolean[])">
+             Returns a hash code based on the contents of the specified array.
+             For any two <tt>bool</tt> arrays <tt>a</tt> and <tt>b</tt>
+             such that <tt>Arrays.Equals(a, b)</tt>, it is also the case that
+             <tt>Arrays.HashCode(a) == Arrays.HashCode(b)</tt>.
+            
+             The value returned by this method is the same value that would be
+             obtained by invoking the {@link List#hashCode() <tt>hashCode</tt>}
+             method on a {@link List} Containing a sequence of {@link Boolean}
+             instances representing the elements of <tt>a</tt> in the same order.
+             If <tt>a</tt> is <tt>null</tt>, this method returns 0.
+            
+             @param a the array whose hash value to compute
+             @return a content-based hash code for <tt>a</tt>
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.HashCode(System.Single[])">
+             Returns a hash code based on the contents of the specified array.
+             For any two <tt>float</tt> arrays <tt>a</tt> and <tt>b</tt>
+             such that <tt>Arrays.Equals(a, b)</tt>, it is also the case that
+             <tt>Arrays.HashCode(a) == Arrays.HashCode(b)</tt>.
+            
+             The value returned by this method is the same value that would be
+             obtained by invoking the {@link List#hashCode() <tt>hashCode</tt>}
+             method on a {@link List} Containing a sequence of {@link Float}
+             instances representing the elements of <tt>a</tt> in the same order.
+             If <tt>a</tt> is <tt>null</tt>, this method returns 0.
+            
+             @param a the array whose hash value to compute
+             @return a content-based hash code for <tt>a</tt>
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.HashCode(System.Double[])">
+             Returns a hash code based on the contents of the specified array.
+             For any two <tt>double</tt> arrays <tt>a</tt> and <tt>b</tt>
+             such that <tt>Arrays.Equals(a, b)</tt>, it is also the case that
+             <tt>Arrays.HashCode(a) == Arrays.HashCode(b)</tt>.
+            
+             The value returned by this method is the same value that would be
+             obtained by invoking the {@link List#hashCode() <tt>hashCode</tt>}
+             method on a {@link List} Containing a sequence of {@link Double}
+             instances representing the elements of <tt>a</tt> in the same order.
+             If <tt>a</tt> is <tt>null</tt>, this method returns 0.
+            
+             @param a the array whose hash value to compute
+             @return a content-based hash code for <tt>a</tt>
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.HashCode(System.Object[])">
+             Returns a hash code based on the contents of the specified array.  If
+             the array Contains other arrays as elements, the hash code is based on
+             their identities rather than their contents.  It is therefore
+             acceptable to invoke this method on an array that Contains itself as an
+             element,  either directly or indirectly through one or more levels of
+             arrays.
+            
+             For any two arrays <tt>a</tt> and <tt>b</tt> such that
+             <tt>Arrays.Equals(a, b)</tt>, it is also the case that
+             <tt>Arrays.HashCode(a) == Arrays.HashCode(b)</tt>.
+            
+             The value returned by this method is equal to the value that would
+             be returned by <tt>Arrays.AsList(a).HashCode()</tt>, unless <tt>a</tt>
+             is <tt>null</tt>, in which case <tt>0</tt> is returned.
+            
+             @param a the array whose content-based hash code to compute
+             @return a content-based hash code for <tt>a</tt>
+             @see #deepHashCode(Object[])
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.DeepHashCode(System.Object[])">
+             Returns a hash code based on the "deep contents" of the specified
+             array.  If the array Contains other arrays as elements, the
+             hash code is based on their contents and so on, ad infInitum.
+             It is therefore unacceptable to invoke this method on an array that
+             Contains itself as an element, either directly or indirectly through
+             one or more levels of arrays.  The behavior of such an invocation is
+             undefined.
+            
+             For any two arrays <tt>a</tt> and <tt>b</tt> such that
+             <tt>Arrays.DeepEquals(a, b)</tt>, it is also the case that
+             <tt>Arrays.DeepHashCode(a) == Arrays.DeepHashCode(b)</tt>.
+            
+             The computation of the value returned by this method is similar to
+             that of the value returned by {@link List#hashCode()} on a list
+             Containing the same elements as <tt>a</tt> in the same order, with one
+             difference: If an element <tt>e</tt> of <tt>a</tt> is itself an array,
+             its hash code is computed not by calling <tt>e.HashCode()</tt>, but as
+             by calling the appropriate overloading of <tt>Arrays.HashCode(e)</tt>
+             if <tt>e</tt> is an array of a primitive type, or as by calling
+             <tt>Arrays.DeepHashCode(e)</tt> recursively if <tt>e</tt> is an array
+             of a reference type.  If <tt>a</tt> is <tt>null</tt>, this method
+             returns 0.
+            
+             @param a the array whose deep-content-based hash code to compute
+             @return a deep-content-based hash code for <tt>a</tt>
+             @see #hashCode(Object[])
+             @since 1.5
+        </member>
+        <member name="M:NPOI.Util.Arrays.DeepEquals(System.Object[],System.Object[])">
+             Returns <tt>true</tt> if the two specified arrays are <i>deeply
+             Equal</i> to one another.  Unlike the {@link #Equals(Object[],Object[])}
+             method, this method is appropriate for use with nested arrays of
+             arbitrary depth.
+            
+             Two array references are considered deeply equal if both
+             are <tt>null</tt>, or if they refer to arrays that contain the same
+             number of elements and all corresponding pairs of elements in the two
+             arrays are deeply Equal.
+            
+             Two possibly <tt>null</tt> elements <tt>e1</tt> and <tt>e2</tt> are
+             deeply equal if any of the following conditions hold:
+             <ul>
+                <li> <tt>e1</tt> and <tt>e2</tt> are both arrays of object reference
+                     types, and <tt>Arrays.DeepEquals(e1, e2) would return true</tt></li>
+                <li> <tt>e1</tt> and <tt>e2</tt> are arrays of the same primitive
+                     type, and the appropriate overloading of
+                     <tt>Arrays.Equals(e1, e2)</tt> would return true.</li>
+                <li> <tt>e1 == e2</tt></li>
+                <li> <tt>e1.Equals(e2)</tt> would return true.</li>
+             </ul>
+             Note that this defInition permits <tt>null</tt> elements at any depth.
+            
+             If either of the specified arrays contain themselves as elements
+             either directly or indirectly through one or more levels of arrays,
+             the behavior of this method is undefined.
+            
+             @param a1 one array to be tested for Equality
+             @param a2 the other array to be tested for Equality
+             @return <tt>true</tt> if the two arrays are equal
+             @see #Equals(Object[],Object[])
+             @see Objects#deepEquals(Object, Object)
+             @since 1.5
+        </member>
         <member name="M:NPOI.Util.Arrays.ToString(System.Int64[])">
              Returns a string representation of the contents of the specified array.
              The string representation consists of a list of the array's elements,
@@ -39124,7 +39470,39 @@
              @return a string representation of <tt>a</tt>
              @since 1.5
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.Arrays.DeepToString(System.Object[])" -->
+        <member name="M:NPOI.Util.Arrays.DeepToString(System.Object[])">
+             Returns a string representation of the "deep contents" of the specified
+             array.  If the array Contains other arrays as elements, the string
+             representation Contains their contents and so on.  This method is
+             designed for Converting multidimensional arrays to strings.
+            
+             The string representation consists of a list of the array's
+             elements, enclosed in square brackets (<tt>"[]"</tt>).  Adjacent
+             elements are Separated by the characters <tt>", "</tt> (a comma
+             followed by a space).  Elements are Converted to strings as by
+             <tt>String.ValueOf(Object)</tt>, unless they are themselves
+             arrays.
+            
+             If an element <tt>e</tt> is an array of a primitive type, it is
+             Converted to a string as by invoking the appropriate overloading of
+             <tt>Arrays.ToString(e)</tt>.  If an element <tt>e</tt> is an array of a
+             reference type, it is Converted to a string as by invoking
+             this method recursively.
+            
+             To avoid infInite recursion, if the specified array Contains itself
+             as an element, or Contains an indirect reference to itself through one
+             or more levels of arrays, the self-reference is Converted to the string
+             <tt>"[...]"</tt>.  For example, an array Containing only a reference
+             to itself would be rendered as <tt>"[[...]]"</tt>.
+            
+             This method returns <tt>"null"</tt> if the specified array
+             is <tt>null</tt>.
+            
+             @param a the array whose string representation to return
+             @return a string representation of <tt>a</tt>
+             @see #ToString(Object[])
+             @since 1.5
+        </member>
         <member name="M:NPOI.Util.Arrays.ToString(System.Object[])">
              Returns a string representation of the contents of the specified array.
              If the array contains other arrays as elements, they are converted to
@@ -42984,7 +43362,22 @@
                      specified surrogate pair.
              @since  1.5
         </member>
-        <!-- Badly formed XML comment ignored for member "M:NPOI.Util.StringUtil.CharCount(System.Int32)" -->
+        <member name="M:NPOI.Util.StringUtil.CharCount(System.Int32)">
+             Determines the number of {@code char} values needed to
+             represent the specified character (Unicode code point). If the
+             specified character is equal to or greater than 0x10000, then
+             the method returns 2. Otherwise, the method returns 1.
+            
+             This method doesn't validate the specified character to be a
+             valid Unicode code point. The caller must validate the
+             character value using {@link #isValidCodePoint(int) isValidCodePoint}
+             if necessary.
+            
+             @param   codePoint the character (Unicode code point) to be tested.
+             @return  2 if the character is a valid supplementary character; 1 otherwise.
+             @see     Character#isSupplementaryCodePoint(int)
+             @since   1.5
+        </member>
         <member name="T:NPOI.Util.SystemOutLogger">
             <summary>
             A logger class that strives to make it as easy as possible for
