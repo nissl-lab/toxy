@@ -1,25 +1,27 @@
-﻿using DCSoft.RTF;
+﻿using RtfPipe;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Toxy.Parsers
 {
     public class RTFTextParser : PlainTextParser
     {
-        public RTFTextParser(ParserContext context): base(context)
+        public RTFTextParser(ParserContext context) : base(context)
         {
             this.Context = context;
         }
 
         public override string Parse()
         {
-            RTFDomDocument doc = new RTFDomDocument();
-            doc.Load(this.Context.Path);
-            if (doc.HtmlContent == null)
-                return doc.InnerText;
-            else
-                return doc.HtmlContent;
+            using (var fs = new FileStream(Context.Path, FileMode.Open))
+            {
+                var html = Rtf.ToHtml(fs);
+                return html;
+            }
         }
+
+
     }
 }
