@@ -19,6 +19,24 @@ For business cards, the data structure is called ToxyBusinessCard.
 For DOM based structure, the data structue is called ToxyDom.
 For metadata, the data structure is called ToxyMetadata (Since Toxy 1.3)
 
+
+NET Core support
+============
+I have ported Toxy with most features to .NET Core (PDF, doc, docx, xls, xlsx, vCard, email ..etc, NO JPEG and Video meta extract support), Some project does't have .NET Core verison, I migration it or replaced it with another library
+
+Hear is a list of some .NET Core unsupported library:
+
+NPOI.ScratchPad.HWPF.dll
+Thought.vCards.dll
+dmach.Mail
+iTextSharp (PDF about)
+DCSoft.RTF
+
+I have not full tested it, but I will fix the bug in the feature.
+
+Hope it can help you.
+
+
 How to join
 ============
 If you have passion to contribute code, please contact tony.qu@neuzilla.com
