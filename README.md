@@ -25,7 +25,6 @@ If you have passion to contribute code, please contact tony.qu@neuzilla.com
 
 Contact Neuzilla
 ============
-Homepage: http://blog.neuzilla.com
 Linkedin User Group: http://www.linkedin.com/groups/Neuzilla-User-Group-6655065 
 QQ Group:297128022
 Twitter: http://twitter.com/tonyqus
