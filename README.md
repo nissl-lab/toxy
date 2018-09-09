@@ -14,6 +14,10 @@ I have not full tested it, but I will fix the bug in the feature.
 
 Hope it can help you.
 
+Referenced library new migrated to .NET Core:
+- https://github.com/RockNHawk/NPOI.NetCore
+- https://github.com/RockNHawk/Thought.vCards.NetCore
+
 Who are We
 ==========
 
