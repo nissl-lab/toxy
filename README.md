@@ -20,7 +20,7 @@ For DOM based structure, the data structue is called ToxyDom.
 For metadata, the data structure is called ToxyMetadata (Since Toxy 1.3)
 
 
-NET Core support
+.NET Core support
 ============
 I have ported Toxy with most features to .NET Core (PDF, doc, docx, xls, xlsx, vCard, email ..etc, NO JPEG and Video meta extract support), Some project does't have .NET Core verison, I migration it or replaced it with another library
 
