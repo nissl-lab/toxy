@@ -2,6 +2,7 @@ Who are We
 ==========
 
 [![Join the chat at https://gitter.im/tonyqus/toxy](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tonyqus/toxy?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftonyqus%2Ftoxy.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftonyqus%2Ftoxy?ref=badge_shield)
 Neuzilla is the studio behind Toxy. For detail, you can check http://www.linkedin.com/company/neuzilla 
 
 What's Toxy
@@ -32,3 +33,7 @@ Linkedin User Group: http://www.linkedin.com/groups/Neuzilla-User-Group-6655065
 Twitter: http://twitter.com/tonyqus
 
 Email: support@neuzilla.com
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftonyqus%2Ftoxy.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftonyqus%2Ftoxy?ref=badge_large)
