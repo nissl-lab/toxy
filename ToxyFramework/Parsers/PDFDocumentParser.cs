@@ -1,5 +1,5 @@
-﻿using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.parser;
+﻿//using iTextSharp.text.pdf;
+//using iTextSharp.text.pdf.parser;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,28 +16,29 @@ namespace Toxy.Parsers
 
         public ToxyDocument Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            throw new NotImplementedException();
+            //if (!File.Exists(Context.Path))
+            //    throw new FileNotFoundException("File " + Context.Path + " is not found");
 
-            ToxyDocument rdoc = new ToxyDocument();
-            ITextExtractionStrategy its = new iTextSharp.text.pdf.parser.LocationTextExtractionStrategy();
+            //ToxyDocument rdoc = new ToxyDocument();
+            //ITextExtractionStrategy its = new iTextSharp.text.pdf.parser.LocationTextExtractionStrategy();
 
-            using (PdfReader reader = new PdfReader(this.Context.Path))
-            {
+            //using (PdfReader reader = new PdfReader(this.Context.Path))
+            //{
 
-                for (int i = 1; i <= reader.NumberOfPages; i++)
-                {
-                    string thePage = PdfTextExtractor.GetTextFromPage(reader, i, its);
-                    string[] theLines = thePage.Split('\n');
-                    foreach (var theLine in theLines)
-                    {
-                        ToxyParagraph para = new ToxyParagraph();
-                        para.Text = theLine;
-                        rdoc.Paragraphs.Add(para);
-                    }
-                }
-            }
-            return rdoc;
+            //    for (int i = 1; i <= reader.NumberOfPages; i++)
+            //    {
+            //        string thePage = PdfTextExtractor.GetTextFromPage(reader, i, its);
+            //        string[] theLines = thePage.Split('\n');
+            //        foreach (var theLine in theLines)
+            //        {
+            //            ToxyParagraph para = new ToxyParagraph();
+            //            para.Text = theLine;
+            //            rdoc.Paragraphs.Add(para);
+            //        }
+            //    }
+            //}
+            //return rdoc;
         }
         public ParserContext Context
         {

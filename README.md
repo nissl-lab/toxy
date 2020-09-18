@@ -25,15 +25,21 @@ For DOM based structure, the data structue is called ToxyDom.
 
 For metadata, the data structure is called ToxyMetadata (Since Toxy 1.3)
 
-
-Contact Neuzilla
+How to contact us
 ============
-Linkedin User Group: http://www.linkedin.com/groups/Neuzilla-User-Group-6655065 
+Telegram: https://t.me/npoidevs
 
-Twitter: http://twitter.com/tonyqus
+.NET Core support
+============
+RockNHawk have ported Toxy with most features to .NET Core (PDF, doc, docx, xls, xlsx, vCard, email ..etc, NO JPEG and Video meta extract support), Some project does't have .NET Core verison, I migration it or replaced it with another library
 
-Email: support@neuzilla.com
+Hear is a list of some .NET Core unsupported library:
 
+- NPOI.ScratchPad.HWPF.dll
+- Thought.vCards.dll
+- dmach.Mail
+- iTextSharp (PDF about)
+- DCSoft.RTF
 
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftonyqus%2Ftoxy.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftonyqus%2Ftoxy?ref=badge_large)

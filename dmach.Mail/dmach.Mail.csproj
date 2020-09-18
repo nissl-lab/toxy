@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><EnableDefaultCompileItems>false</EnableDefaultCompileItems><EnableDefaultContentItems>false</EnableDefaultContentItems></PropertyGroup><PropertyGroup><AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath></PropertyGroup>
+  
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DAF00829-FA77-4850-976A-A602C3B0D23F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InSolve.dmach.Mail</RootNamespace>
+    <AssemblyName>dmach.Mail</AssemblyName>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  
+  
+  
+  <ItemGroup>
+    <Compile Include="Attachment.cs" />
+    <Compile Include="Decoders\Decoder7bit.cs" />
+    <Compile Include="Decoders\Decoder8bit.cs" />
+    <Compile Include="Decoders\DecoderBase.cs" />
+    <Compile Include="Decoders\DecoderBase64.cs" />
+    <Compile Include="Decoders\DecoderQP.cs" />
+    <Compile Include="Decoders\DecoderSelector.cs" />
+    <Compile Include="Decoders\StreamConverter.cs" />
+    <Compile Include="HeaderCollection.cs" />
+    <Compile Include="HtmlTools.cs" />
+    <Compile Include="IAttachmentConstructor.cs" />
+    <Compile Include="IMessageConstructor.cs" />
+    <Compile Include="AttachmentFormat.cs" />
+    <Compile Include="Mime.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="ParserError.cs" />
+    <Compile Include="ParserStreamPos.cs" />
+    <Compile Include="ParserTools.cs" />
+     
+    <Compile Include="StreamStringBuilder.cs" />
+    <Compile Include="StreamTools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_RFC\RFC1521 - MIME %28RU%29.htm" />
+  </ItemGroup>
+   
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
