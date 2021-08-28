@@ -17,7 +17,8 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             ITextParser parser = ParserFactory.CreateText(context);
             string result = parser.Parse();
-            Assert.IsNotNullOrEmpty(result);
+            Assert.IsNotNull(result);
+            Assert.IsNotEmpty(result);
             string[] texts = result.Split(new string[]{"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
             Assert.AreEqual(14, texts.Length);
             Assert.AreEqual("Attachment Test", texts[0]);

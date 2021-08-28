@@ -17,7 +17,8 @@ namespace Toxy.Test
             var parser = ParserFactory.CreateText(context);
 
             string result=parser.Parse();
-            Assert.IsNotNullOrEmpty(result);
+            Assert.IsNotNull(result);
+            Assert.IsNotEmpty(result);
             Assert.IsTrue(result.IndexOf("[From] Azure Team<AzureTeam@e-mail.microsoft.com>") >= 0);
             Assert.IsTrue(result.IndexOf("[To] tonyqux@hotmail.com")>0);
             Assert.IsTrue(result.IndexOf("[Subject] Azure pricing and services updates") > 0);
@@ -33,12 +34,16 @@ namespace Toxy.Test
             var parser = ParserFactory.CreateText(context);
 
             string result = parser.Parse();
-            Assert.IsNotNullOrEmpty(result);
+            Assert.IsNotNull(result);
+            Assert.IsNotEmpty(result);
         }
 
         [Test]
         public void HtmlMsg_ReadMsgEntityTest()
         {
+            //patch for 'No data is available for encoding 936'
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
             string path = TestDataSample.GetEmailPath("Azure pricing and services updates.msg");
             ParserContext context = new ParserContext(path);
             var parser = ParserFactory.CreateEmail(context);

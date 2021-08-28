@@ -44,7 +44,8 @@ namespace Toxy.Test
                 }
             };
             string text = parser.Parse();
-			Assert.IsNotNullOrEmpty (text);
+            Assert.IsNotNull(text);
+            Assert.IsNotEmpty(text);
         }
 
     }

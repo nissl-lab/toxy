@@ -9,6 +9,7 @@ namespace Toxy.Test
 {
     public class TestDataSample
     {
+        const string samplePath = "..\\..\\..\\testdata\\";
         public static string GetPdfPath(string filename)
         {
             return GetFilePath(filename, "PDF");
@@ -69,7 +70,7 @@ namespace Toxy.Test
         }
         public static string GetFilePath(string filename, string subFolder)
         {
-			string path = ConfigurationManager.AppSettings["testdataPath"].Replace('\\',Path.DirectorySeparatorChar);
+			string path = samplePath.Replace('\\',Path.DirectorySeparatorChar);
 			if (!path.EndsWith(string.Empty+Path.DirectorySeparatorChar))
             {
 				path += Path.DirectorySeparatorChar;
