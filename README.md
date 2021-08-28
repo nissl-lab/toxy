@@ -11,14 +11,11 @@ Why Toxy
 ============
 In the past, we have to use IFilter to extract texts from other documents. But Toxy is platform independent. It will try to support not only Windows but also Linux (with Mono installed). The usage of Toxy will be very easy. You don't need to care much about what extension you are extracting because it will create a clever framework to help identify the file formats and extract the data/text into a unified structure. 
 
-For documents, the data structure is called ToxyDocument.
-
-For spreadsheets, the data structure is called ToxySpreadsheet.
-
-For emails, the data structure is called ToxyEmail.
-
-For business cards, the data structure is called ToxyBusinessCard.
-
-For DOM based structure, the data structue is called ToxyDom.
-
-For metadata, the data structure is called ToxyMetadata (Since Toxy 1.3)
+Toxy Objects
+==================
+- ToxyDocument - the data structure extracted for documents
+- ToxySpreadsheet - the data structure extracted for spreadsheets
+- ToxyEmail - the data structure extracted for emails
+- ToxyBusinessCard - the data structure extracted for business cards
+- ToxyDom - the data structure extracted for DOM based document
+- ToxyMetadata - the data structure extracted for other files with meta data
