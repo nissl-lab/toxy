@@ -10,9 +10,8 @@ namespace Toxy.Test
         [Test]
         public void TestRead2Cards()
         {
-            string path = TestDataSample.GetVCardPath("RfcAuthors.vcf");
-            ParserContext context = new ParserContext(path);
-            VCardDocumentParser parser = new VCardDocumentParser(context);
+            ParserContext context = new ParserContext(TestDataSample.GetVCardPath("RfcAuthors.vcf"));
+            VCardDocumentParser parser = ParserFactory.CreateVCard(context);
             var cards= parser.Parse();
             Assert.AreEqual(2, cards.Cards.Count);
 
@@ -61,9 +60,8 @@ namespace Toxy.Test
         [Test]
         public void TestUTF8Card()
         {
-            string path = TestDataSample.GetVCardPath("UnicodeNameSample.vcf");
-            ParserContext context = new ParserContext(path);
-            VCardDocumentParser parser = new VCardDocumentParser(context);
+            ParserContext context = new ParserContext(TestDataSample.GetVCardPath("UnicodeNameSample.vcf"));
+            VCardDocumentParser parser = ParserFactory.CreateVCard(context);
             var cards = parser.Parse();
             Assert.AreEqual(1, cards.Cards.Count);
 
@@ -81,7 +79,7 @@ namespace Toxy.Test
         {
             string path = TestDataSample.GetVCardPath("PalmAgentSamples.vcf");
             ParserContext context = new ParserContext(path);
-            VCardDocumentParser parser = new VCardDocumentParser(context);
+            VCardDocumentParser parser = ParserFactory.CreateVCard(context);
             var source = parser.Parse();
             Assert.AreEqual(20,source.Cards.Count);
 
