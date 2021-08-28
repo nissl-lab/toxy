@@ -53,15 +53,15 @@ namespace Toxy.Parsers
                                 sRecipient = string.Format("{0}<{1}>;", recipient.DisplayName, recipient.Email);
                             }
 
-                            if (recipient.Type == MsgReader.Outlook.Storage.Recipient.RecipientType.To)
+                            if (recipient.Type == RecipientType.To)
                             {
                                 recipientTo.Append(sRecipient);
                             }
-                            else if (recipient.Type == MsgReader.Outlook.Storage.Recipient.RecipientType.Cc)
+                            else if (recipient.Type == RecipientType.Cc)
                             {
                                 recipientCc.Append(sRecipient);
                             }
-                            else if (recipient.Type == MsgReader.Outlook.Storage.Recipient.RecipientType.Bcc)
+                            else if (recipient.Type == RecipientType.Bcc)
                             {
                                 recipientBcc.Append(sRecipient);
                             }
