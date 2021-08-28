@@ -73,9 +73,7 @@ namespace Toxy
             parserMapping.Add(".docx", typeDocx);
             #endregion
 
-            var typeRtf = new List<Type>();
-            typeRtf.Add(typeof(RTFTextParser));
-            parserMapping.Add(".rtf", typeRtf);
+
 
             var typePdf = new List<Type>();
             typePdf.Add(typeof(PDFTextParser));
@@ -94,17 +92,13 @@ namespace Toxy
             typeEml.Add(typeof(EMLTextParser));
             parserMapping.Add(".eml", typeEml);
 
-            var typeCnm = new List<Type>();
-            typeCnm.Add(typeof(CnmEmailParser));
-            parserMapping.Add(".cnm", typeCnm);
-
             var typeMsg = new List<Type>();
             typeMsg.Add(typeof(MsgEmailParser));
             typeMsg.Add(typeof(MsgTextParser));
             parserMapping.Add(".msg", typeMsg);
             #endregion
 
-            var typeVcard= new List<Type>();
+            var typeVcard = new List<Type>();
             typeVcard.Add(typeof(VCardDocumentParser));
             typeVcard.Add(typeof(VCardTextParser));
             parserMapping.Add(".vcf", typeVcard);
@@ -188,7 +182,6 @@ namespace Toxy
             IDomParser parser = (IDomParser)obj;
             return parser;
         }
-
         public static VCardDocumentParser CreateVCard(ParserContext context)
         {
             object obj = CreateObject(context, typeof(VCardDocumentParser), "CreateVCard");
