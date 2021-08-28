@@ -1,7 +1,9 @@
-﻿using LumenWorks.Framework.IO.Csv;
+﻿using CsvHelper;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Toxy.Parsers
@@ -61,14 +63,19 @@ namespace Toxy.Parsers
                 {
                     sr = new StreamReader(Context.Path, true);
                 }
-                CsvReader reader=new CsvReader(sr, extractHeader,delimiter);
-                string[] headers = reader.GetFieldHeaders();
+                var reader=new CsvReader(sr, CultureInfo.InvariantCulture);
+                if (extractHeader)
+                {
+                    reader.Read();
+                    reader.ReadHeader();
+                }
+                string[] headers = reader.HeaderRecord;
                 ToxySpreadsheet ss = new ToxySpreadsheet();
                 ToxyTable t1 = new ToxyTable();
                 ss.Tables.Add(t1);
 
                 int i = 0;
-                if (headers.Length > 0)
+                if (headers!=null&&headers.Length > 0)
                 {
                     t1.HeaderRows.Add(new ToxyRow(i));
                     i++;
@@ -78,10 +85,10 @@ namespace Toxy.Parsers
                     t1.HeaderRows[0].Cells.Add(new ToxyCell(j, headers[j]));
                     t1.LastColumnIndex = t1.HeaderRows[0].Cells.Count-1;
                 }
-                while(reader.ReadNextRecord())
+                while(reader.Read())
                 {
                     ToxyRow tr=new ToxyRow(i);
-                    tr.LastCellIndex = reader.FieldCount-1;
+                    tr.LastCellIndex = reader.Parser.Count -1;
                     if (tr.LastCellIndex > t1.LastColumnIndex)
                     {
                         t1.LastColumnIndex = tr.LastCellIndex;
