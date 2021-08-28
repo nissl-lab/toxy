@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Thought.vCards;
+using VCardReader;
 
 namespace Toxy
 {
@@ -42,16 +42,16 @@ namespace Toxy
 
         public GenderType Gender { get; set; }
 
-        public vCard ToVCard()
+        public VCard ToVCard()
         {
-            vCard card = new vCard();
+            var card = new VCard();
             if(this.Name!=null)
             {
             card.DisplayName = this.Name.FullName;
             card.FamilyName = this.Name.LastName;
             card.GivenName = this.Name.FirstName;
             }
-            card.Gender = this.Gender== GenderType.Male?vCardGender.Male:vCardGender.Female;
+            card.Gender = this.Gender== GenderType.Male?VCardReader.Gender.Male: VCardReader.Gender.Female;
             if (this.NickName != null)
                 card.Nicknames.Add(this.NickName.FullName);
 
@@ -60,7 +60,7 @@ namespace Toxy
             {
                 foreach (var contact in this.Contacts)
                 {
-                    card.Phones.Add(new vCardPhone(contact.Name, vCardPhoneTypes.Cellular));
+                    card.Phones.Add(new Phone(contact.Name, PhoneTypes.Cellular));
                 }
             }
             return card;

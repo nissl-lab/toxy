@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Thought.vCards;
+using VCardReader;
 
 namespace Toxy.Parsers
 {
@@ -30,7 +30,7 @@ namespace Toxy.Parsers
             {
                 while (!sr.EndOfStream)
                 {
-                    var card = new vCard(sr);
+                    var card = new VCard(sr);
                     ToxyBusinessCard tbc = new ToxyBusinessCard();
                     tbc.Name = new ToxyName();
                     if (!string.IsNullOrEmpty(card.FormattedName))
@@ -46,7 +46,7 @@ namespace Toxy.Parsers
                     }
                     tbc.Orgnization = card.Organization;
                     tbc.Title = card.Title;
-                    tbc.Gender = card.Gender == vCardGender.Male ? GenderType.Male : GenderType.Female;
+                    tbc.Gender = card.Gender == Gender.Male ? GenderType.Male : GenderType.Female;
                     if (card.Nicknames.Count > 0)
                     {
                         tbc.NickName = new ToxyName();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Text;
-using Thought.vCards;
 
 namespace Toxy
 {
@@ -26,6 +25,7 @@ namespace Toxy
                 return this.cards.FindAll(delegate(ToxyBusinessCard s) { return s.Contacts.Count > 0; });
             }
         }
+        /*
         public void SaveAs(string path)
         {
             if (this.cards == null || this.cards.Count == 0)
@@ -40,8 +40,7 @@ namespace Toxy
                     writer.Write(card.ToVCard(), tw);
                 }
             }
-
-        }
+        }*/
         public DataTable ToDataTable()
         {
             DataTable dt = new DataTable();

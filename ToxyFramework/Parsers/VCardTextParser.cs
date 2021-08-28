@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Thought.vCards;
+using VCardReader;
 
 namespace Toxy.Parsers
 {
@@ -23,7 +23,7 @@ namespace Toxy.Parsers
             {
                 while (!sr.EndOfStream)
                 {
-                    var card = new vCard(sr);
+                    var card = new VCard(sr);
 
                     if (!string.IsNullOrEmpty(card.FormattedName))
                         sb.AppendFormat("[Full Name]{0}" + Environment.NewLine, card.FormattedName);
@@ -47,7 +47,7 @@ namespace Toxy.Parsers
                     }
                     if (!string.IsNullOrEmpty(card.Title))
                         sb.AppendFormat("[Title]{0}" + Environment.NewLine, card.Title);
-                    if (card.Gender != vCardGender.Unknown)
+                    if (card.Gender != Gender.Unknown)
                         sb.AppendFormat("[Gender]{0}" + Environment.NewLine, card.Gender);
                     if (card.Nicknames.Count > 0)
                     {

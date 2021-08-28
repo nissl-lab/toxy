@@ -14,6 +14,7 @@
     <PackageReference Include="NPOI.HWPFCore" Version="2.3.0.1" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.3.0" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
+    <PackageReference Include="VCardReader" Version="1.2.0" />
   </ItemGroup>
 
 </Project>
