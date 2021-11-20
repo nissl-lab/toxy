@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Toxy.Parsers;
+using ToxyFramework.Parsers;
 
 namespace Toxy
 {
@@ -73,7 +74,9 @@ namespace Toxy
             parserMapping.Add(".docx", typeDocx);
             #endregion
 
-
+            var typeRtf = new List<Type>();
+            typeRtf.Add(typeof(RTFTextParser));
+            parserMapping.Add(".rtf", typeRtf);
 
             var typePdf = new List<Type>();
             typePdf.Add(typeof(PDFTextParser));
