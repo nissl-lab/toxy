@@ -30,7 +30,7 @@ namespace Toxy
 
         public ToxyCell[] Slice(int start, int length)
         {
-            if (length > this.Length || start + length > this.Length)
+            if (length >= this.Length)
                 throw new ArgumentOutOfRangeException();
 
             var slice = new ToxyCell[length];

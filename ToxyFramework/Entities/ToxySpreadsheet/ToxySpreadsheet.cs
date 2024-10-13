@@ -22,7 +22,7 @@ namespace Toxy
         }
         public ToxyTable[] Slice(int start, int length)
         {
-            if (length > this.Length || start + length > this.Length)
+            if (length >= this.Length)
                 throw new ArgumentOutOfRangeException();
 
             var slice = new ToxyTable[length];
