@@ -39,7 +39,11 @@ namespace Toxy.Test
         {
             BaseTestExcelFormatedString("Formatting.xls");
         }
-
+        [Test]
+        public void TestSlicedTableAndRow()
+        {
+            BaseTestSlicedTableAndRow("Employee.xls");
+        }
         [Test]
         public void TestExcelParserSimple()
         {

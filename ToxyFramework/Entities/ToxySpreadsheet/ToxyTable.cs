@@ -35,6 +35,26 @@ namespace Toxy
 
         public List<ToxyRow> Rows { get; set; }
 
+        public ToxyRow this[int i]
+        {
+            get
+            {
+                return this.Rows[i];
+            }
+        }
+        public int Length
+        {
+            get { return this.Rows.Count; }
+        }
+        public ToxyRow[] Slice(int start, int length)
+        {
+            if (length>this.Length || start + length > this.Length)
+                throw new ArgumentOutOfRangeException();
+
+            var slice = new ToxyRow[length];
+            this.Rows.CopyTo(start, slice, 0, length);
+            return slice;
+        }
         private string ExcelColumnFromNumber(int column)
         {
             column++;

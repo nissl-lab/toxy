@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Toxy
 {
@@ -14,6 +15,29 @@ namespace Toxy
             this.RowIndex = rowIndex;
             this.Cells = new List<ToxyCell>();
         }
+
+        public int Length
+        {
+            get { return this.Cells.Count; }
+        }
+
+        public ToxyCell this[int i]
+        {
+            get { 
+                return this.Cells[i]; 
+            }
+        }
+
+        public ToxyCell[] Slice(int start, int length)
+        {
+            if (length > this.Length || start + length > this.Length)
+                throw new ArgumentOutOfRangeException();
+
+            var slice = new ToxyCell[length];
+            this.Cells.CopyTo(start,slice, 0, length);
+            return slice;
+        }
+
         public List<ToxyCell> Cells
         {
             get;

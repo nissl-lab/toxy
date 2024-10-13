@@ -14,6 +14,21 @@ namespace Toxy
         public string Name { get; set; }
         public List<ToxyTable> Tables { get; set; }
 
+        public int Length 
+        {
+            get {
+                return this.Tables.Count;
+            }
+        }
+        public ToxyTable[] Slice(int start, int length)
+        {
+            if (length > this.Length || start + length > this.Length)
+                throw new ArgumentOutOfRangeException();
+
+            var slice = new ToxyTable[length];
+            this.Tables.CopyTo(start, slice, 0, length);
+            return slice;
+        }
         public ToxyTable this[string name]
         {
             get {

@@ -44,7 +44,6 @@ namespace Toxy.Test
         {
             BaseTestExcelFormatedString("Formatting.xlsx");
         }
-        
         [Test]
         public void TestExcelWithComments()
         {
