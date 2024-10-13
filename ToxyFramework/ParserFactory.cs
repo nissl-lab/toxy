@@ -61,12 +61,12 @@ namespace Toxy
             parserMapping.Add(".pubx", typeOOXML);
             parserMapping.Add(".vsdx", typeOOXML);
 
-            var typeDoc = new List<Type>();
+/*            var typeDoc = new List<Type>();
             typeDoc.Add(typeof(Word2003DocumentParser));
             typeDoc.Add(typeof(Word2003TextParser));
             typeDoc.Add(typeof(OLE2MetadataParser));
             parserMapping.Add(".doc", typeDoc);
-
+*/
             var typeDocx = new List<Type>();
             typeDocx.Add(typeof(Word2007TextParser));
             typeDocx.Add(typeof(Word2007DocumentParser));
