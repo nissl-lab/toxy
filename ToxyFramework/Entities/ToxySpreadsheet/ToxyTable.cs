@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using iText.Layout.Element;
 
 namespace Toxy
 {
 
-    public class ToxyTable:ICloneable
+    public class ToxyTable:ICloneable, IPrettyTable
     {
         public ToxyTable()
         {
@@ -120,10 +121,6 @@ namespace Toxy
                 {
                     drow[cell.CellIndex] = cell.Value;   //no comment included
                 }
-                if (drow == null)
-                {
-                    drow = dt.NewRow();
-                }
                 dt.Rows.Add(drow);
                 rowIndex++;
             }
@@ -152,6 +149,147 @@ namespace Toxy
                 newtt.HeaderRows.Add(header.Clone() as ToxyRow);
             }
             return newtt;
+        }
+
+        private string GetFixedLengthTableLine(int length, string value=null)
+        {
+            if (length <= 0)
+                return string.Empty;
+            StringBuilder sb = new StringBuilder();
+            if (!string.IsNullOrEmpty(value))
+            {
+                sb.Append(' ');
+                sb.Append(value);
+                sb.Append(" |");
+            }
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    sb.Append('-');
+                }
+                sb.Append('+');
+            }
+
+            return sb.ToString();
+        }
+
+        public string GetString()
+        {
+            StringBuilder sb = new StringBuilder();
+            if (this.HeaderRows.Count == 0)
+                return null;
+            
+            //draw top line of the header
+            sb.Append('+');
+            foreach (var cell in this.HeaderRows[0].Cells)
+            {
+                sb.Append(GetFixedLengthTableLine(cell.Value.Length + 2));
+            }
+
+            sb.AppendLine();
+            //draw the fields in the header
+            sb.Append('|');
+            foreach (var cell in this.HeaderRows[0].Cells)
+            {
+                sb.Append(GetFixedLengthTableLine(cell.Value.Length, cell.Value));
+            }
+
+            sb.AppendLine();
+            //draw bottom line of the header
+            sb.Append('+');
+            foreach (var cell in this.HeaderRows[0].Cells)
+            {
+                sb.Append(GetFixedLengthTableLine(cell.Value.Length + 2));
+            }
+            sb.AppendLine();
+            if (this.Rows.Count > 0)
+            {
+                foreach (var row in this.Rows)
+                {
+                    sb.Append('|');
+                    foreach (var cell in row.Cells)
+                    {
+                        sb.Append(GetFixedLengthTableLine(cell.Value.Length, cell.Value));
+                    }
+                    sb.AppendLine();
+                }
+                //draw bottom line of the table
+                sb.Append('+');
+                foreach (var cell in this.HeaderRows[0].Cells)
+                {
+                    sb.Append(GetFixedLengthTableLine(cell.Value.Length + 2));
+                }
+                sb.AppendLine();
+            }
+
+            return sb.ToString();
+        }
+
+        public string GetString(int start, int end)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (this.HeaderRows.Count == 0)
+                return null;
+
+            int[] widths = new int[this.HeaderRows[0].Cells.Count];
+            //draw top line of the header
+            sb.Append('+');
+            for (int i = start; i <= end; i++)
+            {
+                var cell = this.HeaderRows[0].Cells[i];
+                widths[i] = cell.Value.Length+2;
+                sb.Append(GetFixedLengthTableLine(widths[i]));
+            }
+
+            sb.AppendLine();
+            //draw the fields in the header
+            sb.Append('|');
+            for (int i = start; i <= end; i++)
+            {
+                var cell = this.HeaderRows[0].Cells[i];
+                sb.Append(GetFixedLengthTableLine(widths[i], cell.Value));
+            }
+
+            sb.AppendLine();
+            //draw bottom line of the header
+            sb.Append('+');
+            for (int i = start; i <= end; i++)
+            {
+                var cell = this.HeaderRows[0].Cells[i];
+                sb.Append(GetFixedLengthTableLine(widths[i]));
+            }
+            sb.AppendLine();
+            if (this.Rows.Count > 0)
+            {
+                int lastRow = 0;
+                foreach (var row in this.Rows)
+                {
+                    sb.Append('|');
+                    for (int i = start; i <= end; i++)
+                    {
+                        var cell = row.Cells[i];
+                        sb.Append(GetFixedLengthTableLine(widths[i], cell.Value));
+                    }
+                    sb.AppendLine();
+                    lastRow++;
+                }
+                //draw bottom line of the table
+                sb.Append('+');
+                for (int i = start; i <= end; i++)
+                {
+                    var cell = this.Rows[lastRow-1].Cells[i];
+                    sb.Append(GetFixedLengthTableLine(widths[i]));
+                }
+                sb.AppendLine();
+            }
+
+            return sb.ToString();
+        }
+
+        public string GetString(string[] fieldRange)
+        {
+            throw new NotImplementedException();
         }
     }
 }
