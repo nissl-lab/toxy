@@ -17,7 +17,7 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.36" />
     <PackageReference Include="itext7" Version="7.1.16" />
     <PackageReference Include="MsgReader" Version="4.1.0" />
-    <PackageReference Include="NPOI" Version="2.7.1" />
+    <PackageReference Include="NPOI" Version="2.7.2" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
     <PackageReference Include="VCardReader" Version="1.2.3" />
