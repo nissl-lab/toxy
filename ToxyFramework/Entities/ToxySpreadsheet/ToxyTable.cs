@@ -174,7 +174,7 @@ namespace Toxy
             return sb.ToString();
         }
 
-        public string GetString()
+        public string Print()
         {
             StringBuilder sb = new StringBuilder();
             if (this.HeaderRows.Count == 0)
@@ -226,7 +226,7 @@ namespace Toxy
             return sb.ToString();
         }
 
-        public string GetString(int start, int end)
+        public string Print(int start, int end)
         {
             StringBuilder sb = new StringBuilder();
             if (this.HeaderRows.Count == 0)
@@ -287,7 +287,7 @@ namespace Toxy
             return sb.ToString();
         }
 
-        public string GetString(string[] fieldRange)
+        public string Print(string[] fieldRange)
         {
             throw new NotImplementedException();
         }
