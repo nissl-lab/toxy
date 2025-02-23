@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>10</LangVersion>
+    <AssemblyVersion>2.5</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
