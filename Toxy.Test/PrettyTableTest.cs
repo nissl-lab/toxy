@@ -63,17 +63,17 @@ public class PrettyTableTest
     }
 
     [Test]
-    public void TestGetString()
+    public void TestPrint()
     {
         ToxyTable table = BuildTable();
-        Assert.AreEqual(8,table.GetString().Split("\n").Length);
+        Assert.AreEqual(8,table.Print().Split("\n").Length);
     }
 
     [Test]
     public void TestGetStringWithStartAndEnd()
     {
         ToxyTable table = BuildTable();
-        var results = table.GetString(1,2).Split("\n");
+        var results = table.Print(1,2).Split("\n");
         Assert.AreEqual("+------+------------+", results[0]);
         Assert.AreEqual("| Area | Population |", results[1]);
         Assert.AreEqual("+------+------------+", results[2]);
