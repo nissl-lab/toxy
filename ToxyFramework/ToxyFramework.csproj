@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>10</LangVersion>
+    <TargetFramework>net8.0</TargetFramework>
     <AssemblyVersion>2.5</AssemblyVersion>
   </PropertyGroup>
 
@@ -21,6 +20,10 @@
     <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
     <PackageReference Include="VCardReader" Version="1.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ReasonableRTF\ReasonableRTF.csproj" />
   </ItemGroup>
 
 </Project>

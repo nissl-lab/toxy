@@ -25,7 +25,10 @@ namespace ToxyFramework.Parsers
             StreamReader sr = null;
             try
             {
-                if (Context.Encoding == null)
+                ReasonableRTF.RtfToTextConverter converter = new ReasonableRTF.RtfToTextConverter();
+            ReasonableRTF.Models.RtfResult result = converter.Convert(File.ReadAllBytes(Context.Path));
+
+                /*if (Context.Encoding == null)
                 {
                     sr = new StreamReader(Context.Path, true);
                 }
@@ -34,7 +37,8 @@ namespace ToxyFramework.Parsers
                     sr = new StreamReader(Context.Path, Context.Encoding);
                 }
                 string text = sr.ReadToEnd();
-                return RichTextStripper.StripRichTextFormat(text);
+                return RichTextStripper.StripRichTextFormat(text);*/
+                return result.Text;
             }
             finally
             {

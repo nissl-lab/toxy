@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36511.14 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToxyFramework", "ToxyFramework\ToxyFramework.csproj", "{97715000-D1AD-4AC5-A97E-CBCBCCFC8292}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toxy.Test", "Toxy.Test\Toxy.Test.csproj", "{8ACAF1FF-EC18-48E2-A1B6-2AB328927383}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReasonableRTF", "ReasonableRTF\ReasonableRTF.csproj", "{00E0438F-8E95-C3CD-5E68-CE831403A3BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8ACAF1FF-EC18-48E2-A1B6-2AB328927383}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ACAF1FF-EC18-48E2-A1B6-2AB328927383}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ACAF1FF-EC18-48E2-A1B6-2AB328927383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E0438F-8E95-C3CD-5E68-CE831403A3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E0438F-8E95-C3CD-5E68-CE831403A3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E0438F-8E95-C3CD-5E68-CE831403A3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E0438F-8E95-C3CD-5E68-CE831403A3BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
