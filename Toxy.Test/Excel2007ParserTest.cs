@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Toxy.Test
 {
@@ -60,7 +61,7 @@ namespace Toxy.Test
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.IsTrue(ex.Message.Contains("This file only contains 3 sheet(s)."));
+                ClassicAssert.IsTrue(ex.Message.Contains("This file only contains 3 sheet(s)."));
             }
         }
     }

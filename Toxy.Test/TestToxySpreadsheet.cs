@@ -1,9 +1,6 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+using NUnit.Framework.Legacy;
 using System.Data;
-using System.Linq;
-using System.Text;
 
 namespace Toxy.Test
 {
@@ -17,22 +14,22 @@ namespace Toxy.Test
             var parser=ParserFactory.CreateSpreadsheet(c);
             var spreadsheet= parser.Parse();
             DataSet ds = spreadsheet.ToDataSet();
-            Assert.AreEqual(3, ds.Tables.Count);
-            Assert.AreEqual("Sheet1",ds.Tables[0].TableName);
-            Assert.AreEqual("Sheet2", ds.Tables[1].TableName);
-            Assert.AreEqual("Sheet3", ds.Tables[2].TableName);
+            ClassicAssert.AreEqual(3, ds.Tables.Count);
+            ClassicAssert.AreEqual("Sheet1",ds.Tables[0].TableName);
+            ClassicAssert.AreEqual("Sheet2", ds.Tables[1].TableName);
+            ClassicAssert.AreEqual("Sheet3", ds.Tables[2].TableName);
             
             var s1 = ds.Tables[0];
-            Assert.AreEqual(System.DBNull.Value, s1.Rows[0][0]);
-            Assert.AreEqual(System.DBNull.Value, s1.Rows[0][1]);
-            Assert.AreEqual(System.DBNull.Value, s1.Rows[0][2]);
-            Assert.AreEqual("Employee Info", s1.Rows[1][1]);
-            Assert.AreEqual("Last name:", s1.Rows[3][1]);
-            Assert.AreEqual("lastName", s1.Rows[3][2]);
-            Assert.AreEqual("First name:", s1.Rows[4][1]);
-            Assert.AreEqual("firstName", s1.Rows[4][2]);
-            Assert.AreEqual("SSN:", s1.Rows[5][1]);
-            Assert.AreEqual("ssn", s1.Rows[5][2]);
+            ClassicAssert.AreEqual(System.DBNull.Value, s1.Rows[0][0]);
+            ClassicAssert.AreEqual(System.DBNull.Value, s1.Rows[0][1]);
+            ClassicAssert.AreEqual(System.DBNull.Value, s1.Rows[0][2]);
+            ClassicAssert.AreEqual("Employee Info", s1.Rows[1][1]);
+            ClassicAssert.AreEqual("Last name:", s1.Rows[3][1]);
+            ClassicAssert.AreEqual("lastName", s1.Rows[3][2]);
+            ClassicAssert.AreEqual("First name:", s1.Rows[4][1]);
+            ClassicAssert.AreEqual("firstName", s1.Rows[4][2]);
+            ClassicAssert.AreEqual("SSN:", s1.Rows[5][1]);
+            ClassicAssert.AreEqual("ssn", s1.Rows[5][2]);
         }
         [Test]
         public void TestToxyTableToDataTable()
@@ -68,24 +65,24 @@ namespace Toxy.Test
             ttable.LastColumnIndex = 3;
             #endregion
             DataTable dt = ttable.ToDataTable();
-            Assert.AreEqual("Test1",dt.TableName);
-            Assert.AreEqual(3, dt.Rows.Count);
-            Assert.AreEqual(4, dt.Columns.Count);
+            ClassicAssert.AreEqual("Test1",dt.TableName);
+            ClassicAssert.AreEqual(3, dt.Rows.Count);
+            ClassicAssert.AreEqual(4, dt.Columns.Count);
 
-            Assert.AreEqual("C1", dt.Columns[0].Caption);
-            Assert.AreEqual("C2", dt.Columns[1].Caption);
-            Assert.AreEqual("C3", dt.Columns[2].Caption);
-            Assert.AreEqual("C4", dt.Columns[3].Caption);
+            ClassicAssert.AreEqual("C1", dt.Columns[0].Caption);
+            ClassicAssert.AreEqual("C2", dt.Columns[1].Caption);
+            ClassicAssert.AreEqual("C3", dt.Columns[2].Caption);
+            ClassicAssert.AreEqual("C4", dt.Columns[3].Caption);
 
-            Assert.AreEqual("1", dt.Rows[0][0].ToString());
-            Assert.AreEqual("2", dt.Rows[0][1].ToString());
-            Assert.AreEqual("3", dt.Rows[0][2].ToString());
-            Assert.AreEqual("4", dt.Rows[1][0].ToString());
-            Assert.AreEqual("5", dt.Rows[1][1].ToString());
-            Assert.AreEqual("6", dt.Rows[1][3].ToString());
-            Assert.AreEqual("7", dt.Rows[2][1].ToString());
-            Assert.AreEqual("8", dt.Rows[2][2].ToString());
-            Assert.AreEqual("9", dt.Rows[2][3].ToString());
+            ClassicAssert.AreEqual("1", dt.Rows[0][0].ToString());
+            ClassicAssert.AreEqual("2", dt.Rows[0][1].ToString());
+            ClassicAssert.AreEqual("3", dt.Rows[0][2].ToString());
+            ClassicAssert.AreEqual("4", dt.Rows[1][0].ToString());
+            ClassicAssert.AreEqual("5", dt.Rows[1][1].ToString());
+            ClassicAssert.AreEqual("6", dt.Rows[1][3].ToString());
+            ClassicAssert.AreEqual("7", dt.Rows[2][1].ToString());
+            ClassicAssert.AreEqual("8", dt.Rows[2][2].ToString());
+            ClassicAssert.AreEqual("9", dt.Rows[2][3].ToString());
         }
 
         [Test]
@@ -119,28 +116,28 @@ namespace Toxy.Test
             #endregion
 
             DataTable dt = ttable.ToDataTable();
-            Assert.AreEqual("Test1", dt.TableName);
-            Assert.AreEqual(2, dt.Rows.Count);
-            Assert.AreEqual(6, dt.Columns.Count);
+            ClassicAssert.AreEqual("Test1", dt.TableName);
+            ClassicAssert.AreEqual(2, dt.Rows.Count);
+            ClassicAssert.AreEqual(6, dt.Columns.Count);
 
-            Assert.AreEqual("C1", dt.Columns[0].Caption);
-            Assert.AreEqual("Column1", dt.Columns[1].Caption);
-            Assert.AreEqual("C2", dt.Columns[2].Caption);
-            Assert.AreEqual("Column2", dt.Columns[3].Caption);
-            Assert.AreEqual("C4", dt.Columns[4].Caption);
+            ClassicAssert.AreEqual("C1", dt.Columns[0].Caption);
+            ClassicAssert.AreEqual("Column1", dt.Columns[1].Caption);
+            ClassicAssert.AreEqual("C2", dt.Columns[2].Caption);
+            ClassicAssert.AreEqual("Column2", dt.Columns[3].Caption);
+            ClassicAssert.AreEqual("C4", dt.Columns[4].Caption);
 
-            Assert.AreEqual("1", dt.Rows[0][0].ToString());
-            Assert.AreEqual("2", dt.Rows[0][1].ToString());
-            Assert.IsTrue(string.IsNullOrEmpty(dt.Rows[0][2].ToString()));
-            Assert.IsTrue(string.IsNullOrEmpty(dt.Rows[0][3].ToString()));
-            Assert.AreEqual("3", dt.Rows[0][4].ToString());
-            Assert.AreEqual("4", dt.Rows[0][5].ToString());
-            Assert.AreEqual("5", dt.Rows[1][0].ToString());
-            Assert.AreEqual("6", dt.Rows[1][1].ToString());
-            Assert.AreEqual("7", dt.Rows[1][3].ToString());
-            Assert.IsTrue(string.IsNullOrEmpty(dt.Rows[1][2].ToString()));
-            Assert.IsTrue(string.IsNullOrEmpty(dt.Rows[1][4].ToString()));
-            Assert.IsTrue(string.IsNullOrEmpty(dt.Rows[1][5].ToString()));
+            ClassicAssert.AreEqual("1", dt.Rows[0][0].ToString());
+            ClassicAssert.AreEqual("2", dt.Rows[0][1].ToString());
+            ClassicAssert.IsTrue(string.IsNullOrEmpty(dt.Rows[0][2].ToString()));
+            ClassicAssert.IsTrue(string.IsNullOrEmpty(dt.Rows[0][3].ToString()));
+            ClassicAssert.AreEqual("3", dt.Rows[0][4].ToString());
+            ClassicAssert.AreEqual("4", dt.Rows[0][5].ToString());
+            ClassicAssert.AreEqual("5", dt.Rows[1][0].ToString());
+            ClassicAssert.AreEqual("6", dt.Rows[1][1].ToString());
+            ClassicAssert.AreEqual("7", dt.Rows[1][3].ToString());
+            ClassicAssert.IsTrue(string.IsNullOrEmpty(dt.Rows[1][2].ToString()));
+            ClassicAssert.IsTrue(string.IsNullOrEmpty(dt.Rows[1][4].ToString()));
+            ClassicAssert.IsTrue(string.IsNullOrEmpty(dt.Rows[1][5].ToString()));
         }
     }
 }

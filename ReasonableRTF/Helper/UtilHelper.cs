@@ -22,6 +22,7 @@
  * SOFTWARE.
 */
 
+using ReasonableRTF.Extensions;
 using ReasonableRTF.Models.DataTypes;
 using System.Runtime.CompilerServices;
 
@@ -30,7 +31,7 @@ namespace ReasonableRTF.Helper
     internal static class UtilHelper
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool IsAsciiHex(this byte b) => char.IsAsciiHexDigit((char)b);
+        internal static bool IsAsciiHex(this byte b) => CharExtension.IsAsciiHexDigit((char)b);
 
         /// <summary>
         /// Returns an array of type <typeparamref name="T"/> with all elements initialized to <paramref name="value"/>.

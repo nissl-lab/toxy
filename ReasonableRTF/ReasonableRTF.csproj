@@ -1,12 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<LangVersion>12</LangVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 		<WarningsAsErrors>Nullable</WarningsAsErrors>
 		<Version>0.1</Version>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
+	  <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.10" />
+	</ItemGroup>
 
 </Project>

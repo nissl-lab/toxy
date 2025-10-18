@@ -1,5 +1,6 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using NUnit.Framework.Legacy;
+using System;
 using Toxy.Parsers;
 
 namespace Toxy.Test
@@ -15,7 +16,7 @@ namespace Toxy.Test
             ParserContext context=new ParserContext(path);
             ITextParser parser = ParserFactory.CreateText(context);
             string text= parser.Parse();
-			Assert.AreEqual("hello world"+Environment.NewLine+"a2"+Environment.NewLine+"a3"+Environment.NewLine+"bbb4"+Environment.NewLine, text);
+			ClassicAssert.AreEqual("hello world"+Environment.NewLine+"a2"+Environment.NewLine+"a3"+Environment.NewLine+"bbb4"+Environment.NewLine, text);
         }
 
         [Test]
@@ -28,24 +29,24 @@ namespace Toxy.Test
             {
                 if (args.LineNumber == 0)
                 {
-                    Assert.AreEqual("hello world", args.Text);
+                    ClassicAssert.AreEqual("hello world", args.Text);
                 }
                 else if(args.LineNumber==1)
                 {
-                    Assert.AreEqual("a2", args.Text);
+                    ClassicAssert.AreEqual("a2", args.Text);
                 }
                 else if (args.LineNumber == 2)
                 {
-                    Assert.AreEqual("a3", args.Text);
+                    ClassicAssert.AreEqual("a3", args.Text);
                 }
                 else if (args.LineNumber == 3)
                 {
-                    Assert.AreEqual("bbb4", args.Text);
+                    ClassicAssert.AreEqual("bbb4", args.Text);
                 }
             };
             string text = parser.Parse();
-            Assert.IsNotNull(text);
-            Assert.IsNotEmpty(text);
+            ClassicAssert.IsNotNull(text);
+            ClassicAssert.IsNotEmpty(text);
         }
 
     }

@@ -56,6 +56,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 using ReasonableRTF.Helper;
+using ReasonableRTF.Extensions;
 
 namespace ReasonableRTF
 {
@@ -2284,7 +2285,9 @@ namespace ReasonableRTF
                             int defaultFontNum = _headerDefaultFontNum;
                             if (_fontEntries.TryGetValue(defaultFontNum, out FontEntry? fontEntry))
                             {
+#nullable disable
                                 SymbolFont symbolFont = fontEntry.SymbolFont;
+#nullable restore
                                 // Start at 1 because the "base" group is still inside an opening { so it's really
                                 // group 1.
                                 for (int i = 1; i < _groupCount + 1; i++)
@@ -2373,7 +2376,9 @@ namespace ReasonableRTF
                 }
                 else if (_fontEntries.TryGetValue(val, out FontEntry? fontEntry))
                 {
+#nullable disable
                     if (fontEntry.CodePage == 42)
+#nullable restore
                     {
                         // We have to track this globally, per behavior of RichEdit and implied by the spec.
                         _lastUsedFontWithCodePage42 = val;
@@ -2646,7 +2651,7 @@ namespace ReasonableRTF
                             negateParam = 1;
                             ch = (char)_rtfBytes[_currentPos++];
                         }
-                        if (char.IsAsciiDigit(ch))
+                        if (CharExtension.IsAsciiDigit(ch))
                         {
                             int param = 0;
 
@@ -2656,7 +2661,7 @@ namespace ReasonableRTF
                                 {
                                     int i;
                                     for (i = 0;
-                                         i < _paramMaxLen + 1 && char.IsAsciiDigit(ch);
+                                         i < _paramMaxLen + 1 && CharExtension.IsAsciiDigit(ch);
                                          i++, ch = (char)_rtfBytes[_currentPos++])
                                     {
                                         param = (param * 10) + (ch - '0');
@@ -2866,7 +2871,10 @@ namespace ReasonableRTF
                 {
                     int fontNum = FieldInst_GetFontNum();
 
-                    if (!_fontEntries.TryGetValue(fontNum, out FontEntry? fontEntry) || fontEntry.CodePage != 42)
+                    if (!_fontEntries.TryGetValue(fontNum, out FontEntry? fontEntry) ||
+#nullable disable
+                        fontEntry.CodePage != 42)
+#nullable restore
                     {
                         _plainText.Add((char)param);
                         return;
@@ -2896,7 +2904,9 @@ namespace ReasonableRTF
                 PutChars_FieldInst(finalChars, finalChars.Count);
                 return;
             }
+#nullable disable
             if (fontEntry.CodePage != 42)
+#nullable restore
             {
                 ListFast<char> finalChars = GetCharFromCodePage(fontEntry.CodePage, param);
                 PutChars_FieldInst(finalChars, finalChars.Count);
@@ -3064,7 +3074,7 @@ namespace ReasonableRTF
             bool alphaCharsFound = false;
             bool alphaFound;
             for (i = 0;
-                 i < _fldinstSymbolNumberMaxLen && ((alphaFound = char.IsAsciiLetter(ch)) || char.IsAsciiDigit(ch));
+                 i < _fldinstSymbolNumberMaxLen && ((alphaFound = CharExtension.IsAsciiLetter(ch)) || CharExtension.IsAsciiDigit(ch));
                  i++, ch = (char)_rtfBytes[_currentPos++])
             {
                 if (alphaFound) alphaCharsFound = true;
@@ -3236,7 +3246,7 @@ namespace ReasonableRTF
                     if (ch != ' ') return RewindAndSkipGroup();
 
                     int numDigitCount = 0;
-                    while (char.IsAsciiDigit(ch = (char)_rtfBytes[_currentPos++]))
+                    while (CharExtension.IsAsciiDigit(ch = (char)_rtfBytes[_currentPos++]))
                     {
                         if (numDigitCount > _fldinstSymbolNumberMaxLen)
                         {
@@ -3535,7 +3545,10 @@ namespace ReasonableRTF
                     ? _lastUsedFontWithCodePage42
                     : _headerDefaultFontNum;
 
-                if (!_fontEntries.TryGetValue(fontNum, out FontEntry? fontEntry) || fontEntry.CodePage != 42)
+                if (!_fontEntries.TryGetValue(fontNum, out FontEntry? fontEntry) ||
+#nullable disable
+                    fontEntry.CodePage != 42)
+#nullable restore
                 {
                     return;
                 }
@@ -3621,7 +3634,7 @@ namespace ReasonableRTF
 
             char[] keyword = _keyword;
 
-            if (!char.IsAsciiLetter(ch))
+            if (!CharExtension.IsAsciiLetter(ch))
             {
                 /*
                 From the spec:
@@ -3645,7 +3658,7 @@ namespace ReasonableRTF
             {
                 int keywordCount;
                 for (keywordCount = 0;
-                     keywordCount < _keywordMaxLen + 1 && char.IsAsciiLetter(ch);
+                     keywordCount < _keywordMaxLen + 1 && CharExtension.IsAsciiLetter(ch);
                      keywordCount++, ch = (char)_rtfBytes[_currentPos++])
                 {
                     keyword[keywordCount] = ch;
@@ -3661,7 +3674,7 @@ namespace ReasonableRTF
                     negateParam = 1;
                     ch = (char)_rtfBytes[_currentPos++];
                 }
-                if (char.IsAsciiDigit(ch))
+                if (CharExtension.IsAsciiDigit(ch))
                 {
                     hasParam = true;
                     checked
@@ -3670,7 +3683,7 @@ namespace ReasonableRTF
                         {
                             int i;
                             for (i = 0;
-                                 i < _paramMaxLen + 1 && char.IsAsciiDigit(ch);
+                                 i < _paramMaxLen + 1 && CharExtension.IsAsciiDigit(ch);
                                  i++, ch = (char)_rtfBytes[_currentPos++])
                             {
                                 param = (param * 10) + (ch - '0');

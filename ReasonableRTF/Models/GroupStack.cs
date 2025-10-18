@@ -23,13 +23,16 @@
 */
 
 using ReasonableRTF.Enums;
-using System.Diagnostics.CodeAnalysis;
+using ReasonableRTF.Attributes;
 using System.Runtime.CompilerServices;
 
 namespace ReasonableRTF.Models
 {
     internal sealed class GroupStack
     {
+        // The Max Length of an Array 
+        // Copy of https://github.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/Array.cs
+        private const int MaxLength = 0X7FFFFFC7;
         internal const int PropertiesLen = 4;
         private const int DefaultCapacity = 100;
         private int Capacity;
@@ -41,7 +44,12 @@ namespace ReasonableRTF.Models
 
         internal int Count;
 
-        internal GroupStack() => Init();
+#nullable disable
+        internal GroupStack()
+        {
+            Init();
+        }
+#nullable restore
 
         [MemberNotNull(
             nameof(_skipDestinations),
@@ -69,7 +77,7 @@ namespace ReasonableRTF.Models
             int oldMaxGroups = Capacity;
 
             int newCapacity = Capacity * 2;
-            if ((uint)newCapacity > Array.MaxLength) newCapacity = Array.MaxLength;
+            if ((uint)newCapacity > MaxLength) newCapacity = MaxLength;
 
             Capacity = newCapacity;
             Array.Resize(ref _skipDestinations, Capacity);

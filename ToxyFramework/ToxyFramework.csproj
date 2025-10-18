@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>10</LangVersion>
     <AssemblyVersion>2.5</AssemblyVersion>
   </PropertyGroup>
 
@@ -17,7 +18,6 @@
     <PackageReference Include="itext7" Version="7.1.16" />
     <PackageReference Include="MsgReader" Version="4.1.0" />
     <PackageReference Include="NPOI" Version="2.7.2" />
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
     <PackageReference Include="VCardReader" Version="1.2.3" />
   </ItemGroup>
