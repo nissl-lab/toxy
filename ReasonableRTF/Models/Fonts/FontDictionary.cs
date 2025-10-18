@@ -22,9 +22,9 @@
  * SOFTWARE.
 */
 
+using ReasonableRTF.Attributes;
 using ReasonableRTF.Helper;
 using ReasonableRTF.Models.DataTypes;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace ReasonableRTF.Models.Fonts

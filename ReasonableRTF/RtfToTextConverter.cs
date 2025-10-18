@@ -3096,7 +3096,7 @@ namespace ReasonableRTF
             if (numIsHex)
             {
                 ReadOnlySpan<char> span = new(_fldinstSymbolNumber.ItemsArray, 0, _fldinstSymbolNumber.Count);
-                if (!ushort.TryParse(span,
+                if (!ushort.TryParse(span.ToString(),
                         NumberStyles.HexNumber,
                         NumberFormatInfo.InvariantInfo,
                         out param))

@@ -45,6 +45,36 @@ namespace ToxyFramework.Parsers
                     sr.Close();
             }
         }
+
+        public string Parse2()
+        {
+            if (!File.Exists(Context.Path))
+                throw new FileNotFoundException("File " + Context.Path + " is not found");
+
+            StreamReader sr = null;
+            try
+            {
+                //ReasonableRTF.RtfToTextConverter converter = new ReasonableRTF.RtfToTextConverter();
+                //ReasonableRTF.Models.RtfResult result = converter.Convert(File.ReadAllBytes(Context.Path));
+
+                if (Context.Encoding == null)
+                {
+                    sr = new StreamReader(Context.Path, true);
+                }
+                else
+                {
+                    sr = new StreamReader(Context.Path, Context.Encoding);
+                }
+                string text = sr.ReadToEnd();
+                return RichTextStripper.StripRichTextFormat(text);
+                //return result.Text;
+            }
+            finally
+            {
+                if (sr != null)
+                    sr.Close();
+            }
+        }
     }
     /// <summary>
     /// Rich Text Stripper

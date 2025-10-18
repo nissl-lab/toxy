@@ -59,7 +59,7 @@ namespace ReasonableRTF.Helper
         internal static void Reset<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, int capacity) where TKey : notnull
         {
             dictionary.Clear();
-            dictionary.TrimExcess(capacity);
+            //dictionary.TrimExcess(capacity);
         }
 
         /// <summary>
