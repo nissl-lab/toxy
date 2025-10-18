@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
+﻿using NPOI.HSSF.Extractor;
 using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
 using NPOI.XSSF.Extractor;
-using NPOI.HSSF.Extractor;
+using NPOI.XSSF.UserModel;
+using System.IO;
 
 namespace Toxy.Parsers
 {
@@ -46,13 +42,13 @@ namespace Toxy.Parsers
                 includeComment = Utility.IsTrue(Context.Properties["IncludeComments"]);
             }
 
-            if (workbook is XSSFWorkbook)
+            if (workbook is XSSFWorkbook xssWorkbook)
             {
-                XSSFExcelExtractor extractor = new XSSFExcelExtractor((XSSFWorkbook)workbook);
-                extractor.SetIncludeHeadersFooters(extractHeaderFooter);
-                extractor.SetIncludeCellComments(includeComment);
-                extractor.SetIncludeSheetNames(includeSheetNames);
-                extractor.SetFormulasNotResults(!showCalculatedResult);
+                XSSFExcelExtractor extractor = new XSSFExcelExtractor(xssWorkbook);
+                extractor.IncludeHeaderFooter = extractHeaderFooter;
+                extractor.IncludeCellComments = includeComment;
+                extractor.IncludeSheetNames = includeSheetNames;
+                extractor.FormulasNotResults = !showCalculatedResult;
                 return extractor.Text;
             }
             else //if (workbook is HSSFWorkbook)
