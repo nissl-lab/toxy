@@ -1,6 +1,4 @@
 ﻿using NPOI.XWPF.UserModel;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -68,14 +66,14 @@ namespace Toxy.Parsers
                     //}
                     rdoc.Paragraphs.Add(p);
                 }
-               
+
                 var tables = worddoc.Tables;
                 foreach (var table in tables)
                 {
                     foreach (var row in table.Rows)
                     {
                         var cells = row.GetTableCells();
-                        foreach(var cell in cells)
+                        foreach (var cell in cells)
                         {
                             foreach (var para in cell.Paragraphs)
                             {
@@ -83,7 +81,7 @@ namespace Toxy.Parsers
                                 ToxyParagraph p = new ToxyParagraph();
                                 p.Text = text;
                                 //var runs = para.Runs;
-                                p.StyleID= para.Style;
+                                p.StyleID = para.Style;
                                 rdoc.Paragraphs.Add(p);
                             }
                         }

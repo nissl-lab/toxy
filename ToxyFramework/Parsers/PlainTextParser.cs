@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class PlainTextParser:ITextParser
+    public class PlainTextParser : ITextParser
     {
         public class ParseLineEventArgs : EventArgs
         {
@@ -32,7 +31,7 @@ namespace Toxy.Parsers
         public virtual string Parse()
         {
             if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File "+Context.Path+" is not found");
+                throw new FileNotFoundException("File " + Context.Path + " is not found");
 
             StreamReader sr = null;
             try
@@ -48,7 +47,7 @@ namespace Toxy.Parsers
                 string line = sr.ReadLine();
                 int i = 0;
                 StringBuilder sb = new StringBuilder();
-                while(line!=null)
+                while (line != null)
                 {
                     if (ParseLine != null)
                     {

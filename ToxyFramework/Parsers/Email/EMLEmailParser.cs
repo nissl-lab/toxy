@@ -1,8 +1,6 @@
 ﻿using HLIB.MailFormats;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Toxy.Parsers
 {
@@ -24,8 +22,9 @@ namespace Toxy.Parsers
                 EMLReader reader = new EMLReader(stream);
                 email.From = reader.From;
                 email.To = new List<string>(reader.To.Split(';'));
-                if(reader.CC!=null)
+                if(reader.CC != null)
                     email.Cc = new List<string>(reader.CC.Split(';'));
+                
                 email.TextBody = reader.Body;
                 email.HtmlBody = reader.HTMLBody;
                 email.Subject = reader.Subject;

@@ -47,7 +47,7 @@ namespace Toxy.Parsers
                     StringBuilder sb = new StringBuilder();
                     rdoc.Footer = worddoc.GetFootnoteRange().Text;
                 }
-                for (int i=0;i<worddoc.GetRange().NumParagraphs;i++)
+                for (int i = 0; i < worddoc.GetRange().NumParagraphs; i++)
                 {
                     Paragraph para = worddoc.GetRange().GetParagraph(i);
                     string text = para.Text;
@@ -62,7 +62,7 @@ namespace Toxy.Parsers
 
                     //}
                     rdoc.Paragraphs.Add(p);
-                }               
+                }
             }
             return rdoc;
         }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
 using Toxy;
 
@@ -26,7 +25,7 @@ namespace ToxyFramework.Parsers
             try
             {
                 ReasonableRTF.RtfToTextConverter converter = new ReasonableRTF.RtfToTextConverter();
-            ReasonableRTF.Models.RtfResult result = converter.Convert(File.ReadAllBytes(Context.Path));
+                ReasonableRTF.Models.RtfResult result = converter.Convert(File.ReadAllBytes(Context.Path));
 
                 /*if (Context.Encoding == null)
                 {

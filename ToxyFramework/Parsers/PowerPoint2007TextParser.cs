@@ -1,17 +1,17 @@
-﻿using DocumentFormat.OpenXml.Packaging;
+﻿using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Presentation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.IO;
-using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Presentation;
 
 namespace Toxy.Parsers
 {
-    public class Powerpoint2007TextParser:PlainTextParser
+    public class Powerpoint2007TextParser : PlainTextParser
     {
-        public Powerpoint2007TextParser(ParserContext context):base(context)
+        public Powerpoint2007TextParser(ParserContext context) : base(context)
         {
             this.Context = context;
         }
@@ -34,7 +34,7 @@ namespace Toxy.Parsers
 
                     // Get the slide part from the relationship ID.
                     SlidePart slide = (SlidePart)part.GetPartById(relId);
-                    string[] texts=GetAllTextInSlide(slide);
+                    string[] texts = GetAllTextInSlide(slide);
                     foreach (string text in texts)
                     {
                         sb.AppendLine(text);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using VCardReader;
@@ -8,9 +7,9 @@ namespace Toxy.Parsers
 {
     public class VCardTextParser : PlainTextParser
     {
-        public VCardTextParser(ParserContext context):base(context)
+        public VCardTextParser(ParserContext context) : base(context)
         {
-        
+
         }
         public override string Parse()
         {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace Toxy
 {
@@ -38,15 +37,12 @@ namespace Toxy
                 }
                 for (int i = 0; i < this.Tables.Count; i++)
                 { 
-                    if(this.Tables[i].Name==name)
+                    if(this.Tables[i].Name == name)
                         return this.Tables[i];
                 }
                 return null;
             }
         }
-
-
-        
 
         public DataSet ToDataSet()
         {

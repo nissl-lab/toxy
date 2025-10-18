@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -53,7 +52,7 @@ namespace Toxy
             StringBuilder sb = new StringBuilder();
             foreach (var prop in list.Values)
             {
-                sb.AppendLine(string.Format("{0}:{1}",prop.Name, prop.Value.ToString()));
+                sb.AppendLine(string.Format("{0}:{1}", prop.Name, prop.Value.ToString()));
             }
             return sb.ToString();
         }

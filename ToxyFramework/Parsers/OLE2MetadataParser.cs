@@ -1,15 +1,10 @@
-﻿using NPOI;
-using NPOI.HPSF;
+﻿using NPOI.HPSF;
 using NPOI.POIFS.FileSystem;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class OLE2MetadataParser:IMetadataParser
+    public class OLE2MetadataParser : IMetadataParser
     {
         public OLE2MetadataParser(ParserContext context)
         {
@@ -20,59 +15,59 @@ namespace Toxy.Parsers
             if (!System.IO.File.Exists(Context.Path))
                 throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
 
-            ToxyMetadata metadata=new ToxyMetadata();
+            ToxyMetadata metadata = new ToxyMetadata();
             using (Stream stream = File.OpenRead(Context.Path))
             {
                 POIFSFileSystem poifs = new NPOI.POIFS.FileSystem.POIFSFileSystem(stream);
-                DirectoryNode root=poifs.Root;
+                DirectoryNode root = poifs.Root;
 
                 SummaryInformation si = null;
                 DocumentSummaryInformation dsi = null;
-                if(root.HasEntry(SummaryInformation.DEFAULT_STREAM_NAME))
+                if (root.HasEntry(SummaryInformation.DEFAULT_STREAM_NAME))
                 {
                     PropertySet ps = GetPropertySet(root, SummaryInformation.DEFAULT_STREAM_NAME);
                     if (ps is SummaryInformation)
                     {
                         si = ps as SummaryInformation;
-                    
-                    if (si.Author != null)
-                        metadata.Add("Author", si.Author);
-                    if (si.ApplicationName != null)
-                        metadata.Add("ApplicationName", si.ApplicationName);
-                    if (si.ClassID != null)
-                        metadata.Add("ClassID", si.ClassID.ToString());
-                    if(si.CharCount!=0)
-                        metadata.Add("CharCount", si.CharCount);
-                    if (si.ByteOrder != 0)
-                        metadata.Add("ByteOrder", si.ByteOrder);
-                    if(si.CreateDateTime!=null)
-                        metadata.Add("CreateDateTime", si.CreateDateTime);
-                    if (si.LastAuthor != null)
-                        metadata.Add("LastAuthor", si.LastAuthor);
-                    if (si.Keywords != null)
-                        metadata.Add("Keywords", si.Keywords);
-                    if (si.LastPrinted != null)
-                        metadata.Add("LastPrinted", si.LastPrinted);
-                    if (si.LastSaveDateTime != null)
-                        metadata.Add("LastSaveDateTime", si.LastSaveDateTime);
-                    if (si.PageCount != 0)
-                        metadata.Add("PageCount", si.PageCount);
-                    if (si.WordCount != 0)
-                        metadata.Add("WordCount", si.WordCount);
-                    if (si.Comments != null)
-                        metadata.Add("Comments", si.Comments);
-                    if (si.EditTime != 0)
-                        metadata.Add("EditTime", si.EditTime);
-                    if (si.RevNumber != null)
-                        metadata.Add("RevNumber", si.RevNumber);
-                    if (si.Security != 0)
-                        metadata.Add("Security", si.Security);
-                    if (si.Subject != null)
-                        metadata.Add("Subject", si.Subject);
-                    if (si.Title != null)
-                        metadata.Add("Title", si.Title);
-                    if (si.Template != null)
-                        metadata.Add("Template", si.Template);
+
+                        if (si.Author != null)
+                            metadata.Add("Author", si.Author);
+                        if (si.ApplicationName != null)
+                            metadata.Add("ApplicationName", si.ApplicationName);
+                        if (si.ClassID != null)
+                            metadata.Add("ClassID", si.ClassID.ToString());
+                        if (si.CharCount != 0)
+                            metadata.Add("CharCount", si.CharCount);
+                        if (si.ByteOrder != 0)
+                            metadata.Add("ByteOrder", si.ByteOrder);
+                        if (si.CreateDateTime != null)
+                            metadata.Add("CreateDateTime", si.CreateDateTime);
+                        if (si.LastAuthor != null)
+                            metadata.Add("LastAuthor", si.LastAuthor);
+                        if (si.Keywords != null)
+                            metadata.Add("Keywords", si.Keywords);
+                        if (si.LastPrinted != null)
+                            metadata.Add("LastPrinted", si.LastPrinted);
+                        if (si.LastSaveDateTime != null)
+                            metadata.Add("LastSaveDateTime", si.LastSaveDateTime);
+                        if (si.PageCount != 0)
+                            metadata.Add("PageCount", si.PageCount);
+                        if (si.WordCount != 0)
+                            metadata.Add("WordCount", si.WordCount);
+                        if (si.Comments != null)
+                            metadata.Add("Comments", si.Comments);
+                        if (si.EditTime != 0)
+                            metadata.Add("EditTime", si.EditTime);
+                        if (si.RevNumber != null)
+                            metadata.Add("RevNumber", si.RevNumber);
+                        if (si.Security != 0)
+                            metadata.Add("Security", si.Security);
+                        if (si.Subject != null)
+                            metadata.Add("Subject", si.Subject);
+                        if (si.Title != null)
+                            metadata.Add("Title", si.Title);
+                        if (si.Template != null)
+                            metadata.Add("Template", si.Template);
                     }
                 }
 

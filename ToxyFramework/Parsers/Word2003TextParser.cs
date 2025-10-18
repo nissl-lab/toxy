@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class Word2003TextParser:ITextParser
+    public class Word2003TextParser : ITextParser
     {
         public Word2003TextParser(ParserContext context)
         {

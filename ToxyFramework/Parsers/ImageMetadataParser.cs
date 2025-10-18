@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TagLib.IFD;
 using TagLib.Image;
 
 namespace Toxy.Parsers
 {
-    public class ImageMetadataParser:IMetadataParser
+    public class ImageMetadataParser : IMetadataParser
     {
         public ImageMetadataParser(ParserContext context)
         {
@@ -30,19 +26,19 @@ namespace Toxy.Parsers
             CombinedImageTag tags = file.Tag as CombinedImageTag;
             if (tags.Altitude != null)
                 metadatas.Add("Altitude", (double)tags.Altitude);
-            if(tags.Latitude!=null)
+            if (tags.Latitude != null)
                 metadatas.Add("Latitude", (double)tags.Latitude);
-            if(tags.Model!=null)
+            if (tags.Model != null)
                 metadatas.Add("Model", tags.Model);
             if (tags.Make != null)
                 metadatas.Add("Make", tags.Make);
             if (tags.Orientation != ImageOrientation.None)
                 metadatas.Add("Make", tags.Orientation);
-            if(tags.Longitude!=null)
+            if (tags.Longitude != null)
                 metadatas.Add("Longitude", (double)tags.Longitude);
-            if(tags.Keywords.Length>0)
+            if (tags.Keywords.Length > 0)
                 metadatas.Add("Keywords", string.Join(",", tags.Keywords));
-            if(tags.ISOSpeedRatings!=null)
+            if (tags.ISOSpeedRatings != null)
                 metadatas.Add("ISOSpeedRatings", (uint)tags.ISOSpeedRatings);
             if (tags.Creator != null)
                 metadatas.Add("Creator", tags.Creator);
@@ -68,8 +64,8 @@ namespace Toxy.Parsers
                 TagLib.Xmp.XmpTag tagXmp = file.GetTag(TagLib.TagTypes.XMP) as TagLib.Xmp.XmpTag;
                 foreach (TagLib.Xmp.XmpNode node in tagXmp.NodeTree.Children)
                 {
-                    if(!string.IsNullOrEmpty(node.Value))
-                    metadatas.Add(node.Name, node.Value);
+                    if (!string.IsNullOrEmpty(node.Value))
+                        metadatas.Add(node.Name, node.Value);
                 }
             }
             if ((file.TagTypes & TagLib.TagTypes.GifComment) == TagLib.TagTypes.GifComment)

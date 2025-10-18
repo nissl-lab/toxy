@@ -1,12 +1,10 @@
 ﻿using NPOI.XWPF.UserModel;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class Word2007TextParser:ITextParser
+    public class Word2007TextParser : ITextParser
     {
         public Word2007TextParser(ParserContext context)
         {
@@ -32,10 +30,10 @@ namespace Toxy.Parsers
             using (FileStream stream = File.OpenRead(Context.Path))
             {
                 XWPFDocument worddoc = new XWPFDocument(stream);
-                if (extractHeader && worddoc.HeaderList!=null)
+                if (extractHeader && worddoc.HeaderList != null)
                 {
                     foreach (var header in worddoc.HeaderList)
-                    { 
+                    {
                         sb.Append("[Header] ");
                         sb.AppendLine(header.Text);
                     }
