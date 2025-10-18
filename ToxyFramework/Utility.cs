@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Toxy
 {
@@ -8,11 +6,7 @@ namespace Toxy
     {
         public static bool IsTrue(string sValue)
         {
-            sValue = sValue.ToLower();
-            if (sValue == "1" || sValue == "on" || sValue == "true")
-                return true;
-            else
-                return false;
+            return (sValue.Equals("1", StringComparison.OrdinalIgnoreCase)) || (sValue.Equals("on", StringComparison.OrdinalIgnoreCase)) || (sValue.Equals("true", StringComparison.OrdinalIgnoreCase));
         }
     }
 }
