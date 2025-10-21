@@ -18,12 +18,9 @@
     <PackageReference Include="itext" Version="9.3.0" />
     <PackageReference Include="MsgReader" Version="6.0.5" />
     <PackageReference Include="NPOI" Version="2.7.2" />
+    <PackageReference Include="ReasonableRTF.Standard" Version="2025.11.1" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
     <PackageReference Include="VCardReader" Version="1.2.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ReasonableRTF\ReasonableRTF.csproj" />
   </ItemGroup>
 
 </Project>
