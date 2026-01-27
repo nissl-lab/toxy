@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using VCardReader;
 
 namespace Toxy
 {
-
-
     public enum GenderType
     { 
         Male,
         Female
     }
-
 
     public class ToxyBusinessCard
     {
@@ -71,8 +67,4 @@ namespace Toxy
             return string.Format("{0}-{1}",this.Name.FullName,this.Title);
         }
     }
-
-
-
 }
-

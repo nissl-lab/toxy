@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,16 +19,16 @@ namespace Toxy.Test
             context.Properties.Add("ExtractHeader", "1");
             ISpreadsheetParser parser = (ISpreadsheetParser)ParserFactory.CreateSpreadsheet(context);
             ToxySpreadsheet ss= parser.Parse();
-            Assert.AreEqual(1, ss.Tables.Count);
-            Assert.AreEqual(14, ss.Tables[0].HeaderRows[0].Cells.Count);
-            Assert.AreEqual("Sort Order", ss.Tables[0].HeaderRows[0].Cells[0].Value);
-            Assert.AreEqual("Sub Type", ss.Tables[0].HeaderRows[0].Cells[4].Value);
-            Assert.AreEqual(272, ss.Tables[0].Rows.Count);
-            Assert.AreEqual(13, ss.Tables[0].Rows[12].RowIndex);
-            Assert.AreEqual("Kingdom of Bahrain", ss.Tables[0].Rows[12].Cells[2].ToString());
-            Assert.AreEqual(".bo", ss.Tables[0].Rows[20].Cells[13].ToString());
+            ClassicAssert.AreEqual(1, ss.Tables.Count);
+            ClassicAssert.AreEqual(14, ss.Tables[0].HeaderRows[0].Cells.Count);
+            ClassicAssert.AreEqual("Sort Order", ss.Tables[0].HeaderRows[0].Cells[0].Value);
+            ClassicAssert.AreEqual("Sub Type", ss.Tables[0].HeaderRows[0].Cells[4].Value);
+            ClassicAssert.AreEqual(272, ss.Tables[0].Rows.Count);
+            ClassicAssert.AreEqual(13, ss.Tables[0].Rows[12].RowIndex);
+            ClassicAssert.AreEqual("Kingdom of Bahrain", ss.Tables[0].Rows[12].Cells[2].ToString());
+            ClassicAssert.AreEqual(".bo", ss.Tables[0].Rows[20].Cells[13].ToString());
 
-            Assert.AreEqual(272, ss.Tables[0].LastRowIndex);
+            ClassicAssert.AreEqual(272, ss.Tables[0].LastRowIndex);
          }
          [Test]
          public void TestParseIndexOutOfRange()
@@ -42,7 +43,7 @@ namespace Toxy.Test
              }
              catch (ArgumentOutOfRangeException ex)
              {
-                 Assert.IsTrue(ex.Message.Contains("CSV only has one table"));
+                ClassicAssert.IsTrue(ex.Message.Contains("CSV only has one table"));
              }
          }
     }

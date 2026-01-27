@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 using System.Xml;
 
 namespace Toxy.Parsers
 {
-    public class XMLDomParser:IDomParser
+    public class XMLDomParser : IDomParser
     {
-        public XMLDomParser(ParserContext context) 
+        public XMLDomParser(ParserContext context)
         {
             this.Context = context;
         }
@@ -33,7 +30,7 @@ namespace Toxy.Parsers
                 return;
 
             foreach (XmlNode child in ele.ChildNodes)
-            { 
+            {
                 ToxyNode x = ConvertToToxyNode(child);
                 tnode.ChildrenNodes.Add(x);
                 AppendChildren(x, child);

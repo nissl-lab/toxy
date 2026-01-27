@@ -1,14 +1,9 @@
 ﻿using NPOI;
 using NPOI.OpenXml4Net.OPC;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class OOXMLMetadataParser:IMetadataParser
+    public class OOXMLMetadataParser : IMetadataParser
     {
         public OOXMLMetadataParser(ParserContext context)
         {
@@ -26,8 +21,8 @@ namespace Toxy.Parsers
             if (!System.IO.File.Exists(Context.Path))
                 throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
 
-            ToxyMetadata metadata=new ToxyMetadata();
-            OPCPackage pack=null;
+            ToxyMetadata metadata = new ToxyMetadata();
+            OPCPackage pack = null;
             try
             {
                 pack = OPCPackage.Open(Context.Path, PackageAccess.READ);
@@ -130,10 +125,8 @@ namespace Toxy.Parsers
             }
             finally
             {
-                if(pack!=null)
-                    pack.Close();
+                pack?.Close();
             }
-
             return metadata;
         }
     }

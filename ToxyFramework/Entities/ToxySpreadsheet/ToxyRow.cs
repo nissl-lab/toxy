@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Toxy
 {

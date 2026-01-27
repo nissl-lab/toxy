@@ -12,34 +12,31 @@ namespace Toxy
     }
     public class ToxyMetadata:IEnumerable<ToxyProperty>
     {
-        Dictionary<string, ToxyProperty> list = new Dictionary<string, ToxyProperty>();
+        private readonly Dictionary<string, ToxyProperty> list = new Dictionary<string, ToxyProperty>(StringComparer.OrdinalIgnoreCase);
         public ToxyProperty Add(string name, object value)
         {
             ToxyProperty prop = new ToxyProperty() { Name = name, Value = value };
-            if (list.ContainsKey(name.ToLower()))
-                list[name.ToLower()] = prop;
-            else
-                list.Add(name.ToLower(), prop);
+            
+            // Adds the Item if it does not exist
+            list[name] = prop;
             return prop;
         }
         public void Remove(string name)
         {
-            list.Remove(name.ToLower());
+            list.Remove(name);
         }
         public string[] GetNames()
         {
-            return list.Keys.ToArray();
+            return list.Keys.Select(x => x.ToLower()).ToArray();
         }
         public void Set(ToxyProperty property)
         {
-            if(list.ContainsKey(property.Name))
-                list[property.Name] = property;
-            else
-                list.Add(property.Name, property);
+            // Adds the Item if it does not exist or Sets it
+            list[property.Name] = property;
         }
         public ToxyProperty Get(string name)
         {
-            return list[name.ToLower()];
+            return list[name];
         }
         public int Count
         {
@@ -53,11 +50,10 @@ namespace Toxy
             StringBuilder sb = new StringBuilder();
             foreach (var prop in list.Values)
             {
-                sb.AppendLine(string.Format("{0}:{1}",prop.Name, prop.Value.ToString()));
+                sb.AppendLine(string.Format("{0}:{1}", prop.Name, prop.Value.ToString()));
             }
             return sb.ToString();
         }
-
 
         public IEnumerator<ToxyProperty> GetEnumerator()
         {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Toxy.Parsers;
 using ToxyFramework.Parsers;
 
@@ -10,39 +9,39 @@ namespace Toxy
     public class ParserFactory
     {
         private ParserFactory() { }
-        static Dictionary<string, List<Type>> parserMapping = new Dictionary<string, List<Type>>();
+        private readonly static Dictionary<string, List<Type>> parserMapping = new Dictionary<string, List<Type>>(34, StringComparer.OrdinalIgnoreCase);
 
         static ParserFactory()
         {
-            var typeTxt = new List<Type>();
+            var typeTxt = new List<Type>(1);
             typeTxt.Add(typeof(PlainTextParser));
             parserMapping.Add(".txt", typeTxt);
 
-            var typeXml = new List<Type>();
+            var typeXml = new List<Type>(2);
             typeXml.Add(typeof(PlainTextParser));
             typeXml.Add(typeof(XMLDomParser));
             parserMapping.Add(".xml", typeXml);
 
-            var typeCSV = new List<Type>();
+            var typeCSV = new List<Type>(2);
             typeCSV.Add(typeof(PlainTextParser));
             typeCSV.Add(typeof(CSVSpreadsheetParser));
             parserMapping.Add(".csv", typeCSV);
 
             #region Office Formats
-            var typeXls = new List<Type>();
+            var typeXls = new List<Type>(3);
             typeXls.Add(typeof(ExcelSpreadsheetParser));
             typeXls.Add(typeof(ExcelTextParser));
             typeXls.Add(typeof(OLE2MetadataParser));
             parserMapping.Add(".xls", typeXls);
 
-            var typeXlsx = new List<Type>();
+            var typeXlsx = new List<Type>(3);
             typeXlsx.Add(typeof(ExcelSpreadsheetParser));
             typeXlsx.Add(typeof(ExcelTextParser));
             typeXlsx.Add(typeof(OOXMLMetadataParser));
             parserMapping.Add(".xlsx", typeXlsx);
 
 
-            var typeOLE2 = new List<Type>();
+            var typeOLE2 = new List<Type>(1);
             typeOLE2.Add(typeof(OLE2MetadataParser));
             parserMapping.Add(".ppt", typeOLE2);
             parserMapping.Add(".vsd", typeOLE2);
@@ -50,13 +49,13 @@ namespace Toxy
             parserMapping.Add(".shw", typeOLE2);
             parserMapping.Add(".sldprt", typeOLE2);
 
-            var typePptx = new List<Type>();
+            var typePptx = new List<Type>(3);
             typePptx.Add(typeof(Powerpoint2007TextParser));
             typePptx.Add(typeof(Powerpoint2007SlideshowParser));
             typePptx.Add(typeof(OOXMLMetadataParser));
             parserMapping.Add(".pptx", typePptx);
 
-            var typeOOXML = new List<Type>();
+            var typeOOXML = new List<Type>(1);
             typeOOXML.Add(typeof(OOXMLMetadataParser));
             parserMapping.Add(".pubx", typeOOXML);
             parserMapping.Add(".vsdx", typeOOXML);
@@ -67,50 +66,50 @@ namespace Toxy
             typeDoc.Add(typeof(OLE2MetadataParser));
             parserMapping.Add(".doc", typeDoc);
 */
-            var typeDocx = new List<Type>();
+            var typeDocx = new List<Type>(3);
             typeDocx.Add(typeof(Word2007TextParser));
             typeDocx.Add(typeof(Word2007DocumentParser));
             typeDocx.Add(typeof(OOXMLMetadataParser));
             parserMapping.Add(".docx", typeDocx);
             #endregion
 
-            var typeRtf = new List<Type>();
+            var typeRtf = new List<Type>(1);
             typeRtf.Add(typeof(RTFTextParser));
             parserMapping.Add(".rtf", typeRtf);
 
-            var typePdf = new List<Type>();
+            var typePdf = new List<Type>(2);
             typePdf.Add(typeof(PDFTextParser));
 			typePdf.Add(typeof(PDFDocumentParser));
             parserMapping.Add(".pdf", typePdf);
 
-            var typeHtml = new List<Type>();
+            var typeHtml = new List<Type>(2);
             typeHtml.Add(typeof(PlainTextParser));
             typeHtml.Add(typeof(HtmlDomParser));
             parserMapping.Add(".html", typeHtml);
             parserMapping.Add(".htm", typeHtml);
 
             #region Email formats
-            var typeEml = new List<Type>();
+            var typeEml = new List<Type>(2);
             typeEml.Add(typeof(EMLEmailParser));
             typeEml.Add(typeof(EMLTextParser));
             parserMapping.Add(".eml", typeEml);
 
-            var typeMsg = new List<Type>();
+            var typeMsg = new List<Type>(2);
             typeMsg.Add(typeof(MsgEmailParser));
             typeMsg.Add(typeof(MsgTextParser));
             parserMapping.Add(".msg", typeMsg);
             #endregion
 
-            var typeVcard = new List<Type>();
+            var typeVcard = new List<Type>(2);
             typeVcard.Add(typeof(VCardDocumentParser));
             typeVcard.Add(typeof(VCardTextParser));
             parserMapping.Add(".vcf", typeVcard);
 
-            var typeZip = new List<Type>();
+            var typeZip = new List<Type>(1);
             typeZip.Add(typeof(ZipTextParser));
             parserMapping.Add(".zip", typeZip);
 
-            var typeAudio = new List<Type>();
+            var typeAudio = new List<Type>(1);
             typeAudio.Add(typeof(AudioMetadataParser));
             parserMapping.Add(".mp3", typeAudio);
             parserMapping.Add(".ape", typeAudio);
@@ -118,7 +117,7 @@ namespace Toxy
             parserMapping.Add(".flac", typeAudio);
             parserMapping.Add(".aif", typeAudio);
 
-            var typeImage = new List<Type>();
+            var typeImage = new List<Type>(1);
             typeImage.Add(typeof(ImageMetadataParser));
             parserMapping.Add(".jpeg", typeImage);
             parserMapping.Add(".jpg", typeImage);
@@ -130,14 +129,14 @@ namespace Toxy
         static string GetFileExtention(string path)
         {
             FileInfo fi = new FileInfo(path);
-            if (!parserMapping.ContainsKey(fi.Extension.ToLower()))
+            if (!parserMapping.ContainsKey(fi.Extension))
                 throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
-            return fi.Extension.ToLower();
+            return fi.Extension;
         }
         static object CreateObject(ParserContext context, Type itype, string operationName)
         {
             string ext = GetFileExtention(context.Path);
-            var types = parserMapping[ext];
+            List<Type> types = parserMapping[ext];
             object obj = null;
             bool isFound = false;
             foreach (Type type in types)

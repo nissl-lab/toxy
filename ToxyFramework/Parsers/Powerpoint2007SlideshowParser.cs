@@ -1,14 +1,11 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Presentation;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Toxy.Parsers
 {
-    public class Powerpoint2007SlideshowParser: ISlideshowParser
+    public class Powerpoint2007SlideshowParser : ISlideshowParser
     {
         public Powerpoint2007SlideshowParser(ParserContext context)
         {
@@ -33,7 +30,7 @@ namespace Toxy.Parsers
 
                     // Get the slide part from the relationship ID.
                     SlidePart slide = (SlidePart)part.GetPartById(relId);
-                    var tslide= Parse(slide);
+                    var tslide = Parse(slide);
                     ss.Slides.Add(tslide);
                 }
             }
@@ -45,10 +42,10 @@ namespace Toxy.Parsers
             {
                 throw new ArgumentNullException("slidePart");
             }
-            ToxySlide slide =null;
+            ToxySlide slide = null;
             if (slidePart.Slide != null)
             {
-                slide=new ToxySlide();
+                slide = new ToxySlide();
                 // Iterate through all the paragraphs in the slide.
                 foreach (DocumentFormat.OpenXml.Drawing.Paragraph paragraph in
                     slidePart.Slide.Descendants<DocumentFormat.OpenXml.Drawing.Paragraph>())
@@ -60,8 +57,8 @@ namespace Toxy.Parsers
                     }
                 }
                 //get note of each slide
-                if(slidePart.NotesSlidePart!=null)
-                    slide.Note=slidePart.NotesSlidePart.NotesSlide.InnerText;
+                if (slidePart.NotesSlidePart != null)
+                    slide.Note = slidePart.NotesSlidePart.NotesSlide.InnerText;
             }
             return slide;
         }

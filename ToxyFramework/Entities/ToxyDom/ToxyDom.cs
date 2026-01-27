@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Toxy
+﻿namespace Toxy
 {
     public class ToxyAttribute
     {
@@ -22,7 +18,7 @@ namespace Toxy
             if (Name == null)
                 return string.Empty;
 
-            if(Value!=null)
+            if(Value != null)
                 return string.Format("{0}=\"{1}\"", Name, Value);
             else
                 return string.Format("{0}", Name);

@@ -1,8 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using NUnit.Framework.Legacy;
 
 namespace Toxy.Test
 {
@@ -17,13 +14,13 @@ namespace Toxy.Test
             var parser = ParserFactory.CreateText(context);
 
             string result=parser.Parse();
-            Assert.IsNotNull(result);
-            Assert.IsNotEmpty(result);
-            Assert.IsTrue(result.IndexOf("[From] Azure Team<AzureTeam@e-mail.microsoft.com>") >= 0);
-            Assert.IsTrue(result.IndexOf("[To] tonyqux@hotmail.com")>0);
-            Assert.IsTrue(result.IndexOf("[Subject] Azure pricing and services updates") > 0);
-            Assert.IsFalse(result.IndexOf("[Cc]") > 0);
-            Assert.IsFalse(result.IndexOf("[Bcc]") > 0);
+            ClassicAssert.IsNotNull(result);
+            ClassicAssert.IsNotEmpty(result);
+            ClassicAssert.IsTrue(result.IndexOf("[From] Azure Team<AzureTeam@e-mail.microsoft.com>") >= 0);
+            ClassicAssert.IsTrue(result.IndexOf("[To] tonyqux@hotmail.com")>0);
+            ClassicAssert.IsTrue(result.IndexOf("[Subject] Azure pricing and services updates") > 0);
+            ClassicAssert.IsFalse(result.IndexOf("[Cc]") > 0);
+            ClassicAssert.IsFalse(result.IndexOf("[Bcc]") > 0);
         }
 
         [Test]
@@ -34,8 +31,8 @@ namespace Toxy.Test
             var parser = ParserFactory.CreateText(context);
 
             string result = parser.Parse();
-            Assert.IsNotNull(result);
-            Assert.IsNotEmpty(result);
+            ClassicAssert.IsNotNull(result);
+            ClassicAssert.IsNotEmpty(result);
         }
 
         [Test]
@@ -49,16 +46,16 @@ namespace Toxy.Test
             var parser = ParserFactory.CreateEmail(context);
 
             var result = parser.Parse();
-            Assert.AreEqual("Azure Team<AzureTeam@e-mail.microsoft.com>",result.From);
+            ClassicAssert.AreEqual("Azure Team<AzureTeam@e-mail.microsoft.com>",result.From);
 
-            Assert.AreEqual(1, result.To.Count);
-            Assert.AreEqual(0, result.Cc.Count);
-            Assert.AreEqual(0, result.Bcc.Count);
+            ClassicAssert.AreEqual(1, result.To.Count);
+            ClassicAssert.AreEqual(0, result.Cc.Count);
+            ClassicAssert.AreEqual(0, result.Bcc.Count);
 
-            Assert.AreEqual("tonyqux@hotmail.com", result.To[0]);
-            Assert.AreEqual("Azure pricing and services updates", result.Subject);
-            Assert.IsNotNull(result.TextBody);
-            Assert.IsNotNull(result.HtmlBody);
+            ClassicAssert.AreEqual("tonyqux@hotmail.com", result.To[0]);
+            ClassicAssert.AreEqual("Azure pricing and services updates", result.Subject);
+            ClassicAssert.IsNotNull(result.TextBody);
+            ClassicAssert.IsNotNull(result.HtmlBody);
         }
     }
 }

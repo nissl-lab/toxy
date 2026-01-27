@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Toxy
+﻿namespace Toxy
 {
     public class ToxyContact
     {
@@ -15,7 +11,6 @@ namespace Toxy
         public static string URL_DEFAULT = "Url-Default";
         public static string VOICE = "Voice";
         
-
         public ToxyContact(string name, string value)
         {
             this.Name = name;

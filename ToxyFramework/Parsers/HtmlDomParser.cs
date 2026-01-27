@@ -1,8 +1,6 @@
 ﻿using HtmlAgilityPack;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Toxy.Parsers
 {
@@ -46,10 +44,7 @@ namespace Toxy.Parsers
                     nodeQueue.Enqueue(new KeyValuePair<HtmlNode, ToxyNode>(htmlChildNode, toxyChildNode));
                 }
             }
-
             return new ToxyDom() { Root = root };
         }
-
-
     }
 }

@@ -1,10 +1,6 @@
 ﻿using NUnit.Framework;
-
-using System;
-using System.Collections.Generic;
+using NUnit.Framework.Legacy;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Toxy.Test
 {
@@ -18,9 +14,9 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
-            Assert.AreEqual(8, x.Count);
-            Assert.AreEqual("SlideShow Sample", x.Get("Title").Value);
-            Assert.AreEqual("Microsoft Office PowerPoint", x.Get("Application").Value);
+            ClassicAssert.AreEqual(8, x.Count);
+            ClassicAssert.AreEqual("SlideShow Sample", x.Get("Title").Value);
+            ClassicAssert.AreEqual("Microsoft Office PowerPoint", x.Get("Application").Value);
         }
 
         [Test]
@@ -30,9 +26,9 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
-            Assert.AreEqual(12, x.Count);
-            Assert.AreEqual("Format", x.Get("Title").Value);
-            Assert.AreEqual("Microsoft Macintosh Word", x.Get("Application").Value);
+            ClassicAssert.AreEqual(12, x.Count);
+            ClassicAssert.AreEqual("Format", x.Get("Title").Value);
+            ClassicAssert.AreEqual("Microsoft Macintosh Word", x.Get("Application").Value);
         }
 
         [Test]
@@ -42,9 +38,9 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(path);
             IMetadataParser parser = (IMetadataParser)ParserFactory.CreateMetadata(context);
             ToxyMetadata x = parser.Parse();
-            Assert.AreEqual(4, x.Count);
-            Assert.AreEqual("Microsoft Excel", x.Get("Application").Value);
-            Assert.AreEqual("12.0000", x.Get("AppVersion").Value);
+            ClassicAssert.AreEqual(4, x.Count);
+            ClassicAssert.AreEqual("Microsoft Excel", x.Get("Application").Value);
+            ClassicAssert.AreEqual("12.0000", x.Get("AppVersion").Value);
         }
     }
 }
