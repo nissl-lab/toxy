@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using System.Text;
-using ToxyFramework.Parsers;
+using Toxy.Parsers;
 
 namespace Toxy.Test
 {

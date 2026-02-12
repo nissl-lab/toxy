@@ -4,7 +4,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Toxy;
 
-namespace ToxyFramework.Parsers
+namespace Toxy.Parsers
 {
     public class RTFTextParser : ITextParser
     {
