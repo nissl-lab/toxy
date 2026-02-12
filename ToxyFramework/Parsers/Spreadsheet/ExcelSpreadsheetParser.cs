@@ -72,6 +72,7 @@ namespace Toxy.Parsers
                 throw new ArgumentOutOfRangeException(string.Format("This file only contains {0} sheet(s).", workbook.NumberOfSheets));
             }
             ISheet sheet = workbook.GetSheetAt(sheetIndex);
+            table.SheetIndex = sheetIndex;
             table.Name = sheet.SheetName;
 
             if (extractHeader && sheet.Header != null)
@@ -97,13 +98,14 @@ namespace Toxy.Parsers
                 {
                     table.HeaderRows.Add(new ToxyRow(row.RowNum));
                 }
-                foreach (ICell cell in row)
+                for (int i=0;i<row.LastCellNum;i++)
                 {
+                    ICell cell = row.GetCell(i, fillBlankCells?MissingCellPolicy.CREATE_NULL_AS_BLANK:MissingCellPolicy.RETURN_NULL_AND_BLANK);
                     if (hasHeader && firstRow)
                     {
                         table.HeaderRows[0].Cells.Add(new ToxyCell(cell.ColumnIndex, cell.ToString()));
                     }
-                    else
+                    else if(cell!=null)
                     {
                         if (tr.LastCellIndex < cell.ColumnIndex)
                         {

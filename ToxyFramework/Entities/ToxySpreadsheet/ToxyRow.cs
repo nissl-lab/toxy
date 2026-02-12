@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Toxy
 {
@@ -21,18 +22,16 @@ namespace Toxy
         public ToxyCell this[int i]
         {
             get { 
-                return this.Cells[i]; 
+                return this.Cells.SingleOrDefault(c=>c.CellIndex==i); 
             }
         }
 
         public ToxyCell[] Slice(int start, int length)
         {
-            if (length >= this.Length)
+            if (start<0 || this.Cells.Count==0 ||this.Cells.Max(t => t.CellIndex) < start + length - 1)
                 throw new ArgumentOutOfRangeException();
 
-            var slice = new ToxyCell[length];
-            this.Cells.CopyTo(start,slice, 0, length);
-            return slice;
+            return this.Cells.Where(t => t.CellIndex >= start && t.CellIndex < start + length).ToArray();
         }
 
         public List<ToxyCell> Cells

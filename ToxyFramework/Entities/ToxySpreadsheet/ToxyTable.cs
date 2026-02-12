@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Linq;
 
 namespace Toxy
 {
@@ -16,6 +17,7 @@ namespace Toxy
             this.LastColumnIndex = -1;
             this.MergeCells = new List<MergeCellRange>();
         }
+        public static int HeaderRowCount=1;
         /// <summary>
         /// The sheet has column header (row)
         /// </summary>
@@ -23,7 +25,7 @@ namespace Toxy
         {
             get { return this.HeaderRows.Count> 0; }
         }
-
+        public int SheetIndex { get; set; }
         public List<MergeCellRange> MergeCells { get; set; }
         public string Name { get; set; }
         public string PageHeader { get; set; }
@@ -39,7 +41,10 @@ namespace Toxy
         {
             get
             {
-                return this.Rows[i];
+                if (HasHeader)
+                    return this.Rows.SingleOrDefault(r => r.RowIndex- HeaderRowCount == i);
+                else
+                    return this.Rows.SingleOrDefault(r => r.RowIndex == i);
             }
         }
         public int Length
@@ -48,11 +53,10 @@ namespace Toxy
         }
         public ToxyRow[] Slice(int start, int length)
         {
-            if (length >= this.Length)
+            if (start < 0 || this.Rows.Count==0 || this.Rows.Max(t => t.RowIndex) < start + length - 1)
                 throw new ArgumentOutOfRangeException();
 
-            var slice = new ToxyRow[length];
-            this.Rows.CopyTo(start, slice, 0, length);
+            var slice =  this.Rows.Where(r=>r.RowIndex>=start && r.RowIndex<=start+length).ToArray();
             return slice;
         }
         private string ExcelColumnFromNumber(int column)

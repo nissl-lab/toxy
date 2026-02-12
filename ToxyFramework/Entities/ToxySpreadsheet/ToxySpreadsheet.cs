@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace Toxy
 {
@@ -21,12 +22,10 @@ namespace Toxy
         }
         public ToxyTable[] Slice(int start, int length)
         {
-            if (length >= this.Length)
+            if (start<0 || this.Tables.Count==0|| this.Tables.Max(t => t.SheetIndex) < start+length-1)
                 throw new ArgumentOutOfRangeException();
 
-            var slice = new ToxyTable[length];
-            this.Tables.CopyTo(start, slice, 0, length);
-            return slice;
+            return this.Tables.Where(t => t.SheetIndex >= start && t.SheetIndex < start + length).ToArray();
         }
         public ToxyTable this[string name]
         {
