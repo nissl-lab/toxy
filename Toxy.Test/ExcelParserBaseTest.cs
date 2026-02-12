@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
+using System;
 
 namespace Toxy.Test
 {
@@ -60,21 +61,51 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("B4", ss.Tables[0][2][3].Value);
         }
 
-        public void BaseTestSlicedTableAndRow(string filename)
+        public void BaseTestSlicedRow(string filename)
         {
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
             ToxySpreadsheet ss = parser.Parse();
             
-            var table1_2 = ss[1..3];    //it only has 3 tables
-            ClassicAssert.AreEqual(2, table1_2.Length);
-
             ToxyTable table0 = ss.Tables[0];
             var slicedrows= table0[1..4];
-            ClassicAssert.AreEqual("Last name:", slicedrows[1][0].ToString());
-            ClassicAssert.AreEqual("lastName", slicedrows[1][1].ToString());
-            ClassicAssert.AreEqual("First name:", slicedrows[2][0].ToString());
-            ClassicAssert.AreEqual("firstName", slicedrows[2][1].ToString());
+            ClassicAssert.AreEqual("Last name:", slicedrows[2][1].ToString());
+            ClassicAssert.AreEqual("lastName", slicedrows[2][2].ToString());
+            ClassicAssert.AreEqual("First name:", slicedrows[3][1].ToString());
+            ClassicAssert.AreEqual("firstName", slicedrows[3][2].ToString());
+
+            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var rows = ss[-2..6]; });
+            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var rows= ss[1..6]; });   //there is no row[6]
+        }
+
+        public void BaseTestSlicedCell(string filename)
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
+            ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
+            ToxySpreadsheet ss = parser.Parse();
+
+            var slicedrow = ss.Tables[0][3];
+            var slicedcells= slicedrow[1..3];
+            ClassicAssert.AreEqual("Last name:", slicedcells[0].ToString());
+            ClassicAssert.AreEqual("lastName", slicedcells[1].ToString());
+
+            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var rows = slicedrow[-1..6]; });
+            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var rows = slicedrow[1..5]; });   //there is no cell[4]
+        }
+
+        public void BaseTestSlicedTable(string filename)
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
+            ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
+            ToxySpreadsheet ss = parser.Parse();
+
+            var table1_2 = ss[1..3];    //it only has 3 tables
+            ClassicAssert.AreEqual(2, table1_2.Length);
+            ClassicAssert.AreEqual("Sheet2", table1_2[0].Name);
+            ClassicAssert.AreEqual(1, table1_2[0].SheetIndex);
+
+            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var table = ss[1..4]; });
+            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var table = ss[-1..3]; });
         }
 
         public void BaseTestExtractSheetHeader(string filename)
@@ -94,20 +125,20 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
             ToxySpreadsheet ss = parser.Parse();
-            ClassicAssert.AreEqual(1, ss.Tables[0][0].Length);
-            ClassicAssert.AreEqual(0, ss.Tables[0][1].Length);
-            ClassicAssert.AreEqual(2, ss.Tables[0][2].Length);
+            ClassicAssert.AreEqual(1, ss.Tables[0][1].Length);
+            ClassicAssert.AreEqual(0, ss.Tables[0][2].Length);
             ClassicAssert.AreEqual(2, ss.Tables[0][3].Length);
             ClassicAssert.AreEqual(2, ss.Tables[0][4].Length);
+            ClassicAssert.AreEqual(2, ss.Tables[0][5].Length);
 
             parser.Context.Properties.Add("FillBlankCells", "1");
             ToxySpreadsheet ss2 = parser.Parse();
             
-            ClassicAssert.AreEqual(3, ss2.Tables[0][0].Length);
-            ClassicAssert.AreEqual(3, ss2.Tables[0][1].Length);
-            ClassicAssert.AreEqual(3, ss2.Tables[0][2].Length);
-            ClassicAssert.AreEqual(3, ss2.Tables[0][3].Length);
-            ClassicAssert.AreEqual(3, ss2.Tables[0][4].Length);
+            ClassicAssert.AreEqual(4, ss2.Tables[0][1].Length);
+            ClassicAssert.AreEqual(4, ss2.Tables[0][2].Length);
+            ClassicAssert.AreEqual(4, ss2.Tables[0][3].Length);
+            ClassicAssert.AreEqual(4, ss2.Tables[0][4].Length);
+            ClassicAssert.AreEqual(4, ss2.Tables[0][5].Length);
         }
 
         public void BaseTestExcelContent(string filename)
@@ -124,43 +155,44 @@ namespace Toxy.Test
             ClassicAssert.AreEqual(0, ss.Tables[2].Length);
 
             ToxyTable table = ss.Tables[0];
-            ClassicAssert.AreEqual(1, table[0].RowIndex);
-            ClassicAssert.AreEqual(2, table[1].RowIndex);
-            ClassicAssert.AreEqual(3, table[2].RowIndex);
-            ClassicAssert.AreEqual(4, table[3].RowIndex);
-            ClassicAssert.AreEqual(5, table[4].RowIndex);
+            ClassicAssert.AreEqual(1, table[1].RowIndex);
+            ClassicAssert.AreEqual(2, table[2].RowIndex);
+            ClassicAssert.AreEqual(3, table[3].RowIndex);
+            ClassicAssert.AreEqual(4, table[4].RowIndex);
+            ClassicAssert.AreEqual(5, table[5].RowIndex);
 
 
-            ClassicAssert.AreEqual(1, table[0].Length);
-            ClassicAssert.AreEqual(0, table[1].Length);
-            ClassicAssert.AreEqual(2, table[2].Length);
+            ClassicAssert.AreEqual(1, table[1].Length);
+            ClassicAssert.AreEqual(0, table[2].Length);
             ClassicAssert.AreEqual(2, table[3].Length);
             ClassicAssert.AreEqual(2, table[4].Length);
-            ClassicAssert.AreEqual("Employee Info", table[0][0].ToString());
-            ClassicAssert.AreEqual(1, table[0][0].CellIndex);
-            ClassicAssert.AreEqual("Last name:", table[2][0].ToString());
-            ClassicAssert.AreEqual(1, table[2][0].CellIndex);
-            ClassicAssert.AreEqual("lastName", table[2][1].ToString());
-            ClassicAssert.AreEqual(2, table[2][1].CellIndex);
-            ClassicAssert.AreEqual("First name:", table[3][0].ToString());
-            ClassicAssert.AreEqual("firstName", table[3][1].ToString());
-            ClassicAssert.AreEqual("SSN:", table[4][0].ToString());
-            ClassicAssert.AreEqual("ssn", table[4][1].ToString());
+            ClassicAssert.AreEqual(2, table[5].Length);
+            ClassicAssert.AreEqual("Employee Info", table[1][1].ToString());
+            ClassicAssert.AreEqual(1, table[1][1].CellIndex);
+            ClassicAssert.AreEqual("Last name:", table[3][1].ToString());
+            ClassicAssert.AreEqual(1, table[3][1].CellIndex);
+            ClassicAssert.AreEqual("lastName", table[3][2].ToString());
+            ClassicAssert.AreEqual(2, table[3][2].CellIndex);
+            ClassicAssert.AreEqual("First name:", table[4][1].ToString());
+            ClassicAssert.AreEqual("firstName", table[4][2].ToString());
+            ClassicAssert.AreEqual("SSN:", table[5][1].ToString());
+            ClassicAssert.AreEqual("ssn", table[5][2].ToString());
         }
 
         public void BaseTestExcelComment(string filename)
         {
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
+            context.Properties.Add("FillBlankCells", "1");  //must use this parameter to get null cell as blank so that cell comment can be extracted and attach to the ToxyCell
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
             ToxySpreadsheet ss = parser.Parse();
             ClassicAssert.AreEqual(3, ss.Tables.Count);
             ClassicAssert.AreEqual(3, ss.Tables[0].Length);
-            ClassicAssert.AreEqual(0, ss.Tables[0][1][0].CellIndex);
-            ClassicAssert.AreEqual(2, ss.Tables[0][1].RowIndex);
+            ClassicAssert.AreEqual(0, ss.Tables[0][2][0].CellIndex);
+            ClassicAssert.AreEqual(2, ss.Tables[0][2].RowIndex);
             //TODO: fix this comment without cell value
             ClassicAssert.AreEqual("comment top row1 (index0)\n", ss.Tables[0][0][0].Comment);
-            ClassicAssert.AreEqual("comment top row3 (index2)\n", ss.Tables[0][1][0].Comment);
-            ClassicAssert.AreEqual("comment top row4 (index3)\n", ss.Tables[0][2][0].Comment);
+            ClassicAssert.AreEqual("comment top row3 (index2)\n", ss.Tables[0][2][0].Comment);
+            ClassicAssert.AreEqual("comment top row4 (index3)\n", ss.Tables[0][3][0].Comment);
         }
 
         public void BaseTestExcelFormatedString(string filename)
