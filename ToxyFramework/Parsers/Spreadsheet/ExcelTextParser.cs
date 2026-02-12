@@ -45,7 +45,7 @@ namespace Toxy.Parsers
             if (workbook is XSSFWorkbook xssWorkbook)
             {
                 XSSFExcelExtractor extractor = new XSSFExcelExtractor(xssWorkbook);
-                extractor.IncludeHeaderFooter = extractHeaderFooter;
+                extractor.IncludeHeadersFooters = extractHeaderFooter;
                 extractor.IncludeCellComments = includeComment;
                 extractor.IncludeSheetNames = includeSheetNames;
                 extractor.FormulasNotResults = !showCalculatedResult;
@@ -54,7 +54,7 @@ namespace Toxy.Parsers
             else //if (workbook is HSSFWorkbook)
             {
                 ExcelExtractor extractor = new ExcelExtractor((HSSFWorkbook)workbook);
-                extractor.IncludeHeaderFooter = extractHeaderFooter;
+                extractor.IncludeHeadersFooters = extractHeaderFooter;
                 extractor.IncludeCellComments= includeComment;
                 extractor.IncludeSheetNames = includeSheetNames;
                 extractor.FormulasNotResults = !showCalculatedResult;
