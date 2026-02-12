@@ -75,11 +75,11 @@ public class PrettyTableTest
     {
         ToxyTable table = BuildTable();
         var results = table.Print(1,2).Split("\n");
-        ClassicAssert.AreEqual("+------+------------+", results[0]);
-        ClassicAssert.AreEqual("| Area | Population |", results[1]);
-        ClassicAssert.AreEqual("+------+------------+", results[2]);
-        ClassicAssert.AreEqual("| 5905 | 1857594 |", results[4]);
-        ClassicAssert.AreEqual("| 112 | 120900 |", results[5]);
-        ClassicAssert.AreEqual("+------+------------+", results[6]);
+        ClassicAssert.AreEqual("+------+------------+\r", results[0]);
+        ClassicAssert.AreEqual("| Area | Population |\r", results[1]);
+        ClassicAssert.AreEqual("+------+------------+\r", results[2]);
+        ClassicAssert.AreEqual("| 5905 | 1857594 |\r", results[4]);
+        ClassicAssert.AreEqual("| 112 | 120900 |\r", results[5]);
+        ClassicAssert.AreEqual("+------+------------+\r", results[6]);
     }
 }
