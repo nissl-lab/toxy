@@ -1,7 +1,12 @@
-﻿using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas.Parser;
-using iText.Kernel.Pdf.Canvas.Parser.Listener;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using UglyToad.PdfPig;
+using UglyToad.PdfPig.Content;
+using UglyToad.PdfPig.DocumentLayoutAnalysis;
+using UglyToad.PdfPig.DocumentLayoutAnalysis.PageSegmenter;
+using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
+using UglyToad.PdfPig.DocumentLayoutAnalysis.WordExtractor;
 
 namespace Toxy.Parsers
 {
@@ -18,18 +23,20 @@ namespace Toxy.Parsers
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
 
             ToxyDocument rdoc = new ToxyDocument();
-            ITextExtractionStrategy its = new LocationTextExtractionStrategy();
-
-            using (PdfDocument reader = new PdfDocument(new PdfReader(this.Context.Path)))
+            using (PdfDocument document = PdfDocument.Open(this.Context.Path))
             {
-                for (int i = 1; i <= reader.GetNumberOfPages(); i++)
+                StringBuilder text = new StringBuilder();
+
+                for (var i = 0; i < document.NumberOfPages; i++)
                 {
-                    string thePage = PdfTextExtractor.GetTextFromPage(reader.GetPage(i), its);
-                    string[] theLines = thePage.Split('\n');
-                    foreach (var theLine in theLines)
+                    var page = document.GetPage(i + 1);
+                    var words = page.GetWords();
+                    var blocks = RecursiveXYCut.Instance.GetBlocks(words);
+
+                    foreach (var block in blocks)
                     {
                         ToxyParagraph para = new ToxyParagraph();
-                        para.Text = theLine;
+                        para.Text = block.Text;
                         rdoc.Paragraphs.Add(para);
                     }
                 }
