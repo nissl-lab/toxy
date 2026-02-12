@@ -123,6 +123,9 @@ namespace Toxy
             parserMapping.Add(".gif", typeImage);
             parserMapping.Add(".tiff", typeImage);
             parserMapping.Add(".png", typeImage);
+
+            var typeEpub = new List<Type>(1) { typeof(EPUBParser) };
+            parserMapping.Add(".epub", typeEpub);
         }
 
         static string GetFileExtention(string path)

@@ -4,6 +4,7 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <LangVersion>10</LangVersion>
     <AssemblyVersion>2.5</AssemblyVersion>
+    <RootNamespace>Toxy</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
     <PackageReference Include="ReasonableRTF.Standard" Version="2025.11.1" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
     <PackageReference Include="VCardReader" Version="1.2.3" />
+    <PackageReference Include="VersOne.Epub" Version="3.3.5" />
   </ItemGroup>
 
 </Project>
