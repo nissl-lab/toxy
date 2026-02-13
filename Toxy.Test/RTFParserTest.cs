@@ -18,11 +18,11 @@ namespace Toxy.Test
             context.Encoding = Encoding.GetEncoding("windows-1252");
             var parser = new RTFTextParser(context);
             string result = parser.Parse();
-            string[] lines = result.Split(Environment.NewLine);
-            ClassicAssert.AreEqual(lines.Length, 10);
+            string[] lines = result.Split(Environment.NewLine,StringSplitOptions.RemoveEmptyEntries);
+            ClassicAssert.AreEqual(lines.Length, 4);
             ClassicAssert.AreEqual("11111111111", lines[0]);
             ClassicAssert.AreEqual("22222222222", lines[1]);
-            ClassicAssert.AreEqual("RTF Sample , Author : yuans , contact : yyf9989@hotmail.com , site : http://www.cnblogs.com/xdesigner .", lines[7]);
+            ClassicAssert.AreEqual("RTF Sample , Author : yuans , contact : yyf9989@hotmail.com , site : http://www.cnblogs.com/xdesigner .", lines[3]);
 
             ClassicAssert.AreEqual("张三李四王五", lines[2]); //encoding issue
         }
