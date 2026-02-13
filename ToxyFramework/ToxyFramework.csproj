@@ -20,6 +20,10 @@
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/nissl-lab/toxy</PackageProjectUrl>
 
+    <!-- Package License and Readme -->
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+
     <!-- Generate symbols package for debugging -->
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>    
@@ -41,6 +45,12 @@
     <PackageReference Include="ReasonableRTF.Standard" Version="2025.11.1" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
     <PackageReference Include="VCardReader" Version="1.2.3" />
+  </ItemGroup>
+
+  <!-- Include LICENSE and readme.md in NuGet package -->
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\build\readme.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
