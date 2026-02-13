@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
+using System;
 using System.Text;
 using Toxy.Parsers;
 
@@ -17,7 +18,7 @@ namespace Toxy.Test
             context.Encoding = Encoding.GetEncoding("windows-1252");
             var parser = new RTFTextParser(context);
             string result = parser.Parse();
-            string[] lines = result.Replace("\r\n", "\n").Split('\n');
+            string[] lines = result.Split(Environment.NewLine);
             ClassicAssert.AreEqual(lines.Length, 10);
             ClassicAssert.AreEqual("11111111111", lines[0]);
             ClassicAssert.AreEqual("22222222222", lines[1]);

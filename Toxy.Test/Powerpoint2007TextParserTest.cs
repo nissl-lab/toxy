@@ -17,7 +17,7 @@ namespace Toxy.Test
             string result = parser.Parse();
             ClassicAssert.IsNotNull(result);
             ClassicAssert.IsNotEmpty(result);
-            string[] texts = result.Split(new string[]{"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            string[] texts = result.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
             ClassicAssert.AreEqual(14, texts.Length);
             ClassicAssert.AreEqual("Attachment Test", texts[0]);
             ClassicAssert.AreEqual("Rajiv", texts[1]);

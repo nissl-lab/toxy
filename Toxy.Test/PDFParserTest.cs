@@ -40,7 +40,7 @@ namespace Toxy.Test
             string path = TestDataSample.GetPdfPath("Sample5.PDF");
             var parser = new PDFTextParser(new ParserContext(path));
             string result = parser.Parse();
-            string[] lines = result.Split("\r\n",System.StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = result.Split(Environment.NewLine,System.StringSplitOptions.RemoveEmptyEntries);
             ClassicAssert.AreEqual("Philadelphia, Atlanta, Dallas, San Diego, and New", lines[0]);
             ClassicAssert.AreEqual("Orleans. According tocompanyestimates, its own sales", lines[1]);
         }

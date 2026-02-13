@@ -17,12 +17,11 @@ namespace Toxy.Test
 
             ClassicAssert.IsNotNull(doc);
 
-            string[] lines = doc.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = doc.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
             ClassicAssert.AreEqual(7, lines.Length);
             ClassicAssert.AreEqual("I am a test document", lines[0]);
             ClassicAssert.AreEqual("This is page 1", lines[1]);
             ClassicAssert.AreEqual("I am Calibri (Body) in font size 11", lines[2]);
-            ClassicAssert.AreEqual("\n", lines[3]);
             ClassicAssert.AreEqual("This is page two", lines[4]);
             ClassicAssert.AreEqual("It’s Arial Black in 16 point", lines[5]);
             ClassicAssert.AreEqual("It’s also in blue", lines[6]);
