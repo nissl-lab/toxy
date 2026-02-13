@@ -3,7 +3,29 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <LangVersion>10</LangVersion>
-    <AssemblyVersion>2.5</AssemblyVersion>
+    <AssemblyVersion>2.6</AssemblyVersion>
+
+    <!-- NuGet Package Metadata -->
+    <PackageId>Toxy</PackageId>
+    <Version>2.6.0</Version>
+    <PackageVersion>2.6.0</PackageVersion>
+    <Authors>Tony Qu and its contributors</Authors>
+    <Company>Nissl LLC</Company>
+    <Description>Toxy is a .NET library for extracting data from various document formats</Description>
+    <Copyright>Copyright © nissl-lab</Copyright>
+    <PackageTags>document;parser;extraction;pdf;excel;word;text</PackageTags>
+
+    <!-- Repository Information -->
+    <RepositoryUrl>https://github.com/nissl-lab/toxy</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/nissl-lab/toxy</PackageProjectUrl>
+
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <!-- Generate symbols package for debugging -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>    
   </PropertyGroup>
 
   <ItemGroup>
