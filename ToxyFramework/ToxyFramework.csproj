@@ -20,9 +20,6 @@
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/nissl-lab/toxy</PackageProjectUrl>
 
-    <PackageLicenseFile>./LICENSE</PackageLicenseFile>
-    <PackageReadmeFile>./build/README.md</PackageReadmeFile>
-
     <!-- Generate symbols package for debugging -->
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>    
