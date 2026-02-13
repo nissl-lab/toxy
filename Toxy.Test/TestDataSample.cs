@@ -53,7 +53,7 @@ namespace Toxy.Test
         }
         public static string GetPowerpointPath(string filename)
         {
-            return GetFilePath(filename, "powerpoint");
+            return GetFilePath(filename, "Powerpoint");
         }
         public static string GetCNMPath(string filename)
         {
@@ -61,7 +61,7 @@ namespace Toxy.Test
         }
         public static string GetEmailPath(string filename)
         {
-            return GetFilePath(filename, "email");
+            return GetFilePath(filename, "Email");
         }
         public static string GetFilePath(string filename, string subFolder)
         {
