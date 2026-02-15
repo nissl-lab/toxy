@@ -48,13 +48,15 @@ namespace Toxy.Parsers
             }
             ToxySpreadsheet ss = new ToxySpreadsheet();
             ss.Name = Context.Path;
-            IWorkbook workbook = WorkbookFactory.Create(Context.Path);
-           
-            HSSFDataFormatter formatter = new HSSFDataFormatter();
-            for (int i = 0; i < workbook.NumberOfSheets; i++)
+            using (IWorkbook workbook = WorkbookFactory.Create(Context.Path))
             {
-                ToxyTable table = Parse(workbook, i, extractHeader, extractFooter, hasHeader, fillBlankCells, includeComment, formatter);
-                ss.Tables.Add(table);
+
+                HSSFDataFormatter formatter = new HSSFDataFormatter();
+                for (int i = 0; i < workbook.NumberOfSheets; i++)
+                {
+                    ToxyTable table = Parse(workbook, i, extractHeader, extractFooter, hasHeader, fillBlankCells, includeComment, formatter);
+                    ss.Tables.Add(table);
+                }
             }
             return ss;
         }

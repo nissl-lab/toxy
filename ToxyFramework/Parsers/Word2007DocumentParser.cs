@@ -32,57 +32,53 @@ namespace Toxy.Parsers
 
             using (FileStream stream = File.OpenRead(Context.Path))
             {
-                XWPFDocument worddoc = new XWPFDocument(stream);
-                if (extractHeader && worddoc.HeaderList != null)
+                using (XWPFDocument worddoc = new XWPFDocument(stream))
                 {
-                    StringBuilder sb = new StringBuilder();
-                    foreach (var header in worddoc.HeaderList)
+                    if (extractHeader && worddoc.HeaderList != null)
                     {
-                        sb.AppendLine(header.Text);
-                    }
-                    rdoc.Header = sb.ToString();
-                }
-                if (extractFooter && worddoc.FooterList != null)
-                {
-                    StringBuilder sb = new StringBuilder();
-                    foreach (var footer in worddoc.FooterList)
-                    {
-                        sb.AppendLine(footer.Text);
-                    }
-                    rdoc.Footer = sb.ToString();
-                }
-                foreach (var para in worddoc.Paragraphs)
-                {
-                    string text = para.ParagraphText;
-                    ToxyParagraph p = new ToxyParagraph();
-                    p.Text = text;
-                    //var runs = para.Runs;
-                    p.StyleID = para.Style;
-
-                    //for (int i = 0; i < runs.Count; i++)
-                    //{
-                    //    var run = runs[i];
-
-                    //}
-                    rdoc.Paragraphs.Add(p);
-                }
-
-                var tables = worddoc.Tables;
-                foreach (var table in tables)
-                {
-                    foreach (var row in table.Rows)
-                    {
-                        var cells = row.GetTableCells();
-                        foreach (var cell in cells)
+                        StringBuilder sb = new StringBuilder();
+                        foreach (var header in worddoc.HeaderList)
                         {
-                            foreach (var para in cell.Paragraphs)
+                            sb.AppendLine(header.Text);
+                        }
+                        rdoc.Header = sb.ToString();
+                    }
+                    if (extractFooter && worddoc.FooterList != null)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        foreach (var footer in worddoc.FooterList)
+                        {
+                            sb.AppendLine(footer.Text);
+                        }
+                        rdoc.Footer = sb.ToString();
+                    }
+                    foreach (var para in worddoc.Paragraphs)
+                    {
+                        string text = para.ParagraphText;
+                        ToxyParagraph p = new ToxyParagraph();
+                        p.Text = text;
+                        p.StyleID = para.Style;
+
+                        rdoc.Paragraphs.Add(p);
+                    }
+
+                    var tables = worddoc.Tables;
+                    foreach (var table in tables)
+                    {
+                        foreach (var row in table.Rows)
+                        {
+                            var cells = row.GetTableCells();
+                            foreach (var cell in cells)
                             {
-                                string text = para.ParagraphText;
-                                ToxyParagraph p = new ToxyParagraph();
-                                p.Text = text;
-                                //var runs = para.Runs;
-                                p.StyleID = para.Style;
-                                rdoc.Paragraphs.Add(p);
+                                foreach (var para in cell.Paragraphs)
+                                {
+                                    string text = para.ParagraphText;
+                                    ToxyParagraph p = new ToxyParagraph();
+                                    p.Text = text;
+                                    //var runs = para.Runs;
+                                    p.StyleID = para.Style;
+                                    rdoc.Paragraphs.Add(p);
+                                }
                             }
                         }
                     }

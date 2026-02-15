@@ -29,36 +29,38 @@ namespace Toxy.Parsers
             StringBuilder sb = new StringBuilder();
             using (FileStream stream = File.OpenRead(Context.Path))
             {
-                XWPFDocument worddoc = new XWPFDocument(stream);
-                if (extractHeader && worddoc.HeaderList != null)
+                using (XWPFDocument worddoc = new XWPFDocument(stream))
                 {
-                    foreach (var header in worddoc.HeaderList)
+                    if (extractHeader && worddoc.HeaderList != null)
                     {
-                        sb.Append("[Header] ");
-                        sb.AppendLine(header.Text);
+                        foreach (var header in worddoc.HeaderList)
+                        {
+                            sb.Append("[Header] ");
+                            sb.AppendLine(header.Text);
+                        }
                     }
-                }
-                foreach (var elem in worddoc.BodyElements)
-                {
-                    if (elem is XWPFParagraph)
+                    foreach (var elem in worddoc.BodyElements)
                     {
-                        XWPFParagraph para = elem as XWPFParagraph;
-                        string text = para.ParagraphText;
-                        sb.AppendLine(text);
+                        if (elem is XWPFParagraph)
+                        {
+                            XWPFParagraph para = elem as XWPFParagraph;
+                            string text = para.ParagraphText;
+                            sb.AppendLine(text);
+                        }
+                        else if (elem is XWPFTable)
+                        {
+                            XWPFTable table = elem as XWPFTable;
+                            string text = table.Text;
+                            sb.AppendLine(text);
+                        }
                     }
-                    else if (elem is XWPFTable)
+                    if (extractFooter && worddoc.FooterList != null)
                     {
-                        XWPFTable table = elem as XWPFTable;
-                        string text = table.Text;
-                        sb.AppendLine(text);
-                    }
-                }
-                if (extractFooter && worddoc.FooterList != null)
-                {
-                    foreach (var footer in worddoc.FooterList)
-                    {
-                        sb.Append("[Footer] ");
-                        sb.AppendLine(footer.Text);
+                        foreach (var footer in worddoc.FooterList)
+                        {
+                            sb.Append("[Footer] ");
+                            sb.AppendLine(footer.Text);
+                        }
                     }
                 }
             }
