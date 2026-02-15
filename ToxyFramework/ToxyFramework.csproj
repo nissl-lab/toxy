@@ -22,7 +22,6 @@
 
     <!-- Package License and Readme -->
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageReadmeFile>Readme.md</PackageReadmeFile>
 
     <!-- Generate symbols package for debugging -->
     <IncludeSymbols>true</IncludeSymbols>
@@ -50,7 +49,6 @@
   <!-- Include LICENSE and readme.md in NuGet package -->
   <ItemGroup>
     <None Include="..\LICENSE" Pack="true" PackagePath="\" />
-    <None Include="..\build\readme.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
