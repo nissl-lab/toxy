@@ -50,7 +50,7 @@
   <!-- Include LICENSE and readme.md in NuGet package -->
   <ItemGroup>
     <None Include="..\LICENSE" Pack="true" PackagePath="\" />
-    <None Include="..\build\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
