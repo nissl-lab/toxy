@@ -26,7 +26,8 @@
 
     <!-- Generate symbols package for debugging -->
     <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>    
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <RootNamespace>Toxy</RootNamespace>    
   </PropertyGroup>
 
   <ItemGroup>
@@ -51,6 +52,9 @@
   <ItemGroup>
     <None Include="..\LICENSE" Pack="true" PackagePath="\" />
     <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Parsers\NewFolder\" />
   </ItemGroup>
 
 </Project>
