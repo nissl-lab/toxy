@@ -46,15 +46,13 @@
     <PackageReference Include="ReasonableRTF.Standard" Version="2025.11.1" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
     <PackageReference Include="VCardReader" Version="1.2.3" />
+    <PackageReference Include="VersOne.Epub" Version="3.3.5" />
   </ItemGroup>
 
   <!-- Include LICENSE and readme.md in NuGet package -->
   <ItemGroup>
     <None Include="..\LICENSE" Pack="true" PackagePath="\" />
     <None Include="..\README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Parsers\NewFolder\" />
   </ItemGroup>
 
 </Project>
