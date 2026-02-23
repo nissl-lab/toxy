@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FileSignatures;
+using FileSignatures.Formats;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Toxy.Parsers;
@@ -134,7 +136,20 @@ namespace Toxy
         }
         static object CreateObject(ParserContext context, Type itype, string operationName)
         {
-            string ext = GetFileExtention(context.Path);
+            string ext = null;
+            if (context.IsStreamContext)
+            {
+                FileFormatInspector inspector = new FileFormatInspector();
+                context.Stream.Position = 0;
+                var fileformat = inspector.DetermineFileFormat(context.Stream);
+                if (fileformat == null)
+                    throw new InvalidDataException("File format could not be determined for the input stream");
+                ext = '.'+fileformat.Extension;
+            }
+            else
+            {
+                ext = GetFileExtention(context.Path);
+            }
             List<Type> types = parserMapping[ext];
             object obj = null;
             bool isFound = false;

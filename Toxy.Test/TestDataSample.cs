@@ -66,14 +66,16 @@ namespace Toxy.Test
         public static string GetFilePath(string filename, string subFolder)
         {
 			string path = samplePath.Replace('\\',Path.DirectorySeparatorChar);
-			if (!path.EndsWith(string.Empty+Path.DirectorySeparatorChar))
-            {
-				path += Path.DirectorySeparatorChar;
-            }
+
             if(subFolder==null)
-                return path + filename;
+                return Path.Combine(path,filename);
             else
-				return path +subFolder+Path.DirectorySeparatorChar + filename;
+				return Path.Combine(path,subFolder, filename);
+        }
+        public static Stream GetFileStream(string filename, string subFolder)
+        {
+            var path=GetFilePath(filename, subFolder);
+            return File.OpenRead(path);
         }
     }
 }

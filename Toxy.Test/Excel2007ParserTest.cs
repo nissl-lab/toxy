@@ -64,5 +64,10 @@ namespace Toxy.Test
                 ClassicAssert.IsTrue(ex.Message.Contains("This file only contains 3 sheet(s)."));
             }
         }
+        [Test]
+        public void TestExcelStream()
+        {
+            base.TestExcelStream("Formatting.xlsx");
+        }
     }
 }

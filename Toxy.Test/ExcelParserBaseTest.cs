@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using DocumentFormat.OpenXml.Math;
+using MathNet.Numerics.LinearAlgebra;
+using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using System;
 
@@ -212,8 +214,14 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("10.52", ss.Tables[0][9][1].ToString());
             ClassicAssert.AreEqual("10.520", ss.Tables[0][10][1].ToString());
             ClassicAssert.AreEqual("10.5", ss.Tables[0][11][1].ToString());
-            ClassicAssert.AreEqual("£10.52", ss.Tables[0][12][1].ToString());
-            
+            ClassicAssert.AreEqual("£10.52", ss.Tables[0][12][1].ToString());            
+        }
+
+        public void TestExcelStream(string filename)
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream(filename,"Excel"));
+            ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
+            ToxySpreadsheet ss = parser.Parse();
         }
     }
 }
