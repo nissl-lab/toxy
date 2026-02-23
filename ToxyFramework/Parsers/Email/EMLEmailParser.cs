@@ -13,24 +13,26 @@ namespace Toxy.Parsers
 
         public ToxyEmail Parse()
         {
-            if (!File.Exists(Context.Path))
+            if (!Context.IsStreamContext && !File.Exists(Context.Path))
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
 
-            ToxyEmail email = new ToxyEmail();
-            using (FileStream stream = File.OpenRead(Context.Path))
-            {
-                EMLReader reader = new EMLReader(stream);
-                email.From = reader.From;
-                email.To = new List<string>(reader.To.Split(';'));
-                if(reader.CC != null)
-                    email.Cc = new List<string>(reader.CC.Split(';'));
-                
-                email.TextBody = reader.Body;
-                email.HtmlBody = reader.HTMLBody;
-                email.Subject = reader.Subject;
-                email.ArrivalTime = reader.X_OriginalArrivalTime;
-            }
+            Stream stream = null;
+            if (Context.IsStreamContext)
+                stream = Context.Stream;
+            else
+                stream = File.OpenRead(Context.Path);
 
+            ToxyEmail email = new ToxyEmail();
+            EMLReader reader = new EMLReader(stream);
+            email.From = reader.From;
+            email.To = new List<string>(reader.To.Split(';'));
+            if (reader.CC != null)
+                email.Cc = new List<string>(reader.CC.Split(';'));
+
+            email.TextBody = reader.Body;
+            email.HtmlBody = reader.HTMLBody;
+            email.Subject = reader.Subject;
+            email.ArrivalTime = reader.X_OriginalArrivalTime;
             return email;
         }
 

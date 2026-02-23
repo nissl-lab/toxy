@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag;
+using NUnit.Framework;
 using NUnit.Framework.Legacy;
 
 namespace Toxy.Test
@@ -56,6 +57,13 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("Azure pricing and services updates", result.Subject);
             ClassicAssert.IsNotNull(result.TextBody);
             ClassicAssert.IsNotNull(result.HtmlBody);
+        }
+        [Test]
+        public void TestStreamFromMsgFile()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("raw text mail demo.msg", "Email"));
+            ITextParser parser = ParserFactory.CreateText(context);
+            string list = parser.Parse();
         }
     }
 }
