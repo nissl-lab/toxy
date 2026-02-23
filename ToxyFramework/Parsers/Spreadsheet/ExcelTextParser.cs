@@ -3,6 +3,7 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.Extractor;
 using NPOI.XSSF.UserModel;
+using PasswordProtectedChecker;
 using System.IO;
 
 namespace Toxy.Parsers
@@ -18,6 +19,10 @@ namespace Toxy.Parsers
         {
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
+
+            var checker = new Checker();
+            if (checker.IsFileProtected(Context.Path).Protected)
+                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
 
             IWorkbook workbook = WorkbookFactory.Create(Context.Path);
 

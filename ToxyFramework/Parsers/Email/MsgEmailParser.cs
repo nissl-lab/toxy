@@ -1,4 +1,5 @@
 ﻿using MsgReader.Outlook;
+using PasswordProtectedChecker;
 using System.IO;
 
 namespace Toxy.Parsers
@@ -15,6 +16,9 @@ namespace Toxy.Parsers
 
         public ToxyEmail Parse()
         {
+            if (!System.IO.File.Exists(Context.Path))
+                throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
+
             ToxyEmail result = new ToxyEmail();
             using (var stream = File.OpenRead(this.Context.Path))
             using (var reader = new Storage.Message(stream))

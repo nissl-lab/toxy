@@ -213,7 +213,12 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("10.520", ss.Tables[0][10][1].ToString());
             ClassicAssert.AreEqual("10.5", ss.Tables[0][11][1].ToString());
             ClassicAssert.AreEqual("£10.52", ss.Tables[0][12][1].ToString());
-            
+        }
+        public void TestEncryptedExcel(string filename)
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
+            ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
+            ToxySpreadsheet ss = parser.Parse();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Presentation;
+using PasswordProtectedChecker;
 using System;
 using System.IO;
 
@@ -15,6 +16,10 @@ namespace Toxy.Parsers
         {
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
+
+            var checker = new Checker();
+            if (checker.IsFileProtected(Context.Path).Protected)
+                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
 
             ToxySlideshow ss = new ToxySlideshow();
 
