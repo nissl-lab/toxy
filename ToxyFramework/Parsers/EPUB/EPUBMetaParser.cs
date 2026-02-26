@@ -5,7 +5,7 @@ using VersOne.Epub;
 
 namespace Toxy.Parsers.EPUB
 {
-    internal class EPUBMetaParser : IMetadataParser
+    public class EPUBMetaParser : IMetadataParser
     {
         public EPUBMetaParser(ParserContext context)
         {
@@ -25,7 +25,6 @@ namespace Toxy.Parsers.EPUB
             ToxyMetadata meta = new ToxyMetadata();
             meta.Add(nameof(book.Author), book.Author);
             meta.Add(nameof(book.AuthorList), book.AuthorList);
-            meta.Add(nameof(book.Content), book.Content);
             meta.Add(nameof(book.CoverImage), book.CoverImage);
             meta.Add(nameof(book.Description), book.Description);
             meta.Add(nameof(book.Title), book.Title);

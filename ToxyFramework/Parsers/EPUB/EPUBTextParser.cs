@@ -6,7 +6,7 @@ using VersOne.Epub;
 
 namespace Toxy.Parsers.EPUB
 {
-    internal class EPUBTextParser
+    public class EPUBTextParser
     {
         public EPUBTextParser(ParserContext context)
         {
