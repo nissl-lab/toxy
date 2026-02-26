@@ -1,5 +1,6 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using PasswordProtectedChecker;
 using System;
 using System.IO;
 
@@ -15,6 +16,10 @@ namespace Toxy.Parsers
         {
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
+
+            var checker = new Checker();
+            if (checker.IsFileProtected(Context.Path).Protected)
+                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
 
             bool hasHeader = false;
             if (Context.Properties.ContainsKey("HasHeader"))

@@ -1,5 +1,6 @@
 ﻿using NPOI.HPSF;
 using NPOI.POIFS.FileSystem;
+using PasswordProtectedChecker;
 using System.IO;
 
 namespace Toxy.Parsers
@@ -14,6 +15,10 @@ namespace Toxy.Parsers
         {
             if (!System.IO.File.Exists(Context.Path))
                 throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
+
+            var checker = new Checker();
+            if (checker.IsFileProtected(Context.Path).Protected)
+                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
 
             ToxyMetadata metadata = new ToxyMetadata();
             using (Stream stream = File.OpenRead(Context.Path))

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using PasswordProtectedChecker;
+using System.IO;
 using System.Text;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
@@ -16,6 +17,10 @@ namespace Toxy.Parsers
         {
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
+
+            var checker = new Checker();
+            if (checker.IsFileProtected(Context.Path).Protected)
+                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
 
             using (PdfDocument doc = PdfDocument.Open(this.Context.Path))
             {
