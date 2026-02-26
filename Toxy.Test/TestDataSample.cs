@@ -63,6 +63,10 @@ namespace Toxy.Test
         {
             return GetFilePath(filename, "Email");
         }
+        public static string GetEPUBPath(string filename)
+        {
+            return GetFilePath(filename, "EPUB");
+        }
         public static string GetFilePath(string filename, string subFolder)
         {
 			string path = samplePath.Replace('\\',Path.DirectorySeparatorChar);
