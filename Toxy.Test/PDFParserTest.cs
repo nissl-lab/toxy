@@ -51,5 +51,19 @@ namespace Toxy.Test
             var parser = new PDFTextParser(new ParserContext(path));
             ClassicAssert.DoesNotThrow(() => parser.Parse());
         }
+        [Test]
+        public void TestStreamForPDFTextParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("Sample1.PDF", "PDF"));
+            var parser = ParserFactory.CreateText(context);
+            string result = parser.Parse();
+        }
+        [Test]
+        public void TestStreamForPDFDocumentParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("Sample1.PDF", "PDF"));
+            var parser = ParserFactory.CreateDocument(context);
+            var result = parser.Parse();
+        }
     }
 }

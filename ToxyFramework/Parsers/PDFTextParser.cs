@@ -14,10 +14,9 @@ namespace Toxy.Parsers
         }
         public string Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
-            using (PdfDocument doc = PdfDocument.Open(this.Context.Path))
+            using (PdfDocument doc = PdfDocument.Open(Utility.GetStream(Context)))
             {
                 StringBuilder text = new StringBuilder();
 
