@@ -42,5 +42,12 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("Microsoft Excel", x.Get("Application").Value);
             ClassicAssert.AreEqual("12.0000", x.Get("AppVersion").Value);
         }
+        [Test]
+        public void TestStreamForOOXMLMetadataParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("sample.xlsx", "ooxml"));
+            var parser = ParserFactory.CreateMetadata(context);
+            var result = parser.Parse();
+        }
     }
 }

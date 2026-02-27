@@ -18,14 +18,20 @@ namespace Toxy.Parsers
 
         public ToxyMetadata Parse()
         {
-            if (!System.IO.File.Exists(Context.Path))
-                throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
             ToxyMetadata metadata = new ToxyMetadata();
             OPCPackage pack = null;
             try
             {
-                pack = OPCPackage.Open(Context.Path, PackageAccess.READ);
+                if (Context.IsStreamContext)
+                {
+                    pack = OPCPackage.Open(Utility.GetStream(Context), true);
+                }
+                else
+                { 
+                    pack = OPCPackage.Open(Context.Path, PackageAccess.READ);
+                }
                 POIXMLProperties props = new POIXMLProperties(pack);
                 if (props.CoreProperties != null)
                 {
