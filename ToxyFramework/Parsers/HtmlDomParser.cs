@@ -20,9 +20,7 @@ namespace Toxy.Parsers
         /// <returns></returns>
         public ToxyDom Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
-
+            Utility.ValidateContext(Context);
             HtmlWeb hw = new HtmlWeb();
             HtmlDocument htmlDoc = hw.Load(Context.Path);
             HtmlNode docNode = htmlDoc.DocumentNode;

@@ -13,15 +13,9 @@ namespace Toxy.Parsers
         }
         public override string Parse()
         {
+            Utility.ValidateContext(Context);
 
-            if (!Context.IsStreamContext&&!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
-
-            Stream stream = null;
-            if (Context.IsStreamContext)
-                stream = Context.Stream;
-            else
-                stream = File.OpenRead(Context.Path);
+            using var stream = Utility.GetStream(Context);
             StringBuilder sb = new StringBuilder();
             using (ZipInputStream zipStream = new ZipInputStream(stream))
             {

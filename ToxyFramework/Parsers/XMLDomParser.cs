@@ -12,8 +12,7 @@ namespace Toxy.Parsers
 
         public ToxyDom Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
             XmlDocument doc = new XmlDocument();
             doc.Load(Context.Path);

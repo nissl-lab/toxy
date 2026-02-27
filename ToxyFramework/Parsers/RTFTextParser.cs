@@ -18,21 +18,24 @@ namespace Toxy.Parsers
         }
         public string Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
-            StreamReader sr = null;
-            try
+            byte[] bytes = null;
+            if (Context.IsStreamContext)
             {
-                ReasonableRTF.RtfToTextConverter converter = new ReasonableRTF.RtfToTextConverter();
-                ReasonableRTF.Models.RtfResult result = converter.Convert(File.ReadAllBytes(Context.Path));
-                return result.Text;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    Context.Stream.CopyTo(ms);
+                    bytes = ms.ToArray();
+                }
             }
-            finally
+            else
             {
-                if (sr != null)
-                    sr.Close();
+                bytes = File.ReadAllBytes(Context.Path);
             }
+            ReasonableRTF.RtfToTextConverter converter = new ReasonableRTF.RtfToTextConverter();
+            ReasonableRTF.Models.RtfResult result = converter.Convert(bytes);
+            return result.Text;
         }
     }
 }

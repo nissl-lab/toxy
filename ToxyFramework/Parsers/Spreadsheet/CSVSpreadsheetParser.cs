@@ -31,9 +31,7 @@ namespace Toxy.Parsers
 
         public ToxySpreadsheet Parse()
         {
-            if (!Context.IsStreamContext&&!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
-
+            Utility.ValidateContext(Context);
             bool extractHeader=false;
             if (Context.Properties.ContainsKey("ExtractHeader"))
             {
