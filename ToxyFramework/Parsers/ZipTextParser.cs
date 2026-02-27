@@ -14,15 +14,19 @@ namespace Toxy.Parsers
         }
         public override string Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
-            var checker = new Checker();
-            if (checker.IsFileProtected(Context.Path).Protected)
-                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            if (!Context.IsStreamContext)
+            {
+                var checker = new Checker();
+                if (checker.IsFileProtected(Context.Path).Protected)
+                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            }
+
+            using var stream = Utility.GetStream(Context);
 
             StringBuilder sb = new StringBuilder();
-            using (ZipInputStream zipStream = new ZipInputStream(File.OpenRead(Context.Path)))
+            using (ZipInputStream zipStream = new ZipInputStream(stream))
             {
                 ZipEntry entry = zipStream.GetNextEntry();
                 while (entry != null)

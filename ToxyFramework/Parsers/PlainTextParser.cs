@@ -30,8 +30,7 @@ namespace Toxy.Parsers
 
         public virtual string Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
             StreamReader sr = null;
             try

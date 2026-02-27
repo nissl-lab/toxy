@@ -15,14 +15,15 @@ namespace Toxy.Parsers
         }
         public string Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
+            if (!Context.IsStreamContext)
+            {
+                var checker = new Checker();
+                if (checker.IsFileProtected(Context.Path).Protected)
+                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            }
 
-            var checker = new Checker();
-            if (checker.IsFileProtected(Context.Path).Protected)
-                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
-
-            using (PdfDocument doc = PdfDocument.Open(this.Context.Path))
+            using (PdfDocument doc = PdfDocument.Open(Utility.GetStream(Context)))
             {
                 StringBuilder text = new StringBuilder();
 

@@ -1,4 +1,5 @@
 ﻿using HLIB.MailFormats;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -13,24 +14,20 @@ namespace Toxy.Parsers
 
         public ToxyEmail Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
+            using var stream = File.OpenRead(Context.Path);
             ToxyEmail email = new ToxyEmail();
-            using (FileStream stream = File.OpenRead(Context.Path))
-            {
-                EMLReader reader = new EMLReader(stream);
-                email.From = reader.From;
-                email.To = new List<string>(reader.To.Split(';'));
-                if(reader.CC != null)
-                    email.Cc = new List<string>(reader.CC.Split(';'));
-                
-                email.TextBody = reader.Body;
-                email.HtmlBody = reader.HTMLBody;
-                email.Subject = reader.Subject;
-                email.ArrivalTime = reader.X_OriginalArrivalTime;
-            }
+            EMLReader reader = new EMLReader(stream);
+            email.From = reader.From;
+            email.To = new List<string>(reader.To.Split(';'));
+            if (reader.CC != null)
+                email.Cc = new List<string>(reader.CC.Split(';'));
 
+            email.TextBody = reader.Body;
+            email.HtmlBody = reader.HTMLBody;
+            email.Subject = reader.Subject;
+            email.ArrivalTime = reader.X_OriginalArrivalTime;
             return email;
         }
 

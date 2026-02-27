@@ -17,7 +17,13 @@ namespace Toxy.Test
             string[] lines = list.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             ClassicAssert.AreEqual(68, lines.Length);
         }
-
+        [Test]
+        public void TestStreamFromZip()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("toxy.zip",null));
+            ITextParser parser = ParserFactory.CreateText(context);
+            string list = parser.Parse();
+        }
         [Test]
         public void TestEncryptedZip()
         {

@@ -11,11 +11,18 @@ namespace Toxy.Parsers
         }
         public ToxyMetadata Parse()
         {
-            if (!System.IO.File.Exists(Context.Path))
-                throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
             ToxyMetadata metadatas = new ToxyMetadata();
-            TagLib.File file = TagLib.Image.File.Create(Context.Path);
+            TagLib.File file = null;
+            if (Context.IsStreamContext)
+            {
+                file = TagLib.Audible.File.Create(new StreamFileAbstraction(Context.Extension, Context.Stream));
+            }
+            else
+            {
+                file = TagLib.Audible.File.Create(Context.Path);
+            }
             if (file.Properties.PhotoHeight != 0)
                 metadatas.Add("PhotoHeight", file.Properties.PhotoHeight);
             if (file.Properties.PhotoQuality != 0)

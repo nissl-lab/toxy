@@ -76,6 +76,15 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("+150", x.Get("Tint").Value);
             ClassicAssert.AreEqual("5", x.Get("Shadows").Value);
         }
-        
+
+        [Test]
+        public void TestStreamFromImageMetadataParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("sample_gimp.tiff", "Image"));
+            var parser = ParserFactory.CreateMetadata(context);
+            var result = parser.Parse();
+            ClassicAssert.AreEqual(97, result.Count);
+        }
+
     }
 }

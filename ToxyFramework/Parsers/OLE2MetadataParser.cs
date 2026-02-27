@@ -13,17 +13,18 @@ namespace Toxy.Parsers
         }
         public ToxyMetadata Parse()
         {
-            if (!System.IO.File.Exists(Context.Path))
-                throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
-
-            var checker = new Checker();
-            if (checker.IsFileProtected(Context.Path).Protected)
-                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            Utility.ValidateContext(Context);
+            if (!Context.IsStreamContext)
+            {
+                var checker = new Checker();
+                if (checker.IsFileProtected(Context.Path).Protected)
+                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            }
 
             ToxyMetadata metadata = new ToxyMetadata();
-            using (Stream stream = File.OpenRead(Context.Path))
+            using (Stream stream = Utility.GetStream(Context))
             {
-                POIFSFileSystem poifs = new NPOI.POIFS.FileSystem.POIFSFileSystem(stream);
+                POIFSFileSystem poifs = new POIFSFileSystem(stream);
                 DirectoryNode root = poifs.Root;
 
                 SummaryInformation si = null;

@@ -65,6 +65,11 @@ namespace Toxy.Test
             }
         }
         [Test]
+        public void TestStreamForSpreadsheetParser()
+        {
+            base.TestStreamForSpreadsheetParser("Formatting.xlsx");
+        }
+        [Test]
         public void TestEncryptedExcel()
         {
             try

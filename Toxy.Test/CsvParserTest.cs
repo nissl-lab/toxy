@@ -2,6 +2,7 @@
 using NUnit.Framework.Legacy;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -46,6 +47,12 @@ namespace Toxy.Test
                 ClassicAssert.IsTrue(ex.Message.Contains("CSV only has one table"));
              }
          }
+        [Test]
+        public void TestStreamForCsvSpreadsheetParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("countrylist.csv", null));
+            Assert.Throws<InvalidDataException>(() => { var parser = ParserFactory.CreateSpreadsheet(context); });
+        }
     }
 }
 

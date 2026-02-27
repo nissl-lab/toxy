@@ -54,6 +54,20 @@ namespace Toxy.Test
             ClassicAssert.DoesNotThrow(() => parser.Parse());
         }
         [Test]
+        public void TestStreamForPDFTextParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("Sample1.PDF", "PDF"));
+            var parser = ParserFactory.CreateText(context);
+            string result = parser.Parse();
+        }
+        [Test]
+        public void TestStreamForPDFDocumentParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("Sample1.PDF", "PDF"));
+            var parser = ParserFactory.CreateDocument(context);
+            var result = parser.Parse();
+        }
+        [Test]
         public void TestEncryptedPDF()
         {
             string path = TestDataSample.GetPdfPath("password.pdf");

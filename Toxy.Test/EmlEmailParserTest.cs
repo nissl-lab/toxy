@@ -2,6 +2,7 @@
 using NUnit.Framework.Legacy;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -28,6 +29,18 @@ namespace Toxy.Test
             ClassicAssert.IsTrue(email.TextBody.StartsWith("------=_Part_4546_1557510524.1418357602217\r\nContent-Type: text"));
             ClassicAssert.IsNull(email.HtmlBody);
 
+        }
+        [Test]
+        public void TestStreamForEmlTextParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("test.eml", "Email"));
+            Assert.Throws<InvalidDataException>(() => { var parser = ParserFactory.CreateText(context); });
+        }
+        [Test]
+        public void TestStreamForEmlEmailParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("test.eml", "Email"));
+            Assert.Throws<InvalidDataException>(() => { var parser = ParserFactory.CreateEmail(context); });
         }
     }
 }

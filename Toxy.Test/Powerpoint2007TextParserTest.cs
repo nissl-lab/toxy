@@ -24,5 +24,13 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("Different words to test against", texts[4]);
             ClassicAssert.AreEqual("Hello", texts[7]);
         }
+        [Test]
+        public void TestStreamForTextParser()
+        {
+            using var stream = TestDataSample.GetFileStream("testPPT.pptx", "Powerpoint");
+            ParserContext context = new ParserContext(stream);
+            var parser = ParserFactory.CreateText(context);
+            var result = parser.Parse();
+        }
     }
 }

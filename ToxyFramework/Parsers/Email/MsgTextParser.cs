@@ -22,12 +22,10 @@ namespace Toxy.Parsers
 
         public override string Parse()
         {
-            if (!System.IO.File.Exists(Context.Path))
-                throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
             StringBuilder result = new StringBuilder();
-
-            using (var stream = File.OpenRead(this.Context.Path))
+            using (var stream = Utility.GetStream(Context))
             using (var reader = new Storage.Message(stream))
             {
                 if (reader.Sender != null)

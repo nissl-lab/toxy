@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FileSignatures;
+using FileSignatures.Formats;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Toxy.Parsers;
@@ -12,6 +14,8 @@ namespace Toxy
 
         static ParserFactory()
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
             var typeTxt = new List<Type>(1);
             typeTxt.Add(typeof(PlainTextParser));
             parserMapping.Add(".txt", typeTxt);
@@ -122,19 +126,15 @@ namespace Toxy
             parserMapping.Add(".jpg", typeImage);
             parserMapping.Add(".gif", typeImage);
             parserMapping.Add(".tiff", typeImage);
+            parserMapping.Add(".tif", typeImage);
             parserMapping.Add(".png", typeImage);
         }
 
-        static string GetFileExtention(string path)
-        {
-            FileInfo fi = new FileInfo(path);
-            if (!parserMapping.ContainsKey(fi.Extension))
-                throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
-            return fi.Extension;
-        }
         static object CreateObject(ParserContext context, Type itype, string operationName)
         {
-            string ext = GetFileExtention(context.Path);
+            string ext = context.Extension;
+            if (!parserMapping.ContainsKey(ext))
+                throw new NotSupportedException("Extension " + ext + " is not supported");
             List<Type> types = parserMapping[ext];
             object obj = null;
             bool isFound = false;

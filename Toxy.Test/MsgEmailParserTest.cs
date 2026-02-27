@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using DocumentFormat.OpenXml.Office.Y2022.FeaturePropertyBag;
+using NUnit.Framework;
 using NUnit.Framework.Legacy;
 
 namespace Toxy.Test
@@ -38,9 +39,6 @@ namespace Toxy.Test
         [Test]
         public void HtmlMsg_ReadMsgEntityTest()
         {
-            //patch for 'No data is available for encoding 936'
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-
             string path = TestDataSample.GetEmailPath("Azure pricing and services updates.msg");
             ParserContext context = new ParserContext(path);
             var parser = ParserFactory.CreateEmail(context);
@@ -56,6 +54,20 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("Azure pricing and services updates", result.Subject);
             ClassicAssert.IsNotNull(result.TextBody);
             ClassicAssert.IsNotNull(result.HtmlBody);
+        }
+        [Test]
+        public void TestStreamForMsgTextParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("raw text mail demo.msg", "Email"));
+            var parser = ParserFactory.CreateText(context);
+            string result = parser.Parse();
+        }
+        [Test]
+        public void TestStreamForMsgEmailParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("raw text mail demo.msg", "Email"));
+            var parser = ParserFactory.CreateEmail(context);
+            var result = parser.Parse();
         }
     }
 }

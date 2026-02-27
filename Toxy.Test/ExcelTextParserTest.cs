@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NPOI.HPSF;
+using NUnit.Framework;
 using NUnit.Framework.Legacy;
 
 namespace Toxy.Test
@@ -60,6 +61,14 @@ namespace Toxy.Test
             string result = parser.Parse();
             ClassicAssert.IsNotNull(result);
             ClassicAssert.IsTrue(result.IndexOf("This is the header") > 0);
+        }
+
+        [Test]
+        public void TestStreamForTextParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("WithVariousData.xlsx", "Excel"));
+            var parser = ParserFactory.CreateText(context);
+            var result = parser.Parse();
         }
     }
 }

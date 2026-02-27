@@ -63,6 +63,11 @@ namespace Toxy.Test
             base.BaseTestExcelComment("comments.xls");
         }
         [Test]
+        public void TestStreamForSpreadsheetParser()
+        {
+            TestStreamForSpreadsheetParser("Employee.xls");
+        }
+        [Test]
         public void TestEncryptedExcel()
         {
             try

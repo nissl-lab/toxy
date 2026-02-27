@@ -5,6 +5,7 @@ using PasswordProtectedChecker;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 
@@ -18,17 +19,24 @@ namespace Toxy.Parsers
         }
         public override string Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
-
-            var checker = new Checker();
-            if (checker.IsFileProtected(Context.Path).Protected)
-                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            Utility.ValidateContext(Context);
+            if (!Context.IsStreamContext)
+            {
+                var checker = new Checker();
+                if (checker.IsFileProtected(Context.Path).Protected)
+                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            }
 
             StringBuilder sb = new StringBuilder();
-
-            using (PresentationDocument ppt = PresentationDocument.Open(Context.Path, false))
+            Package pkg = null;
+            try
             {
+                if (Context.IsStreamContext)
+                    pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
+                else
+                    pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
+
+                using var ppt = PresentationDocument.Open(pkg);
                 // Get the relationship ID of the first slide.
                 PresentationPart part = ppt.PresentationPart;
                 OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
@@ -45,8 +53,12 @@ namespace Toxy.Parsers
                         sb.AppendLine(text);
                     }
                 }
-                return sb.ToString();
+            }finally
+            {
+                if (pkg != null)
+                    pkg.Close();
             }
+            return sb.ToString();
         }
 
         public static string[] GetAllTextInSlide(SlidePart slidePart)

@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using System;
+using System.IO;
 using System.Text;
 using Toxy.Parsers;
 
@@ -32,6 +33,14 @@ namespace Toxy.Test
             string result = parser.Parse();
             ClassicAssert.IsNotNull(result);
             ClassicAssert.IsTrue(result.Contains("Beste CMMA van Spelde,"));
+        }
+
+        [Test]
+        public void TestStreamForRTFTextParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("Formated text.rtf", "RTF"));
+            var parser = ParserFactory.CreateText(context);
+            string result = parser.Parse();
         }
     }
 }

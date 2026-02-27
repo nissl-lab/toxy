@@ -39,7 +39,15 @@ namespace Toxy.Test
                 result.Texts[0]);
             ClassicAssert.AreEqual("tika", result.Texts[1]);
             ClassicAssert.AreEqual(" content parsing. This has been developed by Rajiv ", result.Texts[2]);    
-            ClassicAssert.AreEqual("Kumar ", result.Texts[3]);            
+            ClassicAssert.AreEqual("Kumar ", result.Texts[3]);
+        }
+        [Test]
+        public void TestStreamForSlideshowParser()
+        {
+            using var stream =TestDataSample.GetFileStream("testPPT.pptx", "Powerpoint");
+            ParserContext context = new ParserContext(stream);
+            var parser = ParserFactory.CreateSlideshow(context);
+            var result = parser.Parse();
         }
     }
 }
