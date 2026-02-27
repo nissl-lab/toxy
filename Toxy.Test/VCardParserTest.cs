@@ -85,5 +85,20 @@ namespace Toxy.Test
 
             ClassicAssert.AreEqual("John Doe4", source.Cards[10].Name.FullName);
         }
+
+        [Test]
+        public void TestStreamForTextParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("PalmAgentSamples.vcf", "Vcard"));
+            var parser = ParserFactory.CreateText(context);
+            var result = parser.Parse();
+        }
+        [Test]
+        public void TestStreamForVCardParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("PalmAgentSamples.vcf", "Vcard"));
+            var parser = ParserFactory.CreateVCard(context);
+            var result = parser.Parse();
+        }
     }
 }

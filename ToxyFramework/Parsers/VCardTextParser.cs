@@ -13,12 +13,10 @@ namespace Toxy.Parsers
         }
         public override string Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
-            string path = Context.Path;
             StringBuilder sb = new StringBuilder();
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(Utility.GetStream(Context)))
             {
                 while (!sr.EndOfStream)
                 {
