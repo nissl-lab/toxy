@@ -1,4 +1,5 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
+using PasswordProtectedChecker;
 using System.IO;
 using System.Text;
 
@@ -15,6 +16,11 @@ namespace Toxy.Parsers
         {
             if (!File.Exists(Context.Path))
                 throw new FileNotFoundException("File " + Context.Path + " is not found");
+
+            var checker = new Checker();
+            if (checker.IsFileProtected(Context.Path).Protected)
+                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+
             StringBuilder sb = new StringBuilder();
             using (ZipInputStream zipStream = new ZipInputStream(File.OpenRead(Context.Path)))
             {

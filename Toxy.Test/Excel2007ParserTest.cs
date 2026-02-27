@@ -11,7 +11,7 @@ namespace Toxy.Test
     /// Summary description for ExcelParserTest
     /// </summary>
     [TestFixture]
-    public class Excel2007ParserTest:ExcelParserBaseTest
+    public class Excel2007ParserTest : ExcelParserBaseTest
     {
         public Excel2007ParserTest()
         {
@@ -62,6 +62,18 @@ namespace Toxy.Test
             catch (ArgumentOutOfRangeException ex)
             {
                 ClassicAssert.IsTrue(ex.Message.Contains("This file only contains 3 sheet(s)."));
+            }
+        }
+        [Test]
+        public void TestEncryptedExcel()
+        {
+            try
+            {
+                base.TestEncryptedExcel("password.xlsx");
+            }
+            catch (InvalidOperationException ex)
+            {
+                ClassicAssert.IsTrue(ex.Message.Contains("is encrypted"));
             }
         }
     }

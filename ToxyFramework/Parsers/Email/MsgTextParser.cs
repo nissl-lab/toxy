@@ -1,4 +1,5 @@
 ﻿using MsgReader.Outlook;
+using PasswordProtectedChecker;
 using System;
 using System.IO;
 using System.Text;
@@ -21,6 +22,9 @@ namespace Toxy.Parsers
 
         public override string Parse()
         {
+            if (!System.IO.File.Exists(Context.Path))
+                throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
+
             StringBuilder result = new StringBuilder();
 
             using (var stream = File.OpenRead(this.Context.Path))
