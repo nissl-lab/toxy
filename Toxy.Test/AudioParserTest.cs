@@ -66,5 +66,13 @@ namespace Toxy.Test
             ToxyMetadata x = parser.Parse();
             ClassicAssert.AreEqual(16, x.Count);
         }
+        [Test]
+        public void TestStreamFromAudioMetadataParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("sample.flac", "Audio"));
+            var parser = ParserFactory.CreateMetadata(context);
+            var result = parser.Parse();
+            ClassicAssert.AreEqual(16, result.Count);
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace Toxy.Parsers
+﻿using System.IO;
+using UglyToad.PdfPig.DocumentLayoutAnalysis.WordExtractor;
+
+namespace Toxy.Parsers
 {
     public class AudioMetadataParser:IMetadataParser
     {
@@ -6,12 +9,21 @@
         {
             this.Context = context;
         }
+
         public ToxyMetadata Parse()
         {
-            if (!System.IO.File.Exists(Context.Path))
-                throw new System.IO.FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
+
             ToxyMetadata metadatas = new ToxyMetadata();
-            TagLib.File file = TagLib.Audible.File.Create(Context.Path);
+            TagLib.File file = null;
+            if (Context.IsStreamContext)
+            {
+                file = TagLib.Audible.File.Create(new StreamFileAbstraction(Context.Extension, Context.Stream));
+            }
+            else
+            {
+                file = TagLib.Audible.File.Create(Context.Path);
+            }
             if (file.Properties.AudioSampleRate != 0)
                 metadatas.Add("AudioSampleRate", file.Properties.AudioSampleRate);
             if (file.Properties.AudioChannels != 0)
