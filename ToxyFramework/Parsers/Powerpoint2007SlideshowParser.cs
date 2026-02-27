@@ -18,7 +18,6 @@ namespace Toxy.Parsers
 
             ToxySlideshow ss = new ToxySlideshow();
 
-
             Package pkg = null;
             if (Context.IsStreamContext)
                 pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
@@ -70,10 +69,14 @@ namespace Toxy.Parsers
 
         public ToxySlide Parse(int slideIndex)
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
-            using (PresentationDocument ppt = PresentationDocument.Open(Context.Path, false))
+            Package pkg = null;
+            if (Context.IsStreamContext)
+                pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
+            else
+                pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
+            using (PresentationDocument ppt = PresentationDocument.Open(pkg))
             {
                 // Get the relationship ID of the first slide.
                 PresentationPart part = ppt.PresentationPart;

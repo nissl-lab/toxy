@@ -21,6 +21,7 @@ namespace Toxy.Parsers
         public ToxyDom Parse()
         {
             Utility.ValidateContext(Context);
+
             HtmlWeb hw = new HtmlWeb();
             HtmlDocument htmlDoc = hw.Load(Context.Path);
             HtmlNode docNode = htmlDoc.DocumentNode;

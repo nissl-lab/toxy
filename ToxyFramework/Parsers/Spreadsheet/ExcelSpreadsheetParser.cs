@@ -164,8 +164,7 @@ namespace Toxy.Parsers
 
         public ToxyTable Parse(int sheetIndex)
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
             bool hasHeader = false;
             if (Context.Properties.ContainsKey("HasHeader"))
@@ -197,7 +196,15 @@ namespace Toxy.Parsers
             {
                 includeComment = Utility.IsTrue(Context.Properties["IncludeComments"]);
             }
-            IWorkbook workbook = WorkbookFactory.Create(Context.Path);
+            IWorkbook workbook = null;
+            if (Context.IsStreamContext)
+            {
+                workbook = WorkbookFactory.Create(Context.Stream);
+            }
+            else
+            {
+                workbook = WorkbookFactory.Create(Context.Path);
+            }
 
             HSSFDataFormatter formatter = new HSSFDataFormatter();
             return Parse(workbook, sheetIndex, extractHeader, extractFooter, hasHeader, fillBlankCells, includeComment, formatter);
