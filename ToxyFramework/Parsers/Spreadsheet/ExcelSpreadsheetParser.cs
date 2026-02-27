@@ -15,10 +15,12 @@ namespace Toxy.Parsers
         public ToxySpreadsheet Parse()
         {
             Utility.ValidateContext(Context);
-
-            var checker = new Checker();
-            if (checker.IsFileProtected(Context.Path).Protected)
-                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            if (!Context.IsStreamContext)
+            {
+                var checker = new Checker();
+                if (checker.IsFileProtected(Context.Path).Protected)
+                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            }
 
             bool hasHeader = false;
             if (Context.Properties.ContainsKey("HasHeader"))

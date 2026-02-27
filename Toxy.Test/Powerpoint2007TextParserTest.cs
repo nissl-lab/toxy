@@ -27,7 +27,8 @@ namespace Toxy.Test
         [Test]
         public void TestStreamForTextParser()
         {
-            ParserContext context = new ParserContext(TestDataSample.GetFileStream("testPPT.pptx", "Powerpoint"));
+            using var stream = TestDataSample.GetFileStream("testPPT.pptx", "Powerpoint");
+            ParserContext context = new ParserContext(stream);
             var parser = ParserFactory.CreateText(context);
             var result = parser.Parse();
         }

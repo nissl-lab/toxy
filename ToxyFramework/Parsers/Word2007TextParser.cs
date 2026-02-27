@@ -15,9 +15,12 @@ namespace Toxy.Parsers
         {
             Utility.ValidateContext(Context);
 
-            var checker = new Checker();
-            if (checker.IsFileProtected(Context.Path).Protected)
-                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            if (!Context.IsStreamContext)
+            {
+                var checker = new Checker();
+                if (checker.IsFileProtected(Context.Path).Protected)
+                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            }
 
             bool extractHeader = false;
             if (Context.Properties.ContainsKey("ExtractHeader"))

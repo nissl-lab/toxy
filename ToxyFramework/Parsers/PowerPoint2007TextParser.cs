@@ -20,35 +20,43 @@ namespace Toxy.Parsers
         public override string Parse()
         {
             Utility.ValidateContext(Context);
-
-            var checker = new Checker();
-            if (checker.IsFileProtected(Context.Path).Protected)
-                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            if (!Context.IsStreamContext)
+            {
+                var checker = new Checker();
+                if (checker.IsFileProtected(Context.Path).Protected)
+                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
+            }
 
             StringBuilder sb = new StringBuilder();
-
             Package pkg = null;
-            if (Context.IsStreamContext)
-                pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
-            else
-                pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
-
-            using var ppt = PresentationDocument.Open(pkg);
-            // Get the relationship ID of the first slide.
-            PresentationPart part = ppt.PresentationPart;
-            OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
-            for (int index = 0; index < slideIds.Count; index++)
+            try
             {
-                string relId = (slideIds[index] as SlideId).RelationshipId;
-                relId = (slideIds[index] as SlideId).RelationshipId;
+                if (Context.IsStreamContext)
+                    pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
+                else
+                    pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
 
-                // Get the slide part from the relationship ID.
-                SlidePart slide = (SlidePart)part.GetPartById(relId);
-                string[] texts = GetAllTextInSlide(slide);
-                foreach (string text in texts)
+                using var ppt = PresentationDocument.Open(pkg);
+                // Get the relationship ID of the first slide.
+                PresentationPart part = ppt.PresentationPart;
+                OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
+                for (int index = 0; index < slideIds.Count; index++)
                 {
-                    sb.AppendLine(text);
+                    string relId = (slideIds[index] as SlideId).RelationshipId;
+                    relId = (slideIds[index] as SlideId).RelationshipId;
+
+                    // Get the slide part from the relationship ID.
+                    SlidePart slide = (SlidePart)part.GetPartById(relId);
+                    string[] texts = GetAllTextInSlide(slide);
+                    foreach (string text in texts)
+                    {
+                        sb.AppendLine(text);
+                    }
                 }
+            }finally
+            {
+                if (pkg != null)
+                    pkg.Close();
             }
             return sb.ToString();
         }
