@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Toxy.Parsers;
+using Toxy.Parsers.EPUB;
 
 namespace Toxy
 {
@@ -123,6 +124,11 @@ namespace Toxy
             parserMapping.Add(".gif", typeImage);
             parserMapping.Add(".tiff", typeImage);
             parserMapping.Add(".png", typeImage);
+
+            var typeEPUBText = new List<Type>(2);
+            typeEPUBText.Add(typeof(EPUBTextParser));
+            typeEPUBText.Add(typeof(EPUBMetaParser));
+            parserMapping.Add(".epub", typeEPUBText);
         }
 
         static string GetFileExtention(string path)
