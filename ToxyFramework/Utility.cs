@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.InkML;
+using FileSignatures;
+using System;
+using System.IO;
 
 namespace Toxy
 {
@@ -7,6 +10,41 @@ namespace Toxy
         public static bool IsTrue(string sValue)
         {
             return (sValue.Equals("1", StringComparison.OrdinalIgnoreCase)) || (sValue.Equals("on", StringComparison.OrdinalIgnoreCase)) || (sValue.Equals("true", StringComparison.OrdinalIgnoreCase));
+        }
+        public static void ValidateContext(ParserContext context)
+        {
+            if (!context.IsStreamContext && !File.Exists(context.Path))
+                throw new FileNotFoundException("File " + context.Path + " is not found");
+
+            if (context.IsStreamContext && context.Stream == null)
+                throw new InvalidOperationException("Context.Stream is null");
+        }
+        public static Stream GetStream(ParserContext context)
+        {
+            if (context.IsStreamContext)
+                return context.Stream;
+            else
+                return File.OpenRead(context.Path);
+        }
+
+        public static string GetFileExtention(ParserContext context)
+        {
+            string ext = null;
+            if (context.IsStreamContext)
+            {
+                FileFormatInspector inspector = new FileFormatInspector();
+                context.Stream.Position = 0;
+                var fileformat = inspector.DetermineFileFormat(context.Stream);
+                if (fileformat == null)
+                    throw new InvalidDataException("File format could not be determined for the input stream");
+                ext = '.' + fileformat.Extension;
+            }
+            else
+            {
+                FileInfo fi = new FileInfo(context.Path);
+                ext = fi.Extension;
+            }
+            return ext;
         }
     }
 }
