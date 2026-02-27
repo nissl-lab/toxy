@@ -16,11 +16,12 @@ namespace Toxy.Parsers
         }
         public override string Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
-
-            IWorkbook workbook = WorkbookFactory.Create(Context.Path);
-
+            Utility.ValidateContext(Context);
+            IWorkbook workbook = null;
+            if (Context.IsStreamContext)
+                workbook = WorkbookFactory.Create(Context.Stream);
+            else
+                workbook = WorkbookFactory.Create(Context.Path);
             bool extractHeaderFooter = false;
             if (Context.Properties.ContainsKey("IncludeHeaderFooter"))
             {

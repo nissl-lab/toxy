@@ -61,9 +61,9 @@ namespace Toxy.Test
             base.BaseTestExcelComment("comments.xls");
         }
         [Test]
-        public void TestExcelStream()
+        public void TestStreamForSpreadsheetParser()
         {
-            base.TestExcelStream("Employee.xls");
+            TestStreamForSpreadsheetParser("Employee.xls");
         }
     }
 }

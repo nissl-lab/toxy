@@ -65,9 +65,9 @@ namespace Toxy.Test
             }
         }
         [Test]
-        public void TestExcelStream()
+        public void TestStreamForSpreadsheetParser()
         {
-            base.TestExcelStream("Formatting.xlsx");
+            base.TestStreamForSpreadsheetParser("Formatting.xlsx");
         }
     }
 }

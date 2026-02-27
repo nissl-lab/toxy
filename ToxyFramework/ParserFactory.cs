@@ -14,6 +14,8 @@ namespace Toxy
 
         static ParserFactory()
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
             var typeTxt = new List<Type>(1);
             typeTxt.Add(typeof(PlainTextParser));
             parserMapping.Add(".txt", typeTxt);
@@ -124,32 +126,15 @@ namespace Toxy
             parserMapping.Add(".jpg", typeImage);
             parserMapping.Add(".gif", typeImage);
             parserMapping.Add(".tiff", typeImage);
+            parserMapping.Add(".tif", typeImage);
             parserMapping.Add(".png", typeImage);
         }
 
-        static string GetFileExtention(string path)
-        {
-            FileInfo fi = new FileInfo(path);
-            if (!parserMapping.ContainsKey(fi.Extension))
-                throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
-            return fi.Extension;
-        }
         static object CreateObject(ParserContext context, Type itype, string operationName)
         {
-            string ext = null;
-            if (context.IsStreamContext)
-            {
-                FileFormatInspector inspector = new FileFormatInspector();
-                context.Stream.Position = 0;
-                var fileformat = inspector.DetermineFileFormat(context.Stream);
-                if (fileformat == null)
-                    throw new InvalidDataException("File format could not be determined for the input stream");
-                ext = '.'+fileformat.Extension;
-            }
-            else
-            {
-                ext = GetFileExtention(context.Path);
-            }
+            string ext = context.Extension;
+            if (!parserMapping.ContainsKey(ext))
+                throw new NotSupportedException("Extension " + ext + " is not supported");
             List<Type> types = parserMapping[ext];
             object obj = null;
             bool isFound = false;

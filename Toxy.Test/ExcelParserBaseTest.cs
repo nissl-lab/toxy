@@ -217,7 +217,7 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("£10.52", ss.Tables[0][12][1].ToString());            
         }
 
-        public void TestExcelStream(string filename)
+        public void TestStreamForSpreadsheetParser(string filename)
         {
             ParserContext context = new ParserContext(TestDataSample.GetFileStream(filename,"Excel"));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
