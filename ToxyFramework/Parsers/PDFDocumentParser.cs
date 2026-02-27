@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PasswordProtectedChecker;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UglyToad.PdfPig;

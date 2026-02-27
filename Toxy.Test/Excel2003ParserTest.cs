@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Legacy;
+using System;
 
 namespace Toxy.Test
 {
@@ -64,6 +66,18 @@ namespace Toxy.Test
         public void TestStreamForSpreadsheetParser()
         {
             TestStreamForSpreadsheetParser("Employee.xls");
+        }
+        [Test]
+        public void TestEncryptedExcel()
+        {
+            try
+            {
+                base.TestEncryptedExcel("password.xls");
+            }
+            catch (InvalidOperationException ex)
+            {
+                ClassicAssert.IsTrue(ex.Message.Contains("is encrypted"));
+            }
         }
     }
 }

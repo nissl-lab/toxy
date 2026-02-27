@@ -2,6 +2,8 @@
 using NUnit.Framework.Legacy;
 using System;
 using Toxy.Parsers;
+using UglyToad.PdfPig.Core;
+using UglyToad.PdfPig.Exceptions;
 
 namespace Toxy.Test
 {
@@ -40,7 +42,7 @@ namespace Toxy.Test
             string path = TestDataSample.GetPdfPath("Sample5.PDF");
             var parser = new PDFTextParser(new ParserContext(path));
             string result = parser.Parse();
-            string[] lines = result.Split(Environment.NewLine,System.StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = result.Split(Environment.NewLine, System.StringSplitOptions.RemoveEmptyEntries);
             ClassicAssert.AreEqual("Philadelphia, Atlanta, Dallas, San Diego, and New", lines[0]);
             ClassicAssert.AreEqual("Orleans. According tocompanyestimates, its own sales", lines[1]);
         }
@@ -64,6 +66,13 @@ namespace Toxy.Test
             ParserContext context = new ParserContext(TestDataSample.GetFileStream("Sample1.PDF", "PDF"));
             var parser = ParserFactory.CreateDocument(context);
             var result = parser.Parse();
+        }
+        [Test]
+        public void TestEncryptedPDF()
+        {
+            string path = TestDataSample.GetPdfPath("password.pdf");
+            var parser = new PDFTextParser(new ParserContext(path));
+            ClassicAssert.Throws<PdfDocumentEncryptedException>(() => parser.Parse());
         }
     }
 }

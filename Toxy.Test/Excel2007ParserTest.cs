@@ -11,7 +11,7 @@ namespace Toxy.Test
     /// Summary description for ExcelParserTest
     /// </summary>
     [TestFixture]
-    public class Excel2007ParserTest:ExcelParserBaseTest
+    public class Excel2007ParserTest : ExcelParserBaseTest
     {
         public Excel2007ParserTest()
         {
@@ -68,6 +68,18 @@ namespace Toxy.Test
         public void TestStreamForSpreadsheetParser()
         {
             base.TestStreamForSpreadsheetParser("Formatting.xlsx");
+        }
+        [Test]
+        public void TestEncryptedExcel()
+        {
+            try
+            {
+                base.TestEncryptedExcel("password.xlsx");
+            }
+            catch (InvalidOperationException ex)
+            {
+                ClassicAssert.IsTrue(ex.Message.Contains("is encrypted"));
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Presentation;
+using PasswordProtectedChecker;
 using System;
 using System.IO;
 using System.IO.Packaging;
@@ -15,6 +16,10 @@ namespace Toxy.Parsers
         public ToxySlideshow Parse()
         {
             Utility.ValidateContext(Context);
+
+            var checker = new Checker();
+            if (checker.IsFileProtected(Context.Path).Protected)
+                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
 
             ToxySlideshow ss = new ToxySlideshow();
 

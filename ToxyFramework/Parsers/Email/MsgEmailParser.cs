@@ -1,4 +1,5 @@
 ﻿using MsgReader.Outlook;
+using PasswordProtectedChecker;
 using System.IO;
 
 namespace Toxy.Parsers

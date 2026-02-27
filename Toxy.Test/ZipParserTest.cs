@@ -24,5 +24,12 @@ namespace Toxy.Test
             ITextParser parser = ParserFactory.CreateText(context);
             string list = parser.Parse();
         }
+        [Test]
+        public void TestEncryptedZip()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFilePath("password.zip", null));
+            ITextParser parser = ParserFactory.CreateText(context);
+            ClassicAssert.Throws<InvalidOperationException>(() => parser.Parse());
+        }
     }
 }

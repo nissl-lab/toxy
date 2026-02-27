@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
-using Toxy;
+﻿using System.IO;
 
 namespace Toxy.Parsers
 {
@@ -10,12 +6,9 @@ namespace Toxy.Parsers
     {
         public RTFTextParser(ParserContext context)
         {
-            this.Context = context;
+            Context = context;
         }
-        public virtual ParserContext Context
-        {
-            get; set;
-        }
+        public virtual ParserContext Context { get; set; }
         public string Parse()
         {
             Utility.ValidateContext(Context);

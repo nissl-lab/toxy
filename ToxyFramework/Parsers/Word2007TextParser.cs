@@ -1,4 +1,5 @@
 ﻿using NPOI.XWPF.UserModel;
+using PasswordProtectedChecker;
 using System.IO;
 using System.Text;
 
@@ -13,6 +14,10 @@ namespace Toxy.Parsers
         public string Parse()
         {
             Utility.ValidateContext(Context);
+
+            var checker = new Checker();
+            if (checker.IsFileProtected(Context.Path).Protected)
+                throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
 
             bool extractHeader = false;
             if (Context.Properties.ContainsKey("ExtractHeader"))

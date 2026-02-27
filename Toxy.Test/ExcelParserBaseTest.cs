@@ -220,6 +220,11 @@ namespace Toxy.Test
         public void TestStreamForSpreadsheetParser(string filename)
         {
             ParserContext context = new ParserContext(TestDataSample.GetFileStream(filename,"Excel"));
+            ClassicAssert.AreEqual("£10.52", ss.Tables[0][12][1].ToString());
+        }
+        public void TestEncryptedExcel(string filename)
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
             ToxySpreadsheet ss = parser.Parse();
         }
