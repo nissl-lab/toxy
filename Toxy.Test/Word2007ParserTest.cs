@@ -56,5 +56,19 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("Cell 2,2", doc.Paragraphs[6].Text);
             ClassicAssert.AreEqual("Cell 2,3", doc.Paragraphs[7].Text);
         }
+        [Test]
+        public void TestStreamForWordTextParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("SampleDoc.docx", "Word"));
+            var parser = ParserFactory.CreateText(context);
+            var result = parser.Parse();
+        }
+        [Test]
+        public void TestStreamForWordDocumentParser()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("SampleDoc.docx", "Word"));
+            var parser = ParserFactory.CreateDocument(context);
+            var result = parser.Parse();
+        }
     }
 }

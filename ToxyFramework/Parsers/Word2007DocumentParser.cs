@@ -13,8 +13,7 @@ namespace Toxy.Parsers
 
         public ToxyDocument Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
             bool extractHeader = false;
             if (Context.Properties.ContainsKey("ExtractHeader"))
@@ -29,8 +28,7 @@ namespace Toxy.Parsers
 
             ToxyDocument rdoc = new ToxyDocument();
 
-
-            using (FileStream stream = File.OpenRead(Context.Path))
+            using (var stream = Utility.GetStream(Context))
             {
                 using (XWPFDocument worddoc = new XWPFDocument(stream))
                 {
