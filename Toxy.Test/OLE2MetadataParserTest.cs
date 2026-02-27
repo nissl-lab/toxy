@@ -71,5 +71,19 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("{F29F85E0-4FF9-1068-AB91-08002B27B3D9}", x.Get("ClassID").Value);
             ClassicAssert.AreEqual("scj", x.Get("LastAuthor").Value);
         }
+
+        [Test]
+        public void TestStreamFromOLE2()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("TestCorel.shw", "ole2"));
+            Assert.Throws<InvalidDataException>(() =>
+            {
+                var parser = ParserFactory.CreateMetadata(context);
+            });
+
+            ParserContext context2 = new ParserContext(TestDataSample.GetFileStream("Employee.xls", "Excel"));
+            var parser = ParserFactory.CreateMetadata(context2);
+            parser.Parse();
+        }
     }
 }
