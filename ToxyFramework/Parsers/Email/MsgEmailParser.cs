@@ -15,8 +15,10 @@ namespace Toxy.Parsers
 
         public ToxyEmail Parse()
         {
+            Utility.ValidateContext(Context);
+
             ToxyEmail result = new ToxyEmail();
-            using (var stream = File.OpenRead(this.Context.Path))
+            using (var stream = Utility.GetStream(Context))
             using (var reader = new Storage.Message(stream))
             {
                 if (reader.Sender != null)

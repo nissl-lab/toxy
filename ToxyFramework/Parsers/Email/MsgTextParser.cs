@@ -21,9 +21,10 @@ namespace Toxy.Parsers
 
         public override string Parse()
         {
-            StringBuilder result = new StringBuilder();
+            Utility.ValidateContext(Context);
 
-            using (var stream = File.OpenRead(this.Context.Path))
+            StringBuilder result = new StringBuilder();
+            using (var stream = Utility.GetStream(Context))
             using (var reader = new Storage.Message(stream))
             {
                 if (reader.Sender != null)
