@@ -4,6 +4,7 @@ using DocumentFormat.OpenXml.Presentation;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 
@@ -17,31 +18,34 @@ namespace Toxy.Parsers
         }
         public override string Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
             StringBuilder sb = new StringBuilder();
 
-            using (PresentationDocument ppt = PresentationDocument.Open(Context.Path, false))
-            {
-                // Get the relationship ID of the first slide.
-                PresentationPart part = ppt.PresentationPart;
-                OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
-                for (int index = 0; index < slideIds.Count; index++)
-                {
-                    string relId = (slideIds[index] as SlideId).RelationshipId;
-                    relId = (slideIds[index] as SlideId).RelationshipId;
+            Package pkg = null;
+            if (Context.IsStreamContext)
+                pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
+            else
+                pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
 
-                    // Get the slide part from the relationship ID.
-                    SlidePart slide = (SlidePart)part.GetPartById(relId);
-                    string[] texts = GetAllTextInSlide(slide);
-                    foreach (string text in texts)
-                    {
-                        sb.AppendLine(text);
-                    }
+            using var ppt = PresentationDocument.Open(pkg);
+            // Get the relationship ID of the first slide.
+            PresentationPart part = ppt.PresentationPart;
+            OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
+            for (int index = 0; index < slideIds.Count; index++)
+            {
+                string relId = (slideIds[index] as SlideId).RelationshipId;
+                relId = (slideIds[index] as SlideId).RelationshipId;
+
+                // Get the slide part from the relationship ID.
+                SlidePart slide = (SlidePart)part.GetPartById(relId);
+                string[] texts = GetAllTextInSlide(slide);
+                foreach (string text in texts)
+                {
+                    sb.AppendLine(text);
                 }
-                return sb.ToString();
             }
+            return sb.ToString();
         }
 
         public static string[] GetAllTextInSlide(SlidePart slidePart)

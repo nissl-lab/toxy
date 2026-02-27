@@ -2,6 +2,7 @@
 using DocumentFormat.OpenXml.Presentation;
 using System;
 using System.IO;
+using System.IO.Packaging;
 
 namespace Toxy.Parsers
 {
@@ -13,27 +14,31 @@ namespace Toxy.Parsers
         }
         public ToxySlideshow Parse()
         {
-            if (!File.Exists(Context.Path))
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
+            Utility.ValidateContext(Context);
 
             ToxySlideshow ss = new ToxySlideshow();
 
-            using (PresentationDocument ppt = PresentationDocument.Open(Context.Path, false))
-            {
-                // Get the relationship ID of the first slide.
-                PresentationPart part = ppt.PresentationPart;
-                DocumentFormat.OpenXml.OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
-                for (int index = 0; index < slideIds.Count; index++)
-                {
-                    string relId = (slideIds[index] as SlideId).RelationshipId;
-                    relId = (slideIds[index] as SlideId).RelationshipId;
 
-                    // Get the slide part from the relationship ID.
-                    SlidePart slide = (SlidePart)part.GetPartById(relId);
-                    var tslide = Parse(slide);
-                    ss.Slides.Add(tslide);
-                }
+            Package pkg = null;
+            if (Context.IsStreamContext)
+                pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
+            else
+                pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
+            using var ppt = PresentationDocument.Open(pkg);
+            // Get the relationship ID of the first slide.
+            PresentationPart part = ppt.PresentationPart;
+            DocumentFormat.OpenXml.OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
+            for (int index = 0; index < slideIds.Count; index++)
+            {
+                string relId = (slideIds[index] as SlideId).RelationshipId;
+                relId = (slideIds[index] as SlideId).RelationshipId;
+
+                // Get the slide part from the relationship ID.
+                SlidePart slide = (SlidePart)part.GetPartById(relId);
+                var tslide = Parse(slide);
+                ss.Slides.Add(tslide);
             }
+            
             return ss;
         }
         ToxySlide Parse(SlidePart slidePart)
