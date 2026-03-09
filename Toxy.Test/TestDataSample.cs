@@ -63,18 +63,26 @@ namespace Toxy.Test
         {
             return GetFilePath(filename, "Email");
         }
-        public static string GetFilePath(string filename, string subFolder)
+		public static string GetEPUBPath(string filename)
+		{
+			return GetFilePath(filename, "EPUB");
+		}
+		public static string GetFilePath(string filename, string subFolder)
         {
 			string path = samplePath.Replace('\\',Path.DirectorySeparatorChar);
 
-            if(subFolder==null)
-                return Path.Combine(path,filename);
-            else
-				return Path.Combine(path,subFolder, filename);
-        }
+            if (subFolder == null)
+            {
+                return Path.Combine(path, filename);
+            }
+			else
+			{
+				return Path.Combine(path, subFolder, filename);
+			}
+		}
         public static Stream GetFileStream(string filename, string subFolder)
         {
-            var path=GetFilePath(filename, subFolder);
+			string path = GetFilePath(filename, subFolder);
             return File.OpenRead(path);
         }
     }
