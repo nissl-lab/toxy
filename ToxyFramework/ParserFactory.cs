@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using Toxy.Parsers;
-using Toxy.Parsers.EPUB;
 
 namespace Toxy
 {
