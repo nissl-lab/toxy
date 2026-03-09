@@ -4,9 +4,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using VersOne.Epub;
 
-namespace Toxy.Parsers.EPUB
+namespace Toxy.Parsers
 {
-    public class EPUBTextParser
+    public class EPUBTextParser : ITextParser
     {
         public EPUBTextParser(ParserContext context)
         {
@@ -15,11 +15,7 @@ namespace Toxy.Parsers.EPUB
         public virtual ParserContext Context { get; set; }
         public string Parse()
         {
-            if (!File.Exists(Context.Path))
-            {
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
-            }
-
+            Utility.ValidateContext(Context);
             StringBuilder result = new StringBuilder();
             HtmlDocument html = new HtmlDocument();
             EpubBook book = EpubReader.ReadBook(Context.Path);
@@ -27,7 +23,8 @@ namespace Toxy.Parsers.EPUB
             foreach (EpubLocalTextContentFile chapter in book.ReadingOrder)
             {
                 html.LoadHtml(chapter.Content);
-                result.AppendLine(whiteSpaceStart.Replace(html.DocumentNode.InnerText, ""));
+                var a = whiteSpaceStart.Replace(html.DocumentNode.InnerText, "");
+				result.AppendLine(whiteSpaceStart.Replace(html.DocumentNode.InnerText, ""));
             }
             return result.ToString();
         }

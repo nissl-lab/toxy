@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using VersOne.Epub;
 
-namespace Toxy.Parsers.EPUB
+namespace Toxy.Parsers
 {
     public class EPUBMetaParser : IMetadataParser
     {
@@ -14,11 +14,7 @@ namespace Toxy.Parsers.EPUB
         public virtual ParserContext Context { get; set; }
         public ToxyMetadata Parse()
         {
-            if (!File.Exists(Context.Path))
-            {
-                throw new FileNotFoundException("File " + Context.Path + " is not found");
-            }
-
+            Utility.ValidateContext(Context);
             StringBuilder result = new StringBuilder();
             HtmlDocument html = new HtmlDocument();
             EpubBook book = EpubReader.ReadBook(Context.Path);
