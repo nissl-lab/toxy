@@ -128,7 +128,12 @@ namespace Toxy
             parserMapping.Add(".tiff", typeImage);
             parserMapping.Add(".tif", typeImage);
             parserMapping.Add(".png", typeImage);
-        }
+
+			var typeEPUBText = new List<Type>(2);
+			typeEPUBText.Add(typeof(EPUBTextParser));
+			typeEPUBText.Add(typeof(EPUBMetaParser));
+			parserMapping.Add(".epub", typeEPUBText);
+		}
 
         static object CreateObject(ParserContext context, Type itype, string operationName)
         {
