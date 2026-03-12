@@ -1,5 +1,6 @@
 [![NuGet](https://img.shields.io/nuget/dt/Toxy)](https://www.nuget.org/packages/Toxy)
 [![netstandard2.0](https://img.shields.io/badge/netstandard-2.0-brightgreen.svg)](https://img.shields.io/badge/netstandard-2.0-brightgreen.svg)
+[![netstandard2.1](https://img.shields.io/badge/netstandard-2.1-brightgreen.svg)](https://img.shields.io/badge/netstandard-2.1-brightgreen.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square&logo=Apache)](License.md)
 
 What's Toxy
