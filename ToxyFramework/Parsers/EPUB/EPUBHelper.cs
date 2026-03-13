@@ -1,0 +1,23 @@
+﻿using System.IO;
+using VersOne.Epub;
+
+namespace Toxy.Parsers
+{
+	/// <summary>
+	/// Contains utility Methods for EPUB Files.
+	/// </summary>
+	internal static class EPUBHelper
+	{
+		/// <summary>
+		/// Loads the <see cref="EpubBook"/> in <paramref name="context"/>
+		/// </summary>
+		/// <param name="context">Contains the Path to the EPUB File or the Stream.</param>
+		/// <returns>Returns the <see cref="EpubBook"/> in <paramref name="context"/>.</returns>
+		public static EpubBook GetEpubBook(ParserContext context)
+		{
+			Utility.ValidateContext(context);
+			Stream stream = Utility.GetStream(context);
+			return EpubReader.ReadBook(stream);
+		}
+	}
+}

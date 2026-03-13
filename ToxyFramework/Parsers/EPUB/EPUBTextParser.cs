@@ -14,10 +14,9 @@ namespace Toxy.Parsers
 		public virtual ParserContext Context { get; set; }
 		public string Parse()
 		{
-			Utility.ValidateContext(Context);
+			EpubBook book = EPUBHelper.GetEpubBook(Context);
 			StringBuilder result = new StringBuilder();
 			HtmlDocument html = new HtmlDocument();
-			EpubBook book = EpubReader.ReadBook(Context.Path);
 			Regex whiteSpaceStart = new Regex("^\\s*", RegexOptions.Multiline);
 			foreach (EpubLocalTextContentFile chapter in book.ReadingOrder)
 			{
