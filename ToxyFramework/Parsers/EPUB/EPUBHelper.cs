@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using NPOI.SS.Util;
+using System.IO;
 using VersOne.Epub;
 
 namespace Toxy.Parsers
@@ -16,8 +17,14 @@ namespace Toxy.Parsers
 		public static EpubBook GetEpubBook(ParserContext context)
 		{
 			Utility.ValidateContext(context);
-			Stream stream = Utility.GetStream(context);
-			return EpubReader.ReadBook(stream);
+			if (!context.IsStreamContext)
+			{
+				using (FileStream fs = new FileStream(context.Path, FileMode.Open, FileAccess.Read))
+				{
+					return EpubReader.ReadBook(fs);
+				}
+			}
+			return EpubReader.ReadBook(context.Stream);
 		}
 	}
 }
