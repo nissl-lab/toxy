@@ -5,13 +5,13 @@ using VersOne.Epub;
 
 namespace Toxy.Parsers
 {
-	public class EPUBTextParser : ITextParser
+	public sealed class EPUBTextParser : ITextParser
 	{
 		public EPUBTextParser(ParserContext context)
 		{
 			Context = context;
 		}
-		public virtual ParserContext Context { get; set; }
+		public ParserContext Context { get; set; }
 		public string Parse()
 		{
 			EpubBook book = EPUBHelper.GetEpubBook(Context);
@@ -21,7 +21,6 @@ namespace Toxy.Parsers
 			foreach (EpubLocalTextContentFile chapter in book.ReadingOrder)
 			{
 				html.LoadHtml(chapter.Content);
-				var a = whiteSpaceStart.Replace(html.DocumentNode.InnerText, "");
 				result.AppendLine(whiteSpaceStart.Replace(html.DocumentNode.InnerText, ""));
 			}
 			return result.ToString();
