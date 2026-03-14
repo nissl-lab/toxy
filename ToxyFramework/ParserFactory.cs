@@ -10,7 +10,7 @@ namespace Toxy
     public class ParserFactory
     {
         private ParserFactory() { }
-        private readonly static Dictionary<string, List<Type>> parserMapping = new Dictionary<string, List<Type>>(34, StringComparer.OrdinalIgnoreCase);
+        private readonly static Dictionary<string, List<Type>> parserMapping = new Dictionary<string, List<Type>>(50, StringComparer.OrdinalIgnoreCase);
 
         static ParserFactory()
         {
@@ -133,6 +133,12 @@ namespace Toxy
 			typeEPUBText.Add(typeof(EPUBTextParser));
 			typeEPUBText.Add(typeof(EPUBMetaParser));
 			parserMapping.Add(".epub", typeEPUBText);
+
+			var typeODF = new List<Type>(2);
+			typeEPUBText.Add(typeof(OpenDocumentTextParser));
+			typeEPUBText.Add(typeof(OpenDocumentMetaParser));
+			parserMapping.Add(".odp", typeEPUBText);
+			parserMapping.Add(".odt", typeEPUBText);
 		}
 
         static object CreateObject(ParserContext context, Type itype, string operationName)
