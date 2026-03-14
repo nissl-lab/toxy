@@ -27,7 +27,8 @@
     <!-- Generate symbols package for debugging -->
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <AssemblyName>Toxy</AssemblyName>    
+    <AssemblyName>Toxy</AssemblyName>
+    <RootNamespace>Toxy</RootNamespace>    
   </PropertyGroup>
 
   <ItemGroup>

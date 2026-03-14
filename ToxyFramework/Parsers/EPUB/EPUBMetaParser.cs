@@ -1,6 +1,4 @@
-﻿using HtmlAgilityPack;
-using System.Text;
-using VersOne.Epub;
+﻿using VersOne.Epub;
 
 namespace Toxy.Parsers
 {
@@ -13,10 +11,7 @@ namespace Toxy.Parsers
 		public virtual ParserContext Context { get; set; }
 		public ToxyMetadata Parse()
 		{
-			Utility.ValidateContext(Context);
-			StringBuilder result = new StringBuilder();
-			HtmlDocument html = new HtmlDocument();
-			EpubBook book = EpubReader.ReadBook(Context.Path);
+			EpubBook book = EPUBHelper.GetEpubBook(Context);
 			ToxyMetadata meta = new ToxyMetadata();
 			meta.Add(nameof(book.Author), book.Author);
 			meta.Add(nameof(book.AuthorList), book.AuthorList);
