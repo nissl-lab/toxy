@@ -34,7 +34,7 @@ namespace Toxy.Parsers
 				}
 				using (Stream contentStream = contentEntry.Open())
 				{
-					return ParseText(contentStream);
+					return ParseText(XDocument.Load(contentStream));
 				}
 			}
 		}
@@ -44,9 +44,8 @@ namespace Toxy.Parsers
 		/// </summary>
 		/// <param name="stream">The Content <see cref="Stream"/> of the ODF File.</param>
 		/// <returns>Returns the Text of the ODF File.</returns>
-		internal virtual string ParseText(Stream stream)
+		internal virtual string ParseText(XDocument document)
 		{
-			XDocument document = XDocument.Load(stream);
 			XNamespace textNs = "urn:oasis:names:tc:opendocument:xmlns:text:1.0";
 			// Leads to unexpected results at the moment
 			// Need to parse the Text better in the future

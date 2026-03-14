@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Toxy.Parsers;
+using ToxyFramework.Parsers.OpenDocument;
 
 namespace Toxy
 {
@@ -135,10 +136,15 @@ namespace Toxy
 			parserMapping.Add(".epub", typeEPUBText);
 
 			var typeODF = new List<Type>(2);
-			typeEPUBText.Add(typeof(OpenDocumentTextParser));
-			typeEPUBText.Add(typeof(OpenDocumentMetaParser));
-			parserMapping.Add(".odp", typeEPUBText);
-			parserMapping.Add(".odt", typeEPUBText);
+			typeODF.Add(typeof(OpenDocumentTextParser));
+			typeODF.Add(typeof(OpenDocumentMetaParser));
+			parserMapping.Add(".odp", typeODF);
+			parserMapping.Add(".odt", typeODF);
+
+			var typeODS = new List<Type>(2);
+			typeODS.Add(typeof(ODSTextParser));
+			typeODS.Add(typeof(OpenDocumentMetaParser));
+			parserMapping.Add(".ods", typeODS);
 		}
 
         static object CreateObject(ParserContext context, Type itype, string operationName)
