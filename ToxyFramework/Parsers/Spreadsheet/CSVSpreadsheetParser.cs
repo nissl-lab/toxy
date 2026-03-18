@@ -8,56 +8,58 @@ namespace Toxy.Parsers
 {
     public class CSVSpreadsheetParser : ISpreadsheetParser
     {
-
-        public CSVSpreadsheetParser(ParserContext context)
+		public ParserContext Context { get; set; }
+		public event EventHandler<ParseSegmentEventArgs> ParseSegment;
+		public CSVSpreadsheetParser(ParserContext context)
         {
-            this.Context = context;
+            Context = context;
         }
 
         public class ParseSegmentEventArgs : EventArgs
         {
             public ParseSegmentEventArgs(string text, int rowIndex, int cellIndex)
             {
-                this.RowIndex = rowIndex;
-                this.CellIndex = cellIndex;
-                this.Text = text;
+                RowIndex = rowIndex;
+                CellIndex = cellIndex;
+                Text = text;
             }
             public int RowIndex { get; set; }
             public int CellIndex { get; set; }
             public string Text { get; set; }
         }
 
-        public event EventHandler<ParseSegmentEventArgs> ParseSegment;
+        
 
         public ToxySpreadsheet Parse()
         {
             Utility.ValidateContext(Context);
-            bool extractHeader=false;
+            bool extractHeader = false;
             if (Context.Properties.ContainsKey("ExtractHeader"))
             {
                 string sHasHeader = Context.Properties["ExtractHeader"].ToLower();
-                if (sHasHeader == "1" || sHasHeader == "on" || sHasHeader == "true")
-                    extractHeader = true;
-            }
+				if (sHasHeader == "1" || sHasHeader == "on" || sHasHeader == "true")
+				{
+					extractHeader = true;
+				}
+			}
             char delimiter =',';
             if (Context.Properties.ContainsKey("delimiter"))
             {
                 delimiter = Context.Properties["delimiter"][0];
             }
 
-            
-            Encoding encoding = Encoding.UTF8;
-
-            StreamReader sr = null;
+            // the thing we wanna close
+            CsvReader reader = null;
             try
             {
-                if (Context.IsStreamContext)
+				StreamReader sr;
+				if (Context.IsStreamContext)
                 {
                     sr = new StreamReader(Context.Stream, true);
                 }
                 else
                 {
-                    if (Context.Encoding == null)
+					if (Context.Encoding == null)
                     {
                         sr = new StreamReader(Context.Path, true);
                     }
@@ -66,7 +68,8 @@ namespace Toxy.Parsers
                         sr = new StreamReader(Context.Path, Context.Encoding, true);
                     }
                 }
-                var reader=new CsvReader(sr, CultureInfo.InvariantCulture);
+				// we do not want to close the Streams the User passed!
+				reader = new CsvReader(sr, CultureInfo.InvariantCulture, !Context.IsStreamContext);
                 if (extractHeader)
                 {
                     reader.Read();
@@ -78,7 +81,7 @@ namespace Toxy.Parsers
                 ss.Tables.Add(t1);
 
                 int i = 0;
-                if (headers!=null&&headers.Length > 0)
+                if (headers != null && headers.Length > 0)
                 {
                     t1.HeaderRows.Add(new ToxyRow(i));
                     i++;
@@ -90,7 +93,7 @@ namespace Toxy.Parsers
                 }
                 while(reader.Read())
                 {
-                    ToxyRow tr=new ToxyRow(i);
+                    ToxyRow tr = new ToxyRow(i);
                     tr.LastCellIndex = reader.Parser.Count -1;
                     if (tr.LastCellIndex > t1.LastColumnIndex)
                     {
@@ -99,9 +102,9 @@ namespace Toxy.Parsers
                     tr.RowIndex = i;
                     for (int j = 0; j <= tr.LastCellIndex; j++)
                     {
-                        if (this.ParseSegment != null)
+                        if (ParseSegment != null)
                         {
-                            this.ParseSegment(this, new ParseSegmentEventArgs(reader[j], i, j));
+							ParseSegment(this, new ParseSegmentEventArgs(reader[j], i, j));
                         }
                         ToxyCell c = new ToxyCell(j, reader[j]);
                         if (tr.LastCellIndex < c.CellIndex)
@@ -119,15 +122,9 @@ namespace Toxy.Parsers
             }
             finally
             {
-                if (sr != null)
-                    sr.Close();
+                // will close the StreamReader and the Stream if we wanted so (not passed as Stream by the User see initialising)
+                reader.Dispose();
             }
-        }
-
-        public ParserContext Context
-        {
-            get;
-            set;
         }
 
         public ToxyTable Parse(int sheetIndex)
@@ -135,7 +132,7 @@ namespace Toxy.Parsers
             if (sheetIndex > 0)
                 throw new ArgumentOutOfRangeException("CSV only has one table");
 
-            return this.Parse().Tables[0];
+            return Parse().Tables[0];
         }
     }
 }

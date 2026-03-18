@@ -7,14 +7,10 @@ namespace Toxy.Parsers
     {
         public OOXMLMetadataParser(ParserContext context)
         {
-            this.Context = context;
+            Context = context;
         }
 
-        public ParserContext Context
-        {
-            get;
-            set;
-        }
+        public ParserContext Context { get; set; }
 
         public ToxyMetadata Parse()
         {
@@ -26,7 +22,7 @@ namespace Toxy.Parsers
             {
                 if (Context.IsStreamContext)
                 {
-                    pack = OPCPackage.Open(Utility.GetStream(Context), true);
+                    pack = OPCPackage.Open(Context.Stream, true);
                 }
                 else
                 { 
