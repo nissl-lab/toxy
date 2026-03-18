@@ -16,12 +16,13 @@ namespace Toxy.Parsers
 		public ParserContext Context { get; set; }
 		public PDFDocumentParser(ParserContext context)
 		{
-			this.Context = context;
+			Context = context;
 		}
 
 		public ToxyDocument Parse()
 		{
 			Utility.ValidateContext(Context);
+			Utility.ThrowIfProtected(Context);
 
 			ToxyDocument rdoc = new ToxyDocument();
 			Stream stream = Utility.GetStream(Context);

@@ -16,13 +16,7 @@ namespace Toxy.Parsers
         public string Parse()
         {
             Utility.ValidateContext(Context);
-            if (!Context.IsStreamContext)
-            {
-                var checker = new Checker();
-                if (checker.IsFileProtected(Context.Path).Protected)
-                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
-            }
-
+            Utility.ThrowIfProtected(Context);
             Stream stream = Utility.GetStream(Context);
             // IDK if something can throw here just to be sure
             try
