@@ -56,17 +56,18 @@ namespace Toxy
 
         public static void ThrowIfProtected(ParserContext context)
         {
-            Result result;
+            Result result = null;
 			if (!context.IsStreamContext)
 			{
                 result = _checker.IsFileProtected(context.Path);
 			}
 			else
 			{
-                result = _checker.IsStreamProtected(context.Stream, GetFileExtention(context));
+                // Disposes the Stream!!!!!!!
+                //result = _checker.IsStreamProtected(context.Stream, GetFileExtention(context));
 			}
 
-			if (result.Protected)
+			if (result?.Protected ?? false)
 			{
                 // IDK what should be thrown in case of Streams.
 				throw new InvalidOperationException($"file {context.Path} is encrypted");
