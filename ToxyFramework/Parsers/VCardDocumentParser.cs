@@ -5,15 +5,11 @@ namespace Toxy.Parsers
 {
     public class VCardDocumentParser
     {
-        public ParserContext Context
-        {
-            get;
-            set;
-        }
+        public ParserContext Context { get; set; }
 
         public VCardDocumentParser(ParserContext context)
         {
-            this.Context = context;
+            Context = context;
         }
 
         public ToxyBusinessCards Parse()
@@ -21,7 +17,8 @@ namespace Toxy.Parsers
             Utility.ValidateContext(Context);
 
             ToxyBusinessCards tbcs = new ToxyBusinessCards();
-            using (StreamReader sr = new StreamReader(Utility.GetStream(Context)))
+            StreamReader sr = new StreamReader(Utility.GetStream(Context));
+            try
             {
                 while (!sr.EndOfStream)
                 {
@@ -70,8 +67,14 @@ namespace Toxy.Parsers
                     {
                         tbc.Contacts.Add(new ToxyContact("Url-"+ vWebsite.WebsiteType.ToString(), vWebsite.Url));
                     }
-
                     tbcs.Cards.Add(tbc);
+                }
+            }
+            finally
+            {
+                if (!Context.IsStreamContext)
+                {
+                    sr.Dispose();
                 }
             }
             return tbcs;
