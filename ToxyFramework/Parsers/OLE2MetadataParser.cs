@@ -14,14 +14,9 @@ namespace Toxy.Parsers
         public ToxyMetadata Parse()
         {
             Utility.ValidateContext(Context);
-            if (!Context.IsStreamContext)
-            {
-                var checker = new Checker();
-                if (checker.IsFileProtected(Context.Path).Protected)
-                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
-            }
-
+            Utility.ThrowIfProtected(Context);
             ToxyMetadata metadata = new ToxyMetadata();
+            // The Stream will be closed anyways by POI so it doesn't matter to check if the Stream is opened by us
             using (Stream stream = Utility.GetStream(Context))
             {
                 POIFSFileSystem poifs = new POIFSFileSystem(stream);
