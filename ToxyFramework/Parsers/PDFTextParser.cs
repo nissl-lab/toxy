@@ -23,16 +23,28 @@ namespace Toxy.Parsers
                     throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
             }
 
-            using (PdfDocument doc = PdfDocument.Open(Utility.GetStream(Context)))
+            Stream stream = Utility.GetStream(Context);
+            // IDK if something can throw here just to be sure
+            try
             {
-                StringBuilder text = new StringBuilder();
-
-                foreach (Page page in doc.GetPages())
+                using (PdfDocument doc = PdfDocument.Open(stream))
                 {
-                    string pageText = ContentOrderTextExtractor.GetText(page);
-                    text.AppendLine(pageText);
+                    StringBuilder text = new StringBuilder();
+
+                    foreach (Page page in doc.GetPages())
+                    {
+                        string pageText = ContentOrderTextExtractor.GetText(page);
+                        text.AppendLine(pageText);
+                    }
+                    return text.ToString();
                 }
-                return text.ToString();
+            }
+            finally
+            {
+                if (!Context.IsStreamContext)
+                {
+                    stream.Dispose();
+                }
             }
         }
 
