@@ -123,7 +123,7 @@ namespace Toxy.Parsers
             finally
             {
                 // will close the StreamReader and the Stream if we wanted so (not passed as Stream by the User see initialising)
-                reader.Dispose();
+                reader?.Dispose();
             }
         }
 
