@@ -14,7 +14,7 @@ namespace Toxy.Parsers
 			Utility.ValidateContext(Context);
 
 			StringBuilder sb = new StringBuilder();
-			StreamReader sr = new StreamReader(Utility.GetStream(Context));
+			StreamReader sr = new StreamReader(Utility.GetStream(Context), null, true, -1, Context.IsStreamContext);
 			try
 			{
 				while (!sr.EndOfStream)
@@ -96,10 +96,7 @@ namespace Toxy.Parsers
 			}
 			finally
 			{
-				if (!Context.IsStreamContext)
-				{
-					sr.Dispose();
-				}
+				sr.Dispose();
 			}
 			return sb.ToString();
 		}
