@@ -53,7 +53,6 @@ namespace Toxy.Parsers
 			StreamReader sr = null;
             try
             {
-				StreamReader sr;
 				if (Context.IsStreamContext)
                 {
                     sr = new StreamReader(Context.Stream, null, true, -1, true);
