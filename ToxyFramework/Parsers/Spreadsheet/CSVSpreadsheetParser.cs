@@ -48,14 +48,15 @@ namespace Toxy.Parsers
                 delimiter = Context.Properties["delimiter"][0];
             }
 
-            // the thing we wanna close
+            // the things we wanna close
             CsvReader reader = null;
+			StreamReader sr = null;
             try
             {
 				StreamReader sr;
 				if (Context.IsStreamContext)
                 {
-                    sr = new StreamReader(Context.Stream, true);
+                    sr = new StreamReader(Context.Stream, null, true, -1, true);
                 }
                 else
                 {
@@ -91,7 +92,7 @@ namespace Toxy.Parsers
                     t1.HeaderRows[0].Cells.Add(new ToxyCell(j, headers[j]));
                     t1.LastColumnIndex = t1.HeaderRows[0].Cells.Count-1;
                 }
-                while(reader.Read())
+                while (reader.Read())
                 {
                     ToxyRow tr = new ToxyRow(i);
                     tr.LastCellIndex = reader.Parser.Count -1;
@@ -124,6 +125,7 @@ namespace Toxy.Parsers
             {
                 // will close the StreamReader and the Stream if we wanted so (not passed as Stream by the User see initialising)
                 reader?.Dispose();
+				sr?.Dispose();
             }
         }
 
