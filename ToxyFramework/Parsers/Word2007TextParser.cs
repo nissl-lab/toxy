@@ -15,7 +15,7 @@ namespace Toxy.Parsers
         public string Parse()
         {
             Utility.ValidateContext(Context);
-            Utility.ValidateContext(Context);
+            Utility.ThrowIfProtected(Context);
             bool extractHeader = false;
             if (Context.Properties.ContainsKey("ExtractHeader"))
             {
