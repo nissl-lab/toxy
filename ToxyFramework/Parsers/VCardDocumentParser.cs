@@ -72,10 +72,7 @@ namespace Toxy.Parsers
             }
             finally
             {
-                if (!Context.IsStreamContext)
-                {
-                    sr.Dispose();
-                }
+                sr.Dispose();
             }
             return tbcs;
         }
