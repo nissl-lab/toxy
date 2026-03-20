@@ -17,7 +17,7 @@ namespace Toxy.Parsers
             Utility.ValidateContext(Context);
 
             ToxyBusinessCards tbcs = new ToxyBusinessCards();
-            StreamReader sr = new StreamReader(Utility.GetStream(Context));
+            StreamReader sr = new StreamReader(Utility.GetStream(Context), null, true, -1, !Context.IsStreamContext);
             try
             {
                 while (!sr.EndOfStream)
