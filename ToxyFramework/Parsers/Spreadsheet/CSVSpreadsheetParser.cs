@@ -69,7 +69,7 @@ namespace Toxy.Parsers
                     }
                 }
 				// we do not want to close the Streams the User passed!
-				reader = new CsvReader(sr, CultureInfo.InvariantCulture, !Context.IsStreamContext);
+				reader = new CsvReader(sr, CultureInfo.InvariantCulture, Context.IsStreamContext);
                 if (extractHeader)
                 {
                     reader.Read();
@@ -124,6 +124,7 @@ namespace Toxy.Parsers
             {
                 // will close the StreamReader and the Stream if we wanted so (not passed as Stream by the User see initialising)
                 reader?.Dispose();
+				// reader probably disposes it but if the reader could not br created it should be disposed!
 				sr?.Dispose();
             }
         }
