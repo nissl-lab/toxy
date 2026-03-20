@@ -13,16 +13,16 @@ namespace ToxyFramework.Base
 		public ParserContext Context { get; set; }
 
 #nullable enable
-    internal virtual void ValidateContext()
+        internal virtual void ValidateContext()
 		{
-		  Utility.ValidateContext(Context);
+		    Utility.ValidateContext(Context);
 		}
 
 		// This Method is needed for backward compatibility!
 		// It should prevent users from using the Parse Method directly on the Passwort to avoid code dupplication (Validating, Disposing, ...)
 		public string Parse()
 		{
-		  ValidateContext();
+		    ValidateContext();
 			IDisposable? disposable = null;
 			try
 			{
