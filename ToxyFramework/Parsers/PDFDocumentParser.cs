@@ -50,7 +50,7 @@ namespace Toxy.Parsers
 			}
 			finally
 			{
-				if (Context.IsStreamContext)
+				if (!Context.IsStreamContext)
 				{
 					stream.Dispose();
 				}
