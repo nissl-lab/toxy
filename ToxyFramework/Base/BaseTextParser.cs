@@ -1,7 +1,7 @@
 ﻿using System;
 using Toxy;
 
-namespace ToxyFramework.Base
+namespace Toxy.Base
 {
 	// in theory we wouln't need the ITextParser anymore if we have a Base Class but we will keep it as is for now
 	/// <summary>
