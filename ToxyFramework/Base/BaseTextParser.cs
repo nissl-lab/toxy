@@ -1,5 +1,4 @@
 ﻿using System;
-using Toxy;
 
 namespace Toxy.Base
 {
@@ -11,6 +10,15 @@ namespace Toxy.Base
 	public abstract class BaseTextParser : ITextParser
 	{
 		public ParserContext Context { get; set; }
+
+		/// <summary>
+		/// Initializes the <see cref="BaseTextParser"/>
+		/// </summary>
+		/// <param name="context">The <see cref="ParserContext"/> of the Parser.</param>
+		public BaseTextParser(ParserContext context)
+		{
+			Context = context;
+		}
 
 #nullable enable
         internal virtual void ValidateContext()
