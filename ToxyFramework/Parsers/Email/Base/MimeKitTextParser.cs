@@ -1,6 +1,5 @@
 ﻿using HtmlAgilityPack;
 using MimeKit;
-using RtfPipe;
 using System;
 using System.IO;
 using System.Text;
@@ -67,11 +66,11 @@ namespace Toxy.Parsers
 			sb.Append(prefix);
 			if (newLine)
 			{
-				sb.Append(content);
+				sb.AppendLine(content);
 			}
 			else
 			{
-				sb.AppendLine(content);
+				sb.Append(content);
 			}
 			return true;
 		}
