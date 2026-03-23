@@ -15,7 +15,7 @@ namespace Toxy.Base
 		/// Initializes the <see cref="BaseTextParser"/>
 		/// </summary>
 		/// <param name="context">The <see cref="ParserContext"/> of the Parser.</param>
-		public BaseTextParser(ParserContext context)
+		private protected BaseTextParser(ParserContext context)
 		{
 			Context = context;
 		}
