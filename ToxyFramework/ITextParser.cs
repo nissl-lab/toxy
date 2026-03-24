@@ -15,9 +15,6 @@
 		/// Parses the Text of the <see cref="Context"/>.
 		/// </summary>
 		/// <returns>Returns the extracted Text of the File or <see cref="System.IO.Stream"/> in the <see cref="Context"/>.</returns>
-		/// <remarks>
-		/// This Method can throw different Exceptions those won't be catched.
-		/// </remarks>
 		public string Parse();
     }
 }
