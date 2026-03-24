@@ -20,22 +20,20 @@ namespace Toxy.Parsers
         public override string Parse()
         {
             Utility.ValidateContext(Context);
-            if (!Context.IsStreamContext)
-            {
-                var checker = new Checker();
-                if (checker.IsFileProtected(Context.Path).Protected)
-                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
-            }
-
+            Utility.ThrowIfProtected(Context);
             StringBuilder sb = new StringBuilder();
-            Package pkg = null;
-            try
+            Package pkg;
+            if (Context.IsStreamContext)
             {
-                if (Context.IsStreamContext)
-                    pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
-                else
-                    pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
-
+                pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
+            }
+            else
+            {
+                pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
+            }
+            // closes the Stream anyways
+            using (pkg)
+            {
                 using var ppt = PresentationDocument.Open(pkg);
                 // Get the relationship ID of the first slide.
                 PresentationPart part = ppt.PresentationPart;
@@ -53,10 +51,6 @@ namespace Toxy.Parsers
                         sb.AppendLine(text);
                     }
                 }
-            }finally
-            {
-                if (pkg != null)
-                    pkg.Close();
             }
             return sb.ToString();
         }

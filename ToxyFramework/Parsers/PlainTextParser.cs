@@ -10,22 +10,17 @@ namespace Toxy.Parsers
         {
             public ParseLineEventArgs(string text, int number)
             {
-                this.LineNumber = number;
-                this.Text = text;
+                LineNumber = number;
+                Text = text;
             }
             public int LineNumber { get; set; }
             public string Text { get; set; }
         }
-
-        public PlainTextParser(ParserContext context)
+		public ParserContext Context { get; set; }
+		public PlainTextParser(ParserContext context)
         {
-            this.Context = context;
+            Context = context;
         }
-        public virtual ParserContext Context
-        {
-            get; set;
-        }
-
         public event EventHandler<ParseLineEventArgs> ParseLine;
 
         public virtual string Parse()
