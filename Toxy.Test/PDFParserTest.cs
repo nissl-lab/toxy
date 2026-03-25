@@ -105,6 +105,11 @@ namespace Toxy.Test
             var parser = new PDFSpreadsheetParser(new ParserContext(path));
             var result = parser.Parse();
             ClassicAssert.IsNotNull(result);
+            ClassicAssert.IsTrue(result.Tables.Count > 0);
+            var table = result.Tables[0];
+            ClassicAssert.IsTrue(table.Length > 0);
+            ClassicAssert.IsTrue(table[0].Cells.Count > 0);
+            ClassicAssert.IsNotNull(table[0].Cells[0].Value);
         }
     }
 }
