@@ -1,7 +1,4 @@
-﻿using HLIB.MailFormats;
-using MimeKit;
-using System;
-using System.Collections.Generic;
+﻿using MimeKit;
 using System.IO;
 using Toxy.Parsers.Email.Base;
 

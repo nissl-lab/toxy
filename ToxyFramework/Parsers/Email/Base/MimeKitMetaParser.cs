@@ -1,9 +1,6 @@
-﻿using DocumentFormat.OpenXml.InkML;
-using HtmlAgilityPack;
-using MimeKit;
+﻿using MimeKit;
 using System;
 using System.IO;
-using System.Text;
 using Toxy.Base;
 
 namespace Toxy.Parsers
