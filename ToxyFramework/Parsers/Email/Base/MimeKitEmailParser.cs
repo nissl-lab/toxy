@@ -41,7 +41,7 @@ namespace Toxy.Parsers.Email.Base
 		}
 #nullable restore
 
-		internal override ToxyEmail ParseEmail(out IDisposable disposable)
+		internal override sealed ToxyEmail ParseEmail(out IDisposable disposable)
 		{
 			Stream stream = Utility.GetStream(Context);
 			disposable = Context.IsStreamContext ? null : stream;

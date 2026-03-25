@@ -23,7 +23,7 @@ namespace Toxy.Parsers
 		public MimeKitTextParser(ParserContext context) : base(context)
 		{ }
 
-		internal override string ParseText(out IDisposable disposable)
+		internal override sealed string ParseText(out IDisposable disposable)
 		{
 			Stream stream = Utility.GetStream(Context);
 			disposable = Context.IsStreamContext ? null : stream;

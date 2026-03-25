@@ -20,7 +20,7 @@ namespace Toxy.Parsers
 		public MimeKitMetaParser(ParserContext context) : base(context)
 		{ }
 
-		internal override ToxyMetadata ParseMeta(out IDisposable disposable)
+		internal override sealed ToxyMetadata ParseMeta(out IDisposable disposable)
 		{
 			Stream stream = Utility.GetStream(Context);
 			disposable = Context.IsStreamContext ? null : stream;

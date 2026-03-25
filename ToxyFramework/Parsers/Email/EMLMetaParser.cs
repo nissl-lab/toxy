@@ -4,15 +4,15 @@ using System.IO;
 namespace Toxy.Parsers
 {
 	/// <summary>
-	/// The <see cref="EMLTextParser"/> is used to extract the Text of EML Messages.
+	/// The <see cref="EMLMetaParser"/> is used to get the metadata of an EML Message as <see cref="ToxyMetadata"/>.
 	/// </summary>
-	public class EMLTextParser : MimeKitTextParser
+	public class EMLMetaParser : MimeKitMetaParser
 	{
 		/// <summary>
-		/// Initializes the <see cref="EMLTextParser"/>
+		/// Initializes the <see cref="EMLMetaParser"/>
 		/// </summary>
 		/// <param name="context">The <see cref="ParserContext"/> of the Parser.</param>
-		public EMLTextParser(ParserContext context) : base(context)
+		public EMLMetaParser(ParserContext context) : base(context)
 		{ }
 
 		private protected override MimeMessage GetMimeMessage(Stream stream)
