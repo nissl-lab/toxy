@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using System;
-using Toxy;
 using Toxy.Parsers;
 using UglyToad.PdfPig.Core;
 using UglyToad.PdfPig.Exceptions;
@@ -23,7 +22,7 @@ namespace Toxy.Test
             string result = parser.Parse();
             ClassicAssert.IsTrue(result.StartsWith("LA MARCHE"));
             ContainText(result, "Toute discussion stratégique sur nos actions nécessite un rappel de ce que nous avons fait en");
-            ContainText(result, "l'an 2000 et depuis. Au niveau mondial, en l'an 2000, nous avons mené une campagne de");
+            ContainText(result, "l’an 2000 et depuis. Au niveau mondial, en l’an 2000, nous avons mené une campagne de");
             ContainText(result, "Une structure pour nous amener à 2005");
             ContainText(result, "Lors de la 4e rencontre qui aura lieu en Inde, nous avons deux objectifs majeurs");
         }
