@@ -92,9 +92,10 @@ namespace Toxy
             parserMapping.Add(".htm", typeHtml);
 
             #region Email formats
-            var typeEml = new List<Type>(2);
+            var typeEml = new List<Type>(3);
             typeEml.Add(typeof(EMLEmailParser));
             typeEml.Add(typeof(EMLTextParser));
+            typeEml.Add(typeof(EMLMetaParser));
             parserMapping.Add(".eml", typeEml);
 
             var typeMsg = new List<Type>(2);

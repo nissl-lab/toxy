@@ -1,18 +1,18 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Toxy.Test
 {
     [TestFixture]
     public class EmlEmailParserTest
     {
+		void ContainText(string result, string text)
+		{
+			ClassicAssert.IsTrue(result.IndexOf(text) > 0, result);
+		}
 
-        [Test]
+		[Test]
         public void ReadEmlTest()
         {
             string path = TestDataSample.GetEmailPath("test.eml");
@@ -22,15 +22,41 @@ namespace Toxy.Test
             ClassicAssert.IsNotNull(email.From);
             ClassicAssert.IsNotEmpty(email.From);
             ClassicAssert.AreEqual(1, email.To.Count);
-            ClassicAssert.AreEqual("=?utf-8?B?5ouJ5Yu+572R?= <service@email.lagou.com>", email.From);
+            ClassicAssert.AreEqual("\"拉勾网\" <service@email.lagou.com>", email.From);
             ClassicAssert.AreEqual("tonyqus@163.com", email.To[0]);
-
-            ClassicAssert.IsTrue(email.Subject.StartsWith("=?utf-8?B?5LiK5rW35YiG5LyX5b635bOw5bm/5ZGK?= =?utf-8?B?5Lyg5p"));
-            ClassicAssert.IsTrue(email.TextBody.StartsWith("------=_Part_4546_1557510524.1418357602217\r\nContent-Type: text"));
-            ClassicAssert.IsNull(email.HtmlBody);
-
+            ClassicAssert.IsTrue(email.Subject.StartsWith("上海分众德峰广告传播有限公司-高级.NET软件工程师招聘反馈通知"));
+            ClassicAssert.IsNotNull(email.HtmlBody);
+            ClassicAssert.IsNull(email.TextBody);
         }
-        [Test]
+
+		[Test]
+		public void ReadEmlTextTest()
+		{
+			string path = TestDataSample.GetEmailPath("test.eml");
+			ParserContext context = new ParserContext(path);
+			ITextParser parser = ParserFactory.CreateText(context);
+			string text = parser.Parse();
+			ClassicAssert.IsNotNull(text);
+            ContainText(text, "\"拉勾网\" <service@email.lagou.com>");
+            ContainText(text, "tonyqus@163.com");
+            ContainText(text, "上海分众德峰广告传播有限公司-高级.NET软件工程师招聘反馈通知");
+		}
+
+		[Test]
+		public void ReadEmlMetaTest()
+		{
+			string path = TestDataSample.GetEmailPath("test.eml");
+			ParserContext context = new ParserContext(path);
+            IMetadataParser parser = ParserFactory.CreateMetadata(context);
+			ToxyMetadata meta = parser.Parse();
+			ClassicAssert.IsNotNull(meta);
+			ClassicAssert.AreEqual("\"拉勾网\" <service@email.lagou.com>", meta.Get("From").Value.ToString());
+			ClassicAssert.AreEqual("上海分众德峰广告传播有限公司-高级.NET软件工程师招聘反馈通知", meta.Get("Subject").Value.ToString());
+			ClassicAssert.AreEqual("tonyqus@163.com", meta.Get("To").Value.ToString());
+		}
+
+
+		[Test]
         public void TestStreamForEmlTextParser()
         {
             ParserContext context = new ParserContext(TestDataSample.GetFileStream("test.eml", "Email"));
