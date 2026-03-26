@@ -9,7 +9,7 @@ namespace Toxy.Parsers.Email.Base
 	// This is a Base class since it will make it much easier to support MBOX Files.
 	// To support MBOX a sub class need to be created and the "GetMimeMessage" needs to be overwritten with:
 	// MimeParser parser = new MimeParser(stream, MimeFormat.Mbox);
-	// MimeMessage message = await parser.ParseMessageAsync();
+	// MimeMessage message = parser.ParseMessage();
 	/// <summary>
 	/// The <see cref="MimeKitEmailParser"/> is used to gets the <see cref="MimeMessage"/> as <see cref="ToxyEmail"/>.
 	/// </summary>
