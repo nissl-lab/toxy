@@ -10,6 +10,11 @@ namespace Toxy.Parsers
 	public class OpenDocumentTextParser : ITextParser
 	{
 		public ParserContext Context { get; set; }
+
+		public OpenDocumentTextParser(ParserContext context)
+		{
+			Context = context;
+		}
 #nullable enable
 		public string Parse()
 		{

@@ -67,6 +67,18 @@ namespace Toxy.Test
 		{
 			return GetFilePath(filename, "EPUB");
 		}
+		public static string GetODTPath(string filename)
+		{
+			return GetFilePath(filename, "OpenDocument" + Path.DirectorySeparatorChar + "ODT");
+		}
+		public static string GetODSPath(string filename)
+		{
+			return GetFilePath(filename, "OpenDocument" + Path.DirectorySeparatorChar + "ODS");
+		}
+		public static string GetODPPath(string filename)
+		{
+			return GetFilePath(filename, "OpenDocument" + Path.DirectorySeparatorChar + "ODP");
+		}
 		public static string GetFilePath(string filename, string subFolder)
         {
 			string path = samplePath.Replace('\\',Path.DirectorySeparatorChar);

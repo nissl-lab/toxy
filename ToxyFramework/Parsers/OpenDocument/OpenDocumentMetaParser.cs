@@ -8,6 +8,10 @@ namespace Toxy.Parsers
 	public sealed class OpenDocumentMetaParser : IMetadataParser
 	{
 		public ParserContext Context { get; set; }
+		public OpenDocumentMetaParser(ParserContext context)
+		{
+			Context = context;
+		}
 
 		public ToxyMetadata Parse()
 		{

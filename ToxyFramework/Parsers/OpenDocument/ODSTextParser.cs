@@ -2,12 +2,16 @@
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using Toxy;
 using Toxy.Parsers;
 
 namespace ToxyFramework.Parsers.OpenDocument
 {
 	public class ODSTextParser : OpenDocumentTextParser
 	{
+		public ODSTextParser(ParserContext context) : base(context)
+		{ }
+
 		internal override string ParseText(XDocument document)
 		{
 			XNamespace tableNs = "urn:oasis:names:tc:opendocument:xmlns:table:1.0";
