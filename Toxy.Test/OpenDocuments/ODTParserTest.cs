@@ -4,6 +4,7 @@ using System.IO;
 
 namespace Toxy.Test.OpenDocuments
 {
+	[TestFixture]
 	public class ODTParserTest
 	{
 		[Test]
