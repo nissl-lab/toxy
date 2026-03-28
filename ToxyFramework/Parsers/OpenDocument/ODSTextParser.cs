@@ -2,10 +2,8 @@
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using Toxy;
-using Toxy.Parsers;
 
-namespace ToxyFramework.Parsers.OpenDocument
+namespace Toxy.Parsers
 {
 	public class ODSTextParser : OpenDocumentTextParser
 	{

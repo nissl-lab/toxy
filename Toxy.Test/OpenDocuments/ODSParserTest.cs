@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ToxyFramework.Parsers.OpenDocument.Entities;
+using Toxy.Parsers.OpenDocument.Entities;
 
 namespace Toxy.Test.OpenDocuments
 {

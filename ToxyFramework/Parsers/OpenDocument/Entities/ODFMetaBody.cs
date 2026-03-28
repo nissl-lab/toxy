@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace ToxyFramework.Parsers.OpenDocument.Entities
+namespace Toxy.Parsers.OpenDocument.Entities
 {
 	/// <summary>
 	/// Represents the Metadata of an ODF (Open Document Format) File.

@@ -1,10 +1,7 @@
-﻿using FileSignatures;
-using FileSignatures.Formats;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using Toxy.Parsers;
-using ToxyFramework.Parsers.OpenDocument;
 
 namespace Toxy
 {

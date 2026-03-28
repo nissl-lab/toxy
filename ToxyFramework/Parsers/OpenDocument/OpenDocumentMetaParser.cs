@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.IO.Compression;
 using System.Xml.Serialization;
-using ToxyFramework.Parsers.OpenDocument.Entities;
+using Toxy.Parsers.OpenDocument.Entities;
 
 namespace Toxy.Parsers
 {

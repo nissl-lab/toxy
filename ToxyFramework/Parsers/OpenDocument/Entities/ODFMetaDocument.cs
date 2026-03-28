@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace ToxyFramework.Parsers.OpenDocument.Entities
+namespace Toxy.Parsers.OpenDocument.Entities
 {
 	/// <summary>
 	/// Represents the meta Document of an ODF (Open Document Format) File.

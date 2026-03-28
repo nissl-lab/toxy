@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace ToxyFramework.Parsers.OpenDocument.Entities
+namespace Toxy.Parsers.OpenDocument.Entities
 {
 	[XmlRoot(ElementName = "user-defined", Namespace = "urn:oasis:names:tc:opendocument:xmlns:meta:1.0")]
 	public class UserDefinedProperty
