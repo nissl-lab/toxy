@@ -22,7 +22,7 @@ namespace Toxy
         {
             if (stream != null)
             {
-                stream.Close();
+                stream.Dispose();
             }
         }
     }
