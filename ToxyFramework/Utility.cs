@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.InkML;
 using FileSignatures;
+using PasswordProtectedChecker;
 using System;
 using System.IO;
 
@@ -7,10 +8,16 @@ namespace Toxy
 {
     public static class Utility
     {
+        /// <summary>
+        /// Used to check if a File/Stream is protected.
+        /// </summary>
+        private static readonly Checker _checker = new Checker();
+
         public static bool IsTrue(string sValue)
         {
             return (sValue.Equals("1", StringComparison.OrdinalIgnoreCase)) || (sValue.Equals("on", StringComparison.OrdinalIgnoreCase)) || (sValue.Equals("true", StringComparison.OrdinalIgnoreCase));
         }
+
         public static void ValidateContext(ParserContext context)
         {
             if (!context.IsStreamContext && !File.Exists(context.Path))
@@ -46,5 +53,25 @@ namespace Toxy
             }
             return ext;
         }
+
+        public static void ThrowIfProtected(ParserContext context)
+        {
+            Result result = null;
+			if (!context.IsStreamContext)
+			{
+                result = _checker.IsFileProtected(context.Path);
+			}
+			else
+			{
+                // Disposes the Stream!!!!!!!
+                //result = _checker.IsStreamProtected(context.Stream, GetFileExtention(context));
+			}
+
+			if (result?.Protected ?? false)
+			{
+                // IDK what should be thrown in case of Streams.
+				throw new InvalidOperationException($"file {context.Path} is encrypted");
+			}
+		}
     }
 }

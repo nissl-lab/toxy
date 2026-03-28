@@ -7,22 +7,16 @@ namespace Toxy.Parsers
 {
     public class Word2007DocumentParser : IDocumentParser
     {
-        public Word2007DocumentParser(ParserContext context)
+		public ParserContext Context { get; set; }
+		public Word2007DocumentParser(ParserContext context)
         {
-            this.Context = context;
+            Context = context;
         }
 
         public ToxyDocument Parse()
         {
             Utility.ValidateContext(Context);
-
-            if (!Context.IsStreamContext)
-            {
-                var checker = new Checker();
-                if (checker.IsFileProtected(Context.Path).Protected)
-                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
-            }
-
+            Utility.ThrowIfProtected(Context);
             bool extractHeader = false;
             if (Context.Properties.ContainsKey("ExtractHeader"))
             {
@@ -35,8 +29,8 @@ namespace Toxy.Parsers
             }
 
             ToxyDocument rdoc = new ToxyDocument();
-
-            using (var stream = Utility.GetStream(Context))
+            Stream stream = Utility.GetStream(Context);
+			try
             {
                 using (XWPFDocument worddoc = new XWPFDocument(stream))
                 {
@@ -90,13 +84,14 @@ namespace Toxy.Parsers
                     }
                 }
             }
+            finally
+            {
+                if (!Context.IsStreamContext)
+                {
+                    stream.Dispose();
+                }
+            }
             return rdoc;
-        }
-
-        public ParserContext Context
-        {
-            get;
-            set;
         }
     }
 }

@@ -1,26 +1,20 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
-using PasswordProtectedChecker;
 using System;
-using System.IO;
 
 namespace Toxy.Parsers
 {
     public class ExcelSpreadsheetParser : ISpreadsheetParser
     {
-        public ExcelSpreadsheetParser(ParserContext context)
+		public ParserContext Context { get; set; }
+		public ExcelSpreadsheetParser(ParserContext context)
         {
-            this.Context = context;
+            Context = context;
         }
         public ToxySpreadsheet Parse()
         {
             Utility.ValidateContext(Context);
-            if (!Context.IsStreamContext)
-            {
-                var checker = new Checker();
-                if (checker.IsFileProtected(Context.Path).Protected)
-                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
-            }
+            Utility.ThrowIfProtected(Context);
 
             bool hasHeader = false;
             if (Context.Properties.ContainsKey("HasHeader"))
@@ -81,11 +75,6 @@ namespace Toxy.Parsers
             return ss;
         }
 
-        public ParserContext Context
-        {
-            get;
-            set;
-        }
         ToxyTable Parse(IWorkbook workbook, int sheetIndex, bool extractHeader, bool extractFooter, bool hasHeader, bool fillBlankCells, bool includeComment, HSSFDataFormatter formatter)
         {
             ToxyTable table = new ToxyTable();
