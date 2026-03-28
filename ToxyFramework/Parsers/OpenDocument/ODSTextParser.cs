@@ -12,6 +12,7 @@ namespace Toxy.Parsers
 
 		internal override string ParseText(XDocument document)
 		{
+			// this implementation needs to be different to the Base implementation to get the Name of the Table etc.
 			XNamespace tableNs = "urn:oasis:names:tc:opendocument:xmlns:table:1.0";
 			XNamespace textNs = "urn:oasis:names:tc:opendocument:xmlns:text:1.0";
 			XName sheetName = tableNs + "table";
