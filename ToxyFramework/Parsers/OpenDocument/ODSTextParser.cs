@@ -56,7 +56,7 @@ namespace ToxyFramework.Parsers.OpenDocument
 						maxCols = temp;
 					}
 				}
-				if (maxCols < 0) return "";
+				if (maxCols < 0) continue;
 
 				maxCols += 1;
 				foreach (IEnumerable<string> row in tableData)
