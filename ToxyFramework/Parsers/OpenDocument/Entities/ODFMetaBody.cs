@@ -80,6 +80,9 @@ namespace ToxyFramework.Parsers.OpenDocument.Entities
 		
 		[XmlElement("printed-by", Namespace = "urn:oasis:names:tc:opendocument:xmlns:meta:1.0")]
 		public string PrintedBy { get; set; } = "";
+
+		[XmlElement(ElementName = "user-defined", Namespace = "urn:oasis:names:tc:opendocument:xmlns:meta:1.0")]
+		public List<UserDefinedProperty> UserDefinedProperties { get; set; } = new List<UserDefinedProperty>();
 		#endregion
 
 		#region Missing
@@ -88,7 +91,6 @@ namespace ToxyFramework.Parsers.OpenDocument.Entities
          * auto-reload
          * hyperlink-behaviour
          * document-statistic
-         * meta:user-defined
         */
 		#endregion
 	}

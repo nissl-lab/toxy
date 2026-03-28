@@ -67,7 +67,7 @@ namespace Toxy.Test.OpenDocuments
 				IMetadataParser parser = ParserFactory.CreateMetadata(context);
 				ToxyMetadata result = parser.Parse();
 				ClassicAssert.AreEqual("", result.Get("Creator").Value);
-				ClassicAssert.AreEqual(DateTimeOffset.Parse("2026-03-28T07:05:32.9740016Z"), result.Get("Date").Value);
+				ClassicAssert.AreEqual(DateTimeOffset.Parse("2026-03-28T08:20:23.7074766Z"), result.Get("Date").Value);
 				ClassicAssert.AreEqual("This is my comment", result.Get("Description").Value);
 				ClassicAssert.AreEqual("", result.Get("Language").Value);
 				ClassicAssert.AreEqual("My Topic", result.Get("Subject").Value);
@@ -82,8 +82,8 @@ namespace Toxy.Test.OpenDocuments
 				ClassicAssert.AreEqual("My type", result.Get("Type").Value);
 
 				ClassicAssert.AreEqual(DateTimeOffset.Parse("2008-03-31T21:49:23Z"), result.Get("CreationDate").Value);
-				ClassicAssert.AreEqual(1, result.Get("EditingCycles").Value);
-				ClassicAssert.AreEqual("PT2M50S", result.Get("EditingDuration").Value);
+				ClassicAssert.AreEqual(2, result.Get("EditingCycles").Value);
+				ClassicAssert.AreEqual("PT4M42S", result.Get("EditingDuration").Value);
 				ClassicAssert.AreEqual("LibreOffice/26.2.0.3$Windows_X86_64 LibreOffice_project/620$Build-3", result.Get("Generator").Value);
 				ClassicAssert.AreEqual("Nick Burch", result.Get("InitialCreator").Value);
 				ClassicAssert.AreEqual("", result.Get("PrintedBy").Value);
@@ -92,6 +92,14 @@ namespace Toxy.Test.OpenDocuments
 				
 				List<string> keywords = result.Get("Keywords").Value as List<string>;
 				ClassicAssert.AreEqual("My Keywords", keywords.First());
+
+				List<UserDefinedProperty> definedProperties = result.Get("UserDefinedProperties").Value as List<UserDefinedProperty>;
+				ClassicAssert.AreEqual("true", definedProperties[0].Value);
+				ClassicAssert.AreEqual("2026-03-28", definedProperties[1].Value);
+				ClassicAssert.AreEqual("2026-03-28T00:00:19", definedProperties[2].Value);
+				ClassicAssert.AreEqual("P36Y17M2DT6H8M4.000000021S", definedProperties[3].Value);
+				ClassicAssert.AreEqual("4436346346", definedProperties[4].Value);
+				ClassicAssert.AreEqual("My Property Text", definedProperties[5].Value);
 			}
 		}
 	}

@@ -86,6 +86,7 @@ namespace Toxy.Parsers
 			meta.Add(nameof(body.Keywords), body.Keywords);
 			meta.Add(nameof(body.PrintDate), body.PrintDate);
 			meta.Add(nameof(body.PrintedBy), body.PrintedBy);
+			meta.Add(nameof(body.UserDefinedProperties), body.UserDefinedProperties);
 			if (mimeType is not null)
 			{
 				meta.Add("MimeType", mimeType);
