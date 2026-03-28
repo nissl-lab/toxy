@@ -62,19 +62,30 @@ namespace Toxy.Parsers
 			}
 
 			ODFMetaBody body = odfMetaDocument.Meta;
-			meta.Add("EditingCycles", body.EditingCycles);
-			meta.Add("EditingDuration", body.EditingDuration);
-			meta.Add("Generator", body.Generator);
-			meta.Add("InitialCreator", body.InitialCreator);
-			meta.Add("PrintedBy", body.PrintedBy);
-			meta.Add("Creator", body.Creator);
-			meta.Add("Description", body.Description);
-			meta.Add("Language", body.Language);
-			meta.Add("Subject", body.Subject);
-			meta.Add("Title", body.Title);
-			meta.Add("CreationDate", body.CreationDate);
-			meta.Add("PrintDate", body.PrintDate);
-			meta.Add("Date", body.Date);
+			// Dublin Core
+			meta.Add(nameof(body.Creator), body.Creator);
+			meta.Add(nameof(body.Date), body.Date);
+			meta.Add(nameof(body.Description), body.Description);
+			meta.Add(nameof(body.Language), body.Language);
+			meta.Add(nameof(body.Subject), body.Subject);
+			meta.Add(nameof(body.Title), body.Title);
+			meta.Add(nameof(body.Contributor), body.Contributor);
+			meta.Add(nameof(body.Coverage), body.Coverage);
+			meta.Add(nameof(body.Identifier), body.Identifier);
+			meta.Add(nameof(body.Publisher), body.Publisher);
+			meta.Add(nameof(body.Relation), body.Relation);
+			meta.Add(nameof(body.Rights), body.Rights);
+			meta.Add(nameof(body.Source), body.Source);
+			meta.Add(nameof(body.Type), body.Type);
+			// OpenDocument Format Meta
+			meta.Add(nameof(body.CreationDate), body.CreationDate);
+			meta.Add(nameof(body.EditingCycles), body.EditingCycles);
+			meta.Add(nameof(body.EditingDuration), body.EditingDuration);
+			meta.Add(nameof(body.Generator), body.Generator);
+			meta.Add(nameof(body.InitialCreator), body.InitialCreator);
+			meta.Add(nameof(body.Keywords), body.Keywords);
+			meta.Add(nameof(body.PrintDate), body.PrintDate);
+			meta.Add(nameof(body.PrintedBy), body.PrintedBy);
 			if (mimeType is not null)
 			{
 				meta.Add("MimeType", mimeType);

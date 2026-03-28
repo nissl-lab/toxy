@@ -1,6 +1,11 @@
-﻿using NUnit.Framework;
+﻿using MathNet.Numerics.Distributions;
+using NUnit.Framework;
 using NUnit.Framework.Legacy;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using ToxyFramework.Parsers.OpenDocument.Entities;
 
 namespace Toxy.Test.OpenDocuments
 {
@@ -50,6 +55,43 @@ namespace Toxy.Test.OpenDocuments
 				ParserContext context = new ParserContext(fs);
 				ITextParser parser = ParserFactory.CreateText(context);
 				string result = parser.Parse();
+			}
+		}
+
+		[Test]
+		public void TestMetadata()
+		{
+			using (FileStream fs = new FileStream(TestDataSample.GetODSPath("WithVariousData.ods"), FileMode.Open))
+			{
+				ParserContext context = new ParserContext(fs);
+				IMetadataParser parser = ParserFactory.CreateMetadata(context);
+				ToxyMetadata result = parser.Parse();
+				ClassicAssert.AreEqual("", result.Get("Creator").Value);
+				ClassicAssert.AreEqual(DateTimeOffset.Parse("2026-03-28T07:05:32.9740016Z"), result.Get("Date").Value);
+				ClassicAssert.AreEqual("This is my comment", result.Get("Description").Value);
+				ClassicAssert.AreEqual("", result.Get("Language").Value);
+				ClassicAssert.AreEqual("My Topic", result.Get("Subject").Value);
+				ClassicAssert.AreEqual("My Title", result.Get("Title").Value);
+				ClassicAssert.AreEqual("Additional Authors", result.Get("Contributor").Value);
+				ClassicAssert.AreEqual("This is my summary", result.Get("Coverage").Value);
+				ClassicAssert.AreEqual("This is my Identifier", result.Get("Identifier").Value);
+				ClassicAssert.AreEqual("I did not published it", result.Get("Publisher").Value);
+				ClassicAssert.AreEqual("my relation", result.Get("Relation").Value);
+				ClassicAssert.AreEqual("my rights", result.Get("Rights").Value);
+				ClassicAssert.AreEqual("my source", result.Get("Source").Value);
+				ClassicAssert.AreEqual("My type", result.Get("Type").Value);
+
+				ClassicAssert.AreEqual(DateTimeOffset.Parse("2008-03-31T21:49:23Z"), result.Get("CreationDate").Value);
+				ClassicAssert.AreEqual(1, result.Get("EditingCycles").Value);
+				ClassicAssert.AreEqual("PT2M50S", result.Get("EditingDuration").Value);
+				ClassicAssert.AreEqual("LibreOffice/26.2.0.3$Windows_X86_64 LibreOffice_project/620$Build-3", result.Get("Generator").Value);
+				ClassicAssert.AreEqual("Nick Burch", result.Get("InitialCreator").Value);
+				ClassicAssert.AreEqual("", result.Get("PrintedBy").Value);
+				ClassicAssert.AreEqual(DateTimeOffset.MinValue, result.Get("PrintDate").Value);
+				ClassicAssert.AreEqual("application/vnd.oasis.opendocument.spreadsheet", result.Get("MimeType").Value);
+				
+				List<string> keywords = result.Get("Keywords").Value as List<string>;
+				ClassicAssert.AreEqual("My Keywords", keywords.First());
 			}
 		}
 	}
