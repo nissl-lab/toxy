@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Toxy.Helper
+namespace Toxy.Helpers
 {
 	/// <summary>
 	/// Contains Methods, which throws an <see cref="Exception"/>.
@@ -20,7 +20,7 @@ namespace Toxy.Helper
 		#endif
 		public static void ThrowEncrypted(string? filePath = null)
 		{
-			if (string.IsNullOrWhiteSpace(filePath))
+			if (!string.IsNullOrWhiteSpace(filePath))
 			{
 				throw new InvalidOperationException($"file {filePath} is encrypted");
 			}
