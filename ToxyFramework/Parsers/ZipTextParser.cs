@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Text;
 using Toxy.Base;
-using Toxy.Helper;
+using Toxy.Helpers;
 
 namespace Toxy.Parsers
 {

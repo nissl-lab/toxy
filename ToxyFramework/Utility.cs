@@ -3,7 +3,7 @@ using FileSignatures;
 using PasswordProtectedChecker;
 using System;
 using System.IO;
-using Toxy.Helper;
+using Toxy.Helpers;
 
 namespace Toxy
 {
