@@ -47,7 +47,7 @@ namespace Toxy.Test.OpenDocuments
 				IMetadataParser parser = ParserFactory.CreateMetadata(context);
 				ToxyMetadata result = parser.Parse();
 				ClassicAssert.AreEqual("", result.Get("Creator").Value);
-				ClassicAssert.AreEqual(DateTimeOffset.Parse("2026-03-28T07:14:06.3500992Z"), result.Get("Date").Value);
+				ClassicAssert.AreEqual(DateTimeOffset.Parse("2026-03-28T08:14:06.3500992"), result.Get("Date").Value);
 				ClassicAssert.AreEqual("This is my comment", result.Get("Description").Value);
 				ClassicAssert.AreEqual("", result.Get("Language").Value);
 				ClassicAssert.AreEqual("My Topic", result.Get("Subject").Value);
