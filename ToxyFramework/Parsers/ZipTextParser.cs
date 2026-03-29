@@ -22,6 +22,13 @@ namespace Toxy.Parsers
 
 		internal override string ParseText(out IDisposable disposable)
 		{
+			/* * NOTE ABOUT ENCRYPTION:
+			 * In the ZIP file specification, encryption is applied at the entry level, not to the archive container itself.
+			 * A single ZIP archive can contain a mix of encrypted and unencrypted files.
+			 * Consequently, 'archive.IsEncrypted' may return false because the global directory doesn't always reflect the encryption status.
+			 * To reliably determine if a password is required, you must check the 'IsEncrypted' property of the individual entries.
+			*/
+
 			Stream stream = Utility.GetStream(Context);
 			// User Streams should not be closed!
 			ReaderOptions options = new ReaderOptions() { LeaveStreamOpen = Context.IsStreamContext };
@@ -30,7 +37,6 @@ namespace Toxy.Parsers
 			disposable = archive;
 			if (archive.IsEncrypted)
 			{
-				// can't read it
 				ThrowHelper.ThrowEncrypted(Context.Path);
 			}
 			StringBuilder result = new StringBuilder();
@@ -38,7 +44,6 @@ namespace Toxy.Parsers
 			{
 				if (entry.IsEncrypted)
 				{
-					// entries can be encrypted too
 					ThrowHelper.ThrowEncrypted(entry.Key);
 				}
 				result.AppendLine(entry.Key);
