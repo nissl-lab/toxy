@@ -12,7 +12,7 @@ namespace Toxy.Test.OpenDocuments
 	public class ODTParserTest
 	{
 		[Test]
-		public void TestParseTextFromODP()
+		public void TestParseTextFromODT()
 		{
 			ParserContext context = new ParserContext(TestDataSample.GetODTPath("SampleDoc.odt"));
 			ITextParser parser = ParserFactory.CreateText(context);
@@ -28,7 +28,7 @@ namespace Toxy.Test.OpenDocuments
 			ClassicAssert.IsTrue(doc.Contains("It’s also in blue"));
 		}
 		[Test]
-		public void TestStreamForODPTextParser()
+		public void TestStreamForODTTextParser()
 		{
 			using (FileStream fs = new FileStream(TestDataSample.GetODTPath("SampleDoc.odt"), FileMode.Open))
 			{
