@@ -1,5 +1,4 @@
-﻿using MathNet.Numerics.Distributions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using System;
 using System.Collections.Generic;
