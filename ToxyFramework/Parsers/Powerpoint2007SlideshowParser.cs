@@ -1,126 +1,113 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Presentation;
-using PasswordProtectedChecker;
 using System;
 using System.IO;
 using System.IO.Packaging;
 
 namespace Toxy.Parsers
 {
-    public class Powerpoint2007SlideshowParser : ISlideshowParser
-    {
-        public Powerpoint2007SlideshowParser(ParserContext context)
-        {
-            this.Context = context;
-        }
-        public ToxySlideshow Parse()
-        {
-            Utility.ValidateContext(Context);
-            if (!Context.IsStreamContext)
-            {
-                var checker = new Checker();
-                if (checker.IsFileProtected(Context.Path).Protected)
-                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
-            }
+	public class Powerpoint2007SlideshowParser : ISlideshowParser
+	{
+		public ParserContext Context { get; set; }
+		public Powerpoint2007SlideshowParser(ParserContext context)
+		{
+			Context = context;
+		}
+		public ToxySlideshow Parse()
+		{
+			Utility.ValidateContext(Context);
+			Utility.ThrowIfProtected(Context);
 
-            ToxySlideshow ss = new ToxySlideshow();
+			ToxySlideshow ss = new ToxySlideshow();
+			Package pkg;
+			if (Context.IsStreamContext)
+			{
+				pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
+			}
+			else
+			{
+				pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
+			}
+			// closes Stream anyways
+			using (pkg)
+			{
+				using var ppt = PresentationDocument.Open(pkg);
+				// Get the relationship ID of the first slide.
+				PresentationPart part = ppt.PresentationPart;
+				DocumentFormat.OpenXml.OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
+				for (int index = 0; index < slideIds.Count; index++)
+				{
+					string relId = (slideIds[index] as SlideId).RelationshipId;
+					relId = (slideIds[index] as SlideId).RelationshipId;
 
-            
-            Package pkg = null;
-            try
-            {
-                if (Context.IsStreamContext)
-                    pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
-                else
-                    pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
-                using var ppt = PresentationDocument.Open(pkg);
-                // Get the relationship ID of the first slide.
-                PresentationPart part = ppt.PresentationPart;
-                DocumentFormat.OpenXml.OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
-                for (int index = 0; index < slideIds.Count; index++)
-                {
-                    string relId = (slideIds[index] as SlideId).RelationshipId;
-                    relId = (slideIds[index] as SlideId).RelationshipId;
+					// Get the slide part from the relationship ID.
+					SlidePart slide = (SlidePart)part.GetPartById(relId);
+					var tslide = Parse(slide);
+					ss.Slides.Add(tslide);
+				}
+			}
+			return ss;
+		}
+		ToxySlide Parse(SlidePart slidePart)
+		{
+			if (slidePart == null)
+			{
+				throw new ArgumentNullException("slidePart");
+			}
+			ToxySlide slide = null;
+			if (slidePart.Slide != null)
+			{
+				slide = new ToxySlide();
+				// Iterate through all the paragraphs in the slide.
+				foreach (DocumentFormat.OpenXml.Drawing.Paragraph paragraph in
+					slidePart.Slide.Descendants<DocumentFormat.OpenXml.Drawing.Paragraph>())
+				{
+					foreach (DocumentFormat.OpenXml.Drawing.Text text in
+						paragraph.Descendants<DocumentFormat.OpenXml.Drawing.Text>())
+					{
+						slide.Texts.Add(text.Text);
+					}
+				}
+				//get note of each slide
+				if (slidePart.NotesSlidePart != null)
+					slide.Note = slidePart.NotesSlidePart.NotesSlide.InnerText;
+			}
+			return slide;
+		}
 
-                    // Get the slide part from the relationship ID.
-                    SlidePart slide = (SlidePart)part.GetPartById(relId);
-                    var tslide = Parse(slide);
-                    ss.Slides.Add(tslide);
-                }
-            }finally
-            {
-                if (pkg != null)
-                    pkg.Close();
-            }
+		public ToxySlide Parse(int slideIndex)
+		{
+			Utility.ValidateContext(Context);
 
-            return ss;
-        }
-        ToxySlide Parse(SlidePart slidePart)
-        {
-            if (slidePart == null)
-            {
-                throw new ArgumentNullException("slidePart");
-            }
-            ToxySlide slide = null;
-            if (slidePart.Slide != null)
-            {
-                slide = new ToxySlide();
-                // Iterate through all the paragraphs in the slide.
-                foreach (DocumentFormat.OpenXml.Drawing.Paragraph paragraph in
-                    slidePart.Slide.Descendants<DocumentFormat.OpenXml.Drawing.Paragraph>())
-                {
-                    foreach (DocumentFormat.OpenXml.Drawing.Text text in
-                        paragraph.Descendants<DocumentFormat.OpenXml.Drawing.Text>())
-                    {
-                        slide.Texts.Add(text.Text);
-                    }
-                }
-                //get note of each slide
-                if (slidePart.NotesSlidePart != null)
-                    slide.Note = slidePart.NotesSlidePart.NotesSlide.InnerText;
-            }
-            return slide;
-        }
+			Package pkg;
+			if (Context.IsStreamContext)
+			{
+				pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
+			}
+			else
+			{
+				pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
+			}
+			using (pkg)
+			{
+				using (PresentationDocument ppt = PresentationDocument.Open(pkg))
+				{
+					// Get the relationship ID of the first slide.
+					PresentationPart part = ppt.PresentationPart;
+					DocumentFormat.OpenXml.OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
+					if (slideIds.Count - 1 < slideIndex)
+					{
+						throw new ArgumentOutOfRangeException(string.Format("This file only contains {0} slide(s).", slideIds.Count));
+					}
+					string relId = (slideIds[slideIndex] as SlideId).RelationshipId;
+					relId = (slideIds[slideIndex] as SlideId).RelationshipId;
 
-        public ToxySlide Parse(int slideIndex)
-        {
-            Utility.ValidateContext(Context);
-
-            Package pkg = null;
-            try
-            {
-                if (Context.IsStreamContext)
-                    pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
-                else
-                    pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
-                using (PresentationDocument ppt = PresentationDocument.Open(pkg))
-                {
-                    // Get the relationship ID of the first slide.
-                    PresentationPart part = ppt.PresentationPart;
-                    DocumentFormat.OpenXml.OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
-                    if (slideIds.Count - 1 < slideIndex)
-                    {
-                        throw new ArgumentOutOfRangeException(string.Format("This file only contains {0} slide(s).", slideIds.Count));
-                    }
-                    string relId = (slideIds[slideIndex] as SlideId).RelationshipId;
-                    relId = (slideIds[slideIndex] as SlideId).RelationshipId;
-
-                    // Get the slide part from the relationship ID.
-                    SlidePart slide = (SlidePart)part.GetPartById(relId);
-                    var tslide = Parse(slide);
-                    return tslide;
-                }
-            }
-            finally {
-                if (pkg != null)
-                    pkg.Close();
-            }
-        }
-
-        public ParserContext Context
-        {
-            get;
-            set;
-        }
-    }
+					// Get the slide part from the relationship ID.
+					SlidePart slide = (SlidePart)part.GetPartById(relId);
+					var tslide = Parse(slide);
+					return tslide;
+				}
+			}
+		}
+	}
 }

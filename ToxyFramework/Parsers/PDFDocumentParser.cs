@@ -11,42 +11,52 @@ using UglyToad.PdfPig.DocumentLayoutAnalysis.WordExtractor;
 
 namespace Toxy.Parsers
 {
-    public class PDFDocumentParser : IDocumentParser
-    {
-        public PDFDocumentParser(ParserContext context)
-        {
-            this.Context = context;
-        }
+	public class PDFDocumentParser : IDocumentParser
+	{
+		public ParserContext Context { get; set; }
+		public PDFDocumentParser(ParserContext context)
+		{
+			Context = context;
+		}
 
-        public ToxyDocument Parse()
-        {
-            Utility.ValidateContext(Context);
+		public ToxyDocument Parse()
+		{
+			Utility.ValidateContext(Context);
+			Utility.ThrowIfProtected(Context);
 
-            ToxyDocument rdoc = new ToxyDocument();
-            using (PdfDocument document = PdfDocument.Open(Utility.GetStream(Context)))
-            {
-                StringBuilder text = new StringBuilder();
+			ToxyDocument rdoc = new ToxyDocument();
+			Stream stream = Utility.GetStream(Context);
+			// IDK if something throws there
+			try
+			{
+				using (PdfDocument document = PdfDocument.Open(stream))
+				{
+					StringBuilder text = new StringBuilder();
 
-                for (var i = 0; i < document.NumberOfPages; i++)
-                {
-                    var page = document.GetPage(i + 1);
-                    var words = page.GetWords();
-                    var blocks = RecursiveXYCut.Instance.GetBlocks(words);
+					for (var i = 0; i < document.NumberOfPages; i++)
+					{
+						var page = document.GetPage(i + 1);
+						var words = page.GetWords();
+						var blocks = RecursiveXYCut.Instance.GetBlocks(words);
 
-                    foreach (var block in blocks)
-                    {
-                        ToxyParagraph para = new ToxyParagraph();
-                        para.Text = block.Text;
-                        rdoc.Paragraphs.Add(para);
-                    }
-                }
-            }
-            return rdoc;
-        }
-        public ParserContext Context
-        {
-            get;
-            set;
-        }
-    }
+						foreach (var block in blocks)
+						{
+							ToxyParagraph para = new ToxyParagraph();
+							para.Text = block.Text;
+							rdoc.Paragraphs.Add(para);
+						}
+					}
+				}
+			}
+			finally
+			{
+				if (!Context.IsStreamContext)
+				{
+					stream.Dispose();
+				}
+			}
+			return rdoc;
+		}
+
+	}
 }

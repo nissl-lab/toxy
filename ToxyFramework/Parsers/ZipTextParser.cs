@@ -15,27 +15,30 @@ namespace Toxy.Parsers
         public override string Parse()
         {
             Utility.ValidateContext(Context);
+            Utility.ThrowIfProtected(Context);
 
-            if (!Context.IsStreamContext)
+            Stream stream = Utility.GetStream(Context);
+            try
             {
-                var checker = new Checker();
-                if (checker.IsFileProtected(Context.Path).Protected)
-                    throw new System.InvalidOperationException($"file {Context.Path} is encrypted");
-            }
-
-            using var stream = Utility.GetStream(Context);
-
-            StringBuilder sb = new StringBuilder();
-            using (ZipInputStream zipStream = new ZipInputStream(stream))
-            {
-                ZipEntry entry = zipStream.GetNextEntry();
-                while (entry != null)
+                StringBuilder sb = new StringBuilder();
+                using (ZipInputStream zipStream = new ZipInputStream(stream))
                 {
-                    sb.AppendLine(entry.Name);
-                    entry = zipStream.GetNextEntry();
+                    ZipEntry entry = zipStream.GetNextEntry();
+                    while (entry != null)
+                    {
+                        sb.AppendLine(entry.Name);
+                        entry = zipStream.GetNextEntry();
+                    }
+                }
+                return sb.ToString();
+            }
+            finally
+            {
+                if (!Context.IsStreamContext)
+                {
+                    stream.Dispose();
                 }
             }
-            return sb.ToString();
         }
     }
 }

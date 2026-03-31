@@ -74,5 +74,42 @@ namespace Toxy.Test
             var parser = new PDFTextParser(new ParserContext(path));
             ClassicAssert.Throws<PdfDocumentEncryptedException>(() => parser.Parse());
         }
+
+        [Test]
+        public void TestParseSpreadsheetFromPDF()
+        {
+            string path = TestDataSample.GetPdfPath("xlsdemo1.pdf");
+            var parser = new PDFSpreadsheetParser(new ParserContext(path));
+            var result = parser.Parse();
+            ClassicAssert.IsNotNull(result);
+            ClassicAssert.IsTrue(result.Tables.Count > 0);
+        }
+
+        [Test]
+        public void TestParseSpreadsheetFromPDFStream()
+        {
+            ParserContext context = new ParserContext(TestDataSample.GetFileStream("xlsdemo1.pdf", "PDF"));
+            var parser = ParserFactory.CreateSpreadsheet(context);
+            var result = parser.Parse();
+            ClassicAssert.IsNotNull(result);
+            ClassicAssert.IsTrue(result.Tables.Count > 0);
+            var table = result.Tables[0];
+            ClassicAssert.IsTrue(table.Length > 0);
+            ClassicAssert.IsTrue(table[0].Cells.Count > 0);
+        }
+
+        [Test]
+        public void TestParseSpreadsheetFromPDFSecondFile()
+        {
+            string path = TestDataSample.GetPdfPath("xlsdemo2.pdf");
+            var parser = new PDFSpreadsheetParser(new ParserContext(path));
+            var result = parser.Parse();
+            ClassicAssert.IsNotNull(result);
+            ClassicAssert.IsTrue(result.Tables.Count > 0);
+            var table = result.Tables[0];
+            ClassicAssert.IsTrue(table.Length > 0);
+            ClassicAssert.IsTrue(table[0].Cells.Count > 0);
+            ClassicAssert.IsNotNull(table[0].Cells[0].Value);
+        }
     }
 }
