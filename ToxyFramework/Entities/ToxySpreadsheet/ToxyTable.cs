@@ -159,9 +159,12 @@ namespace Toxy
             int colCount = endCol - startCol + 1;
             int[] widths = new int[colCount];
 
-            for (int i = 0; i < colCount; i++)
+            if (this.HeaderRows.Count > 0)
             {
-                widths[i] = this.HeaderRows[0].Cells[startCol + i].Value.Length;
+                for (int i = 0; i < colCount; i++)
+                {
+                    widths[i] = this.HeaderRows[0].Cells[startCol + i].Value.Length;
+                }
             }
 
             foreach (var row in this.Rows)
@@ -204,23 +207,33 @@ namespace Toxy
 
         public void Print()
         {
-            if (this.HeaderRows.Count == 0)
+            if (this.Rows.Count == 0)
                 return;
 
-            int[] widths = CalculateColumnWidths(0, this.HeaderRows[0].Cells.Count - 1);
-            PrintWithWidths(widths, 0, this.HeaderRows[0].Cells.Count - 1);
+            int startCol = 0;
+            int endCol = this.HeaderRows.Count > 0 
+                ? this.HeaderRows[0].Cells.Count - 1 
+                : this.Rows[0].Cells.Count - 1;
+            
+            int[] widths = CalculateColumnWidths(startCol, endCol);
+            PrintWithWidths(widths, startCol, endCol);
         }
 
         private void PrintWithWidths(int[] widths, int startCol, int endCol)
         {
+            bool hasHeader = this.HeaderRows.Count > 0;
             Console.WriteLine(GetTableLine(widths, true));
-            Console.Write('|');
-            for (int i = 0; i <= endCol - startCol; i++)
+            
+            if (hasHeader)
             {
-                Console.Write(FormatCell(widths[i], this.HeaderRows[0].Cells[startCol + i].Value));
+                Console.Write('|');
+                for (int i = 0; i <= endCol - startCol; i++)
+                {
+                    Console.Write(FormatCell(widths[i], this.HeaderRows[0].Cells[startCol + i].Value));
+                }
+                Console.WriteLine();
+                Console.WriteLine(GetTableLine(widths, true));
             }
-            Console.WriteLine();
-            Console.WriteLine(GetTableLine(widths, true));
 
             foreach (var row in this.Rows)
             {
@@ -237,19 +250,29 @@ namespace Toxy
 
         public string PrintToString()
         {
-            StringBuilder sb = new StringBuilder();
-            if (this.HeaderRows.Count == 0)
+            if (this.Rows.Count == 0)
                 return null;
 
-            int[] widths = CalculateColumnWidths(0, this.HeaderRows[0].Cells.Count - 1);
+            StringBuilder sb = new StringBuilder();
+            int startCol = 0;
+            int endCol = this.HeaderRows.Count > 0 
+                ? this.HeaderRows[0].Cells.Count - 1 
+                : this.Rows[0].Cells.Count - 1;
+            int[] widths = CalculateColumnWidths(startCol, endCol);
+            
+            bool hasHeader = this.HeaderRows.Count > 0;
             sb.AppendLine(GetTableLine(widths, true));
-            sb.Append('|');
-            for (int i = 0; i < widths.Length; i++)
+            
+            if (hasHeader)
             {
-                sb.Append(FormatCell(widths[i], this.HeaderRows[0].Cells[i].Value));
+                sb.Append('|');
+                for (int i = 0; i < widths.Length; i++)
+                {
+                    sb.Append(FormatCell(widths[i], this.HeaderRows[0].Cells[i].Value));
+                }
+                sb.AppendLine();
+                sb.AppendLine(GetTableLine(widths, true));
             }
-            sb.AppendLine();
-            sb.AppendLine(GetTableLine(widths, true));
 
             foreach (var row in this.Rows)
             {
@@ -267,7 +290,7 @@ namespace Toxy
 
         public void Print(int start, int end)
         {
-            if (this.HeaderRows.Count == 0)
+            if (this.Rows.Count == 0)
                 return;
 
             int[] widths = CalculateColumnWidths(start, end);
@@ -276,19 +299,25 @@ namespace Toxy
 
         public string PrintToString(int start, int end)
         {
-            StringBuilder sb = new StringBuilder();
-            if (this.HeaderRows.Count == 0)
+            if (this.Rows.Count == 0)
                 return null;
 
+            StringBuilder sb = new StringBuilder();
             int[] widths = CalculateColumnWidths(start, end);
+            bool hasHeader = this.HeaderRows.Count > 0;
+            
             sb.AppendLine(GetTableLine(widths, true));
-            sb.Append('|');
-            for (int i = start; i <= end; i++)
+            
+            if (hasHeader)
             {
-                sb.Append(FormatCell(widths[i - start], this.HeaderRows[0].Cells[i].Value));
+                sb.Append('|');
+                for (int i = start; i <= end; i++)
+                {
+                    sb.Append(FormatCell(widths[i - start], this.HeaderRows[0].Cells[i].Value));
+                }
+                sb.AppendLine();
+                sb.AppendLine(GetTableLine(widths, true));
             }
-            sb.AppendLine();
-            sb.AppendLine(GetTableLine(widths, true));
 
             foreach (var row in this.Rows)
             {

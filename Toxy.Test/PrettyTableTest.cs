@@ -82,4 +82,39 @@ public class PrettyTableTest
         ClassicAssert.AreEqual("|112   |120900      |", results[5]);
         ClassicAssert.AreEqual("+------+------------+", results[6]);
     }
+
+    [Test]
+    public void TestPrintNoHeader()
+    {
+        ToxyTable table = new ToxyTable();
+        table.Rows = new List<ToxyRow>();
+        var row1 = new ToxyRow(0)
+        {
+            Cells =
+            [
+                new ToxyCell(0, "Adelaide"),
+                new ToxyCell(1, "1295"),
+                new ToxyCell(2, "1158259")
+            ]
+        };
+        table.Rows.Add(row1);
+        var row2 = new ToxyRow(1)
+        {
+            Cells =
+            [
+                new ToxyCell(0, "Brisbane"),
+                new ToxyCell(1, "5905"),
+                new ToxyCell(2, "1857594")
+            ]
+        };
+        table.Rows.Add(row2);
+        
+        var result = table.PrintToString();
+        var lines = result.Split(Environment.NewLine);
+        ClassicAssert.AreEqual(4, lines.Length);
+        ClassicAssert.AreEqual("+----------+------+---------+", lines[0]);
+        ClassicAssert.AreEqual("|Adelaide  |1295  |1158259  |", lines[1]);
+        ClassicAssert.AreEqual("|Brisbane  |5905  |1857594  |", lines[2]);
+        ClassicAssert.AreEqual("+----------+------+---------+", lines[3]);
+    }
 }
