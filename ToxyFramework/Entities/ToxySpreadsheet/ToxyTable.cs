@@ -154,143 +154,157 @@ namespace Toxy
             return newtt;
         }
 
-        private string GetFixedLengthTableLine(int length, string value=null)
+        private int[] CalculateColumnWidths(int startCol, int endCol)
         {
-            if (length <= 0)
-                return string.Empty;
-            StringBuilder sb = new StringBuilder();
-            if (!string.IsNullOrEmpty(value))
+            int colCount = endCol - startCol + 1;
+            int[] widths = new int[colCount];
+
+            for (int i = 0; i < colCount; i++)
             {
-                sb.Append(' ');
-                sb.Append(value);
-                sb.Append(" |");
+                widths[i] = this.HeaderRows[0].Cells[startCol + i].Value.Length;
             }
-            else
+
+            foreach (var row in this.Rows)
             {
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < colCount; i++)
                 {
-                    sb.Append('-');
+                    int cellLength = row.Cells[startCol + i].Value.Length;
+                    if (cellLength > widths[i])
+                        widths[i] = cellLength;
+                }
+            }
+
+            for (int i = 0; i < colCount; i++)
+            {
+                widths[i] += 2;
+            }
+
+            return widths;
+        }
+
+        private string GetTableLine(int[] widths, bool isSeparator)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append('+');
+            foreach (var width in widths)
+            {
+                for (int i = 0; i < width; i++)
+                {
+                    sb.Append(isSeparator ? '-' : ' ');
                 }
                 sb.Append('+');
             }
-
             return sb.ToString();
         }
 
-        public string Print()
+        private string FormatCell(int width, string value)
+        {
+            return value.PadRight(width - 1) + " |";
+        }
+
+        public void Print()
+        {
+            if (this.HeaderRows.Count == 0)
+                return;
+
+            int[] widths = CalculateColumnWidths(0, this.HeaderRows[0].Cells.Count - 1);
+            PrintWithWidths(widths, 0, this.HeaderRows[0].Cells.Count - 1);
+        }
+
+        private void PrintWithWidths(int[] widths, int startCol, int endCol)
+        {
+            Console.WriteLine(GetTableLine(widths, true));
+            Console.Write('|');
+            for (int i = 0; i <= endCol - startCol; i++)
+            {
+                Console.Write(FormatCell(widths[i], this.HeaderRows[0].Cells[startCol + i].Value));
+            }
+            Console.WriteLine();
+            Console.WriteLine(GetTableLine(widths, true));
+
+            foreach (var row in this.Rows)
+            {
+                Console.Write('|');
+                for (int i = 0; i <= endCol - startCol; i++)
+                {
+                    Console.Write(FormatCell(widths[i], row.Cells[startCol + i].Value));
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine(GetTableLine(widths, true));
+        }
+
+        public string PrintToString()
         {
             StringBuilder sb = new StringBuilder();
             if (this.HeaderRows.Count == 0)
                 return null;
-            
-            //draw top line of the header
-            sb.Append('+');
-            foreach (var cell in this.HeaderRows[0].Cells)
-            {
-                sb.Append(GetFixedLengthTableLine(cell.Value.Length + 2));
-            }
 
-            sb.AppendLine();
-            //draw the fields in the header
+            int[] widths = CalculateColumnWidths(0, this.HeaderRows[0].Cells.Count - 1);
+            sb.AppendLine(GetTableLine(widths, true));
             sb.Append('|');
-            foreach (var cell in this.HeaderRows[0].Cells)
+            for (int i = 0; i < widths.Length; i++)
             {
-                sb.Append(GetFixedLengthTableLine(cell.Value.Length, cell.Value));
+                sb.Append(FormatCell(widths[i], this.HeaderRows[0].Cells[i].Value));
             }
+            sb.AppendLine();
+            sb.AppendLine(GetTableLine(widths, true));
 
-            sb.AppendLine();
-            //draw bottom line of the header
-            sb.Append('+');
-            foreach (var cell in this.HeaderRows[0].Cells)
+            foreach (var row in this.Rows)
             {
-                sb.Append(GetFixedLengthTableLine(cell.Value.Length + 2));
-            }
-            sb.AppendLine();
-            if (this.Rows.Count > 0)
-            {
-                foreach (var row in this.Rows)
+                sb.Append('|');
+                for (int i = 0; i < widths.Length; i++)
                 {
-                    sb.Append('|');
-                    foreach (var cell in row.Cells)
-                    {
-                        sb.Append(GetFixedLengthTableLine(cell.Value.Length, cell.Value));
-                    }
-                    sb.AppendLine();
-                }
-                //draw bottom line of the table
-                sb.Append('+');
-                foreach (var cell in this.HeaderRows[0].Cells)
-                {
-                    sb.Append(GetFixedLengthTableLine(cell.Value.Length + 2));
+                    sb.Append(FormatCell(widths[i], row.Cells[i].Value));
                 }
                 sb.AppendLine();
             }
 
+            sb.Append(GetTableLine(widths, true));
             return sb.ToString();
         }
 
-        public string Print(int start, int end)
+        public void Print(int start, int end)
+        {
+            if (this.HeaderRows.Count == 0)
+                return;
+
+            int[] widths = CalculateColumnWidths(start, end);
+            PrintWithWidths(widths, start, end);
+        }
+
+        public string PrintToString(int start, int end)
         {
             StringBuilder sb = new StringBuilder();
             if (this.HeaderRows.Count == 0)
                 return null;
 
-            int[] widths = new int[this.HeaderRows[0].Cells.Count];
-            //draw top line of the header
-            sb.Append('+');
-            for (int i = start; i <= end; i++)
-            {
-                var cell = this.HeaderRows[0].Cells[i];
-                widths[i] = cell.Value.Length+2;
-                sb.Append(GetFixedLengthTableLine(widths[i]));
-            }
-
-            sb.AppendLine();
-            //draw the fields in the header
+            int[] widths = CalculateColumnWidths(start, end);
+            sb.AppendLine(GetTableLine(widths, true));
             sb.Append('|');
             for (int i = start; i <= end; i++)
             {
-                var cell = this.HeaderRows[0].Cells[i];
-                sb.Append(GetFixedLengthTableLine(widths[i], cell.Value));
+                sb.Append(FormatCell(widths[i - start], this.HeaderRows[0].Cells[i].Value));
             }
+            sb.AppendLine();
+            sb.AppendLine(GetTableLine(widths, true));
 
-            sb.AppendLine();
-            //draw bottom line of the header
-            sb.Append('+');
-            for (int i = start; i <= end; i++)
+            foreach (var row in this.Rows)
             {
-                var cell = this.HeaderRows[0].Cells[i];
-                sb.Append(GetFixedLengthTableLine(widths[i]));
-            }
-            sb.AppendLine();
-            if (this.Rows.Count > 0)
-            {
-                int lastRow = 0;
-                foreach (var row in this.Rows)
-                {
-                    sb.Append('|');
-                    for (int i = start; i <= end; i++)
-                    {
-                        var cell = row.Cells[i];
-                        sb.Append(GetFixedLengthTableLine(widths[i], cell.Value));
-                    }
-                    sb.AppendLine();
-                    lastRow++;
-                }
-                //draw bottom line of the table
-                sb.Append('+');
+                sb.Append('|');
                 for (int i = start; i <= end; i++)
                 {
-                    var cell = this.Rows[lastRow-1].Cells[i];
-                    sb.Append(GetFixedLengthTableLine(widths[i]));
+                    sb.Append(FormatCell(widths[i - start], row.Cells[i].Value));
                 }
                 sb.AppendLine();
             }
 
+            sb.Append(GetTableLine(widths, true));
             return sb.ToString();
         }
 
-        public string Print(string[] fieldRange)
+        public void Print(string[] fieldRange)
         {
             throw new NotImplementedException();
         }

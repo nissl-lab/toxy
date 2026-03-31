@@ -67,19 +67,19 @@ public class PrettyTableTest
     public void TestPrint()
     {
         ToxyTable table = BuildTable();
-        ClassicAssert.AreEqual(8,table.Print().Split(Environment.NewLine).Length);
+        ClassicAssert.AreEqual(7, table.PrintToString().Split(Environment.NewLine).Length);
     }
 
     [Test]
     public void TestGetStringWithStartAndEnd()
     {
         ToxyTable table = BuildTable();
-        var results = table.Print(1,2).Split(Environment.NewLine);
+        var results = table.PrintToString(1, 2).Split(Environment.NewLine);
         ClassicAssert.AreEqual("+------+------------+", results[0]);
-        ClassicAssert.AreEqual("| Area | Population |", results[1]);
+        ClassicAssert.AreEqual("|Area  |Population  |", results[1]);
         ClassicAssert.AreEqual("+------+------------+", results[2]);
-        ClassicAssert.AreEqual("| 5905 | 1857594 |", results[4]);
-        ClassicAssert.AreEqual("| 112 | 120900 |", results[5]);
+        ClassicAssert.AreEqual("|5905  |1857594     |", results[4]);
+        ClassicAssert.AreEqual("|112   |120900      |", results[5]);
         ClassicAssert.AreEqual("+------+------------+", results[6]);
     }
 }
