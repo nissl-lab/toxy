@@ -8,7 +8,7 @@ namespace Toxy.Test
     public class TestHtmlSpreadsheetParser
     {
         [Test]
-        public void TestHtmlSpreadsheetParser()
+        public void TestParse()
         {
             string path = TestDataSample.GetHtmlPath("tables.html");
             ParserContext context = new ParserContext(path);
