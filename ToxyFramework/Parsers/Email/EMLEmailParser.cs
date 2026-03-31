@@ -1,13 +1,15 @@
 ﻿using MimeKit;
+using System;
 using System.IO;
-using Toxy.Parsers.Email.Base;
+using Toxy.Base;
+using Toxy.Helpers;
 
 namespace Toxy.Parsers
 {
 	/// <summary>
-	/// The <see cref="MimeKitEmailParser"/> is used to convert an EML Message to a <see cref="ToxyEmail"/>.
+	/// The <see cref="EMLEmailParser"/> is used to convert an EML Message to a <see cref="ToxyEmail"/>.
 	/// </summary>
-	public class EMLEmailParser : MimeKitEmailParser
+	public class EMLEmailParser : BaseEmailParser
 	{
 		/// <summary>
 		/// Initializes the <see cref="EMLEmailParser"/>
@@ -16,9 +18,14 @@ namespace Toxy.Parsers
 		public EMLEmailParser(ParserContext context) : base(context)
 		{ }
 
-		private protected override MimeMessage GetMimeMessage(Stream stream)
+		internal override ToxyEmail ParseEmail(out IDisposable disposable)
 		{
-			return MimeMessage.Load(stream);
+			Stream stream = Utility.GetStream(Context);
+			disposable = Context.IsStreamContext ? null : stream;
+			using (MimeMessage message = MimeMessage.Load(stream))
+			{
+				return MimeMessageHelper.ConvertToToxyEmail(message);
+			}
 		}
 	}
 }

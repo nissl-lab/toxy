@@ -1,12 +1,15 @@
 ﻿using MimeKit;
+using System;
 using System.IO;
+using Toxy.Base;
+using Toxy.Helpers;
 
 namespace Toxy.Parsers
 {
 	/// <summary>
 	/// The <see cref="EMLMetaParser"/> is used to get the metadata of an EML Message as <see cref="ToxyMetadata"/>.
 	/// </summary>
-	public class EMLMetaParser : MimeKitMetaParser
+	public class EMLMetaParser : BaseMetaParser
 	{
 		/// <summary>
 		/// Initializes the <see cref="EMLMetaParser"/>
@@ -15,9 +18,14 @@ namespace Toxy.Parsers
 		public EMLMetaParser(ParserContext context) : base(context)
 		{ }
 
-		private protected override MimeMessage GetMimeMessage(Stream stream)
+		internal override ToxyMetadata ParseMeta(out IDisposable disposable)
 		{
-			return MimeMessage.Load(stream);
+			Stream stream = Utility.GetStream(Context);
+			disposable = Context.IsStreamContext ? null : stream;
+			using (MimeMessage message = MimeMessage.Load(stream))
+			{
+				return MimeMessageHelper.ConvertToMeta(message);
+			}
 		}
 	}
 }

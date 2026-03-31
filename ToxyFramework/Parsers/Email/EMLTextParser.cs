@@ -1,12 +1,15 @@
 ﻿using MimeKit;
+using System;
 using System.IO;
+using Toxy.Base;
+using Toxy.Helpers;
 
 namespace Toxy.Parsers
 {
 	/// <summary>
 	/// The <see cref="EMLTextParser"/> is used to extract the Text of EML Messages.
 	/// </summary>
-	public class EMLTextParser : MimeKitTextParser
+	public class EMLTextParser : BaseTextParser
 	{
 		/// <summary>
 		/// Initializes the <see cref="EMLTextParser"/>
@@ -15,9 +18,14 @@ namespace Toxy.Parsers
 		public EMLTextParser(ParserContext context) : base(context)
 		{ }
 
-		private protected override MimeMessage GetMimeMessage(Stream stream)
+		internal override string ParseText(out IDisposable disposable)
 		{
-			return MimeMessage.Load(stream);
+			Stream stream = Utility.GetStream(Context);
+			disposable = Context.IsStreamContext ? null : stream;
+			using (MimeMessage message = MimeMessage.Load(stream))
+			{
+				return MimeMessageHelper.ConvertToText(message);
+			}
 		}
 	}
 }
