@@ -86,9 +86,10 @@ namespace Toxy
             typePdf.Add(typeof(PDFSpreadsheetParser));
             parserMapping.Add(".pdf", typePdf);
 
-            var typeHtml = new List<Type>(2);
+            var typeHtml = new List<Type>(3);
             typeHtml.Add(typeof(PlainTextParser));
             typeHtml.Add(typeof(HtmlDomParser));
+            typeHtml.Add(typeof(HtmlSpreadsheetParser));
             parserMapping.Add(".html", typeHtml);
             parserMapping.Add(".htm", typeHtml);
 
