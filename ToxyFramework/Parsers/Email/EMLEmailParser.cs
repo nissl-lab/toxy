@@ -1,40 +1,31 @@
-﻿using HLIB.MailFormats;
+﻿using MimeKit;
 using System;
-using System.Collections.Generic;
 using System.IO;
+using Toxy.Base;
+using Toxy.Helpers;
 
 namespace Toxy.Parsers
 {
-    public class EMLEmailParser:IEmailParser
-    {
-        public EMLEmailParser(ParserContext context)
-        {
-            this.Context = context;
-        }
+	/// <summary>
+	/// The <see cref="EMLEmailParser"/> is used to convert an EML Message to a <see cref="ToxyEmail"/>.
+	/// </summary>
+	public class EMLEmailParser : BaseEmailParser
+	{
+		/// <summary>
+		/// Initializes the <see cref="EMLEmailParser"/>
+		/// </summary>
+		/// <param name="context">The <see cref="ParserContext"/> of the Parser.</param>
+		public EMLEmailParser(ParserContext context) : base(context)
+		{ }
 
-        public ToxyEmail Parse()
-        {
-            Utility.ValidateContext(Context);
-
-            using var stream = File.OpenRead(Context.Path);
-            ToxyEmail email = new ToxyEmail();
-            EMLReader reader = new EMLReader(stream);
-            email.From = reader.From;
-            email.To = new List<string>(reader.To.Split(';'));
-            if (reader.CC != null)
-                email.Cc = new List<string>(reader.CC.Split(';'));
-
-            email.TextBody = reader.Body;
-            email.HtmlBody = reader.HTMLBody;
-            email.Subject = reader.Subject;
-            email.ArrivalTime = reader.X_OriginalArrivalTime;
-            return email;
-        }
-
-        public ParserContext Context
-        {
-            get;
-            set;
-        }
-    }
+		internal override ToxyEmail ParseEmail(out IDisposable disposable)
+		{
+			Stream stream = Utility.GetStream(Context);
+			disposable = Context.IsStreamContext ? null : stream;
+			using (MimeMessage message = MimeMessage.Load(stream))
+			{
+				return MimeMessageHelper.ConvertToToxyEmail(message);
+			}
+		}
+	}
 }

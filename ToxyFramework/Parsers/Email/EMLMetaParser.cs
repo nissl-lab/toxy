@@ -7,24 +7,24 @@ using Toxy.Helpers;
 namespace Toxy.Parsers
 {
 	/// <summary>
-	/// The <see cref="EMLTextParser"/> is used to extract the Text of EML Messages.
+	/// The <see cref="EMLMetaParser"/> is used to get the metadata of an EML Message as <see cref="ToxyMetadata"/>.
 	/// </summary>
-	public class EMLTextParser : BaseTextParser
+	public class EMLMetaParser : BaseMetaParser
 	{
 		/// <summary>
-		/// Initializes the <see cref="EMLTextParser"/>
+		/// Initializes the <see cref="EMLMetaParser"/>
 		/// </summary>
 		/// <param name="context">The <see cref="ParserContext"/> of the Parser.</param>
-		public EMLTextParser(ParserContext context) : base(context)
+		public EMLMetaParser(ParserContext context) : base(context)
 		{ }
 
-		internal override string ParseText(out IDisposable disposable)
+		internal override ToxyMetadata ParseMeta(out IDisposable disposable)
 		{
 			Stream stream = Utility.GetStream(Context);
 			disposable = Context.IsStreamContext ? null : stream;
 			using (MimeMessage message = MimeMessage.Load(stream))
 			{
-				return MimeMessageHelper.ConvertToText(message);
+				return MimeMessageHelper.ConvertToMeta(message);
 			}
 		}
 	}
