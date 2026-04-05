@@ -1,6 +1,4 @@
-﻿using FileSignatures;
-using FileSignatures.Formats;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using Toxy.Parsers;
@@ -10,7 +8,7 @@ namespace Toxy
     public class ParserFactory
     {
         private ParserFactory() { }
-        private readonly static Dictionary<string, List<Type>> parserMapping = new Dictionary<string, List<Type>>(34, StringComparer.OrdinalIgnoreCase);
+        private readonly static Dictionary<string, List<Type>> parserMapping = new Dictionary<string, List<Type>>(50, StringComparer.OrdinalIgnoreCase);
 
         static ParserFactory()
         {
@@ -136,6 +134,17 @@ namespace Toxy
 			typeEPUBText.Add(typeof(EPUBTextParser));
 			typeEPUBText.Add(typeof(EPUBMetaParser));
 			parserMapping.Add(".epub", typeEPUBText);
+
+			var typeODF = new List<Type>(2);
+			typeODF.Add(typeof(OpenDocumentTextParser));
+			typeODF.Add(typeof(OpenDocumentMetaParser));
+			parserMapping.Add(".odp", typeODF);
+			parserMapping.Add(".odt", typeODF);
+
+			var typeODS = new List<Type>(2);
+			typeODS.Add(typeof(ODSTextParser));
+			typeODS.Add(typeof(OpenDocumentMetaParser));
+			parserMapping.Add(".ods", typeODS);
 		}
 
         static object CreateObject(ParserContext context, Type itype, string operationName)
