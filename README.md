@@ -22,3 +22,17 @@ Toxy Objects
 - ToxyBusinessCard - the data structure extracted for business cards
 - ToxyDom - the data structure extracted for DOM based document
 - ToxyMetadata - the data structure extracted for other files with meta data
+
+F# Type Provider
+================
+`Toxy.TypeProvider` is an F# Type Provider built on top of Toxy. It inspects a sample document at compile/design time and generates a strongly-typed metadata schema, giving F# users IntelliSense and compile-time safety over document metadata fields such as `Author`, `Title`, `Created`, and more.
+
+```fsharp
+#r "nuget: Toxy.TypeProvider"
+open Toxy.TypeProvider
+
+type Invoice = ToxyDocument<"samples/invoice.pdf">
+
+let doc = Invoice.Parse("path/to/my.pdf")
+printfn "Author: %s" doc.Metadata.Author
+```

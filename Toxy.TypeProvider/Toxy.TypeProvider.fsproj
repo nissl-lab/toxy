@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+
+    <!-- NuGet Package Metadata -->
+    <PackageId>Toxy.TypeProvider</PackageId>
+    <Description>F# Type Provider for Toxy – generates strongly-typed metadata schemas from sample documents</Description>
+    <PackageTags>fsharp typeprovider document metadata pdf word</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="MetadataSchema.fs" />
+    <Compile Include="ToxyTypeProvider.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="9.0.100" />
+    <PackageReference Include="FSharp.TypeProviders.SDK" Version="8.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToxyFramework\ToxyFramework.csproj" />
+  </ItemGroup>
+
+</Project>
