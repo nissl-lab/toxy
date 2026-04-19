@@ -228,8 +228,7 @@ namespace Toxy
 
             foreach (var col in table.Columns)
             {
-                IArrowType arrowType;
-                IArrowArray array = BuildArrowArray(col.Values, out arrowType);
+                var (array, arrowType) = BuildArrowArray(col.Values);
                 schemaBuilder.Field(new ArrowField(col.Name, arrowType, nullable: true));
                 arrays.Add(array);
             }
@@ -244,12 +243,11 @@ namespace Toxy
             writer.WriteEndAsync().GetAwaiter().GetResult();
         }
 
-        private static IArrowArray BuildArrowArray(List<string> rawValues, out IArrowType arrowType)
+        private static (IArrowArray array, IArrowType type) BuildArrowArray(List<string> rawValues)
         {
             // Try int
             if (rawValues.All(v => string.IsNullOrEmpty(v) || int.TryParse(v, out _)))
             {
-                arrowType = Int32Type.Default;
                 var builder = new Int32Array.Builder();
                 foreach (var v in rawValues)
                 {
@@ -258,14 +256,13 @@ namespace Toxy
                     else
                         builder.Append(int.Parse(v));
                 }
-                return builder.Build();
+                return (builder.Build(), Int32Type.Default);
             }
 
             // Try double
             if (rawValues.All(v => string.IsNullOrEmpty(v) ||
                 double.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out _)))
             {
-                arrowType = DoubleType.Default;
                 var builder = new DoubleArray.Builder();
                 foreach (var v in rawValues)
                 {
@@ -274,13 +271,12 @@ namespace Toxy
                     else
                         builder.Append(double.Parse(v, CultureInfo.InvariantCulture));
                 }
-                return builder.Build();
+                return (builder.Build(), DoubleType.Default);
             }
 
             // Try bool
             if (rawValues.All(v => string.IsNullOrEmpty(v) || bool.TryParse(v, out _)))
             {
-                arrowType = BooleanType.Default;
                 var builder = new BooleanArray.Builder();
                 foreach (var v in rawValues)
                 {
@@ -289,7 +285,7 @@ namespace Toxy
                     else
                         builder.Append(bool.Parse(v));
                 }
-                return builder.Build();
+                return (builder.Build(), BooleanType.Default);
             }
 
             // Try DateTime → stored as Timestamp (milliseconds, UTC)
@@ -297,7 +293,6 @@ namespace Toxy
                 DateTime.TryParse(v, CultureInfo.InvariantCulture, DateTimeStyles.None, out _)))
             {
                 var tsType = new TimestampType(TimeUnit.Millisecond, "UTC");
-                arrowType = tsType;
                 var builder = new TimestampArray.Builder(tsType);
                 foreach (var v in rawValues)
                 {
@@ -307,16 +302,15 @@ namespace Toxy
                         builder.Append(
                             new DateTimeOffset(DateTime.Parse(v, CultureInfo.InvariantCulture)));
                 }
-                return builder.Build();
+                return (builder.Build(), tsType);
             }
 
             // Fall back to string
-            arrowType = StringType.Default;
             {
                 var builder = new StringArray.Builder();
                 foreach (var v in rawValues)
                     builder.Append(v ?? string.Empty);
-                return builder.Build();
+                return (builder.Build(), StringType.Default);
             }
         }
 
