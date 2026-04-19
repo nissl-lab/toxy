@@ -220,5 +220,17 @@ namespace Toxy
             ISlideshowParser parser = (ISlideshowParser)obj;
             return parser;            
         }
+
+        public static IColumnarSpreadsheetParser CreateColumnarSpreadsheet(ParserContext context)
+        {
+            string ext = context.Extension.ToLowerInvariant();
+            return ext switch
+            {
+                ".csv"  => new Parsers.CsvColumnarSpreadsheetParser(context),
+                ".xls"  => new Parsers.Excel2003ColumnarSpreadsheetParser(context),
+                ".xlsx" => new Parsers.Excel2007ColumnarSpreadsheetParser(context),
+                _ => throw new NotSupportedException(string.Format("Format '{0}' is not supported for columnar parsing.", ext))
+            };
+        }
     }
 }
