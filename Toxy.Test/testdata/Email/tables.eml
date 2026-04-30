@@ -1,0 +1,24 @@
+From: sender@example.com
+To: recipient@example.com
+Subject: Report with Markdown Tables
+Date: Thu, 01 Jan 2026 12:00:00 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Here are the results for this quarter:
+
+| Product | Sales | Region   |
+|---------|-------|----------|
+| Widget  | 1200  | North    |
+| Gadget  | 850   | South    |
+
+And here is a regional breakdown:
+
+| Region | Q1  | Q2  | Q3  |
+|--------|-----|-----|-----|
+| North  | 100 | 200 | 300 |
+| South  | 80  | 150 | 220 |
+| East   | 60  | 120 | 180 |
+
+End of report.
