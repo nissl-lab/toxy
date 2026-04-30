@@ -1,0 +1,25 @@
+From: sender@example.com
+To: recipient@example.com
+Subject: Report with HTML Tables
+Date: Thu, 01 Jan 2026 12:00:00 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+<body>
+<p>Here are the quarterly results:</p>
+<table id="products">
+  <tr><th>Product</th><th>Sales</th><th>Region</th></tr>
+  <tr><td>Widget</td><td>1200</td><td>North</td></tr>
+  <tr><td>Gadget</td><td>850</td><td>South</td></tr>
+</table>
+<p>Regional breakdown:</p>
+<table id="regions">
+  <tr><th>Region</th><th>Q1</th><th>Q2</th></tr>
+  <tr><td>North</td><td>100</td><td>200</td></tr>
+  <tr><td>South</td><td>80</td><td>150</td></tr>
+</table>
+</body>
+</html>

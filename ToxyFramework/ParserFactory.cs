@@ -92,15 +92,17 @@ namespace Toxy
             parserMapping.Add(".htm", typeHtml);
 
             #region Email formats
-            var typeEml = new List<Type>(3);
+            var typeEml = new List<Type>(4);
             typeEml.Add(typeof(EMLEmailParser));
             typeEml.Add(typeof(EMLTextParser));
             typeEml.Add(typeof(EMLMetaParser));
+            typeEml.Add(typeof(EMLSpreadsheetParser));
             parserMapping.Add(".eml", typeEml);
 
-            var typeMsg = new List<Type>(2);
+            var typeMsg = new List<Type>(3);
             typeMsg.Add(typeof(MsgEmailParser));
             typeMsg.Add(typeof(MsgTextParser));
+            typeMsg.Add(typeof(MsgSpreadsheetParser));
             parserMapping.Add(".msg", typeMsg);
             #endregion
 
