@@ -111,9 +111,18 @@ namespace Toxy
             typeVcard.Add(typeof(VCardTextParser));
             parserMapping.Add(".vcf", typeVcard);
 
-            var typeZip = new List<Type>(1);
+            var typeZip = new List<Type>(10);
             typeZip.Add(typeof(ZipTextParser));
             parserMapping.Add(".zip", typeZip);
+            parserMapping.Add(".gz", typeZip);
+            parserMapping.Add(".tgz", typeZip);
+            parserMapping.Add(".tar", typeZip);
+            parserMapping.Add(".7z", typeZip);
+            parserMapping.Add(".rar", typeZip);
+            parserMapping.Add(".boz", typeZip);
+            parserMapping.Add(".bz2", typeZip);
+            parserMapping.Add(".lz", typeZip);
+            parserMapping.Add(".xz", typeZip);
 
             var typeAudio = new List<Type>(1);
             typeAudio.Add(typeof(AudioMetadataParser));

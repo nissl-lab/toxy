@@ -3,6 +3,7 @@ using FileSignatures;
 using PasswordProtectedChecker;
 using System;
 using System.IO;
+using Toxy.Helpers;
 
 namespace Toxy
 {
@@ -70,7 +71,7 @@ namespace Toxy
 			if (result?.Protected ?? false)
 			{
                 // IDK what should be thrown in case of Streams.
-				throw new InvalidOperationException($"file {context.Path} is encrypted");
+                ThrowHelper.ThrowEncrypted(context.Path);
 			}
 		}
     }
