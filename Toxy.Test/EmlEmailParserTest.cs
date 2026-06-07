@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
+using System;
 using System.IO;
 
 namespace Toxy.Test
@@ -60,13 +61,13 @@ namespace Toxy.Test
         public void TestStreamForEmlTextParser()
         {
             ParserContext context = new ParserContext(TestDataSample.GetFileStream("test.eml", "Email"));
-            Assert.Throws<InvalidDataException>(() => { var parser = ParserFactory.CreateText(context); });
+            Assert.Throws<InvalidDataException>((Action)(() => { var parser = ParserFactory.CreateText(context); }));
         }
         [Test]
         public void TestStreamForEmlEmailParser()
         {
             ParserContext context = new ParserContext(TestDataSample.GetFileStream("test.eml", "Email"));
-            Assert.Throws<InvalidDataException>(() => { var parser = ParserFactory.CreateEmail(context); });
+            Assert.Throws<InvalidDataException>((Action)(() => { var parser = ParserFactory.CreateEmail(context); }));
         }
     }
 }

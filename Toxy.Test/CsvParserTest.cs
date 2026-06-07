@@ -51,7 +51,7 @@ namespace Toxy.Test
         public void TestStreamForCsvSpreadsheetParser()
         {
             ParserContext context = new ParserContext(TestDataSample.GetFileStream("countrylist.csv", null));
-            Assert.Throws<InvalidDataException>(() => { var parser = ParserFactory.CreateSpreadsheet(context); });
+            Assert.Throws<InvalidDataException>((Action)(() => { var parser = ParserFactory.CreateSpreadsheet(context); }));
         }
     }
 }

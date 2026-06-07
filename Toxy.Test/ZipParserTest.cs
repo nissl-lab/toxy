@@ -29,7 +29,7 @@ namespace Toxy.Test
         {
             ParserContext context = new ParserContext(TestDataSample.GetFilePath("password.zip", null));
             ITextParser parser = ParserFactory.CreateText(context);
-            ClassicAssert.Throws<InvalidOperationException>(() => parser.Parse());
+            ClassicAssert.Throws<InvalidOperationException>((Action)(() => parser.Parse()));
         }
     }
 }

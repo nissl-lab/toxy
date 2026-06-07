@@ -277,7 +277,7 @@ namespace Toxy.Test
         public void TestParserFactory_UnsupportedFormatThrows()
         {
             var context = new ParserContext("/tmp/test.pdf");
-            Assert.Throws<NotSupportedException>(() => ParserFactory.CreateColumnarSpreadsheet(context));
+            Assert.Throws<NotSupportedException>((Action)(() => ParserFactory.CreateColumnarSpreadsheet(context)));
         }
     }
 }

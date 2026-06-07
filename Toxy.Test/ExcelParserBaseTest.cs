@@ -76,8 +76,8 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("First name:", slicedrows[3][1].ToString());
             ClassicAssert.AreEqual("firstName", slicedrows[3][2].ToString());
 
-            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var rows = ss[-2..6]; });
-            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var rows= ss[1..6]; });   //there is no row[6]
+            ClassicAssert.Throws<ArgumentOutOfRangeException>((Action)(() => { var rows = ss[-2..6]; }));
+            ClassicAssert.Throws<ArgumentOutOfRangeException>((Action)(() => { var rows = ss[1..6]; }));   //there is no row[6]
         }
 
         public void BaseTestSlicedCell(string filename)
@@ -91,8 +91,8 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("Last name:", slicedcells[0].ToString());
             ClassicAssert.AreEqual("lastName", slicedcells[1].ToString());
 
-            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var rows = slicedrow[-1..6]; });
-            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var rows = slicedrow[1..5]; });   //there is no cell[4]
+            ClassicAssert.Throws<ArgumentOutOfRangeException>((Action)(() => { var rows = slicedrow[-1..6]; }));
+            ClassicAssert.Throws<ArgumentOutOfRangeException>((Action)(() => { var rows = slicedrow[1..5]; }));   //there is no cell[4]
         }
 
         public void BaseTestSlicedTable(string filename)
@@ -106,8 +106,8 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("Sheet2", table1_2[0].Name);
             ClassicAssert.AreEqual(1, table1_2[0].SheetIndex);
 
-            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var table = ss[1..4]; });
-            ClassicAssert.Throws<ArgumentOutOfRangeException>(() => { var table = ss[-1..3]; });
+            ClassicAssert.Throws<ArgumentOutOfRangeException>((Action)(() => { var table = ss[1..4]; }));
+            ClassicAssert.Throws<ArgumentOutOfRangeException>((Action)(() => { var table = ss[-1..3]; }));
         }
 
         public void BaseTestExtractSheetHeader(string filename)
