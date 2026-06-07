@@ -51,7 +51,7 @@ namespace Toxy.Test
         {
             string path = TestDataSample.GetPdfPath("Word97-2007BinaryFileFormat(doc)Specification.pdf");
             var parser = new PDFTextParser(new ParserContext(path));
-            ClassicAssert.DoesNotThrow(() => parser.Parse());
+            ClassicAssert.DoesNotThrow((Action)(() => parser.Parse()));
         }
         [Test]
         public void TestStreamForPDFTextParser()
@@ -72,7 +72,7 @@ namespace Toxy.Test
         {
             string path = TestDataSample.GetPdfPath("password.pdf");
             var parser = new PDFTextParser(new ParserContext(path));
-            ClassicAssert.Throws<PdfDocumentEncryptedException>(() => parser.Parse());
+            ClassicAssert.Throws<PdfDocumentEncryptedException>((Action)(() => parser.Parse()));
         }
 
         [Test]

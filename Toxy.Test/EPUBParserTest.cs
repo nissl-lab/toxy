@@ -60,7 +60,7 @@ namespace Toxy.Test
 		{
 			string path = TestDataSample.GetEPUBPath("Word97-2007BinaryFileFormat_doc_Specification.epub");
 			var parser = new EPUBTextParser(new ParserContext(path));
-			ClassicAssert.DoesNotThrow(() => parser.Parse());
+			ClassicAssert.DoesNotThrow((Action)(() => parser.Parse()));
 		}
 
 		[Test]
