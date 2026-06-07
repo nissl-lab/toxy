@@ -44,7 +44,7 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
     <PackageReference Include="MimeKit" Version="4.17.0" />
     <PackageReference Include="MsgReader" Version="6.0.12" />
-    <PackageReference Include="NPOI" Version="2.8.0" />
+    <PackageReference Include="NPOI" Version="2.7.5" />
     <PackageReference Include="Parquet.Net" Version="5.5.0" />
     <PackageReference Include="PasswordProtectedChecker" Version="2.1.7" />
     <PackageReference Include="PdfPig" Version="0.1.14" />
