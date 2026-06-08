@@ -3,19 +3,24 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.Extractor;
 using NPOI.XSSF.UserModel;
-using System;
+using System.IO;
 using Toxy.Base;
 
 namespace Toxy.Parsers
 {
 	public class ExcelTextParser : BaseTextParser
 	{
-		public ExcelTextParser(ParserContext context) : base(context) { }
-		internal override string ParseText(ref IDisposable disposable)
-		{
-			disposable = null;
-			Utility.ThrowIfProtected(Context);
+		public ExcelTextParser(ParserContext context) : base(context)
+		{ }
 
+		internal override void ValidateContext()
+		{
+			base.ValidateContext();
+			Utility.ThrowIfProtected(Context);
+		}
+
+		internal override string ParseText(Stream stream)
+		{
 			IWorkbook workbook;
 			if (Context.IsStreamContext)
 			{

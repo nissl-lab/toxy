@@ -9,88 +9,88 @@ namespace Toxy.Parsers
 	public class VCardTextParser : BaseTextParser
 	{
 		public VCardTextParser(ParserContext context) : base(context) { }
-		internal override string ParseText(ref IDisposable disposable)
+		internal override string ParseText(Stream stream)
 		{
 			StringBuilder sb = new StringBuilder();
-			Stream stream = Utility.GetStream(Context);
-			StreamReader sr = new StreamReader(stream, null, true, -1, Context.IsStreamContext);
-			disposable = sr;
-			while (!sr.EndOfStream)
+			using (StreamReader sr = new StreamReader(stream, null, true, -1, Context.IsStreamContext))
 			{
-				VCard card = new VCard(sr);
-				if (!string.IsNullOrEmpty(card.FormattedName))
-					sb.AppendFormat("[Full Name]{0}" + Environment.NewLine, card.FormattedName);
-				if (!string.IsNullOrEmpty(card.GivenName))
-					sb.AppendFormat("[First Name]{0}" + Environment.NewLine, card.GivenName);
-				if (!string.IsNullOrEmpty(card.AdditionalNames))
-					sb.AppendFormat("[Middle Name]{0}" + Environment.NewLine, card.AdditionalNames);
-				if (!string.IsNullOrEmpty(card.FamilyName))
-					sb.AppendFormat("[Last Name]{0}" + Environment.NewLine, card.FamilyName);
-				if (!string.IsNullOrEmpty(card.ProductId))
-					sb.AppendFormat("[Product ID]{0}" + Environment.NewLine, card.ProductId);
-				if (!string.IsNullOrEmpty(card.Organization))
-					sb.AppendFormat("[Orgnization]{0}" + Environment.NewLine, card.Organization);
-				if (card.Sources.Count > 0)
+				while (!sr.EndOfStream)
 				{
-					sb.AppendLine("[Sources]");
-					foreach (var vSource in card.Sources)
+					VCard card = new VCard(sr);
+					if (!string.IsNullOrEmpty(card.FormattedName))
+						sb.AppendFormat("[Full Name]{0}" + Environment.NewLine, card.FormattedName);
+					if (!string.IsNullOrEmpty(card.GivenName))
+						sb.AppendFormat("[First Name]{0}" + Environment.NewLine, card.GivenName);
+					if (!string.IsNullOrEmpty(card.AdditionalNames))
+						sb.AppendFormat("[Middle Name]{0}" + Environment.NewLine, card.AdditionalNames);
+					if (!string.IsNullOrEmpty(card.FamilyName))
+						sb.AppendFormat("[Last Name]{0}" + Environment.NewLine, card.FamilyName);
+					if (!string.IsNullOrEmpty(card.ProductId))
+						sb.AppendFormat("[Product ID]{0}" + Environment.NewLine, card.ProductId);
+					if (!string.IsNullOrEmpty(card.Organization))
+						sb.AppendFormat("[Orgnization]{0}" + Environment.NewLine, card.Organization);
+					if (card.Sources.Count > 0)
 					{
-						sb.AppendLine(vSource.Uri.OriginalString);
+						sb.AppendLine("[Sources]");
+						foreach (var vSource in card.Sources)
+						{
+							sb.AppendLine(vSource.Uri.OriginalString);
+						}
 					}
-				}
-				if (!string.IsNullOrEmpty(card.Title))
-					sb.AppendFormat("[Title]{0}" + Environment.NewLine, card.Title);
-				if (card.Gender != Gender.Unknown)
-					sb.AppendFormat("[Gender]{0}" + Environment.NewLine, card.Gender);
-				if (card.Nicknames.Count > 0)
-				{
-					sb.AppendFormat("[Nickname]{0}" + Environment.NewLine, card.Nicknames[0]);
-				}
-				if (card.DeliveryAddresses.Count > 0)
-				{
-					sb.AppendLine("[Addresses]");
-					foreach (DeliveryAddress dAddr in card.DeliveryAddresses)
+					if (!string.IsNullOrEmpty(card.Title))
+						sb.AppendFormat("[Title]{0}" + Environment.NewLine, card.Title);
+					if (card.Gender != Gender.Unknown)
+						sb.AppendFormat("[Gender]{0}" + Environment.NewLine, card.Gender);
+					if (card.Nicknames.Count > 0)
 					{
-						sb.Append(dAddr.AddressType + ":");
-						if (!string.IsNullOrEmpty(dAddr.Street))
-							sb.Append(dAddr.Street + ",");
-						if (!string.IsNullOrEmpty(dAddr.City))
-							sb.Append(dAddr.City + ",");
-						if (!string.IsNullOrEmpty(dAddr.Region))
-							sb.Append(dAddr.Region + ",");
-						if (!string.IsNullOrEmpty(dAddr.Country))
-							sb.Append(dAddr.Country + ",");
+						sb.AppendFormat("[Nickname]{0}" + Environment.NewLine, card.Nicknames[0]);
+					}
+					if (card.DeliveryAddresses.Count > 0)
+					{
+						sb.AppendLine("[Addresses]");
+						foreach (DeliveryAddress dAddr in card.DeliveryAddresses)
+						{
+							sb.Append(dAddr.AddressType + ":");
+							if (!string.IsNullOrEmpty(dAddr.Street))
+								sb.Append(dAddr.Street + ",");
+							if (!string.IsNullOrEmpty(dAddr.City))
+								sb.Append(dAddr.City + ",");
+							if (!string.IsNullOrEmpty(dAddr.Region))
+								sb.Append(dAddr.Region + ",");
+							if (!string.IsNullOrEmpty(dAddr.Country))
+								sb.Append(dAddr.Country + ",");
 
-						sb.AppendLine();
+							sb.AppendLine();
+						}
 					}
-				}
-				if (card.Phones.Count > 0)
-				{
-					sb.AppendLine("[Phones]");
-					foreach (Phone vphone in card.Phones)
+					if (card.Phones.Count > 0)
 					{
-						sb.AppendFormat("{0}:{1}" + Environment.NewLine, vphone.PhoneType, vphone.FullNumber);
+						sb.AppendLine("[Phones]");
+						foreach (Phone vphone in card.Phones)
+						{
+							sb.AppendFormat("{0}:{1}" + Environment.NewLine, vphone.PhoneType, vphone.FullNumber);
+						}
 					}
-				}
-				if (card.EmailAddresses.Count > 0)
-				{
-					sb.AppendLine("[Emails]");
-					foreach (EmailAddress vEmail in card.EmailAddresses)
+					if (card.EmailAddresses.Count > 0)
 					{
-						sb.AppendFormat("{0}:{1}" + Environment.NewLine, vEmail.EmailType, vEmail.Address);
+						sb.AppendLine("[Emails]");
+						foreach (EmailAddress vEmail in card.EmailAddresses)
+						{
+							sb.AppendFormat("{0}:{1}" + Environment.NewLine, vEmail.EmailType, vEmail.Address);
+						}
 					}
-				}
-				if (card.Websites.Count > 0)
-				{
-					sb.AppendLine("[Websites]");
-					foreach (Website vWebsite in card.Websites)
+					if (card.Websites.Count > 0)
 					{
-						sb.AppendLine(vWebsite.Url);
+						sb.AppendLine("[Websites]");
+						foreach (Website vWebsite in card.Websites)
+						{
+							sb.AppendLine(vWebsite.Url);
+						}
 					}
+					sb.AppendLine();
 				}
-				sb.AppendLine();
+				return sb.ToString();
 			}
-			return sb.ToString();
 		}
 	}
 }

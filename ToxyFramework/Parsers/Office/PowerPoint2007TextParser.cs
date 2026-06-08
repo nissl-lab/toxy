@@ -14,32 +14,28 @@ namespace Toxy.Parsers
 {
 	public class Powerpoint2007TextParser : BaseTextParser
 	{
-		public Powerpoint2007TextParser(ParserContext context) : base(context) { }
-		internal override string ParseText(ref IDisposable disposable)
+		public Powerpoint2007TextParser(ParserContext context) : base(context)
+		{ }
+
+		internal override void ValidateContext()
 		{
-			disposable = null;
+			base.ValidateContext();
 			Utility.ThrowIfProtected(Context);
+		}
+
+		internal override string ParseText(Stream stream)
+		{
 			StringBuilder sb = new StringBuilder();
-			Package pkg;
-			if (Context.IsStreamContext)
-			{
-				pkg = Package.Open(Context.Stream, FileMode.Open, FileAccess.Read);
-			}
-			else
-			{
-				pkg = Package.Open(Context.Path, FileMode.Open, FileAccess.Read);
-			}
 			// closes the Stream anyways
-			using (pkg)
+			using (Package pkg = Package.Open(stream, FileMode.Open, FileAccess.Read))
 			{
-				using var ppt = PresentationDocument.Open(pkg);
+				using PresentationDocument ppt = PresentationDocument.Open(pkg);
 				// Get the relationship ID of the first slide.
 				PresentationPart part = ppt.PresentationPart;
 				OpenXmlElementList slideIds = part.Presentation.SlideIdList.ChildElements;
 				for (int index = 0; index < slideIds.Count; index++)
 				{
 					string relId = (slideIds[index] as SlideId).RelationshipId;
-					relId = (slideIds[index] as SlideId).RelationshipId;
 
 					// Get the slide part from the relationship ID.
 					SlidePart slide = (SlidePart)part.GetPartById(relId);
@@ -57,7 +53,7 @@ namespace Toxy.Parsers
 		{
 			// Verify that the slide part exists.
 #if NET8_0_OR_GREATER
-			ArgumentNullException.ThrowIfNull("slidePart");
+			ArgumentNullException.ThrowIfNull(slidePart, nameof(slidePart));
 #else
 			if (slidePart == null)
 			{

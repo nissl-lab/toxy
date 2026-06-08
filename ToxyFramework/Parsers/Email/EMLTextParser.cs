@@ -18,10 +18,8 @@ namespace Toxy.Parsers
 		public EMLTextParser(ParserContext context) : base(context)
 		{ }
 
-		internal override string ParseText(ref IDisposable disposable)
+		internal override string ParseText(Stream stream)
 		{
-			Stream stream = Utility.GetStream(Context);
-			disposable = Context.IsStreamContext ? null : stream;
 			using (MimeMessage message = MimeMessage.Load(stream))
 			{
 				return MimeMessageHelper.ConvertToText(message);

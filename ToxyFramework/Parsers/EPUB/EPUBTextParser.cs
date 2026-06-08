@@ -1,5 +1,7 @@
-﻿using HtmlAgilityPack;
+﻿using DocumentFormat.OpenXml.InkML;
+using HtmlAgilityPack;
 using System;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using Toxy.Base;
@@ -9,11 +11,12 @@ namespace Toxy.Parsers
 {
 	public sealed class EPUBTextParser : BaseTextParser
 	{
-		public EPUBTextParser(ParserContext context) : base(context) { }
+		public EPUBTextParser(ParserContext context) : base(context)
+		{ }
 
-		internal override string ParseText(ref IDisposable disposable)
+		internal override string ParseText(Stream stream)
 		{
-			EpubBook book = EPUBHelper.GetEpubBook(Context);
+			EpubBook book = EpubReader.ReadBook(stream);
 			StringBuilder result = new StringBuilder();
 			HtmlDocument html = new HtmlDocument();
 			Regex whiteSpaceStart = new Regex("^\\s*", RegexOptions.Multiline);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Toxy.Base
 {
@@ -35,15 +36,20 @@ namespace Toxy.Base
 		public string Parse()
 		{
 		    ValidateContext();
-			IDisposable? disposable = null;
+			Stream stream = Utility.GetStream(Context);
 			try
 			{
-				return ParseText(ref disposable);
+				return ParseText(stream);
 			}
 			finally
 			{
 				// we don't care if it throws just dispose if needed
-				disposable?.Dispose();
+				// Streams passed by the User should not be disposed
+				// this should be the only place to do so
+				if (!Context.IsStreamContext)
+				{
+					stream.Dispose();
+				}
 			}
 		}
 
@@ -53,7 +59,7 @@ namespace Toxy.Base
 		/// <param name="disposable">An optional <see cref="IDisposable"/>, which should be disposed at the end of parsing.
 		/// It will be disposed if an <see cref="Exception"/> will be thrown.</param>
 		/// <returns>Returns the extracted Text.</returns>
-		internal abstract string ParseText(ref IDisposable? disposable);
+		internal abstract string ParseText(Stream stream);
 #nullable disable
 	}
 }

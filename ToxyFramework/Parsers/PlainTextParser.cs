@@ -21,25 +21,24 @@ namespace Toxy.Parsers
 
 		public PlainTextParser(ParserContext context) : base(context) { }
 
-		internal override string ParseText(ref IDisposable disposable)
+		internal override string ParseText(Stream stream)
 		{
-			Stream stream = Utility.GetStream(Context);
 			Encoding encoding = Context.Encoding ?? Encoding.UTF8;
 			// this is what new StreamReader(path, Context.Encoding) & new StreamReader(path, true) does
-			StreamReader sr = new StreamReader(stream, encoding, true, 1024, !Context.IsStreamContext);
-			disposable = sr;
-
-			string line = sr.ReadLine();
-			int i = 0;
-			StringBuilder sb = new StringBuilder();
-			while (line != null)
+			using (StreamReader sr = new StreamReader(stream, encoding, true, 1024, Context.IsStreamContext))
 			{
-				ParseLine?.Invoke(this, new ParseLineEventArgs(line, i));
-				sb.AppendLine(line);
-				line = sr.ReadLine();
-				i++;
+				string line = sr.ReadLine();
+				int i = 0;
+				StringBuilder sb = new StringBuilder();
+				while (line != null)
+				{
+					ParseLine?.Invoke(this, new ParseLineEventArgs(line, i));
+					sb.AppendLine(line);
+					line = sr.ReadLine();
+					i++;
+				}
+				return sb.ToString();
 			}
-			return sb.ToString();
 		}
 	}
 }

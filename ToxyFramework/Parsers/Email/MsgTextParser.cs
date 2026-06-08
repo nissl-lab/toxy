@@ -15,17 +15,13 @@ namespace Toxy.Parsers
     /// </remarks>
     public class MsgTextParser : BaseTextParser
     {
-        public MsgTextParser(ParserContext context) : base(context) { }
+        public MsgTextParser(ParserContext context) : base(context)
+        { }
 
-        internal override string ParseText(ref IDisposable disposable)
+        internal override string ParseText(Stream stream)
         {
             StringBuilder result = new StringBuilder();
-            Stream stream = Utility.GetStream(Context);
-            if (!Context.IsStreamContext)
-            {
-                disposable = stream;
-            }
-			using (Storage.Message reader = new Storage.Message(stream, FileAccess.Read, true))
+			using (Storage.Message reader = new Storage.Message(stream, FileAccess.Read, Context.IsStreamContext))
             {
                 if (reader.Sender != null)
                 {

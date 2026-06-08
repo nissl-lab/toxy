@@ -11,13 +11,17 @@ namespace Toxy.Parsers
 {
 	public class PDFTextParser : BaseTextParser
 	{
-		public PDFTextParser(ParserContext context) : base(context) { }
-		internal override string ParseText(ref IDisposable disposable)
-		{
-			Utility.ThrowIfProtected(Context);
-			Stream stream = Utility.GetStream(Context);
-			disposable = Context.IsStreamContext ? null : stream;
+		public PDFTextParser(ParserContext context) : base(context)
+		{ }
 
+		internal override void ValidateContext()
+		{
+			base.ValidateContext();
+			Utility.ThrowIfProtected(Context);
+		}
+
+		internal override string ParseText(Stream stream)
+		{
 			using (PdfDocument doc = PdfDocument.Open(stream))
 			{
 				StringBuilder text = new StringBuilder();

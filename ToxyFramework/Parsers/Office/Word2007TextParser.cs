@@ -9,12 +9,16 @@ namespace Toxy.Parsers
 	public class Word2007TextParser : BaseTextParser
 	{
 		public Word2007TextParser(ParserContext context) : base(context)
+		{ }
+
+		internal override void ValidateContext()
 		{
-			Context = context;
-		}
-		internal override string ParseText(ref IDisposable disposable)
-		{
+			base.ValidateContext();
 			Utility.ThrowIfProtected(Context);
+		}
+
+		internal override string ParseText(Stream stream)
+		{
 			bool extractHeader = false;
 			if (Context.Properties.ContainsKey("ExtractHeader"))
 			{
@@ -27,11 +31,6 @@ namespace Toxy.Parsers
 			}
 
 			StringBuilder sb = new StringBuilder();
-			Stream stream = Utility.GetStream(Context);
-			if (!Context.IsStreamContext)
-			{
-				disposable = stream;
-			}
 			using (XWPFDocument worddoc = new XWPFDocument(stream))
 			{
 				if (extractHeader && worddoc.HeaderList != null)
