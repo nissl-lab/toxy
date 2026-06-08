@@ -19,7 +19,6 @@ namespace Toxy.Parsers
 
         internal override string ParseText(ref IDisposable disposable)
         {
-            disposable = null;
             StringBuilder result = new StringBuilder();
             Stream stream = Utility.GetStream(Context);
             if (!Context.IsStreamContext)

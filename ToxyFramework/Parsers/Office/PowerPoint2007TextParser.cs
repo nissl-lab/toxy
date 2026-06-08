@@ -14,10 +14,7 @@ namespace Toxy.Parsers
 {
 	public class Powerpoint2007TextParser : BaseTextParser
 	{
-		public Powerpoint2007TextParser(ParserContext context) : base(context)
-		{
-			this.Context = context;
-		}
+		public Powerpoint2007TextParser(ParserContext context) : base(context) { }
 		internal override string ParseText(ref IDisposable disposable)
 		{
 			disposable = null;
@@ -59,10 +56,14 @@ namespace Toxy.Parsers
 		public static string[] GetAllTextInSlide(SlidePart slidePart)
 		{
 			// Verify that the slide part exists.
+#if NET8_0_OR_GREATER
+			ArgumentNullException.ThrowIfNull("slidePart");
+#else
 			if (slidePart == null)
 			{
 				throw new ArgumentNullException("slidePart");
 			}
+#endif
 
 			// Create a new linked list of strings.
 			LinkedList<string> texts = new LinkedList<string>();

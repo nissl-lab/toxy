@@ -36,13 +36,13 @@ namespace Toxy.Parsers
 			{
 				if (extractHeader && worddoc.HeaderList != null)
 				{
-					foreach (var header in worddoc.HeaderList)
+					foreach (XWPFHeader header in worddoc.HeaderList)
 					{
 						sb.Append("[Header] ");
 						sb.AppendLine(header.Text);
 					}
 				}
-				foreach (var elem in worddoc.BodyElements)
+				foreach (IBodyElement elem in worddoc.BodyElements)
 				{
 					if (elem is XWPFParagraph)
 					{
@@ -59,7 +59,7 @@ namespace Toxy.Parsers
 				}
 				if (extractFooter && worddoc.FooterList != null)
 				{
-					foreach (var footer in worddoc.FooterList)
+					foreach (XWPFFooter footer in worddoc.FooterList)
 					{
 						sb.Append("[Footer] ");
 						sb.AppendLine(footer.Text);
