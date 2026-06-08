@@ -17,7 +17,7 @@ namespace Toxy.Parsers
 		internal override string ParseText(Stream stream)
 		{
 			// we need to let the stream open, which was passed by the user!
-			using (ZipArchive archive = new ZipArchive(Context.Stream, ZipArchiveMode.Read, Context.IsStreamContext))
+			using (ZipArchive archive = new ZipArchive(stream, ZipArchiveMode.Read, Context.IsStreamContext))
 			{
 				ZipArchiveEntry? contentEntry = archive.GetEntry("content.xml");
 				if (contentEntry is null)
