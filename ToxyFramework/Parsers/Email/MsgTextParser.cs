@@ -3,6 +3,7 @@ using PasswordProtectedChecker;
 using System;
 using System.IO;
 using System.Text;
+using Toxy.Base;
 
 namespace Toxy.Parsers
 {
@@ -12,21 +13,15 @@ namespace Toxy.Parsers
     /// <remarks>
     /// http://www.codeproject.com/Articles/19571/MsgReader-DLL
     /// </remarks>
-    public class MsgTextParser : PlainTextParser
+    public class MsgTextParser : BaseTextParser
     {
-        public MsgTextParser(ParserContext context)
-            : base(context)
-        {
-            this.Context = context;
-        }
+        public MsgTextParser(ParserContext context) : base(context)
+        { }
 
-        public override string Parse()
+        internal override string ParseText(Stream stream)
         {
-            Utility.ValidateContext(Context);
-
             StringBuilder result = new StringBuilder();
-            using (var stream = Utility.GetStream(Context))
-            using (var reader = new Storage.Message(stream))
+			using (Storage.Message reader = new Storage.Message(stream, FileAccess.Read, Context.IsStreamContext))
             {
                 if (reader.Sender != null)
                 {
@@ -39,7 +34,7 @@ namespace Toxy.Parsers
                     StringBuilder recipientTo = new StringBuilder();
                     StringBuilder recipientCc = new StringBuilder();
                     StringBuilder recipientBcc = new StringBuilder();
-                    foreach (var recipient in reader.Recipients)
+                    foreach (Storage.Recipient recipient in reader.Recipients)
                     {
                         string sRecipient = null;
                         if (string.IsNullOrEmpty(recipient.DisplayName))
@@ -79,12 +74,13 @@ namespace Toxy.Parsers
                         result.Append("[Bcc] ");
                         result.AppendLine(recipientBcc.ToString());
                     }
-
                 }
-                if (!string.IsNullOrEmpty(reader.Subject))
-                    result.AppendFormat("[Subject] {0}{1}", reader.Subject, Environment.NewLine);
+				if (!string.IsNullOrEmpty(reader.Subject))
+				{
+					result.AppendFormat("[Subject] {0}{1}", reader.Subject, Environment.NewLine);
+				}
 
-                result.AppendLine();
+				result.AppendLine();
                 result.AppendLine(reader.BodyText);
             }
             return result.ToString();

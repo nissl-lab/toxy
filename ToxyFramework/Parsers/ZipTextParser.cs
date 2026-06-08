@@ -20,7 +20,7 @@ namespace Toxy.Parsers
 		public ZipTextParser(ParserContext context) : base(context)
 		{ }
 
-		internal override string ParseText(out IDisposable disposable)
+		internal override string ParseText(Stream stream)
 		{
 			/* * NOTE ABOUT ENCRYPTION:
 			 * In the ZIP file specification, encryption is applied at the entry level, not to the archive container itself.
@@ -28,13 +28,10 @@ namespace Toxy.Parsers
 			 * Consequently, 'archive.IsEncrypted' may return false because the global directory doesn't always reflect the encryption status.
 			 * To reliably determine if a password is required, you must check the 'IsEncrypted' property of the individual entries.
 			*/
-
-			Stream stream = Utility.GetStream(Context);
 			// User Streams should not be closed!
 			ReaderOptions options = new ReaderOptions() { LeaveStreamOpen = Context.IsStreamContext };
 			IArchive archive = ArchiveFactory.OpenArchive(stream, options);
 			// set here to make sure it will get disposed even if we throw an exception
-			disposable = archive;
 			if (archive.IsEncrypted)
 			{
 				ThrowHelper.ThrowEncrypted(Context.Path);

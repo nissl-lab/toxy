@@ -243,5 +243,5 @@ namespace Toxy
                 _ => throw new NotSupportedException(string.Format("Format '{0}' is not supported for columnar parsing.", ext))
             };
         }
-    }
+	}
 }

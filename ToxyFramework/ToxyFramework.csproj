@@ -32,8 +32,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Parsers\Word2003DocumentParser.cs" />
-    <Compile Remove="Parsers\Word2003TextParser.cs" />
+    <Compile Remove="Parsers\Office\Word2003DocumentParser.cs" />
+    <Compile Remove="Parsers\Office\Word2003TextParser.cs" />
   </ItemGroup>
 
   <ItemGroup>
