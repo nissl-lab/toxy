@@ -3,27 +3,31 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.Extractor;
 using NPOI.XSSF.UserModel;
-using PasswordProtectedChecker;
-using System.IO;
+using System;
+using Toxy.Base;
 
 namespace Toxy.Parsers
 {
-	public class ExcelTextParser : PlainTextParser
+	public class ExcelTextParser : BaseTextParser
 	{
-		public ExcelTextParser(ParserContext context) : base(context)
-		{ }
-		public override string Parse()
+		public ExcelTextParser(ParserContext context) : base(context) { }
+		internal override string ParseText(out IDisposable disposable)
 		{
-			Utility.ValidateContext(Context);
+			disposable = null;
 			Utility.ThrowIfProtected(Context);
 
-			IWorkbook workbook = null;
-			try
+			IWorkbook workbook;
+			if (Context.IsStreamContext)
 			{
-				if (Context.IsStreamContext)
-					workbook = WorkbookFactory.Create(Context.Stream);
-				else
-					workbook = WorkbookFactory.Create(Context.Path);
+				workbook = WorkbookFactory.Create(Context.Stream);
+			}
+			else
+			{
+				workbook = WorkbookFactory.Create(Context.Path);
+			}
+			using (workbook)
+			{
+
 				bool extractHeaderFooter = false;
 				if (Context.Properties.ContainsKey("IncludeHeaderFooter"))
 				{
@@ -62,13 +66,6 @@ namespace Toxy.Parsers
 					extractor.IncludeSheetNames = includeSheetNames;
 					extractor.FormulasNotResults = !showCalculatedResult;
 					return extractor.Text;
-				}
-			}
-			finally
-			{
-				if (workbook != null)
-				{
-					workbook.Close();
 				}
 			}
 		}

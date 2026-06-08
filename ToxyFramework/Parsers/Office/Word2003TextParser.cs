@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+
 namespace Toxy.Parsers
 {
     public class Word2003TextParser : ITextParser

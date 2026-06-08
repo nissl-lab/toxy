@@ -3,6 +3,7 @@ using PasswordProtectedChecker;
 using System;
 using System.IO;
 using System.Text;
+using Toxy.Base;
 
 namespace Toxy.Parsers
 {
@@ -12,21 +13,22 @@ namespace Toxy.Parsers
     /// <remarks>
     /// http://www.codeproject.com/Articles/19571/MsgReader-DLL
     /// </remarks>
-    public class MsgTextParser : PlainTextParser
+    public class MsgTextParser : BaseTextParser
     {
-        public MsgTextParser(ParserContext context)
-            : base(context)
-        {
-            this.Context = context;
-        }
+        public MsgTextParser(ParserContext context) : base(context) { }
 
-        public override string Parse()
+        internal override string ParseText(out IDisposable disposable)
         {
             Utility.ValidateContext(Context);
 
+            disposable = null;
             StringBuilder result = new StringBuilder();
-            using (var stream = Utility.GetStream(Context))
-            using (var reader = new Storage.Message(stream))
+            Stream stream = Utility.GetStream(Context);
+            if (!Context.IsStreamContext)
+            {
+                disposable = stream;
+            }
+			using (Storage.Message reader = new Storage.Message(stream, FileAccess.Read, true))
             {
                 if (reader.Sender != null)
                 {

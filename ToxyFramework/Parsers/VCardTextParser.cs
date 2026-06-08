@@ -1,19 +1,21 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using Toxy.Base;
 using VCardReader;
 
 namespace Toxy.Parsers
 {
-	public class VCardTextParser : PlainTextParser
+	public class VCardTextParser : BaseTextParser
 	{
-		public VCardTextParser(ParserContext context) : base(context)
-		{ }
-		public override string Parse()
+		public VCardTextParser(ParserContext context) : base(context) { }
+		internal override string ParseText(out IDisposable disposable)
 		{
+			disposable = null;
 			Utility.ValidateContext(Context);
 
 			StringBuilder sb = new StringBuilder();
+			Stream stream = Utility.GetStream(Context);
 			StreamReader sr = new StreamReader(Utility.GetStream(Context), null, true, -1, Context.IsStreamContext);
 			try
 			{
