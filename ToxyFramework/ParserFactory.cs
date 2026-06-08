@@ -249,19 +249,8 @@ namespace Toxy
 
 		public static bool IsSupportedFileType(string fileName)
 		{
-			try
-			{
-				var fi = new FileInfo(fileName);
-				if (!parserMapping.ContainsKey(fi.Extension.ToLowerInvariant()))
-					throw new NotSupportedException("Extension " + fi.Extension + " is not supported");
-
-				string extension = fi.Extension.ToLowerInvariant();
-				return !string.IsNullOrWhiteSpace(extension);
-			}
-			catch
-			{
-				return false;
-			}
+			var fi = new FileInfo(fileName);
+			return parserMapping.ContainsKey(fi.Extension.ToLowerInvariant());
 		}
     }
 }
