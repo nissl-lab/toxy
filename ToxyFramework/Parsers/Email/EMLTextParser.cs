@@ -18,7 +18,7 @@ namespace Toxy.Parsers
 		public EMLTextParser(ParserContext context) : base(context)
 		{ }
 
-		internal override string ParseText(out IDisposable disposable)
+		internal override string ParseText(ref IDisposable disposable)
 		{
 			Stream stream = Utility.GetStream(Context);
 			disposable = Context.IsStreamContext ? null : stream;

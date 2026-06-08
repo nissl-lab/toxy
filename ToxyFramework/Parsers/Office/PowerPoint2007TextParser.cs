@@ -18,7 +18,7 @@ namespace Toxy.Parsers
 		{
 			this.Context = context;
 		}
-		internal override string ParseText(out IDisposable disposable)
+		internal override string ParseText(ref IDisposable disposable)
 		{
 			disposable = null;
 			Utility.ThrowIfProtected(Context);

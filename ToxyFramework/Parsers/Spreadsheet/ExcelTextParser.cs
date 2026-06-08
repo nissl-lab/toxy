@@ -11,7 +11,7 @@ namespace Toxy.Parsers
 	public class ExcelTextParser : BaseTextParser
 	{
 		public ExcelTextParser(ParserContext context) : base(context) { }
-		internal override string ParseText(out IDisposable disposable)
+		internal override string ParseText(ref IDisposable disposable)
 		{
 			disposable = null;
 			Utility.ThrowIfProtected(Context);

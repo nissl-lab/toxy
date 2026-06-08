@@ -15,7 +15,7 @@ namespace Toxy.Parsers
 		/// <param name="context">The <see cref="ParserContext"/> of the Parser.</param>
 		public RTFTextParser(ParserContext context) : base(context)
 		{ }
-		internal override string ParseText(out IDisposable disposable)
+		internal override string ParseText(ref IDisposable disposable)
 		{
 			Stream stream = Utility.GetStream(Context);
 			disposable = Context.IsStreamContext ? null : stream;

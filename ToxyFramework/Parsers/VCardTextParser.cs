@@ -9,11 +9,8 @@ namespace Toxy.Parsers
 	public class VCardTextParser : BaseTextParser
 	{
 		public VCardTextParser(ParserContext context) : base(context) { }
-		internal override string ParseText(out IDisposable disposable)
+		internal override string ParseText(ref IDisposable disposable)
 		{
-			disposable = null;
-			Utility.ValidateContext(Context);
-
 			StringBuilder sb = new StringBuilder();
 			Stream stream = Utility.GetStream(Context);
 			StreamReader sr = new StreamReader(Utility.GetStream(Context), null, true, -1, Context.IsStreamContext);

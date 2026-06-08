@@ -38,7 +38,7 @@ namespace Toxy.Base
 			IDisposable? disposable = null;
 			try
 			{
-				return ParseText(out disposable);
+				return ParseText(ref disposable);
 			}
 			finally
 			{
@@ -53,7 +53,7 @@ namespace Toxy.Base
 		/// <param name="disposable">An optional <see cref="IDisposable"/>, which should be disposed at the end of parsing.
 		/// It will be disposed if an <see cref="Exception"/> will be thrown.</param>
 		/// <returns>Returns the extracted Text.</returns>
-		internal abstract string ParseText(out IDisposable? disposable);
+		internal abstract string ParseText(ref IDisposable? disposable);
 #nullable disable
 	}
 }

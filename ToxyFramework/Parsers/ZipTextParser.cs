@@ -20,7 +20,7 @@ namespace Toxy.Parsers
 		public ZipTextParser(ParserContext context) : base(context)
 		{ }
 
-		internal override string ParseText(out IDisposable disposable)
+		internal override string ParseText(ref IDisposable disposable)
 		{
 			/* * NOTE ABOUT ENCRYPTION:
 			 * In the ZIP file specification, encryption is applied at the entry level, not to the archive container itself.

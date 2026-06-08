@@ -1,18 +1,17 @@
 ﻿using HtmlAgilityPack;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
+using Toxy.Base;
 using VersOne.Epub;
 
 namespace Toxy.Parsers
 {
-	public sealed class EPUBTextParser : ITextParser
+	public sealed class EPUBTextParser : BaseTextParser
 	{
-		public EPUBTextParser(ParserContext context)
-		{
-			Context = context;
-		}
-		public ParserContext Context { get; set; }
-		public string Parse()
+		public EPUBTextParser(ParserContext context) : base(context) { }
+
+		internal override string ParseText(ref IDisposable disposable)
 		{
 			EpubBook book = EPUBHelper.GetEpubBook(Context);
 			StringBuilder result = new StringBuilder();

@@ -17,10 +17,8 @@ namespace Toxy.Parsers
     {
         public MsgTextParser(ParserContext context) : base(context) { }
 
-        internal override string ParseText(out IDisposable disposable)
+        internal override string ParseText(ref IDisposable disposable)
         {
-            Utility.ValidateContext(Context);
-
             disposable = null;
             StringBuilder result = new StringBuilder();
             Stream stream = Utility.GetStream(Context);
@@ -41,7 +39,7 @@ namespace Toxy.Parsers
                     StringBuilder recipientTo = new StringBuilder();
                     StringBuilder recipientCc = new StringBuilder();
                     StringBuilder recipientBcc = new StringBuilder();
-                    foreach (var recipient in reader.Recipients)
+                    foreach (Storage.Recipient recipient in reader.Recipients)
                     {
                         string sRecipient = null;
                         if (string.IsNullOrEmpty(recipient.DisplayName))
@@ -81,12 +79,13 @@ namespace Toxy.Parsers
                         result.Append("[Bcc] ");
                         result.AppendLine(recipientBcc.ToString());
                     }
-
                 }
-                if (!string.IsNullOrEmpty(reader.Subject))
-                    result.AppendFormat("[Subject] {0}{1}", reader.Subject, Environment.NewLine);
+				if (!string.IsNullOrEmpty(reader.Subject))
+				{
+					result.AppendFormat("[Subject] {0}{1}", reader.Subject, Environment.NewLine);
+				}
 
-                result.AppendLine();
+				result.AppendLine();
                 result.AppendLine(reader.BodyText);
             }
             return result.ToString();
