@@ -4,32 +4,20 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Xml.Linq;
+using Toxy.Base;
 
 namespace Toxy.Parsers
 {
-	public class OpenDocumentTextParser : ITextParser
+	public class OpenDocumentTextParser : BaseTextParser
 	{
-		public ParserContext Context { get; set; }
 
-		public OpenDocumentTextParser(ParserContext context)
+		public OpenDocumentTextParser(ParserContext context) : base(context)
+		{ }
+
+		internal override string ParseText(Stream stream)
 		{
-			Context = context;
-		}
-#nullable enable
-		public string Parse()
-		{
-			Utility.ValidateContext(Context);
-			ZipArchive archive;
-			if (!Context.IsStreamContext)
-			{
-				archive = ZipFile.OpenRead(Context.Path);
-			}
-			else
-			{
-				// we need to let the stream open, which was passed by the user!
-				archive = new ZipArchive(Context.Stream, ZipArchiveMode.Read, true);
-			}
-			using (archive)
+			// we need to let the stream open, which was passed by the user!
+			using (ZipArchive archive = new ZipArchive(Context.Stream, ZipArchiveMode.Read, Context.IsStreamContext))
 			{
 				ZipArchiveEntry? contentEntry = archive.GetEntry("content.xml");
 				if (contentEntry is null)
@@ -39,17 +27,18 @@ namespace Toxy.Parsers
 				}
 				using (Stream contentStream = contentEntry.Open())
 				{
-					return ParseText(XDocument.Load(contentStream));
+					return ParseODFText(XDocument.Load(contentStream));
 				}
 			}
 		}
+
 		/// <summary>
 		/// Parses the Text of the ODF File.
 		/// The default implementation can extract the Text of the Basic Formats.
 		/// </summary>
 		/// <param name="stream">The Content <see cref="Stream"/> of the ODF File.</param>
 		/// <returns>Returns the Text of the ODF File.</returns>
-		internal virtual string ParseText(XDocument document)
+		protected virtual string ParseODFText(XDocument document)
 		{
 			XNamespace textNs = "urn:oasis:names:tc:opendocument:xmlns:text:1.0";
 			// Leads to unexpected results at the moment
@@ -59,6 +48,5 @@ namespace Toxy.Parsers
 			IEnumerable<XElement> paragraphs = document.Descendants().Where(x => x.Name == pName || x.Name == hName);
 			return string.Join(Environment.NewLine, paragraphs.Select(p => p.Value));
 		}
-#nullable restore
 	}
 }

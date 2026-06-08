@@ -21,18 +21,8 @@ namespace Toxy.Parsers
 
 		internal override string ParseText(Stream stream)
 		{
-			IWorkbook workbook;
-			if (Context.IsStreamContext)
+			using (IWorkbook workbook = WorkbookFactory.Create(stream))
 			{
-				workbook = WorkbookFactory.Create(Context.Stream);
-			}
-			else
-			{
-				workbook = WorkbookFactory.Create(Context.Path);
-			}
-			using (workbook)
-			{
-
 				bool extractHeaderFooter = false;
 				if (Context.Properties.ContainsKey("IncludeHeaderFooter"))
 				{

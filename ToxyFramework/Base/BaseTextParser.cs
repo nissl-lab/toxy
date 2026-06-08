@@ -21,7 +21,6 @@ namespace Toxy.Base
 			Context = context;
 		}
 
-#nullable enable
         internal virtual void ValidateContext()
 		{
 		    Utility.ValidateContext(Context);
@@ -60,6 +59,5 @@ namespace Toxy.Base
 		/// It will be disposed if an <see cref="Exception"/> will be thrown.</param>
 		/// <returns>Returns the extracted Text.</returns>
 		internal abstract string ParseText(Stream stream);
-#nullable disable
 	}
 }
