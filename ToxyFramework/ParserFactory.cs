@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Toxy.Parsers;
 
 namespace Toxy
@@ -9,7 +10,7 @@ namespace Toxy
     {
         private ParserFactory() { }
         private readonly static Dictionary<string, List<Type>> parserMapping = new Dictionary<string, List<Type>>(50, StringComparer.OrdinalIgnoreCase);
-
+		
         static ParserFactory()
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -243,5 +244,11 @@ namespace Toxy
                 _ => throw new NotSupportedException(string.Format("Format '{0}' is not supported for columnar parsing.", ext))
             };
         }
+
+		public static bool IsSupportedFileType(string fileName)
+		{
+		    string extension = Path.GetExtension(fileName);
+			return parserMapping.ContainsKey(extension);
+		}
     }
 }
