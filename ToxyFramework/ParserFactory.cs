@@ -10,8 +10,6 @@ namespace Toxy
     {
         private ParserFactory() { }
         private readonly static Dictionary<string, List<Type>> parserMapping = new Dictionary<string, List<Type>>(50, StringComparer.OrdinalIgnoreCase);
-
-		public static IList<string> SupportedFileTypes => parserMapping.Keys.ToList();
 		
         static ParserFactory()
         {
@@ -249,8 +247,8 @@ namespace Toxy
 
 		public static bool IsSupportedFileType(string fileName)
 		{
-			var fi = new FileInfo(fileName);
-			return parserMapping.ContainsKey(fi.Extension.ToLowerInvariant());
+		    string extension = Path.GetExtension(fileName);
+			return parserMapping.ContainsKey(extension);
 		}
     }
 }
