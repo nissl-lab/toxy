@@ -1,26 +1,22 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using Toxy.Base;
 using VCardReader;
 
 namespace Toxy.Parsers
 {
-	public class VCardTextParser : PlainTextParser
+	public class VCardTextParser : BaseTextParser
 	{
-		public VCardTextParser(ParserContext context) : base(context)
-		{ }
-		public override string Parse()
+		public VCardTextParser(ParserContext context) : base(context) { }
+		internal override string ParseText(Stream stream)
 		{
-			Utility.ValidateContext(Context);
-
 			StringBuilder sb = new StringBuilder();
-			StreamReader sr = new StreamReader(Utility.GetStream(Context), null, true, -1, Context.IsStreamContext);
-			try
+			using (StreamReader sr = new StreamReader(stream, null, true, -1, Context.IsStreamContext))
 			{
 				while (!sr.EndOfStream)
 				{
-					var card = new VCard(sr);
-
+					VCard card = new VCard(sr);
 					if (!string.IsNullOrEmpty(card.FormattedName))
 						sb.AppendFormat("[Full Name]{0}" + Environment.NewLine, card.FormattedName);
 					if (!string.IsNullOrEmpty(card.GivenName))
@@ -52,7 +48,7 @@ namespace Toxy.Parsers
 					if (card.DeliveryAddresses.Count > 0)
 					{
 						sb.AppendLine("[Addresses]");
-						foreach (var dAddr in card.DeliveryAddresses)
+						foreach (DeliveryAddress dAddr in card.DeliveryAddresses)
 						{
 							sb.Append(dAddr.AddressType + ":");
 							if (!string.IsNullOrEmpty(dAddr.Street))
@@ -70,7 +66,7 @@ namespace Toxy.Parsers
 					if (card.Phones.Count > 0)
 					{
 						sb.AppendLine("[Phones]");
-						foreach (var vphone in card.Phones)
+						foreach (Phone vphone in card.Phones)
 						{
 							sb.AppendFormat("{0}:{1}" + Environment.NewLine, vphone.PhoneType, vphone.FullNumber);
 						}
@@ -78,7 +74,7 @@ namespace Toxy.Parsers
 					if (card.EmailAddresses.Count > 0)
 					{
 						sb.AppendLine("[Emails]");
-						foreach (var vEmail in card.EmailAddresses)
+						foreach (EmailAddress vEmail in card.EmailAddresses)
 						{
 							sb.AppendFormat("{0}:{1}" + Environment.NewLine, vEmail.EmailType, vEmail.Address);
 						}
@@ -86,19 +82,15 @@ namespace Toxy.Parsers
 					if (card.Websites.Count > 0)
 					{
 						sb.AppendLine("[Websites]");
-						foreach (var vWebsite in card.Websites)
+						foreach (Website vWebsite in card.Websites)
 						{
 							sb.AppendLine(vWebsite.Url);
 						}
 					}
 					sb.AppendLine();
 				}
+				return sb.ToString();
 			}
-			finally
-			{
-				sr.Dispose();
-			}
-			return sb.ToString();
 		}
 	}
 }

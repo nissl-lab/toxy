@@ -10,7 +10,7 @@ namespace Toxy.Parsers
 		public ODSTextParser(ParserContext context) : base(context)
 		{ }
 
-		internal override string ParseText(XDocument document)
+		protected override string ParseODFText(XDocument document)
 		{
 			// this implementation needs to be different to the Base implementation to get the Name of the Table etc.
 			XNamespace tableNs = "urn:oasis:names:tc:opendocument:xmlns:table:1.0";

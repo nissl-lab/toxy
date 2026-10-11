@@ -1,20 +1,22 @@
-﻿using HtmlAgilityPack;
+﻿using DocumentFormat.OpenXml.InkML;
+using HtmlAgilityPack;
+using System;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using Toxy.Base;
 using VersOne.Epub;
 
 namespace Toxy.Parsers
 {
-	public sealed class EPUBTextParser : ITextParser
+	public sealed class EPUBTextParser : BaseTextParser
 	{
-		public EPUBTextParser(ParserContext context)
+		public EPUBTextParser(ParserContext context) : base(context)
+		{ }
+
+		internal override string ParseText(Stream stream)
 		{
-			Context = context;
-		}
-		public ParserContext Context { get; set; }
-		public string Parse()
-		{
-			EpubBook book = EPUBHelper.GetEpubBook(Context);
+			EpubBook book = EpubReader.ReadBook(stream);
 			StringBuilder result = new StringBuilder();
 			HtmlDocument html = new HtmlDocument();
 			Regex whiteSpaceStart = new Regex("^\\s*", RegexOptions.Multiline);
