@@ -1,6 +1,4 @@
-﻿using DocumentFormat.OpenXml.Math;
-using MathNet.Numerics.LinearAlgebra;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using System;
 
@@ -122,7 +120,7 @@ namespace Toxy.Test
             ClassicAssert.IsNotNull(ss2.Tables[0].PageHeader);
             ClassicAssert.AreEqual("|testdoc|test phrase", ss2.Tables[0].PageHeader);
         }
-        public void BaseTestFillBlankCells(string filename)
+        public void BaseTestFillBlankCells(string filename, int expectedColumnCount = 4)
         {
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
@@ -136,11 +134,11 @@ namespace Toxy.Test
             parser.Context.Properties.Add("FillBlankCells", "1");
             ToxySpreadsheet ss2 = parser.Parse();
             
-            ClassicAssert.AreEqual(4, ss2.Tables[0][1].Length);
-            ClassicAssert.AreEqual(4, ss2.Tables[0][2].Length);
-            ClassicAssert.AreEqual(4, ss2.Tables[0][3].Length);
-            ClassicAssert.AreEqual(4, ss2.Tables[0][4].Length);
-            ClassicAssert.AreEqual(4, ss2.Tables[0][5].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][1].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][2].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][3].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][4].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][5].Length);
         }
 
         public void BaseTestExcelContent(string filename)

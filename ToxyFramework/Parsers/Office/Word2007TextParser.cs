@@ -1,5 +1,5 @@
-﻿using NPOI.XWPF.UserModel;
-using System;
+﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using System.IO;
 using System.Text;
 using Toxy.Base;
@@ -31,37 +31,40 @@ namespace Toxy.Parsers
 			}
 
 			StringBuilder sb = new StringBuilder();
-			using (XWPFDocument worddoc = new XWPFDocument(stream))
+			using (WordprocessingDocument worddoc = WordprocessingDocument.Open(stream, false))
 			{
-				if (extractHeader && worddoc.HeaderList != null)
+				MainDocumentPart mainPart = worddoc.MainDocumentPart;
+				if (extractHeader && mainPart != null)
 				{
-					foreach (XWPFHeader header in worddoc.HeaderList)
+					foreach (HeaderPart headerPart in mainPart.HeaderParts)
 					{
 						sb.Append("[Header] ");
-						sb.AppendLine(header.Text);
+						sb.AppendLine(WordprocessingText.GetText(headerPart.Header));
 					}
 				}
-				foreach (IBodyElement elem in worddoc.BodyElements)
+
+				Body body = mainPart?.Document?.Body;
+				if (body != null)
 				{
-					if (elem is XWPFParagraph)
+					foreach (var block in WordprocessingText.GetBlocks(body))
 					{
-						XWPFParagraph para = elem as XWPFParagraph;
-						string text = para.ParagraphText;
-						sb.AppendLine(text);
-					}
-					else if (elem is XWPFTable)
-					{
-						XWPFTable table = elem as XWPFTable;
-						string text = table.Text;
-						sb.AppendLine(text);
+						if (block is Paragraph paragraph)
+						{
+							sb.AppendLine(WordprocessingText.GetText(paragraph));
+						}
+						else if (block is Table table)
+						{
+							sb.AppendLine(WordprocessingText.GetText(table));
+						}
 					}
 				}
-				if (extractFooter && worddoc.FooterList != null)
+
+				if (extractFooter && mainPart != null)
 				{
-					foreach (XWPFFooter footer in worddoc.FooterList)
+					foreach (FooterPart footerPart in mainPart.FooterParts)
 					{
 						sb.Append("[Footer] ");
-						sb.AppendLine(footer.Text);
+						sb.AppendLine(WordprocessingText.GetText(footerPart.Footer));
 					}
 				}
 			}
