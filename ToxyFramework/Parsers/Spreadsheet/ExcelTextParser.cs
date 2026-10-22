@@ -1,13 +1,13 @@
-﻿using NPOI.HSSF.Extractor;
-using NPOI.HSSF.UserModel;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.Extractor;
-using NPOI.XSSF.UserModel;
-using System.IO;
+﻿using System.IO;
+using System.Text;
 using Toxy.Base;
+using Toxy.Parsers.Excel;
 
 namespace Toxy.Parsers
 {
+	/// <summary>
+	/// Extracts the text of .xlsx (Open XML SDK) and .xls (ExcelDataReader) workbooks.
+	/// </summary>
 	public class ExcelTextParser : BaseTextParser
 	{
 		public ExcelTextParser(ParserContext context) : base(context)
@@ -21,48 +21,18 @@ namespace Toxy.Parsers
 
 		internal override string ParseText(Stream stream)
 		{
-			using (IWorkbook workbook = WorkbookFactory.Create(stream))
-			{
-				bool extractHeaderFooter = false;
-				if (Context.Properties.ContainsKey("IncludeHeaderFooter"))
-				{
-					extractHeaderFooter = Utility.IsTrue(Context.Properties["IncludeHeaderFooter"]);
-				}
-				bool showCalculatedResult = false;
-				if (Context.Properties.ContainsKey("ShowCalculatedResult"))
-				{
-					showCalculatedResult = Utility.IsTrue(Context.Properties["ShowCalculatedResult"]);
-				}
-				bool includeSheetNames = true;
-				if (Context.Properties.ContainsKey("IncludeSheetNames"))
-				{
-					includeSheetNames = Utility.IsTrue(Context.Properties["IncludeSheetNames"]);
-				}
-				bool includeComment = true;
-				if (Context.Properties.ContainsKey("IncludeComments"))
-				{
-					includeComment = Utility.IsTrue(Context.Properties["IncludeComments"]);
-				}
+			ExcelParseOptions options = ExcelParseOptions.From(Context);
+			StringBuilder builder = new StringBuilder();
 
-				if (workbook is XSSFWorkbook xssWorkbook)
+			// the stream is disposed by BaseTextParser
+			using (IWorkbookReader workbook = WorkbookReaderFactory.Open(stream, ownsStream: false))
+			{
+				for (int i = 0; i < workbook.SheetCount; i++)
 				{
-					XSSFExcelExtractor extractor = new XSSFExcelExtractor(xssWorkbook);
-					extractor.IncludeHeadersFooters = extractHeaderFooter;
-					extractor.IncludeCellComments = includeComment;
-					extractor.IncludeSheetNames = includeSheetNames;
-					extractor.FormulasNotResults = !showCalculatedResult;
-					return extractor.Text;
-				}
-				else //if (workbook is HSSFWorkbook)
-				{
-					ExcelExtractor extractor = new ExcelExtractor((HSSFWorkbook)workbook);
-					extractor.IncludeHeadersFooters = extractHeaderFooter;
-					extractor.IncludeCellComments = includeComment;
-					extractor.IncludeSheetNames = includeSheetNames;
-					extractor.FormulasNotResults = !showCalculatedResult;
-					return extractor.Text;
+					ExcelTextWriter.AppendSheet(builder, workbook.ReadSheet(i), options);
 				}
 			}
+			return builder.ToString();
 		}
 	}
 }

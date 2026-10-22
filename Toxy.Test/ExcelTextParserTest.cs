@@ -1,5 +1,4 @@
-﻿using NPOI.HPSF;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
 
 namespace Toxy.Test

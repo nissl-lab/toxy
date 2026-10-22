@@ -30,10 +30,9 @@ namespace Toxy
             parserMapping.Add(".csv", typeCSV);
 
             #region Office Formats
-            var typeXls = new List<Type>(3);
+            var typeXls = new List<Type>(2);
             typeXls.Add(typeof(ExcelSpreadsheetParser));
             typeXls.Add(typeof(ExcelTextParser));
-            typeXls.Add(typeof(OLE2MetadataParser));
             parserMapping.Add(".xls", typeXls);
 
             var typeXlsx = new List<Type>(3);
@@ -42,14 +41,6 @@ namespace Toxy
             typeXlsx.Add(typeof(OOXMLMetadataParser));
             parserMapping.Add(".xlsx", typeXlsx);
 
-
-            var typeOLE2 = new List<Type>(1);
-            typeOLE2.Add(typeof(OLE2MetadataParser));
-            parserMapping.Add(".ppt", typeOLE2);
-            parserMapping.Add(".vsd", typeOLE2);
-            parserMapping.Add(".pub", typeOLE2);
-            parserMapping.Add(".shw", typeOLE2);
-            parserMapping.Add(".sldprt", typeOLE2);
 
             var typePptx = new List<Type>(3);
             typePptx.Add(typeof(Powerpoint2007TextParser));
@@ -62,12 +53,6 @@ namespace Toxy
             parserMapping.Add(".pubx", typeOOXML);
             parserMapping.Add(".vsdx", typeOOXML);
 
-/*            var typeDoc = new List<Type>();
-            typeDoc.Add(typeof(Word2003DocumentParser));
-            typeDoc.Add(typeof(Word2003TextParser));
-            typeDoc.Add(typeof(OLE2MetadataParser));
-            parserMapping.Add(".doc", typeDoc);
-*/
             var typeDocx = new List<Type>(3);
             typeDocx.Add(typeof(Word2007TextParser));
             typeDocx.Add(typeof(Word2007DocumentParser));
