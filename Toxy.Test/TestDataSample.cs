@@ -43,6 +43,10 @@ namespace Toxy.Test
         {
             return GetFilePath(filename, "Image");
         }
+        public static string GetOLE2Path(string filename)
+        {
+            return GetFilePath(filename, "ole2");
+        }
         public static string GetOOXMLPath(string filename)
         {
             return GetFilePath(filename, "ooxml");

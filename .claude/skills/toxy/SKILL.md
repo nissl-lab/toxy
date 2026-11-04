@@ -14,7 +14,7 @@ Toxy is a .NET data/text extraction framework (similar to Apache Tika for Java).
 - Added **EPUB parser** (text and metadata)
 - Added **columnar spreadsheets** (`ParserFactory.CreateColumnarSpreadsheet`, csv/xls/xlsx)
 - **NPOI removed**: `.xlsx` and `.docx` are read with the Open XML SDK (`DocumentFormat.OpenXml`), `.xls` with ExcelDataReader
-- **Removed with NPOI**: the OLE2 metadata parser (`.ppt`, `.vsd`, `.pub`, `.shw`, `.sldprt` and metadata of `.xls`). Legacy Word `.doc` is not supported
+- **OLE2 metadata** (`.xls`, `.ppt`, `.vsd`, `.pub`, `.shw`, `.sldprt`) is read by a native compound file reader (`Toxy.Ole`) instead of NPOI. Legacy Word `.doc` is not supported
 - All parsers live in the `Toxy` namespace
 
 ---
@@ -84,7 +84,7 @@ IColumnarSpreadsheetParser cols  = ParserFactory.CreateColumnarSpreadsheet(conte
 | `ToxyBusinessCards` | List of `ToxyBusinessCard` | vcf |
 | `ToxySlideshow` | Slides with texts and notes | pptx |
 | `ToxyDom` | DOM tree | html, xml |
-| `ToxyMetadata` | Name/value properties | Office Open XML, OpenDocument, epub, eml, audio, images |
+| `ToxyMetadata` | Name/value properties | Office Open XML, legacy OLE2 (xls, ppt, vsd, pub, shw, sldprt), OpenDocument, epub, eml, audio, images |
 
 ---
 
@@ -274,9 +274,10 @@ ToxyNode title = dom.Root.SingleSelect("//title");
 |---|---|---|
 | Word (Open XML) | `.docx` | Text, Document, Metadata |
 | Excel (Open XML) | `.xlsx` | Text, Spreadsheet, ColumnarSpreadsheet, Metadata |
-| Excel (Legacy) | `.xls` | Text, Spreadsheet, ColumnarSpreadsheet |
+| Excel (Legacy) | `.xls` | Text, Spreadsheet, ColumnarSpreadsheet, Metadata |
 | PowerPoint (Open XML) | `.pptx` | Text, Slideshow, Metadata |
 | Visio / Publisher (Open XML) | `.vsdx`, `.pubx` | Metadata |
+| Legacy OLE2 files | `.ppt`, `.vsd`, `.pub`, `.shw`, `.sldprt` | Metadata |
 | PDF | `.pdf` | Text, Document, Spreadsheet |
 | Plain Text | `.txt` | Text |
 | CSV | `.csv` | Text, Spreadsheet, ColumnarSpreadsheet |
@@ -292,7 +293,7 @@ ToxyNode title = dom.Root.SingleSelect("//title");
 | Audio | `.mp3`, `.ape`, `.wma`, `.flac`, `.aif` | Metadata |
 | Images | `.jpg`, `.jpeg`, `.png`, `.gif`, `.tif`, `.tiff` | Metadata |
 
-**Not supported**: legacy binary Office files other than `.xls` (`.doc`, `.ppt`, `.vsd`, `.pub`), including their metadata.
+**Not supported**: legacy Word `.doc` files, and the content (text) of the legacy OLE2 formats above, only their metadata is read.
 
 ---
 
