@@ -40,16 +40,17 @@
     <PackageReference Include="Apache.Arrow" Version="23.0.0" />
     <PackageReference Include="CsvHelper" Version="33.1.0" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="3.5.1" />
-    <PackageReference Include="FileSignatures" Version="7.2.1" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
-    <PackageReference Include="MimeKit" Version="4.17.0" />
-    <PackageReference Include="MsgReader" Version="6.0.12" />
-    <PackageReference Include="NPOI" Version="2.7.5" />
+    <PackageReference Include="FileSignatures" Version="7.3.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.13.1" />
+    <PackageReference Include="MimeKit" Version="4.18.2" />
+    <PackageReference Include="MsgReader" Version="6.2.0" />
+    <PackageReference Include="NPOI" Version="2.8.1" />
     <PackageReference Include="Parquet.Net" Version="5.5.0" />
     <PackageReference Include="PasswordProtectedChecker" Version="2.1.7" />
-    <PackageReference Include="PdfPig" Version="0.1.14" />
-    <PackageReference Include="ReasonableRTF.Standard" Version="2026.6.0" />
-    <PackageReference Include="SharpCompress" Version="0.49.1" />
+    <PackageReference Include="PdfPig" Version="0.1.16" />
+    <PackageReference Include="ReasonableRTF.Standard" Version="2026.10.0" />
+    <PackageReference Include="SharpCompress" Version="0.50.8" />
+    <PackageReference Include="SkiaSharp" Version="3.119.4" />
     <PackageReference Include="Tabula" Version="1.0.1" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
     <PackageReference Include="VCardReader" Version="1.2.3" />
