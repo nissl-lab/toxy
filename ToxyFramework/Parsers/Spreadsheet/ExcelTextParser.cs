@@ -6,7 +6,7 @@ using Toxy.Parsers.Excel;
 namespace Toxy.Parsers
 {
 	/// <summary>
-	/// Extracts the text of .xlsx (Open XML SDK) and .xls (ExcelDataReader) workbooks.
+	/// Extracts the text of .xlsx and .xls workbooks with ExcelDataReader.
 	/// </summary>
 	public class ExcelTextParser : BaseTextParser
 	{

@@ -4,7 +4,7 @@ using Toxy.Parsers.Excel;
 namespace Toxy.Parsers
 {
 	/// <summary>
-	/// Parses .xlsx (Open XML SDK) and .xls (ExcelDataReader) workbooks into a <see cref="ToxySpreadsheet"/>.
+	/// Parses .xlsx and .xls workbooks with ExcelDataReader into a <see cref="ToxySpreadsheet"/>.
 	/// </summary>
 	public class ExcelSpreadsheetParser : ISpreadsheetParser
 	{

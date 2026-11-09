@@ -59,7 +59,7 @@ namespace Toxy.Test
             base.BaseTestExcelContent("Employee.xls");
         }
         [Test]
-        [Ignore("Cell comments of .xls files are not supported, ExcelDataReader does not expose them")]
+        [Ignore("Cell comments are not supported, ExcelDataReader does not expose them")]
         public void TestExcelWithComments()
         {
             base.BaseTestExcelComment("comments.xls");

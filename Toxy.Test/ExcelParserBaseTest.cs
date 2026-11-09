@@ -22,7 +22,7 @@ namespace Toxy.Test
             ClassicAssert.IsNotNull(ss2.Tables[0].PageFooter);
             ClassicAssert.AreEqual("testdoc|test phrase|",ss2.Tables[0].PageFooter);
         }
-        public void BaseTestWithoutHeader(string filename)
+        public void BaseTestWithoutHeader(string filename, int expectedLength = 9)
         {
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
@@ -30,7 +30,7 @@ namespace Toxy.Test
             ClassicAssert.IsNull(ss.Tables[0].PageHeader);
 
             ClassicAssert.AreEqual(0, ss.Tables[0].HeaderRows.Count);
-            ClassicAssert.AreEqual(9, ss.Tables[0].Length);
+            ClassicAssert.AreEqual(expectedLength, ss.Tables[0].Length);
         }
         public void BaseTestWithHeaderRow(string filename)
         {

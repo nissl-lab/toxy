@@ -9,47 +9,11 @@ using System.IO;
 namespace Toxy.Test
 {
     /// <summary>
-    /// Tests for .xlsx features which are not covered by the files in testdata, the workbooks are created in memory.
+    /// Tests for .xlsx features read by ExcelDataReader which are not covered by the files in testdata, the workbooks are created in memory.
     /// </summary>
     [TestFixture]
-    public class OpenXmlWorkbookReaderTest
+    public class XlsxWorkbookTest
     {
-        [Test]
-        public void TestSharedFormula()
-        {
-            // B1:B2 share the formula of B1, only B1 stores the formula text
-            MemoryStream stream = CreateWorkbook(false, null, sheetData =>
-            {
-                sheetData.Append(new Row(
-                    new Cell { CellReference = "A1", CellValue = new CellValue("1") },
-                    new Cell
-                    {
-                        CellReference = "B1",
-                        CellFormula = new CellFormula("A1*2") { FormulaType = CellFormulaValues.Shared, Reference = "B1:B2", SharedIndex = 0 },
-                        CellValue = new CellValue("2")
-                    }) { RowIndex = 1 });
-                sheetData.Append(new Row(
-                    new Cell { CellReference = "A2", CellValue = new CellValue("2") },
-                    new Cell
-                    {
-                        CellReference = "B2",
-                        CellFormula = new CellFormula { FormulaType = CellFormulaValues.Shared, SharedIndex = 0 },
-                        CellValue = new CellValue("4")
-                    }) { RowIndex = 2 });
-            });
-
-            ParserContext context = new ParserContext(stream);
-            context.Properties.Add("IncludeSheetNames", "0");
-            string result = ParserFactory.CreateText(context).Parse();
-            ClassicAssert.IsTrue(result.Contains("1\tA1*2"));
-            ClassicAssert.IsTrue(result.Contains("2\t4"));
-
-            context.Properties.Add("ShowCalculatedResult", "1");
-            result = ParserFactory.CreateText(context).Parse();
-            ClassicAssert.IsTrue(result.Contains("1\t2"));
-            ClassicAssert.IsTrue(result.Contains("2\t4"));
-        }
-
         [Test]
         public void TestDate1904()
         {

@@ -1,4 +1,4 @@
-using ExcelDataReader;
+﻿using ExcelDataReader;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.IO;
 namespace Toxy.Parsers.Excel
 {
 	/// <summary>
-	/// Reads legacy binary workbooks (.xls) with ExcelDataReader.
+	/// Reads .xls and .xlsx workbooks with ExcelDataReader.
 	/// </summary>
 	/// <remarks>
 	/// ExcelDataReader is a forward-only reader which does not expose cell comments and formulas,
@@ -24,7 +24,7 @@ namespace Toxy.Parsers.Excel
 		{
 			_stream = stream;
 			_ownsStream = ownsStream;
-			_reader = ExcelReaderFactory.CreateBinaryReader(stream);
+			_reader = ExcelReaderFactory.CreateReader(stream);
 		}
 
 		public int SheetCount => _reader.ResultsCount;
@@ -33,7 +33,7 @@ namespace Toxy.Parsers.Excel
 		{
 			if (index < _currentSheet)
 			{
-				throw new InvalidOperationException("The sheets of an .xls workbook can only be read in ascending order.");
+				throw new InvalidOperationException("The sheets of a workbook can only be read in ascending order.");
 			}
 			while (_currentSheet < index)
 			{
@@ -59,7 +59,7 @@ namespace Toxy.Parsers.Excel
 					{
 						continue;
 					}
-					string text = CellValueFormatter.Format(value, _reader.GetNumberFormatString(column));
+					string text = CellValueFormatter.Format(value, GetNumberFormat(column));
 					cells.Add(new CellData(column, text, null, null, null));
 				}
 				rows.Add(new RowData(rowIndex, cells));
@@ -97,7 +97,7 @@ namespace Toxy.Parsers.Excel
 
 		/// <summary>
 		/// The reader reports every row of the used area, which is also true for empty rows before and after the data.
-		/// Only empty rows between data rows are kept, so the result matches the rows an .xlsx workbook reports.
+		/// Only empty rows between data rows are kept.
 		/// </summary>
 		private static void TrimEmptyRows(List<RowData> rows)
 		{
@@ -111,6 +111,16 @@ namespace Toxy.Parsers.Excel
 				leading++;
 			}
 			rows.RemoveRange(0, leading);
+		}
+
+		/// <summary>
+		/// ExcelDataReader reports its own format codes for the built-in number formats (e.g. "d/m/yyyy" for id 14),
+		/// the format codes of ECMA-376 are used instead, so the output does not depend on the reader.
+		/// </summary>
+		private string GetNumberFormat(int column)
+		{
+			return CellValueFormatter.GetBuiltInFormat(_reader.GetNumberFormatIndex(column))
+				?? _reader.GetNumberFormatString(column);
 		}
 	}
 }

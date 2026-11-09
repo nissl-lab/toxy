@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 
 namespace Toxy.Parsers.Excel
@@ -13,7 +13,7 @@ namespace Toxy.Parsers.Excel
 
 		static WorkbookReaderFactory()
 		{
-			// legacy .xls files store text in code pages
+			// .xls files store text in code pages
 			System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 		}
 
@@ -47,11 +47,7 @@ namespace Toxy.Parsers.Excel
 				}
 				stream.Position = 0;
 
-				if (StartsWith(stream, ZipSignature))
-				{
-					return new OpenXmlWorkbookReader(stream, ownsStream);
-				}
-				if (StartsWith(stream, Ole2Signature))
+				if (StartsWith(stream, ZipSignature) || StartsWith(stream, Ole2Signature))
 				{
 					return new ExcelDataReaderWorkbookReader(stream, ownsStream);
 				}
