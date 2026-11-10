@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using System;
+using System.IO;
 
 namespace Toxy.Test
 {
@@ -217,7 +218,13 @@ namespace Toxy.Test
 
         public void TestStreamForSpreadsheetParser(string filename)
         {
-            ParserContext context = new ParserContext(TestDataSample.GetFileStream(filename,"Excel"));
+            // the parser leaves a stream passed in by the caller open, the caller has to dispose it
+            using (Stream stream = TestDataSample.GetFileStream(filename, "Excel"))
+            {
+                ParserContext context = new ParserContext(stream);
+                ToxySpreadsheet ss = ParserFactory.CreateSpreadsheet(context).Parse();
+                ClassicAssert.IsTrue(ss.Tables.Count > 0);
+            }
         }
         public void TestEncryptedExcel(string filename)
         {

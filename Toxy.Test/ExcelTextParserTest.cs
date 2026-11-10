@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
+using System.IO;
 
 namespace Toxy.Test
 {
@@ -65,9 +66,12 @@ namespace Toxy.Test
         [Test]
         public void TestStreamForTextParser()
         {
-            ParserContext context = new ParserContext(TestDataSample.GetFileStream("WithVariousData.xlsx", "Excel"));
-            var parser = ParserFactory.CreateText(context);
-            var result = parser.Parse();
+            using (Stream stream = TestDataSample.GetFileStream("WithVariousData.xlsx", "Excel"))
+            {
+                ParserContext context = new ParserContext(stream);
+                var parser = ParserFactory.CreateText(context);
+                var result = parser.Parse();
+            }
         }
     }
 }
