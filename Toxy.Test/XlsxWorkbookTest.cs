@@ -35,6 +35,20 @@ namespace Toxy.Test
             ClassicAssert.AreEqual("inline", ss.Tables[0][0][1].ToString());
         }
 
+        [Test]
+        public void TestStreamStaysOpen()
+        {
+            MemoryStream stream = CreateWorkbook(false, null, sheetData =>
+                sheetData.Append(new Row(new Cell { CellReference = "A1", CellValue = new CellValue("1") }) { RowIndex = 1 }));
+
+            ParserContext context = new ParserContext(stream);
+            ParserFactory.CreateSpreadsheet(context).Parse();
+            ParserFactory.CreateSpreadsheet(context).Parse(0);
+
+            // a stream passed in by the caller is not closed by the parser
+            ClassicAssert.IsTrue(stream.CanRead);
+        }
+
         private static MemoryStream CreateWorkbook(bool date1904, CellFormats cellFormats, Action<SheetData> fillSheet)
         {
             MemoryStream stream = new MemoryStream();

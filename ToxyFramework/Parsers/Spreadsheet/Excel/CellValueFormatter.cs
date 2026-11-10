@@ -1,3 +1,4 @@
+﻿using ExcelDataReader;
 using ExcelNumberFormat;
 using System;
 using System.Collections.Concurrent;
@@ -7,8 +8,7 @@ using System.Globalization;
 namespace Toxy.Parsers.Excel
 {
 	/// <summary>
-	/// Converts raw cell values to the text Excel would display, so that every
-	/// <see cref="IWorkbookReader"/> produces identical output for the same data.
+	/// Converts raw cell values to the text Excel would display.
 	/// </summary>
 	internal static class CellValueFormatter
 	{
@@ -28,10 +28,23 @@ namespace Toxy.Parsers.Excel
 		private static readonly ConcurrentDictionary<string, NumberFormat> Cache = new ConcurrentDictionary<string, NumberFormat>(StringComparer.Ordinal);
 
 		/// <summary>Resolves the format code of a built-in number format id, or <c>null</c> if the id is not a known built-in format.</summary>
-		public static string GetBuiltInFormat(int numberFormatId)
+		private static string GetBuiltInFormat(int numberFormatId)
 		{
 			BuiltInFormats.TryGetValue(numberFormatId, out string format);
 			return format;
+		}
+
+		/// <summary>
+		/// Formats the value of <paramref name="column"/> in the current row of <paramref name="reader"/>.
+		/// </summary>
+		/// <remarks>
+		/// ExcelDataReader reports its own format codes for the built-in number formats (e.g. "d/m/yyyy" for id 14),
+		/// the format codes of ECMA-376 are used instead.
+		/// </remarks>
+		public static string Format(IExcelDataReader reader, int column)
+		{
+			string numberFormat = GetBuiltInFormat(reader.GetNumberFormatIndex(column)) ?? reader.GetNumberFormatString(column);
+			return Format(reader.GetValue(column), numberFormat);
 		}
 
 		/// <summary>
@@ -39,8 +52,7 @@ namespace Toxy.Parsers.Excel
 		/// </summary>
 		/// <param name="value">A <c>null</c>, <see cref="string"/>, <see cref="bool"/>, number, <see cref="DateTime"/> or <see cref="TimeSpan"/>.</param>
 		/// <param name="numberFormat">The Excel format code. <c>null</c> or empty means "General".</param>
-		/// <param name="isDate1904">Whether a number formatted as date counts the days from 1904 instead of 1900.</param>
-		public static string Format(object value, string numberFormat, bool isDate1904 = false)
+		public static string Format(object value, string numberFormat)
 		{
 			switch (value)
 			{
@@ -51,11 +63,11 @@ namespace Toxy.Parsers.Excel
 				case bool flag:
 					return flag ? "TRUE" : "FALSE";
 				case TimeSpan span:
-					return FormatNumber(span.TotalDays, numberFormat, isDate1904);
+					return FormatNumber(span.TotalDays, numberFormat);
 				case DateTime _:
-					return FormatNumber(value, numberFormat, isDate1904);
+					return FormatNumber(value, numberFormat);
 				case IConvertible convertible when IsNumeric(value):
-					return FormatNumber(convertible.ToDouble(CultureInfo.InvariantCulture), numberFormat, isDate1904);
+					return FormatNumber(convertible.ToDouble(CultureInfo.InvariantCulture), numberFormat);
 				default:
 					return Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
 			}
@@ -82,7 +94,7 @@ namespace Toxy.Parsers.Excel
 			}
 		}
 
-		private static string FormatNumber(object value, string numberFormat, bool isDate1904)
+		private static string FormatNumber(object value, string numberFormat)
 		{
 			string code = string.IsNullOrEmpty(numberFormat) ? General : numberFormat;
 			NumberFormat format = Cache.GetOrAdd(code, c => new NumberFormat(c));
@@ -90,7 +102,7 @@ namespace Toxy.Parsers.Excel
 			{
 				format = Cache.GetOrAdd(General, c => new NumberFormat(c));
 			}
-			return format.Format(value, CultureInfo.InvariantCulture, isDate1904);
+			return format.Format(value, CultureInfo.InvariantCulture);
 		}
 	}
 }

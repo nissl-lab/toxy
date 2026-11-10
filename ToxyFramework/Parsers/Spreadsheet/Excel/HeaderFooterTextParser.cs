@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 
 namespace Toxy.Parsers.Excel
 {
@@ -8,11 +8,12 @@ namespace Toxy.Parsers.Excel
 	/// </summary>
 	internal static class HeaderFooterTextParser
 	{
-		public static HeaderFooterText Parse(string raw)
+		/// <returns>The left, center and right section, empty strings for missing sections.</returns>
+		public static string[] Parse(string raw)
 		{
 			if (string.IsNullOrEmpty(raw))
 			{
-				return HeaderFooterText.Empty;
+				return new[] { string.Empty, string.Empty, string.Empty };
 			}
 
 			var left = new StringBuilder();
@@ -59,7 +60,7 @@ namespace Toxy.Parsers.Excel
 				}
 			}
 
-			return new HeaderFooterText(left.ToString(), center.ToString(), right.ToString());
+			return new[] { left.ToString(), center.ToString(), right.ToString() };
 		}
 	}
 }
