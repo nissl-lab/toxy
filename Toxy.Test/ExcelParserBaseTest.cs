@@ -1,8 +1,7 @@
-﻿using DocumentFormat.OpenXml.Math;
-using MathNet.Numerics.LinearAlgebra;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using System;
+using System.IO;
 
 namespace Toxy.Test
 {
@@ -24,7 +23,7 @@ namespace Toxy.Test
             ClassicAssert.IsNotNull(ss2.Tables[0].PageFooter);
             ClassicAssert.AreEqual("testdoc|test phrase|",ss2.Tables[0].PageFooter);
         }
-        public void BaseTestWithoutHeader(string filename)
+        public void BaseTestWithoutHeader(string filename, int expectedLength = 9)
         {
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
@@ -32,7 +31,7 @@ namespace Toxy.Test
             ClassicAssert.IsNull(ss.Tables[0].PageHeader);
 
             ClassicAssert.AreEqual(0, ss.Tables[0].HeaderRows.Count);
-            ClassicAssert.AreEqual(9, ss.Tables[0].Length);
+            ClassicAssert.AreEqual(expectedLength, ss.Tables[0].Length);
         }
         public void BaseTestWithHeaderRow(string filename)
         {
@@ -122,7 +121,7 @@ namespace Toxy.Test
             ClassicAssert.IsNotNull(ss2.Tables[0].PageHeader);
             ClassicAssert.AreEqual("|testdoc|test phrase", ss2.Tables[0].PageHeader);
         }
-        public void BaseTestFillBlankCells(string filename)
+        public void BaseTestFillBlankCells(string filename, int expectedColumnCount = 4)
         {
             ParserContext context = new ParserContext(TestDataSample.GetExcelPath(filename));
             ISpreadsheetParser parser = ParserFactory.CreateSpreadsheet(context);
@@ -136,11 +135,11 @@ namespace Toxy.Test
             parser.Context.Properties.Add("FillBlankCells", "1");
             ToxySpreadsheet ss2 = parser.Parse();
             
-            ClassicAssert.AreEqual(4, ss2.Tables[0][1].Length);
-            ClassicAssert.AreEqual(4, ss2.Tables[0][2].Length);
-            ClassicAssert.AreEqual(4, ss2.Tables[0][3].Length);
-            ClassicAssert.AreEqual(4, ss2.Tables[0][4].Length);
-            ClassicAssert.AreEqual(4, ss2.Tables[0][5].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][1].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][2].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][3].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][4].Length);
+            ClassicAssert.AreEqual(expectedColumnCount, ss2.Tables[0][5].Length);
         }
 
         public void BaseTestExcelContent(string filename)
@@ -219,7 +218,13 @@ namespace Toxy.Test
 
         public void TestStreamForSpreadsheetParser(string filename)
         {
-            ParserContext context = new ParserContext(TestDataSample.GetFileStream(filename,"Excel"));
+            // the parser leaves a stream passed in by the caller open, the caller has to dispose it
+            using (Stream stream = TestDataSample.GetFileStream(filename, "Excel"))
+            {
+                ParserContext context = new ParserContext(stream);
+                ToxySpreadsheet ss = ParserFactory.CreateSpreadsheet(context).Parse();
+                ClassicAssert.IsTrue(ss.Tables.Count > 0);
+            }
         }
         public void TestEncryptedExcel(string filename)
         {

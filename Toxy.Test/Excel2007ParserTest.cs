@@ -38,7 +38,8 @@ namespace Toxy.Test
         [Test]
         public void TestExtractWithoutHeader()
         {
-            BaseTestWithoutHeader("WithVariousData.xlsx");
+            // row 8 of the sheet is empty, empty rows between data rows are reported like for .xls files
+            BaseTestWithoutHeader("WithVariousData.xlsx", 10);
         }
         [Test]
         public void TestExcelWithFormats()
@@ -46,6 +47,7 @@ namespace Toxy.Test
             BaseTestExcelFormatedString("Formatting.xlsx");
         }
         [Test]
+        [Ignore("Cell comments are not supported, ExcelDataReader does not expose them")]
         public void TestExcelWithComments()
         {
             base.BaseTestExcelComment("comments.xlsx");

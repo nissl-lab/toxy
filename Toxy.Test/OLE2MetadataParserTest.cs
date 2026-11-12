@@ -75,15 +75,21 @@ namespace Toxy.Test
         [Test]
         public void TestStreamFromOLE2()
         {
-            ParserContext context = new ParserContext(TestDataSample.GetFileStream("TestCorel.shw", "ole2"));
-            Assert.Throws<InvalidDataException>((Action)(() =>
+            using (Stream stream = TestDataSample.GetFileStream("TestCorel.shw", "ole2"))
             {
-                var parser = ParserFactory.CreateMetadata(context);
-            }));
+                ParserContext context = new ParserContext(stream);
+                Assert.Throws<InvalidDataException>((Action)(() =>
+                {
+                    var parser = ParserFactory.CreateMetadata(context);
+                }));
+            }
 
-            ParserContext context2 = new ParserContext(TestDataSample.GetFileStream("Employee.xls", "Excel"));
-            var parser = ParserFactory.CreateMetadata(context2);
-            parser.Parse();
+            using (Stream stream2 = TestDataSample.GetFileStream("Employee.xls", "Excel"))
+            {
+                ParserContext context2 = new ParserContext(stream2);
+                var parser = ParserFactory.CreateMetadata(context2);
+                parser.Parse();
+            }
         }
     }
 }
